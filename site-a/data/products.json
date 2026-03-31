@@ -1,0 +1,416 @@
+{
+  "comforter": {
+    "winter": [
+      {
+        "slug": "premium-rds-winter",
+        "name": "Premium RDS Sleep Down-冬用-",
+        "sub": "マザーグース",
+        "series": "Premium RDS Down Series",
+        "price": 198000,
+        "catchphrase": "高級羽毛布団の最高峰。ポーランド産マザーグースダウン95%使用。",
+        "img_dir": "premium-rds-winter",
+        "sizes": {
+          "S": 198000,
+          "SD": 238000,
+          "D": 278000,
+          "Q": 298000,
+          "K": 318000
+        }
+      },
+      {
+        "slug": "rds-goose-winter",
+        "name": "RDS Sleep Down-冬用-",
+        "sub": "ホワイトグース",
+        "series": "RDS Down Series",
+        "price": 88000,
+        "catchphrase": "上質な暖かさを。ポーランド産ホワイトグースダウン93%使用。",
+        "img_dir": "rds-goose-winter",
+        "sizes": {
+          "S": 88000,
+          "SD": 108000,
+          "D": 128000,
+          "Q": 148000,
+          "K": 160000
+        }
+      },
+      {
+        "slug": "ccd-winter",
+        "name": "Clean Cycle Sleep Down-冬用-",
+        "sub": "リサイクルダウン",
+        "series": "Clean Cycle Down Series",
+        "price": 53800,
+        "catchphrase": "サステナブルな温もりを。白州天然水で洗浄したリサイクルダウン。",
+        "img_dir": "ccd-winter",
+        "sizes": {
+          "S": 53800,
+          "SD": 63800,
+          "D": 73800,
+          "Q": 83800,
+          "K": 93800
+        }
+      },
+      {
+        "slug": "flower-winter",
+        "name": "Flower Sleep Down-冬用-",
+        "sub": "リサイクルダウン",
+        "series": "Flower Down Series",
+        "price": 35800,
+        "catchphrase": "イタリア産リサイクルダウンとカポックのブレンド。",
+        "img_dir": "flower-winter",
+        "sizes": {
+          "S": 35800,
+          "SD": 45800,
+          "D": 55800,
+          "Q": 71600,
+          "K": 81600
+        }
+      }
+    ],
+    "spring": [
+      {
+        "slug": "premium-rds-spring",
+        "name": "Premium RDS Sleep Down-春秋用-",
+        "sub": "マザーグース",
+        "series": "Premium RDS Down Series",
+        "price": 158000,
+        "catchphrase": "肌掛けと重ねて冬用本掛けに。",
+        "img_dir": "premium-rds-spring",
+        "sizes": {
+          "S": 158000,
+          "SD": 188000,
+          "D": 218000,
+          "Q": 238000,
+          "K": 258000
+        }
+      },
+      {
+        "slug": "rds-goose-spring",
+        "name": "RDS Sleep Down-春秋用-",
+        "sub": "ホワイトグース",
+        "series": "RDS Down Series",
+        "price": 68000,
+        "catchphrase": "肌掛けと重ねて冬用本掛けに。",
+        "img_dir": "rds-goose-spring",
+        "sizes": {
+          "S": 68000,
+          "SD": 83000,
+          "D": 98000,
+          "Q": 108000,
+          "K": 120000
+        }
+      },
+      {
+        "slug": "ccd-spring",
+        "name": "Clean Cycle Sleep Down-春秋用-",
+        "sub": "リサイクルダウン",
+        "series": "Clean Cycle Down Series",
+        "price": 42800,
+        "catchphrase": "サステナブルな温もりを。春秋の快適な眠りに。",
+        "img_dir": "ccd-spring",
+        "sizes": {
+          "S": 42800,
+          "SD": 52800,
+          "D": 62800,
+          "Q": 67800,
+          "K": 74800
+        }
+      },
+      {
+        "slug": "flower-spring",
+        "name": "Flower Sleep Down-春秋用-",
+        "sub": "リサイクルダウン",
+        "series": "Flower Down Series",
+        "price": 30800,
+        "catchphrase": "イタリア産リサイクルダウンとカポックのブレンド。",
+        "img_dir": "flower-spring",
+        "sizes": {
+          "S": 30800,
+          "SD": 40800,
+          "D": 50800,
+          "Q": 62600,
+          "K": 72600
+        }
+      }
+    ],
+    "summer": [
+      {
+        "slug": "premium-rds-summer",
+        "name": "Premium RDS Sleep Down-夏用-",
+        "sub": "マザーグース",
+        "series": "Premium RDS Down Series",
+        "price": 78000,
+        "catchphrase": "夏は、うすく。かるく。",
+        "img_dir": "premium-rds-summer",
+        "sizes": {
+          "S": 78000,
+          "SD": 98000,
+          "D": 108000,
+          "Q": 118000,
+          "K": 130000
+        }
+      },
+      {
+        "slug": "rds-goose-summer",
+        "name": "RDS Sleep Down-夏用-",
+        "sub": "ホワイトグース",
+        "series": "RDS Down Series",
+        "price": 38800,
+        "catchphrase": "夏は、うすく。かるく。",
+        "img_dir": "rds-goose-summer",
+        "sizes": {
+          "S": 38800,
+          "SD": 48800,
+          "D": 56800,
+          "Q": 58800,
+          "K": 66800
+        }
+      },
+      {
+        "slug": "ccd-summer",
+        "name": "Clean Cycle Sleep Down-夏用-",
+        "sub": "リサイクルダウン",
+        "series": "Clean Cycle Down Series",
+        "price": 28800,
+        "catchphrase": "サステナブルな温もりを。涼しい夏の眠りに。",
+        "img_dir": "ccd-summer",
+        "sizes": {
+          "S": 28800,
+          "SD": 33800,
+          "D": 38800,
+          "Q": 40800,
+          "K": 44800
+        }
+      },
+      {
+        "slug": "flower-summer",
+        "name": "Flower Sleep Down-夏用-",
+        "sub": "リサイクルダウン",
+        "series": "Flower Down Series",
+        "price": 20800,
+        "catchphrase": "イタリア産リサイクルダウンとカポックのブレンド。",
+        "img_dir": "flower-summer",
+        "sizes": {
+          "S": 20800,
+          "SD": 30800,
+          "D": 40800,
+          "Q": 48600,
+          "K": 54600
+        }
+      }
+    ]
+  },
+  "pillow": [
+    {
+      "slug": "goose-pillow",
+      "name": "ホワイトグースダウン枕",
+      "price": 27800,
+      "catchphrase": "ポーランド産ホワイトグースダウン93%使用。極上の柔らかさ。",
+      "img_dir": "goose-pillow",
+      "sizes": {
+        "M": 27800,
+        "L": 33800
+      }
+    },
+    {
+      "slug": "duck-pillow",
+      "name": "ホワイトダックダウン枕",
+      "price": 15800,
+      "catchphrase": "100%天然ダウン＆フェザー使用。ふかふかの眠り心地。",
+      "img_dir": "duck-pillow",
+      "sizes": {
+        "M": 15800,
+        "L": 19800
+      }
+    },
+    {
+      "slug": "ccd-pillow",
+      "name": "Clean Cycle Down Pillow",
+      "price": 27800,
+      "catchphrase": "白州天然水で洗浄したリサイクルダウン94%使用。サステナブルな枕。",
+      "img_dir": "ccd-pillow",
+      "colors": [
+        "白",
+        "黒"
+      ]
+    }
+  ],
+  "bedding": [
+    {
+      "slug": "mattress",
+      "name": "シルキーポケットマットレス",
+      "price": 180500,
+      "catchphrase": "1200個のポケットコイルが実現する極上の寝心地。",
+      "img_dir": "mattress",
+      "sizes": {
+        "S": 180500,
+        "SD": 203500,
+        "D": 226500,
+        "Q": 256500,
+        "K": 279500
+      }
+    },
+    {
+      "slug": "cover",
+      "name": "掛け布団カバー",
+      "price": 13800,
+      "catchphrase": "インド産コットン100%。80番手サテン織りの上質カバー。",
+      "img_dir": "cover",
+      "sizes": {
+        "S": 13800,
+        "SD": 15800,
+        "D": 17800,
+        "Q": 19800,
+        "K": 21800
+      }
+    },
+    {
+      "slug": "sheets",
+      "name": "ボックスシーツ",
+      "price": 10800,
+      "catchphrase": "インド産コットン100%。80番手サテン織りのボックスシーツ。",
+      "img_dir": "sheets",
+      "sizes": {
+        "S": 10800,
+        "SD": 11800,
+        "D": 12800,
+        "Q": 13800,
+        "K": 14800
+      }
+    },
+    {
+      "slug": "pillow-case",
+      "name": "ピローケース",
+      "price": 3800,
+      "catchphrase": "インド産コットン100%。80番手サテン織りのピローケース。",
+      "img_dir": "pillow-case",
+      "sizes": {
+        "M": 3800,
+        "L": 4600
+      }
+    },
+    {
+      "slug": "bed-pad",
+      "name": "コットンベッドパッド",
+      "price": 14800,
+      "catchphrase": "綿100%の抗菌コットンベッドパッド。",
+      "img_dir": "bed-pad",
+      "sizes": {
+        "S": 14800,
+        "SD": 16800,
+        "D": 18800,
+        "Q": 20800,
+        "K": 22800
+      }
+    }
+  ],
+  "apparel": [
+    {
+      "slug": "down-jacket",
+      "name": "ダウンジャケット",
+      "price": 146300,
+      "catchphrase": "布団づくりの技術を日常へ。Clean Cycle Down使用、800フィルパワー。",
+      "img_dir": "down-jacket",
+      "colors": [
+        "白",
+        "黒",
+        "ピンク"
+      ],
+      "designer": "スタイリスト 安西こずえ"
+    },
+    {
+      "slug": "down-vest",
+      "name": "ダウンベスト",
+      "price": 107800,
+      "catchphrase": "サステナブルで驚くほど軽く暖かい。Clean Cycle Down使用。",
+      "img_dir": "down-vest",
+      "colors": [
+        "白",
+        "黒",
+        "ピンク"
+      ],
+      "designer": "スタイリスト 安西こずえ"
+    }
+  ],
+  "collaboration": [
+    {
+      "slug": "inoue-blanket",
+      "name": "THE INOUE BROTHERS アルパカ羊毛布団／アルパカブランケットセット",
+      "price": 118000,
+      "catchphrase": "最高級アルパカウールのブランケットセット。",
+      "img_dir": "inoue-blanket"
+    },
+    {
+      "slug": "inoue-pajamas",
+      "name": "THE INOUE BROTHERS アルパカパジャマ／アルパカソックスセット",
+      "price": 57200,
+      "catchphrase": "最高級アルパカウールのパジャマセット。",
+      "img_dir": "inoue-pajamas"
+    }
+  ],
+  "baby": [
+    {
+      "slug": "baby-set",
+      "name": "ベビー用布団はじめてセット",
+      "price": 39000,
+      "catchphrase": "初めてのお布団に、安心を。",
+      "img_dir": "baby-set"
+    },
+    {
+      "slug": "baby-comforter",
+      "name": "ベビー用掛け布団・カバー付き",
+      "price": 19800,
+      "catchphrase": "ダクロン®ポリエステルわた使用。コットンカバー2枚付き。",
+      "img_dir": "baby-comforter"
+    }
+  ],
+  "service": [
+    {
+      "slug": "trial",
+      "name": "本掛け布団 1week トライアル",
+      "price": 3300,
+      "catchphrase": "ポーランド産ホワイトグース掛け布団を1週間ご自宅でお試し。",
+      "img_dir": "trial",
+      "trial_days": 14,
+      "coupon": 3000
+    },
+    {
+      "slug": "rental-ccd",
+      "name": "掛け布団マンスリーレンタル／Clean Cycle Down",
+      "price": 3960,
+      "catchphrase": "月額制で高品質な国産羽毛布団をお手元に。",
+      "img_dir": "rental-ccd",
+      "monthly": true,
+      "sizes": {
+        "S": 3960,
+        "SD": 4730,
+        "D": 5720,
+        "Q": 6600,
+        "K": 7480
+      },
+      "initial_shipping": 3300
+    },
+    {
+      "slug": "rental-premium",
+      "name": "掛け布団マンスリーレンタル／プレミアムマザーグース",
+      "price": 3960,
+      "catchphrase": "最高級マザーグースダウンの掛け布団を月額制レンタル。",
+      "img_dir": "rental-premium",
+      "monthly": true,
+      "sizes": {
+        "S": 3960,
+        "SD": 4730,
+        "D": 5720,
+        "Q": 6600,
+        "K": 7480
+      },
+      "initial_shipping": 3300
+    },
+    {
+      "slug": "reform",
+      "name": "Clean Cycle Reform／布団打ち直し",
+      "price": 45800,
+      "catchphrase": "お手持ちの羽毛布団をClean Cycleの技術でリフォーム。",
+      "img_dir": "reform"
+    }
+  ]
+}

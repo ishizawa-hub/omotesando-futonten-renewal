@@ -1,0 +1,177 @@
+{
+  "header": {
+    "logo": {
+      "href": "/index.html",
+      "img": "/images/logo.svg"
+    },
+    "primary": [
+      {
+        "label": "CONCEPT",
+        "href": "/concept/index.html",
+        "dropdown": [
+          {
+            "label": "ブランドコンセプト",
+            "href": "/concept/index.html"
+          },
+          {
+            "label": "Clean Cycle Down",
+            "href": "/concept/clean-cycle-down.html"
+          },
+          {
+            "label": "素材のこだわり",
+            "href": "/concept/material.html"
+          },
+          {
+            "label": "製造技術",
+            "href": "/concept/technology.html"
+          }
+        ]
+      },
+      {
+        "label": "PRODUCTS",
+        "href": "/products/index.html",
+        "mega_menu": [
+          {
+            "label_en": "COMFORTER",
+            "label_jp": "掛け布団",
+            "href": "/products/comforter/index.html",
+            "img": "/images/site/comforter_hero.jpg"
+          },
+          {
+            "label_en": "PILLOW",
+            "label_jp": "枕",
+            "href": "/products/pillow/index.html",
+            "img": "/images/site/pillow_hero2.jpg"
+          },
+          {
+            "label_en": "BEDDING",
+            "label_jp": "寝具",
+            "href": "/products/bedding/index.html",
+            "img": "/images/site/bedding_hero.jpg"
+          },
+          {
+            "label_en": "APPAREL",
+            "label_jp": "アパレル",
+            "href": "/products/apparel/index.html",
+            "img": "/images/site/apparel_hero.jpg"
+          },
+          {
+            "label_en": "COLLABORATION",
+            "label_jp": "コラボ",
+            "href": "/products/collaboration/index.html",
+            "img": "/images/site/collab_hero.jpg"
+          },
+          {
+            "label_en": "BABY",
+            "label_jp": "ベビー",
+            "href": "/products/baby/index.html",
+            "img": "/images/site/baby_hero.jpg"
+          },
+          {
+            "label_en": "SERVICE",
+            "label_jp": "クリーンサイクルサービス",
+            "href": "/service/index.html",
+            "img": "/images/site/service_hero2.png"
+          }
+        ]
+      },
+      {
+        "label": "MAGAZINE",
+        "href": "/magazine.html"
+      },
+      {
+        "label": "ABOUT",
+        "href": "/about.html"
+      }
+    ],
+    "actions": [
+      {
+        "label": "CART(0)",
+        "href": "/cart/index.html"
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "PRODUCTS",
+        "links": [
+          {
+            "label": "掛け布団",
+            "href": "/products/comforter/index.html"
+          },
+          {
+            "label": "枕",
+            "href": "/products/pillow/index.html"
+          },
+          {
+            "label": "寝具",
+            "href": "/products/bedding/index.html"
+          },
+          {
+            "label": "アパレル",
+            "href": "/products/apparel/index.html"
+          },
+          {
+            "label": "ベビー",
+            "href": "/products/baby/index.html"
+          }
+        ]
+      },
+      {
+        "title": "CONCEPT",
+        "links": [
+          {
+            "label": "ブランドコンセプト",
+            "href": "/concept/index.html"
+          },
+          {
+            "label": "Clean Cycle Down",
+            "href": "/concept/clean-cycle-down.html"
+          },
+          {
+            "label": "素材のこだわり",
+            "href": "/concept/material.html"
+          },
+          {
+            "label": "製造技術",
+            "href": "/concept/technology.html"
+          }
+        ]
+      },
+      {
+        "title": "INFORMATION",
+        "links": [
+          {
+            "label": "マガジン",
+            "href": "/magazine.html"
+          },
+          {
+            "label": "ブランドストーリー",
+            "href": "/about.html"
+          },
+          {
+            "label": "ギフト",
+            "href": "/gift.html"
+          },
+          {
+            "label": "FAQ",
+            "href": "/faq.html"
+          },
+          {
+            "label": "お問い合わせ",
+            "href": "/contact.html"
+          },
+          {
+            "label": "サブスクリプション",
+            "href": "/subscription.html"
+          },
+          {
+            "label": "在庫状況",
+            "href": "/inventory-view.html"
+          }
+        ]
+      }
+    ]
+  }
+}

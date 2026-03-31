@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "CONCEPT": {
+      "en": "CONCEPT",
+      "jp": "コンセプト",
+      "path": "/concept/index.html"
+    },
+    "PRODUCTS": {
+      "en": "PRODUCTS",
+      "jp": "商品一覧",
+      "path": "/products/index.html"
+    },
+    "MAGAZINE": {
+      "en": "MAGAZINE",
+      "jp": "マガジン",
+      "path": "/magazine.html"
+    },
+    "ABOUT": {
+      "en": "ABOUT",
+      "jp": "私たちについて",
+      "path": "/about.html"
+    }
+  },
+  "concept_subnav": {
+    "brand-concept": {
+      "jp": "ブランドコンセプト",
+      "path": "/concept/index.html"
+    },
+    "clean-cycle-down": {
+      "jp": "Clean Cycle Down",
+      "path": "/concept/clean-cycle-down.html"
+    },
+    "material": {
+      "jp": "素材のこだわり",
+      "path": "/concept/material.html"
+    },
+    "technology": {
+      "jp": "製造技術",
+      "path": "/concept/technology.html"
+    }
+  },
+  "product_categories": {
+    "comforter": {
+      "en": "COMFORTER",
+      "jp": "掛け布団",
+      "path": "/products/comforter/index.html"
+    },
+    "pillow": {
+      "en": "PILLOW",
+      "jp": "枕",
+      "path": "/products/pillow/index.html"
+    },
+    "bedding": {
+      "en": "BEDDING",
+      "jp": "寝具",
+      "path": "/products/bedding/index.html"
+    },
+    "apparel": {
+      "en": "APPAREL",
+      "jp": "アパレル",
+      "path": "/products/apparel/index.html"
+    },
+    "collaboration": {
+      "en": "COLLABORATION",
+      "jp": "コラボレーション",
+      "path": "/products/collaboration/index.html"
+    },
+    "baby": {
+      "en": "BABY",
+      "jp": "ベビー",
+      "path": "/products/baby/index.html"
+    },
+    "service": {
+      "en": "SERVICE",
+      "jp": "クリーンサイクルサービス",
+      "path": "/products/service/"
+    }
+  },
+  "comforter_seasons": {
+    "winter": {
+      "jp": "冬用",
+      "slug_suffix": "-冬用-"
+    },
+    "spring": {
+      "jp": "春秋用",
+      "slug_suffix": "-春秋用-"
+    },
+    "summer": {
+      "jp": "夏用",
+      "slug_suffix": "-夏用-"
+    }
+  }
+}

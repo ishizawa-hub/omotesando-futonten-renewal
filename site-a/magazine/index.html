@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マガジン | 表参道布団店。</title>
+<meta name="description" content="表参道布団店のマガジン。羽毛布団の選び方・お手入れ・素材のこだわりなど、眠りの質を高める情報をお届けします。">
+<meta property="og:title" content="マガジン | 表参道布団店。">
+<meta property="og:description" content="羽毛布団の選び方・お手入れ・素材のこだわりなど、眠りの質を高める情報をお届けします。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--color-bg:#FFF;--color-text:#1A1A1A;--color-text-light:#6B6B6B;--color-accent:#C9A96E;--color-accent-hover:#B8975A;--color-navy:#2D2D2D;--color-white:#FFF;--color-border:#E5E5E5;--color-card-bg:#F7F7F7;--header-height:72px;--max-width:1320px;--section-pad:100px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:400;color:var(--color-text);background:var(--color-bg);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}ul,ol{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+
+/* Mobile Menu */
+.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
+.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}.mobile-menu nav a:hover{color:var(--color-accent)}
+
+/* Breadcrumb */
+.breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
+.bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.breadcrumb a{color:#999;text-decoration:none;transition:color 0.3s}.breadcrumb a:hover{color:#C9A96E}
+.breadcrumb span{color:#666}.bc-sep{margin:0 8px;color:#ccc}
+@media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+
+/* =========================
+   PAGE HERO - Magazine
+   ========================= */
+.mag-hero{padding:140px 0 60px;text-align:center;background:#fff;position:relative}
+.mag-hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:1px;background:var(--color-accent)}
+.mag-hero-en{font-family:var(--font-display);font-size:56px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text);margin-bottom:12px;line-height:1.1}
+.mag-hero-sub{font-family:var(--font-jp);font-size:14px;font-weight:400;color:var(--color-text-light);letter-spacing:.2em}
+
+/* =========================
+   FILTER BAR
+   ========================= */
+.filter-bar{padding:40px 0 0;border-bottom:1px solid var(--color-border)}
+.filter-bar-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:0}
+.filter-cats{display:flex;gap:0;flex-wrap:wrap}
+.filter-cat-btn{padding:12px 24px;font-family:var(--font-jp);font-size:13px;font-weight:500;color:var(--color-text-light);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .3s;letter-spacing:.04em;white-space:nowrap}
+.filter-cat-btn:hover{color:var(--color-text)}
+.filter-cat-btn.active{color:var(--color-text);border-bottom-color:var(--color-accent);font-weight:600}
+.filter-cat-btn .cat-count{font-size:11px;color:var(--color-text-light);margin-left:4px;font-weight:400}
+.filter-right{display:flex;align-items:center;gap:16px;padding-bottom:12px}
+.view-toggle{display:flex;gap:4px}
+.view-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--color-border);background:#fff;cursor:pointer;transition:all .3s;color:var(--color-text-light)}
+.view-btn:hover{border-color:var(--color-text)}
+.view-btn.active{background:var(--color-text);border-color:var(--color-text);color:#fff}
+.view-btn svg{width:18px;height:18px}
+.article-count{font-size:12px;color:var(--color-text-light);letter-spacing:.04em;padding-bottom:12px}
+
+/* =========================
+   FEATURED ARTICLE
+   ========================= */
+.mag-featured{padding:64px 0 48px}
+.mag-featured-card{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;text-decoration:none;color:inherit}
+.mag-featured-card:hover .mf-img img{transform:scale(1.03)}
+.mf-img{aspect-ratio:16/10;overflow:hidden;background:var(--color-card-bg);border-radius:2px}
+.mf-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mf-body{display:flex;flex-direction:column}
+.mf-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
+.mf-badge-label{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--color-accent);padding:4px 12px;border:1px solid var(--color-accent)}
+.mf-badge-cat{font-size:12px;font-weight:500;color:var(--color-text-light);letter-spacing:.08em}
+.mf-title{font-family:var(--font-jp);font-size:26px;font-weight:600;line-height:1.7;margin-bottom:16px}
+.mf-excerpt{font-size:15px;color:var(--color-text-light);line-height:2;margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mf-bottom{display:flex;align-items:center;justify-content:space-between}
+.mf-date{font-size:13px;color:var(--color-text-light);letter-spacing:.06em}
+.mf-link{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text);border-bottom:1px solid var(--color-text);padding-bottom:2px;transition:all .3s}
+.mag-featured-card:hover .mf-link{color:var(--color-accent);border-color:var(--color-accent)}
+
+/* =========================
+   GRID VIEW
+   ========================= */
+.mag-articles{padding:0 0 80px}
+.view-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.mg-card{display:block;text-decoration:none;color:inherit;transition:transform .4s}
+.mg-card:hover{transform:translateY(-4px)}
+.mg-card-img{aspect-ratio:16/10;overflow:hidden;background:var(--color-card-bg);border-radius:2px;margin-bottom:16px}
+.mg-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mg-card:hover .mg-card-img img{transform:scale(1.05)}
+.mg-card-body{padding:0}
+.mg-card-meta{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.mg-card-cat{font-size:11px;font-weight:600;letter-spacing:.1em;padding:2px 8px;border:1px solid;line-height:1.6}
+.mg-card-date{font-size:12px;color:var(--color-text-light);letter-spacing:.04em}
+.mg-card-title{font-family:var(--font-jp);font-size:15px;font-weight:600;line-height:1.7;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mg-card-excerpt{font-size:13px;color:var(--color-text-light);line-height:1.8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* =========================
+   LIST VIEW
+   ========================= */
+.view-list{display:flex;flex-direction:column;gap:0}
+.ml-card{display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:center;padding:32px 0;border-bottom:1px solid var(--color-border);text-decoration:none;color:inherit;transition:background .3s}
+.ml-card:first-child{border-top:1px solid var(--color-border)}
+.ml-card:hover{background:rgba(201,169,110,0.03)}
+.ml-card:hover .ml-card-link{color:var(--color-accent)}
+.ml-card:hover .ml-card-link svg{transform:translateX(4px)}
+.ml-card-body{display:flex;flex-direction:column;padding:0 8px}
+.ml-card-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ml-card-cat{font-size:11px;font-weight:600;letter-spacing:.1em;padding:2px 8px;border:1px solid;line-height:1.6}
+.ml-card-date{font-size:12px;color:var(--color-text-light);letter-spacing:.04em}
+.ml-card-title{font-family:var(--font-jp);font-size:20px;font-weight:600;line-height:1.7;margin-bottom:10px}
+.ml-card-excerpt{font-size:14px;color:var(--color-text-light);line-height:1.9;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ml-card-link{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--color-text-light);display:inline-flex;align-items:center;gap:6px;transition:color .3s;letter-spacing:.02em}
+.ml-card-link svg{transition:transform .3s}
+.ml-card-img{aspect-ratio:16/10;overflow:hidden;background:var(--color-card-bg);border-radius:2px;flex-shrink:0}
+.ml-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ml-card:hover .ml-card-img img{transform:scale(1.05)}
+
+/* Placeholder */
+.img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#FAF7F2 0%,#E8E0D4 100%);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10}
+.img-placeholder span{font-family:var(--font-display);font-size:36px;color:var(--color-accent);opacity:0.2}
+
+/* Hidden state */
+.view-container{display:none}
+.view-container.active{display:block}
+
+/* =========================
+   LOAD MORE
+   ========================= */
+.load-more{text-align:center;padding:48px 0 0}
+.load-more-btn{display:inline-block;padding:14px 48px;border:1px solid var(--color-border);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text);transition:all .3s;cursor:pointer;background:none}
+.load-more-btn:hover{background:var(--color-text);color:#fff}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer{background:var(--color-navy);color:#fff;padding:80px 0 40px}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media(max-width:1024px){
+  .mag-featured-card{grid-template-columns:1fr;gap:32px}
+  .view-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:768px){
+  .mag-hero{padding:110px 0 48px}
+  .mag-hero-en{font-size:40px}
+  .container{padding:0 20px}
+  .filter-bar-inner{flex-direction:column;align-items:flex-start}
+  .filter-cats{overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
+  .filter-cat-btn{padding:10px 16px;font-size:12px}
+  .filter-right{align-self:flex-end}
+  .mag-featured{padding:48px 0 32px}
+  .mf-title{font-size:22px}
+  .view-grid{grid-template-columns:1fr;gap:24px}
+  .ml-card{grid-template-columns:1fr 160px;gap:20px;padding:24px 0}
+  .ml-card-title{font-size:17px}
+  .ml-card-excerpt{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}
+  .footer-brand{grid-column:1/-1;text-align:center}
+  .footer-copy{font-size:10px}
+}
+@media(max-width:480px){
+  .mag-hero-en{font-size:32px}
+  .ml-card{grid-template-columns:1fr 120px;gap:16px}
+  .ml-card-title{font-size:15px}
+}
+
+/* Fade animation */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo"><img src="../images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="../concept/">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="../concept/">ブランドコンセプト</a>
+          <a href="../concept/brand-story/">ブランドストーリー</a>
+<a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="../concept/material/">素材のこだわり</a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../products/">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="../products/comforter/" class="nav-mega-card"><img src="../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy"><span class="nav-mega-card-label">COMFORTER</span><span class="nav-mega-card-name">掛け布団</span></a>
+          <a href="../products/pillow/" class="nav-mega-card"><img src="../images/site/pillow_hero2.jpg" alt="枕" loading="lazy"><span class="nav-mega-card-label">PILLOW</span><span class="nav-mega-card-name">枕／枕カバー</span></a>
+          <a href="../products/bedding/" class="nav-mega-card"><img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy"><span class="nav-mega-card-label">BEDDING</span><span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span></a>
+          <a href="../products/apparel/" class="nav-mega-card"><img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy"><span class="nav-mega-card-label">APPAREL</span><span class="nav-mega-card-name">アパレル</span></a>
+          <a href="../products/collaboration/" class="nav-mega-card"><img src="../images/site/collab_hero.jpg" alt="コラボ" loading="lazy"><span class="nav-mega-card-label">COLLABORATION</span><span class="nav-mega-card-name">コラボ</span></a>
+          <a href="../products/baby/" class="nav-mega-card"><img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy"><span class="nav-mega-card-label">BABY</span><span class="nav-mega-card-name">ベビー</span></a>
+          <a href="../products/service/" class="nav-mega-card"><img src="../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy"><span class="nav-mega-card-label">SERVICE</span><span class="nav-mega-card-name">クリーンサイクルサービス</span></a>
+        </div>
+      </div>
+      <div class="header-nav-item"><a href="../magazine/">MAGAZINE</a></div>
+      <div class="header-nav-item"><a href="../about/">ABOUT</a></div>
+    </nav>
+    <div class="header-actions">
+      <a href="../cart/">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="../index.html">TOP</a>
+    <a href="../concept/">CONCEPT</a>
+    <a href="../concept/brand-story/">BRAND STORY</a>
+    <a href="../products/">PRODUCTS</a>
+    <a href="../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../magazine/">MAGAZINE</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../gift/">GIFT</a>
+    <a href="../contact/">CONTACT</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../subscription/">サブスクリプション</a>
+    <a href="../cart/">CART</a>
+  </nav>
+</div>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <span>マガジン</span></div></nav>
+
+<!-- HERO -->
+<section class="mag-hero">
+  <div class="container">
+    <h1 class="mag-hero-en fade-up">Magazine</h1>
+    <p class="mag-hero-sub fade-up">眠りの質を高める、知識とストーリー</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<section class="filter-bar">
+  <div class="container">
+    <div class="filter-bar-inner">
+      <div class="filter-cats" id="filterCats">
+        <button class="filter-cat-btn active" data-filter="all">すべて<span class="cat-count">78</span></button>
+        <button class="filter-cat-btn" data-filter="睡眠知識">睡眠知識<span class="cat-count">20</span></button>
+        <button class="filter-cat-btn" data-filter="メンテナンス">メンテナンス<span class="cat-count">12</span></button>
+        <button class="filter-cat-btn" data-filter="素材のこだわり">素材のこだわり<span class="cat-count">18</span></button>
+        <button class="filter-cat-btn" data-filter="お知らせ">お知らせ<span class="cat-count">28</span></button>
+      </div>
+      <div class="filter-right">
+        <span class="article-count" id="articleCount">78 articles</span>
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="grid" aria-label="グリッド表示"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+          <button class="view-btn" data-view="list" aria-label="リスト表示"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="mag-featured" id="featuredSection">
+  <div class="container">
+    <a href="../magazine/futon-guide/" class="mag-featured-card fade-up" data-category="睡眠知識">
+      <div class="mf-img"><img src="../images/products/premium_winter.jpg" alt="布団選びの注意点まとめ" loading="lazy"></div>
+      <div class="mf-body">
+        <div class="mf-badge">
+          <span class="mf-badge-label">Featured</span>
+          <span class="mf-badge-cat">睡眠知識</span>
+        </div>
+        <h2 class="mf-title">布団選びの注意点まとめ</h2>
+        <p class="mf-excerpt">羽毛布団を購入する前に必ず確認したいポイントを網羅的に解説。ダウンの種類、側生地の選び方、キルト構造の違いなど、後悔しない布団選びのための完全ガイドです。</p>
+        <div class="mf-bottom">
+          <span class="mf-date">2023.11.09</span>
+          <span class="mf-link">Read Article</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="mag-articles">
+  <div class="container">
+    <!-- Grid View -->
+    <div class="view-container active" id="viewGrid">
+      <div class="view-grid">
+      <a href="../magazine/netflix/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="../images/products/premium_winter.jpg" alt="NetflixのBoyfriend2で羽毛布団が使用されました" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2026.01.31</span>
+          </div>
+          <h3 class="mg-card-title">NetflixのBoyfriend2で羽毛布団が使用されました</h3>
+          <p class="mg-card-excerpt">Netflixで配信中の人気リアリティ番組「ボーイフレンド」シーズン2にて、当店の羽毛布団が使用されました。</p>
+        </div>
+      </a>
+      <a href="../magazine/year-end-2025/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2025.12.08</span>
+          </div>
+          <h3 class="mg-card-title">年末年始の営業についてのお知らせ</h3>
+          <p class="mg-card-excerpt">年末年始の営業日程と配送スケジュールについてのご案内です。</p>
+        </div>
+      </a>
+      <a href="../magazine/sustainable-initiative/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="../images/products/premium_winter.jpg" alt="羽毛布団にも、サステナブルを。" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2025.12.08</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団にも、サステナブルを。</h3>
+          <p class="mg-card-excerpt">表参道布団店が取り組むサステナブルな羽毛布団づくり。リサイクルダウンの可能性と循環型社会への挑戦。</p>
+        </div>
+      </a>
+      <a href="../magazine/subscription/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="../images/products/semidouble_720x610.webp" alt="布団のサブスクに革命！プレミアムマザーグースも月額で" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2025.10.06</span>
+          </div>
+          <h3 class="mg-card-title">布団のサブスクに革命！プレミアムマザーグースも月額で</h3>
+          <p class="mg-card-excerpt">最高級プレミアムマザーグースの羽毛布団が月額レンタルで利用可能に。購入前のお試しにも、季節に合わせた使い分けにも最適です。</p>
+        </div>
+      </a>
+      <a href="../magazine/ccd-reform-2025/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2023/07/rectangle_large_type_2_3dd2592a0ef84898cde74084265f3eca.png" alt="2025年-2026年冬に向けて、Clean Cycle Reformでよみがえらせましょう" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2025.06.07</span>
+          </div>
+          <h3 class="mg-card-title">2025年-2026年冬に向けて、Clean Cycle Reformでよみがえらせましょう</h3>
+          <p class="mg-card-excerpt">お手持ちの羽毛布団をCCD品質でフカフカに再生。冬まで保管サービスもご利用可能。</p>
+        </div>
+      </a>
+      <a href="../magazine/spring-summer-hadagake/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2025.04.23</span>
+          </div>
+          <h3 class="mg-card-title">大好評！春夏用の肌掛け布団。</h3>
+          <p class="mg-card-excerpt">春夏のエアコン冷え対策に最適な肌掛け羽毛布団が大好評。</p>
+        </div>
+      </a>
+      <a href="../magazine/winter-futon-timing/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.09.15</span>
+          </div>
+          <h3 class="mg-card-title">冬の布団、いつ出す？切り替えのベストタイミング</h3>
+          <p class="mg-card-excerpt">夏布団から冬布団への切り替え時期の目安と快適な冬支度のポイント。</p>
+        </div>
+      </a>
+      <a href="../magazine/ccd-pillow-new/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.08.01</span>
+          </div>
+          <h3 class="mg-card-title">新CCD枕 ～さらに進化した眠りのパートナー～</h3>
+          <p class="mg-card-excerpt">より洗練された設計と厳選素材で生まれ変わった新CCD枕の魅力を徹底解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/sustainable-down/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.07.01</span>
+          </div>
+          <h3 class="mg-card-title">サステナブルダウンの未来</h3>
+          <p class="mg-card-excerpt">リサイクルダウンが切り拓く持続可能な眠りの世界。CCDの環境への取り組みを紹介します。</p>
+        </div>
+      </a>
+      <a href="../magazine/media/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.06.15</span>
+          </div>
+          <h3 class="mg-card-title">メディア掲載情報まとめ</h3>
+          <p class="mg-card-excerpt">テレビ、雑誌、Webメディアでの表参道布団店の紹介実績をまとめてご紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/summer-hadagake/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.06.10</span>
+          </div>
+          <h3 class="mg-card-title">夏の肌掛け布団活用術</h3>
+          <p class="mg-card-excerpt">エアコンとの上手な併用で夏場の睡眠環境を最適化する方法を解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/coz-popup/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.06.01</span>
+          </div>
+          <h3 class="mg-card-title">COZ表参道 ポップアップストア開催レポート</h3>
+          <p class="mg-card-excerpt">COZ表参道で開催されたポップアップストアの様子をレポート。</p>
+        </div>
+      </a>
+      <a href="../magazine/hadagake/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.05.20</span>
+          </div>
+          <h3 class="mg-card-title">肌掛け布団の選び方と使い方</h3>
+          <p class="mg-card-excerpt">夏の必需品・肌掛け布団。エアコンとの上手な併用で快適な夏の睡眠環境を実現。</p>
+        </div>
+      </a>
+      <a href="../magazine/aikake/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.05.20</span>
+          </div>
+          <h3 class="mg-card-title">CCD 肌掛け布団 ～夏の眠りを変える一枚～</h3>
+          <p class="mg-card-excerpt">夏でも羽毛布団？薄手の肌掛け布団こそ日本の蒸し暑い夏に最適な寝具です。</p>
+        </div>
+      </a>
+      <a href="../magazine/nordisk-collab/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.05.01</span>
+          </div>
+          <h3 class="mg-card-title">Nordisk × 表参道布団店 コラボレーション</h3>
+          <p class="mg-card-excerpt">北欧アウトドアブランドNordiskとのコラボ。自然の中での快眠を提案。</p>
+        </div>
+      </a>
+      <a href="../magazine/cover-cover-artists/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.04.15</span>
+          </div>
+          <h3 class="mg-card-title">cover/cover アーティスト紹介</h3>
+          <p class="mg-card-excerpt">cover/coverのカバーデザインを手がけるアーティストたちをご紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/trial-rental/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.04.01</span>
+          </div>
+          <h3 class="mg-card-title">CCD布団トライアルレンタル</h3>
+          <p class="mg-card-excerpt">購入前にCCDの品質を体感。30日間のトライアルレンタルサービスのご案内。</p>
+        </div>
+      </a>
+      <a href="../magazine/cover-cover/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.04.01</span>
+          </div>
+          <h3 class="mg-card-title">cover/cover ～アートと眠りの融合～</h3>
+          <p class="mg-card-excerpt">布団カバーブランドcover/coverとのコラボレーション。アーティストによるデザインカバー。</p>
+        </div>
+      </a>
+      <a href="../magazine/aigake/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.03.15</span>
+          </div>
+          <h3 class="mg-card-title">合い掛け布団の魅力 ～春秋の眠りを快適に～</h3>
+          <p class="mg-card-excerpt">本掛けと肌掛けの中間の厚みで、春秋の季節に最適な合い掛け布団の選び方。</p>
+        </div>
+      </a>
+      <a href="../magazine/clean-cycle-reform/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2024.03.10</span>
+          </div>
+          <h3 class="mg-card-title">CCDリフォーム ～愛着の布団を蘇らせる～</h3>
+          <p class="mg-card-excerpt">長年使い込んだ羽毛布団をCCD品質で再生。リフォームサービスの全工程を解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/official-shops/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2024.03.01</span>
+          </div>
+          <h3 class="mg-card-title">表参道布団店 取扱店舗一覧</h3>
+          <p class="mg-card-excerpt">CCD製品を実際にお試しいただける取扱店舗をご案内します。</p>
+        </div>
+      </a>
+      <a href="../magazine/flower-down/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.02.28</span>
+          </div>
+          <h3 class="mg-card-title">フラワーダウン ～羽毛の中の宝石～</h3>
+          <p class="mg-card-excerpt">花のように美しいダウンボール「フラワーダウン」の秘密に迫ります。</p>
+        </div>
+      </a>
+      <a href="../magazine/baby-futon/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2024.02.10</span>
+          </div>
+          <h3 class="mg-card-title">赤ちゃんのための羽毛布団選び</h3>
+          <p class="mg-card-excerpt">デリケートな赤ちゃんの肌に最適な、清浄度の高いCCDベビー布団のご紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/ccd-pillow/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.01.25</span>
+          </div>
+          <h3 class="mg-card-title">CCD枕 ～羽毛枕の新しいスタンダード～</h3>
+          <p class="mg-card-excerpt">Clean Cycle Downを使用した羽毛枕。最高の清浄度と弾力性で理想的な寝姿勢をサポート。</p>
+        </div>
+      </a>
+      <a href="../magazine/rds-sourcing/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.01.15</span>
+          </div>
+          <h3 class="mg-card-title">責任ある調達 ～サプライチェーンの透明性～</h3>
+          <p class="mg-card-excerpt">原料の調達から製品化までの全工程を公開。トレーサビリティへの取り組み。</p>
+        </div>
+      </a>
+      <a href="../magazine/down-testing/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2024.01.10</span>
+          </div>
+          <h3 class="mg-card-title">表参道布団店の品質検査基準</h3>
+          <p class="mg-card-excerpt">JIS基準の2倍の清浄度を実現する独自の品質検査プロセスを詳しく解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/rds-environment/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.12.20</span>
+          </div>
+          <h3 class="mg-card-title">RDS認証と環境への取り組み</h3>
+          <p class="mg-card-excerpt">Responsible Down Standard認証を通じた動物福祉と環境保全の取り組み。</p>
+        </div>
+      </a>
+      <a href="../magazine/down-performance/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.12.05</span>
+          </div>
+          <h3 class="mg-card-title">ダウンパワーと保温性の科学</h3>
+          <p class="mg-card-excerpt">ダウンパワー（dp）とは何か？数値と保温性の関係を科学的に解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/down-origin/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.11.20</span>
+          </div>
+          <h3 class="mg-card-title">羽毛の産地と品質の関係</h3>
+          <p class="mg-card-excerpt">ポーランド、ハンガリー、フランス…産地によって品質はどう変わるのか。</p>
+        </div>
+      </a>
+      <a href="../magazine/aigake-recommend/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_016.jpg" alt="「少し暑い、少し寒い」には「合い掛け布団」" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.26</span>
+          </div>
+          <h3 class="mg-card-title">「少し暑い、少し寒い」には「合い掛け布団」</h3>
+          <p class="mg-card-excerpt">季節の変わり目に最適な合い掛け布団。本掛け・合い掛け・肌掛けの使い分けを解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/care-guide/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_001.jpg" alt="羽毛布団の膨らませ方とお手入れ方法" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.10.20</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の膨らませ方とお手入れ方法</h3>
+          <p class="mg-card-excerpt">届いたばかりの羽毛布団がぺたんこ？正しい膨らませ方と日常のお手入れで、ふっくら感を長く保つ方法を詳しく解説します。</p>
+        </div>
+      </a>
+      <a href="../magazine/allergy/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/products/single1_720x610.webp" alt="羽毛布団とアレルギー・喘息の原因と対策" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.20</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団とアレルギー・喘息の原因と対策</h3>
+          <p class="mg-card-excerpt">羽毛布団でアレルギーが起きる原因はダニやほこり。正しい対策と選び方を知れば、喘息の方でも安心して使えます。</p>
+        </div>
+      </a>
+      <a href="../magazine/merit-demerit/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/products/semidouble_720x610.webp" alt="羽毛布団のメリット・デメリット" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団のメリット・デメリット</h3>
+          <p class="mg-card-excerpt">軽くて暖かい羽毛布団にもデメリットはある？メリットとデメリットを正直に比較し、自分に合った寝具選びをサポートします。</p>
+        </div>
+      </a>
+      <a href="../magazine/revival/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_009.jpg" alt="ダメになった羽毛布団を復活させる方法" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">ダメになった羽毛布団を復活させる方法</h3>
+          <p class="mg-card-excerpt">へたってしまった羽毛布団を捨てる前に。打ち直し・リフォーム・自宅でできる復活テクニックをプロが伝授します。</p>
+        </div>
+      </a>
+      <a href="../magazine/disposal/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/products/c9204212d3c9ba3914c4975a20d1454d.webp" alt="羽毛布団の処分方法7選" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の処分方法7選</h3>
+          <p class="mg-card-excerpt">古くなった羽毛布団の処分に困っていませんか？リサイクル・買取・寄付など、7つの処分方法を比較して最適な選択肢をご案内。</p>
+        </div>
+      </a>
+      <a href="../magazine/blanket-order/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/lifestyle/premium-rds-down-comforter-bedroom-wide.webp" alt="羽毛布団と毛布のかける順番で暖かさが変わる" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団と毛布のかける順番で暖かさが変わる</h3>
+          <p class="mg-card-excerpt">毛布は羽毛布団の上？下？正しいかけ方で体感温度が大きく変わります。毛布の素材別に最適な順番を科学的に解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/storage/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/products/ccd_winter.jpg" alt="羽毛布団の圧縮収納はNG？正しい保管方法" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の圧縮収納はNG？正しい保管方法</h3>
+          <p class="mg-card-excerpt">圧縮袋で羽毛布団を保管するとダウンが傷む？正しい収納方法と、季節の変わり目に知っておきたい保管のコツを紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/winter-futon-types/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.19</span>
+          </div>
+          <h3 class="mg-card-title">冬用の羽毛布団はいつまで使える？羽毛布団の種類と使い分け方を解説</h3>
+          <p class="mg-card-excerpt">冬用本掛け布団の適切な使用時期と使い分け方。</p>
+        </div>
+      </a>
+      <a href="../magazine/down-types/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.10.15</span>
+          </div>
+          <h3 class="mg-card-title">羽毛の種類と選び方ガイド</h3>
+          <p class="mg-card-excerpt">グース？ダック？ホワイト？シルバー？羽毛の種類と目的に合った選び方。</p>
+        </div>
+      </a>
+      <a href="../magazine/down-test-reason/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.09.22</span>
+          </div>
+          <h3 class="mg-card-title">羽毛の性能を調査する理由</h3>
+          <p class="mg-card-excerpt">なぜ表参道布団店は羽毛の性能を徹底調査するのか。</p>
+        </div>
+      </a>
+      <a href="../magazine/futon-types/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.09.20</span>
+          </div>
+          <h3 class="mg-card-title">布団の種類と選び方</h3>
+          <p class="mg-card-excerpt">本掛け、合い掛け、肌掛け…季節と体質で選ぶ最適な一枚の見つけ方。</p>
+        </div>
+      </a>
+      <a href="../magazine/ccd-story/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="../images/products/semidouble_720x610.webp" alt="Clean Cycle Down ～新品羽毛を超える美しさ～" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.08.11</span>
+          </div>
+          <h3 class="mg-card-title">Clean Cycle Down ～新品羽毛を超える美しさ～</h3>
+          <p class="mg-card-excerpt">リサイクル羽毛を独自の白州水洗浄技術で再生。新品を超える清潔さと膨らみを実現するClean Cycle Downの秘密に迫ります。</p>
+        </div>
+      </a>
+      <a href="../magazine/fabric/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_012.jpg" alt="羽毛布団の側生地の素材と選び方" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.07.10</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の側生地の素材と選び方</h3>
+          <p class="mg-card-excerpt">綿100%、テンセル、ポリエステル。側生地の素材で布団の軽さ・肌触り・通気性は大きく変わります。選び方のポイントを解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/lifespan/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/products/tag.jpg" alt="羽毛布団の寿命は何年？長持ちの秘訣" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.07.10</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の寿命は何年？長持ちの秘訣</h3>
+          <p class="mg-card-excerpt">一般的な羽毛布団の寿命は10〜15年。しかし使い方次第で大きく変わります。長持ちさせるための秘訣とリフォームのタイミングを解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/warmth-science/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_010.jpg" alt="羽毛布団はなぜ暖かい？科学的に解説" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.07.10</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団はなぜ暖かい？科学的に解説</h3>
+          <p class="mg-card-excerpt">ダウンボールが空気を抱き込み、断熱層を形成する仕組みとは。羽毛が他の素材より暖かい理由を科学的に分かりやすく解説します。</p>
+        </div>
+      </a>
+      <a href="../magazine/reform-guide/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_014.jpg" alt="羽毛布団リフォーム完全ガイド" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.07.07</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団リフォーム完全ガイド</h3>
+          <p class="mg-card-excerpt">羽毛布団のリフォーム（打ち直し）の工程・費用・タイミングを徹底解説。買い替えとリフォーム、どちらがお得かの判断基準も紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/media-coverage/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2023.07.01</span>
+          </div>
+          <h3 class="mg-card-title">Netflixで紹介された表参道布団店</h3>
+          <p class="mg-card-excerpt">Netflix人気番組で紹介。CCDの品質へのこだわりとサステナブルな姿勢が反響。</p>
+        </div>
+      </a>
+      <a href="../magazine/summer-skincare-futon/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.07.01</span>
+          </div>
+          <h3 class="mg-card-title">寝苦しい夏の快適な睡眠には「肌掛け羽毛布団」がオススメ</h3>
+          <p class="mg-card-excerpt">夏の寝苦しさを解消する肌掛け羽毛布団。</p>
+        </div>
+      </a>
+      <a href="../magazine/mother-goose/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="../images/products/single1_720x610.webp" alt="マザーグースの魅力と選び方" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.06.27</span>
+          </div>
+          <h3 class="mg-card-title">マザーグースの魅力と選び方</h3>
+          <p class="mg-card-excerpt">最高級羽毛として知られるマザーグースダウン。通常のグースとの違い、産地による特徴、選ぶ際のチェックポイントを詳しく紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/label-guide/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_004.jpg" alt="羽毛布団のラベル・ランク・ダウンパワー完全ガイド" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.06.27</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団のラベル・ランク・ダウンパワー完全ガイド</h3>
+          <p class="mg-card-excerpt">ゴールドラベル、エクセルゴールド、プレミアムゴールド。ラベルの意味とダウンパワーの数値から品質を見極める方法を完全解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/goose-vs-duck/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_001.jpg" alt="グースとダックの違いとは？" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2023.06.27</span>
+          </div>
+          <h3 class="mg-card-title">グースとダックの違いとは？</h3>
+          <p class="mg-card-excerpt">グースダウンとダックダウンでは保温力・耐久性・臭いに差があります。それぞれの特徴を比較し、最適な選び方を紹介します。</p>
+        </div>
+      </a>
+      <a href="../magazine/odor/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><img src="../images/video-caps/cap_006.jpg" alt="羽毛布団が臭うときの原因と対処法" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2023.06.22</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団が臭うときの原因と対処法</h3>
+          <p class="mg-card-excerpt">新品の羽毛布団が臭い原因は油脂分の残留や湿気。原因別の対処法と、臭わない布団の選び方を解説します。</p>
+        </div>
+      </a>
+      <a href="../magazine/seasonal-thickness/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><img src="../images/products/cover1.webp" alt="季節ごとの布団の厚みと選び方" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2023.06.19</span>
+          </div>
+          <h3 class="mg-card-title">季節ごとの布団の厚みと選び方</h3>
+          <p class="mg-card-excerpt">春夏秋冬、季節に合わせた布団の厚みと充填量の目安を徹底解説。合掛け・肌掛け・本掛けの使い分けで一年中快適な睡眠を。</p>
+        </div>
+      </a>
+      <a href="../magazine/new-brand-2022/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/04/5417ebc5363a6614bdbb23360c208e86-1024x617.png" alt="新しい「表参道布団店。」始まりました。" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2022.04.01</span>
+          </div>
+          <h3 class="mg-card-title">新しい「表参道布団店。」始まりました。</h3>
+          <p class="mg-card-excerpt">サステナビリティを経営の本質に据え、リサイクルダウンブランドとして生まれ変わった表参道布団店。</p>
+        </div>
+      </a>
+      <a href="../magazine/cover-cover-cinra/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/03/bbd8f0ca7c6ef6296e6a1032f7e54ada-1024x521.png" alt="cover/cover×CINRA 「布団」が表現の場に？" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2022.03.22</span>
+          </div>
+          <h3 class="mg-card-title">cover/cover×CINRA 「布団」が表現の場に？</h3>
+          <p class="mg-card-excerpt">写真家やデザイナーら8人がコロナ禍の不安や未来への確信をテーマに布団カバーを表現の場に。</p>
+        </div>
+      </a>
+      <a href="../magazine/hankyu-umeda/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2022.03.14</span>
+          </div>
+          <h3 class="mg-card-title">阪急うめだ本店展示イベントのご案内</h3>
+          <p class="mg-card-excerpt">表参道布団店初の関西エリアポップアップストア。</p>
+        </div>
+      </a>
+      <a href="../magazine/classy-ad/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.12.07</span>
+          </div>
+          <h3 class="mg-card-title">雑誌CLASSY 2022年1月号に広告を掲載</h3>
+          <p class="mg-card-excerpt">女性ファッション誌CLASSYに表参道布団店の広告を掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/gq-ad/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.11.25</span>
+          </div>
+          <h3 class="mg-card-title">雑誌GQに広告を掲載しました</h3>
+          <p class="mg-card-excerpt">ラグジュアリーメンズ誌GQに表参道布団店の広告を掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/tokyo-calendar/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.11.22</span>
+          </div>
+          <h3 class="mg-card-title">東京カレンダー2022年1月号に掲載</h3>
+          <p class="mg-card-excerpt">東京カレンダー2022年1月号に表参道布団店が掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/casa-brutus/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.10.13</span>
+          </div>
+          <h3 class="mg-card-title">Casa BRUTUS ONLINEにcover/coverが掲載</h3>
+          <p class="mg-card-excerpt">建築・デザイン誌Casa BRUTUSにcover/coverが掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/bijutsu-techo/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.10.08</span>
+          </div>
+          <h3 class="mg-card-title">美術手帖ONLINEに「cover/cover」が掲載</h3>
+          <p class="mg-card-excerpt">アート専門誌「美術手帖」にcover/coverが紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/sendenkaigi/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.10.05</span>
+          </div>
+          <h3 class="mg-card-title">雑誌「宣伝会議」2021年11月号に掲載</h3>
+          <p class="mg-card-excerpt">マーケティング専門誌「宣伝会議」にブランド戦略が掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/mobile-experience/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2021.08.31</span>
+          </div>
+          <h3 class="mg-card-title">モバイルエクスペリエンス サービス開始</h3>
+          <p class="mg-card-excerpt">スマートフォンから羽毛布団の質感を体験できるサービスを開始。</p>
+        </div>
+      </a>
+      <a href="../magazine/futon-making-step4/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2019.11.20</span>
+          </div>
+          <h3 class="mg-card-title">表参道布団店の羽毛布団作り STEP4 検品、発送</h3>
+          <p class="mg-card-excerpt">完成した羽毛布団の最終検品。業界経験40年のベテランが一枚一枚確認。</p>
+        </div>
+      </a>
+      <a href="../magazine/redesign-service-2/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2019.10.09</span>
+          </div>
+          <h3 class="mg-card-title">リ・デザインサービス 羽毛布団の打ち直し（リフォーム）をお考えの皆様へ(2)</h3>
+          <p class="mg-card-excerpt">リ・デザインサービスの詳細工程を解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/redesign-service-1/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2019.08.28</span>
+          </div>
+          <h3 class="mg-card-title">リ・デザインサービス 羽毛布団の打ち直し（リフォーム）をお考えの皆様へ(1)</h3>
+          <p class="mg-card-excerpt">表参道布団店のリ・デザインサービスの紹介。</p>
+        </div>
+      </a>
+      <a href="../magazine/futon-select-points/" class="mg-card" data-category="睡眠知識">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="mg-card-date">2019.08.13</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の選び方のポイントとは</h3>
+          <p class="mg-card-excerpt">羽毛布団選びで重要な「グースとダック」「ダウン率」の2つのポイント。</p>
+        </div>
+      </a>
+      <a href="../magazine/care-storage/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2019.07.08</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜保管編</h3>
+          <p class="mg-card-excerpt">冬に使用した羽毛布団の正しい保管方法と注意点。</p>
+        </div>
+      </a>
+      <a href="../magazine/care-dry/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2019.06.24</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜カビを防ぐ干し方編</h3>
+          <p class="mg-card-excerpt">正しい干し方と乾燥方法でカビを防ぐポイント。</p>
+        </div>
+      </a>
+      <a href="../magazine/care-wash/" class="mg-card" data-category="メンテナンス">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="mg-card-date">2019.06.11</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜洗濯編〜</h3>
+          <p class="mg-card-excerpt">高級羽毛布団は水洗い可能。「丸洗い」と「本洗い」を解説。</p>
+        </div>
+      </a>
+      <a href="../magazine/im-home-magazine/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2018.12.11</span>
+          </div>
+          <h3 class="mg-card-title">I'm home 1月号に掲載されました</h3>
+          <p class="mg-card-excerpt">インテリア専門誌「I'm home」に掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/crea-magazine/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2018.12.11</span>
+          </div>
+          <h3 class="mg-card-title">CREA 1月号に掲載されました</h3>
+          <p class="mg-card-excerpt">女性誌CREAに掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/pen-magazine/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2017.04.02</span>
+          </div>
+          <h3 class="mg-card-title">雑誌PEN 4月15日号に掲載されました</h3>
+          <p class="mg-card-excerpt">カルチャー誌PENに掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/seibu-sogo/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="../images/products/premium_winter.jpg" alt="SEIBU SOGO e.デパートで発売を開始しました" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2017.03.28</span>
+          </div>
+          <h3 class="mg-card-title">SEIBU SOGO e.デパートで発売を開始しました</h3>
+          <p class="mg-card-excerpt">そごう・西武オンラインストアで販売開始。</p>
+        </div>
+      </a>
+      <a href="../magazine/nid-magazine/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2016/11/11.21_nid-1-743x1024.jpg" alt="雑誌「nid」に広告を出稿致しました" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2016.11.24</span>
+          </div>
+          <h3 class="mg-card-title">雑誌「nid」に広告を出稿致しました</h3>
+          <p class="mg-card-excerpt">ライフスタイル誌「nid」に広告掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/plus-living/" class="mg-card" data-category="お知らせ">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2016/06/PLUSliving2-1-697x1024.jpg" alt="PLUS Livingに「リ・デザイン」の広告を出稿しました" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="mg-card-date">2016.05.31</span>
+          </div>
+          <h3 class="mg-card-title">PLUS Livingに「リ・デザイン」の広告を出稿しました</h3>
+          <p class="mg-card-excerpt">PLUS Livingにリ・デザインサービスの広告掲載。</p>
+        </div>
+      </a>
+      <a href="../magazine/made-to-order/" class="mg-card" data-category="素材のこだわり">
+        <div class="mg-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/10/2015-10-19-10.37.46.png" alt="羽毛布団の受注生産にこだわる理由" loading="lazy"></div>
+        <div class="mg-card-body">
+          <div class="mg-card-meta">
+            <span class="mg-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="mg-card-date">2015.09.18</span>
+          </div>
+          <h3 class="mg-card-title">羽毛布団の受注生産にこだわる理由</h3>
+          <p class="mg-card-excerpt">つくりたての羽毛布団をお届けしたいという想い。</p>
+        </div>
+      </a>
+      </div>
+    </div>
+    <!-- List View -->
+    <div class="view-container" id="viewList">
+      <div class="view-list">
+      <a href="../magazine/netflix/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2026.01.31</span>
+          </div>
+          <h3 class="ml-card-title">NetflixのBoyfriend2で羽毛布団が使用されました</h3>
+          <p class="ml-card-excerpt">Netflixで配信中の人気リアリティ番組「ボーイフレンド」シーズン2にて、当店の羽毛布団が使用されました。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/premium_winter.jpg" alt="NetflixのBoyfriend2で羽毛布団が使用されました" loading="lazy"></div>
+      </a>
+      <a href="../magazine/year-end-2025/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2025.12.08</span>
+          </div>
+          <h3 class="ml-card-title">年末年始の営業についてのお知らせ</h3>
+          <p class="ml-card-excerpt">年末年始の営業日程と配送スケジュールについてのご案内です。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/sustainable-initiative/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2025.12.08</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団にも、サステナブルを。</h3>
+          <p class="ml-card-excerpt">表参道布団店が取り組むサステナブルな羽毛布団づくり。リサイクルダウンの可能性と循環型社会への挑戦。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/premium_winter.jpg" alt="羽毛布団にも、サステナブルを。" loading="lazy"></div>
+      </a>
+      <a href="../magazine/subscription/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2025.10.06</span>
+          </div>
+          <h3 class="ml-card-title">布団のサブスクに革命！プレミアムマザーグースも月額で</h3>
+          <p class="ml-card-excerpt">最高級プレミアムマザーグースの羽毛布団が月額レンタルで利用可能に。購入前のお試しにも、季節に合わせた使い分けにも最適です。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/semidouble_720x610.webp" alt="布団のサブスクに革命！プレミアムマザーグースも月額で" loading="lazy"></div>
+      </a>
+      <a href="../magazine/ccd-reform-2025/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2025.06.07</span>
+          </div>
+          <h3 class="ml-card-title">2025年-2026年冬に向けて、Clean Cycle Reformでよみがえらせましょう</h3>
+          <p class="ml-card-excerpt">お手持ちの羽毛布団をCCD品質でフカフカに再生。冬まで保管サービスもご利用可能。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2023/07/rectangle_large_type_2_3dd2592a0ef84898cde74084265f3eca.png" alt="2025年-2026年冬に向けて、Clean Cycle Reformでよみがえらせましょう" loading="lazy"></div>
+      </a>
+      <a href="../magazine/spring-summer-hadagake/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2025.04.23</span>
+          </div>
+          <h3 class="ml-card-title">大好評！春夏用の肌掛け布団。</h3>
+          <p class="ml-card-excerpt">春夏のエアコン冷え対策に最適な肌掛け羽毛布団が大好評。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/winter-futon-timing/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.09.15</span>
+          </div>
+          <h3 class="ml-card-title">冬の布団、いつ出す？切り替えのベストタイミング</h3>
+          <p class="ml-card-excerpt">夏布団から冬布団への切り替え時期の目安と快適な冬支度のポイント。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/ccd-pillow-new/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.08.01</span>
+          </div>
+          <h3 class="ml-card-title">新CCD枕 ～さらに進化した眠りのパートナー～</h3>
+          <p class="ml-card-excerpt">より洗練された設計と厳選素材で生まれ変わった新CCD枕の魅力を徹底解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/sustainable-down/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.07.01</span>
+          </div>
+          <h3 class="ml-card-title">サステナブルダウンの未来</h3>
+          <p class="ml-card-excerpt">リサイクルダウンが切り拓く持続可能な眠りの世界。CCDの環境への取り組みを紹介します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/media/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.06.15</span>
+          </div>
+          <h3 class="ml-card-title">メディア掲載情報まとめ</h3>
+          <p class="ml-card-excerpt">テレビ、雑誌、Webメディアでの表参道布団店の紹介実績をまとめてご紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/summer-hadagake/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.06.10</span>
+          </div>
+          <h3 class="ml-card-title">夏の肌掛け布団活用術</h3>
+          <p class="ml-card-excerpt">エアコンとの上手な併用で夏場の睡眠環境を最適化する方法を解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/coz-popup/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.06.01</span>
+          </div>
+          <h3 class="ml-card-title">COZ表参道 ポップアップストア開催レポート</h3>
+          <p class="ml-card-excerpt">COZ表参道で開催されたポップアップストアの様子をレポート。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/hadagake/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.05.20</span>
+          </div>
+          <h3 class="ml-card-title">肌掛け布団の選び方と使い方</h3>
+          <p class="ml-card-excerpt">夏の必需品・肌掛け布団。エアコンとの上手な併用で快適な夏の睡眠環境を実現。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/aikake/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.05.20</span>
+          </div>
+          <h3 class="ml-card-title">CCD 肌掛け布団 ～夏の眠りを変える一枚～</h3>
+          <p class="ml-card-excerpt">夏でも羽毛布団？薄手の肌掛け布団こそ日本の蒸し暑い夏に最適な寝具です。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/nordisk-collab/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.05.01</span>
+          </div>
+          <h3 class="ml-card-title">Nordisk × 表参道布団店 コラボレーション</h3>
+          <p class="ml-card-excerpt">北欧アウトドアブランドNordiskとのコラボ。自然の中での快眠を提案。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/cover-cover-artists/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.04.15</span>
+          </div>
+          <h3 class="ml-card-title">cover/cover アーティスト紹介</h3>
+          <p class="ml-card-excerpt">cover/coverのカバーデザインを手がけるアーティストたちをご紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/trial-rental/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.04.01</span>
+          </div>
+          <h3 class="ml-card-title">CCD布団トライアルレンタル</h3>
+          <p class="ml-card-excerpt">購入前にCCDの品質を体感。30日間のトライアルレンタルサービスのご案内。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/cover-cover/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.04.01</span>
+          </div>
+          <h3 class="ml-card-title">cover/cover ～アートと眠りの融合～</h3>
+          <p class="ml-card-excerpt">布団カバーブランドcover/coverとのコラボレーション。アーティストによるデザインカバー。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/aigake/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.03.15</span>
+          </div>
+          <h3 class="ml-card-title">合い掛け布団の魅力 ～春秋の眠りを快適に～</h3>
+          <p class="ml-card-excerpt">本掛けと肌掛けの中間の厚みで、春秋の季節に最適な合い掛け布団の選び方。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/clean-cycle-reform/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2024.03.10</span>
+          </div>
+          <h3 class="ml-card-title">CCDリフォーム ～愛着の布団を蘇らせる～</h3>
+          <p class="ml-card-excerpt">長年使い込んだ羽毛布団をCCD品質で再生。リフォームサービスの全工程を解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/official-shops/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2024.03.01</span>
+          </div>
+          <h3 class="ml-card-title">表参道布団店 取扱店舗一覧</h3>
+          <p class="ml-card-excerpt">CCD製品を実際にお試しいただける取扱店舗をご案内します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/flower-down/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.02.28</span>
+          </div>
+          <h3 class="ml-card-title">フラワーダウン ～羽毛の中の宝石～</h3>
+          <p class="ml-card-excerpt">花のように美しいダウンボール「フラワーダウン」の秘密に迫ります。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/baby-futon/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2024.02.10</span>
+          </div>
+          <h3 class="ml-card-title">赤ちゃんのための羽毛布団選び</h3>
+          <p class="ml-card-excerpt">デリケートな赤ちゃんの肌に最適な、清浄度の高いCCDベビー布団のご紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/ccd-pillow/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.01.25</span>
+          </div>
+          <h3 class="ml-card-title">CCD枕 ～羽毛枕の新しいスタンダード～</h3>
+          <p class="ml-card-excerpt">Clean Cycle Downを使用した羽毛枕。最高の清浄度と弾力性で理想的な寝姿勢をサポート。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/rds-sourcing/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.01.15</span>
+          </div>
+          <h3 class="ml-card-title">責任ある調達 ～サプライチェーンの透明性～</h3>
+          <p class="ml-card-excerpt">原料の調達から製品化までの全工程を公開。トレーサビリティへの取り組み。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/down-testing/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2024.01.10</span>
+          </div>
+          <h3 class="ml-card-title">表参道布団店の品質検査基準</h3>
+          <p class="ml-card-excerpt">JIS基準の2倍の清浄度を実現する独自の品質検査プロセスを詳しく解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/rds-environment/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.12.20</span>
+          </div>
+          <h3 class="ml-card-title">RDS認証と環境への取り組み</h3>
+          <p class="ml-card-excerpt">Responsible Down Standard認証を通じた動物福祉と環境保全の取り組み。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/down-performance/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.12.05</span>
+          </div>
+          <h3 class="ml-card-title">ダウンパワーと保温性の科学</h3>
+          <p class="ml-card-excerpt">ダウンパワー（dp）とは何か？数値と保温性の関係を科学的に解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/down-origin/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.11.20</span>
+          </div>
+          <h3 class="ml-card-title">羽毛の産地と品質の関係</h3>
+          <p class="ml-card-excerpt">ポーランド、ハンガリー、フランス…産地によって品質はどう変わるのか。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/aigake-recommend/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.26</span>
+          </div>
+          <h3 class="ml-card-title">「少し暑い、少し寒い」には「合い掛け布団」</h3>
+          <p class="ml-card-excerpt">季節の変わり目に最適な合い掛け布団。本掛け・合い掛け・肌掛けの使い分けを解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_016.jpg" alt="「少し暑い、少し寒い」には「合い掛け布団」" loading="lazy"></div>
+      </a>
+      <a href="../magazine/care-guide/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.10.20</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の膨らませ方とお手入れ方法</h3>
+          <p class="ml-card-excerpt">届いたばかりの羽毛布団がぺたんこ？正しい膨らませ方と日常のお手入れで、ふっくら感を長く保つ方法を詳しく解説します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_001.jpg" alt="羽毛布団の膨らませ方とお手入れ方法" loading="lazy"></div>
+      </a>
+      <a href="../magazine/allergy/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.20</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団とアレルギー・喘息の原因と対策</h3>
+          <p class="ml-card-excerpt">羽毛布団でアレルギーが起きる原因はダニやほこり。正しい対策と選び方を知れば、喘息の方でも安心して使えます。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/single1_720x610.webp" alt="羽毛布団とアレルギー・喘息の原因と対策" loading="lazy"></div>
+      </a>
+      <a href="../magazine/merit-demerit/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団のメリット・デメリット</h3>
+          <p class="ml-card-excerpt">軽くて暖かい羽毛布団にもデメリットはある？メリットとデメリットを正直に比較し、自分に合った寝具選びをサポートします。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/semidouble_720x610.webp" alt="羽毛布団のメリット・デメリット" loading="lazy"></div>
+      </a>
+      <a href="../magazine/revival/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">ダメになった羽毛布団を復活させる方法</h3>
+          <p class="ml-card-excerpt">へたってしまった羽毛布団を捨てる前に。打ち直し・リフォーム・自宅でできる復活テクニックをプロが伝授します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_009.jpg" alt="ダメになった羽毛布団を復活させる方法" loading="lazy"></div>
+      </a>
+      <a href="../magazine/disposal/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の処分方法7選</h3>
+          <p class="ml-card-excerpt">古くなった羽毛布団の処分に困っていませんか？リサイクル・買取・寄付など、7つの処分方法を比較して最適な選択肢をご案内。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/c9204212d3c9ba3914c4975a20d1454d.webp" alt="羽毛布団の処分方法7選" loading="lazy"></div>
+      </a>
+      <a href="../magazine/blanket-order/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団と毛布のかける順番で暖かさが変わる</h3>
+          <p class="ml-card-excerpt">毛布は羽毛布団の上？下？正しいかけ方で体感温度が大きく変わります。毛布の素材別に最適な順番を科学的に解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/lifestyle/premium-rds-down-comforter-bedroom-wide.webp" alt="羽毛布団と毛布のかける順番で暖かさが変わる" loading="lazy"></div>
+      </a>
+      <a href="../magazine/storage/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の圧縮収納はNG？正しい保管方法</h3>
+          <p class="ml-card-excerpt">圧縮袋で羽毛布団を保管するとダウンが傷む？正しい収納方法と、季節の変わり目に知っておきたい保管のコツを紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/ccd_winter.jpg" alt="羽毛布団の圧縮収納はNG？正しい保管方法" loading="lazy"></div>
+      </a>
+      <a href="../magazine/winter-futon-types/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.19</span>
+          </div>
+          <h3 class="ml-card-title">冬用の羽毛布団はいつまで使える？羽毛布団の種類と使い分け方を解説</h3>
+          <p class="ml-card-excerpt">冬用本掛け布団の適切な使用時期と使い分け方。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/down-types/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.10.15</span>
+          </div>
+          <h3 class="ml-card-title">羽毛の種類と選び方ガイド</h3>
+          <p class="ml-card-excerpt">グース？ダック？ホワイト？シルバー？羽毛の種類と目的に合った選び方。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/down-test-reason/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.09.22</span>
+          </div>
+          <h3 class="ml-card-title">羽毛の性能を調査する理由</h3>
+          <p class="ml-card-excerpt">なぜ表参道布団店は羽毛の性能を徹底調査するのか。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/futon-types/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.09.20</span>
+          </div>
+          <h3 class="ml-card-title">布団の種類と選び方</h3>
+          <p class="ml-card-excerpt">本掛け、合い掛け、肌掛け…季節と体質で選ぶ最適な一枚の見つけ方。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/ccd-story/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.08.11</span>
+          </div>
+          <h3 class="ml-card-title">Clean Cycle Down ～新品羽毛を超える美しさ～</h3>
+          <p class="ml-card-excerpt">リサイクル羽毛を独自の白州水洗浄技術で再生。新品を超える清潔さと膨らみを実現するClean Cycle Downの秘密に迫ります。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/semidouble_720x610.webp" alt="Clean Cycle Down ～新品羽毛を超える美しさ～" loading="lazy"></div>
+      </a>
+      <a href="../magazine/fabric/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.07.10</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の側生地の素材と選び方</h3>
+          <p class="ml-card-excerpt">綿100%、テンセル、ポリエステル。側生地の素材で布団の軽さ・肌触り・通気性は大きく変わります。選び方のポイントを解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_012.jpg" alt="羽毛布団の側生地の素材と選び方" loading="lazy"></div>
+      </a>
+      <a href="../magazine/lifespan/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.07.10</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の寿命は何年？長持ちの秘訣</h3>
+          <p class="ml-card-excerpt">一般的な羽毛布団の寿命は10〜15年。しかし使い方次第で大きく変わります。長持ちさせるための秘訣とリフォームのタイミングを解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/tag.jpg" alt="羽毛布団の寿命は何年？長持ちの秘訣" loading="lazy"></div>
+      </a>
+      <a href="../magazine/warmth-science/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.07.10</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団はなぜ暖かい？科学的に解説</h3>
+          <p class="ml-card-excerpt">ダウンボールが空気を抱き込み、断熱層を形成する仕組みとは。羽毛が他の素材より暖かい理由を科学的に分かりやすく解説します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_010.jpg" alt="羽毛布団はなぜ暖かい？科学的に解説" loading="lazy"></div>
+      </a>
+      <a href="../magazine/reform-guide/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.07.07</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団リフォーム完全ガイド</h3>
+          <p class="ml-card-excerpt">羽毛布団のリフォーム（打ち直し）の工程・費用・タイミングを徹底解説。買い替えとリフォーム、どちらがお得かの判断基準も紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_014.jpg" alt="羽毛布団リフォーム完全ガイド" loading="lazy"></div>
+      </a>
+      <a href="../magazine/media-coverage/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2023.07.01</span>
+          </div>
+          <h3 class="ml-card-title">Netflixで紹介された表参道布団店</h3>
+          <p class="ml-card-excerpt">Netflix人気番組で紹介。CCDの品質へのこだわりとサステナブルな姿勢が反響。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/summer-skincare-futon/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.07.01</span>
+          </div>
+          <h3 class="ml-card-title">寝苦しい夏の快適な睡眠には「肌掛け羽毛布団」がオススメ</h3>
+          <p class="ml-card-excerpt">夏の寝苦しさを解消する肌掛け羽毛布団。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/mother-goose/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.06.27</span>
+          </div>
+          <h3 class="ml-card-title">マザーグースの魅力と選び方</h3>
+          <p class="ml-card-excerpt">最高級羽毛として知られるマザーグースダウン。通常のグースとの違い、産地による特徴、選ぶ際のチェックポイントを詳しく紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/single1_720x610.webp" alt="マザーグースの魅力と選び方" loading="lazy"></div>
+      </a>
+      <a href="../magazine/label-guide/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.06.27</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団のラベル・ランク・ダウンパワー完全ガイド</h3>
+          <p class="ml-card-excerpt">ゴールドラベル、エクセルゴールド、プレミアムゴールド。ラベルの意味とダウンパワーの数値から品質を見極める方法を完全解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_004.jpg" alt="羽毛布団のラベル・ランク・ダウンパワー完全ガイド" loading="lazy"></div>
+      </a>
+      <a href="../magazine/goose-vs-duck/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2023.06.27</span>
+          </div>
+          <h3 class="ml-card-title">グースとダックの違いとは？</h3>
+          <p class="ml-card-excerpt">グースダウンとダックダウンでは保温力・耐久性・臭いに差があります。それぞれの特徴を比較し、最適な選び方を紹介します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_001.jpg" alt="グースとダックの違いとは？" loading="lazy"></div>
+      </a>
+      <a href="../magazine/odor/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2023.06.22</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団が臭うときの原因と対処法</h3>
+          <p class="ml-card-excerpt">新品の羽毛布団が臭い原因は油脂分の残留や湿気。原因別の対処法と、臭わない布団の選び方を解説します。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/video-caps/cap_006.jpg" alt="羽毛布団が臭うときの原因と対処法" loading="lazy"></div>
+      </a>
+      <a href="../magazine/seasonal-thickness/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2023.06.19</span>
+          </div>
+          <h3 class="ml-card-title">季節ごとの布団の厚みと選び方</h3>
+          <p class="ml-card-excerpt">春夏秋冬、季節に合わせた布団の厚みと充填量の目安を徹底解説。合掛け・肌掛け・本掛けの使い分けで一年中快適な睡眠を。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/cover1.webp" alt="季節ごとの布団の厚みと選び方" loading="lazy"></div>
+      </a>
+      <a href="../magazine/new-brand-2022/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2022.04.01</span>
+          </div>
+          <h3 class="ml-card-title">新しい「表参道布団店。」始まりました。</h3>
+          <p class="ml-card-excerpt">サステナビリティを経営の本質に据え、リサイクルダウンブランドとして生まれ変わった表参道布団店。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/04/5417ebc5363a6614bdbb23360c208e86-1024x617.png" alt="新しい「表参道布団店。」始まりました。" loading="lazy"></div>
+      </a>
+      <a href="../magazine/cover-cover-cinra/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2022.03.22</span>
+          </div>
+          <h3 class="ml-card-title">cover/cover×CINRA 「布団」が表現の場に？</h3>
+          <p class="ml-card-excerpt">写真家やデザイナーら8人がコロナ禍の不安や未来への確信をテーマに布団カバーを表現の場に。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/03/bbd8f0ca7c6ef6296e6a1032f7e54ada-1024x521.png" alt="cover/cover×CINRA 「布団」が表現の場に？" loading="lazy"></div>
+      </a>
+      <a href="../magazine/hankyu-umeda/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2022.03.14</span>
+          </div>
+          <h3 class="ml-card-title">阪急うめだ本店展示イベントのご案内</h3>
+          <p class="ml-card-excerpt">表参道布団店初の関西エリアポップアップストア。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/classy-ad/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.12.07</span>
+          </div>
+          <h3 class="ml-card-title">雑誌CLASSY 2022年1月号に広告を掲載</h3>
+          <p class="ml-card-excerpt">女性ファッション誌CLASSYに表参道布団店の広告を掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/gq-ad/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.11.25</span>
+          </div>
+          <h3 class="ml-card-title">雑誌GQに広告を掲載しました</h3>
+          <p class="ml-card-excerpt">ラグジュアリーメンズ誌GQに表参道布団店の広告を掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/tokyo-calendar/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.11.22</span>
+          </div>
+          <h3 class="ml-card-title">東京カレンダー2022年1月号に掲載</h3>
+          <p class="ml-card-excerpt">東京カレンダー2022年1月号に表参道布団店が掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/casa-brutus/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.10.13</span>
+          </div>
+          <h3 class="ml-card-title">Casa BRUTUS ONLINEにcover/coverが掲載</h3>
+          <p class="ml-card-excerpt">建築・デザイン誌Casa BRUTUSにcover/coverが掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/bijutsu-techo/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.10.08</span>
+          </div>
+          <h3 class="ml-card-title">美術手帖ONLINEに「cover/cover」が掲載</h3>
+          <p class="ml-card-excerpt">アート専門誌「美術手帖」にcover/coverが紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/sendenkaigi/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.10.05</span>
+          </div>
+          <h3 class="ml-card-title">雑誌「宣伝会議」2021年11月号に掲載</h3>
+          <p class="ml-card-excerpt">マーケティング専門誌「宣伝会議」にブランド戦略が掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/mobile-experience/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2021.08.31</span>
+          </div>
+          <h3 class="ml-card-title">モバイルエクスペリエンス サービス開始</h3>
+          <p class="ml-card-excerpt">スマートフォンから羽毛布団の質感を体験できるサービスを開始。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/futon-making-step4/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2019.11.20</span>
+          </div>
+          <h3 class="ml-card-title">表参道布団店の羽毛布団作り STEP4 検品、発送</h3>
+          <p class="ml-card-excerpt">完成した羽毛布団の最終検品。業界経験40年のベテランが一枚一枚確認。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/redesign-service-2/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2019.10.09</span>
+          </div>
+          <h3 class="ml-card-title">リ・デザインサービス 羽毛布団の打ち直し（リフォーム）をお考えの皆様へ(2)</h3>
+          <p class="ml-card-excerpt">リ・デザインサービスの詳細工程を解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/redesign-service-1/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2019.08.28</span>
+          </div>
+          <h3 class="ml-card-title">リ・デザインサービス 羽毛布団の打ち直し（リフォーム）をお考えの皆様へ(1)</h3>
+          <p class="ml-card-excerpt">表参道布団店のリ・デザインサービスの紹介。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/futon-select-points/" class="ml-card" data-category="睡眠知識">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#3B6B8A;border-color:#3B6B8A">睡眠知識</span>
+            <span class="ml-card-date">2019.08.13</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の選び方のポイントとは</h3>
+          <p class="ml-card-excerpt">羽毛布団選びで重要な「グースとダック」「ダウン率」の2つのポイント。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/care-storage/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2019.07.08</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜保管編</h3>
+          <p class="ml-card-excerpt">冬に使用した羽毛布団の正しい保管方法と注意点。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/care-dry/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2019.06.24</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜カビを防ぐ干し方編</h3>
+          <p class="ml-card-excerpt">正しい干し方と乾燥方法でカビを防ぐポイント。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/care-wash/" class="ml-card" data-category="メンテナンス">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#6B8A3B;border-color:#6B8A3B">メンテナンス</span>
+            <span class="ml-card-date">2019.06.11</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の正しいお手入れ・メンテナンス方法 〜洗濯編〜</h3>
+          <p class="ml-card-excerpt">高級羽毛布団は水洗い可能。「丸洗い」と「本洗い」を解説。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/im-home-magazine/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2018.12.11</span>
+          </div>
+          <h3 class="ml-card-title">I'm home 1月号に掲載されました</h3>
+          <p class="ml-card-excerpt">インテリア専門誌「I'm home」に掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/crea-magazine/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2018.12.11</span>
+          </div>
+          <h3 class="ml-card-title">CREA 1月号に掲載されました</h3>
+          <p class="ml-card-excerpt">女性誌CREAに掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/pen-magazine/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2017.04.02</span>
+          </div>
+          <h3 class="ml-card-title">雑誌PEN 4月15日号に掲載されました</h3>
+          <p class="ml-card-excerpt">カルチャー誌PENに掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><div class="img-placeholder"><span>✦</span></div></div>
+      </a>
+      <a href="../magazine/seibu-sogo/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2017.03.28</span>
+          </div>
+          <h3 class="ml-card-title">SEIBU SOGO e.デパートで発売を開始しました</h3>
+          <p class="ml-card-excerpt">そごう・西武オンラインストアで販売開始。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="../images/products/premium_winter.jpg" alt="SEIBU SOGO e.デパートで発売を開始しました" loading="lazy"></div>
+      </a>
+      <a href="../magazine/nid-magazine/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2016.11.24</span>
+          </div>
+          <h3 class="ml-card-title">雑誌「nid」に広告を出稿致しました</h3>
+          <p class="ml-card-excerpt">ライフスタイル誌「nid」に広告掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2016/11/11.21_nid-1-743x1024.jpg" alt="雑誌「nid」に広告を出稿致しました" loading="lazy"></div>
+      </a>
+      <a href="../magazine/plus-living/" class="ml-card" data-category="お知らせ">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#8A3B5E;border-color:#8A3B5E">お知らせ</span>
+            <span class="ml-card-date">2016.05.31</span>
+          </div>
+          <h3 class="ml-card-title">PLUS Livingに「リ・デザイン」の広告を出稿しました</h3>
+          <p class="ml-card-excerpt">PLUS Livingにリ・デザインサービスの広告掲載。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2016/06/PLUSliving2-1-697x1024.jpg" alt="PLUS Livingに「リ・デザイン」の広告を出稿しました" loading="lazy"></div>
+      </a>
+      <a href="../magazine/made-to-order/" class="ml-card" data-category="素材のこだわり">
+        <div class="ml-card-body">
+          <div class="ml-card-meta">
+            <span class="ml-card-cat" style="color:#C9A96E;border-color:#C9A96E">素材のこだわり</span>
+            <span class="ml-card-date">2015.09.18</span>
+          </div>
+          <h3 class="ml-card-title">羽毛布団の受注生産にこだわる理由</h3>
+          <p class="ml-card-excerpt">つくりたての羽毛布団をお届けしたいという想い。</p>
+          <span class="ml-card-link">詳しくみる <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+        <div class="ml-card-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/10/2015-10-19-10.37.46.png" alt="羽毛布団の受注生産にこだわる理由" loading="lazy"></div>
+      </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value=''" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;white-space:nowrap">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../products/comforter/">掛け布団</a>
+        <a href="../products/pillow/">枕／枕カバー</a>
+        <a href="../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../products/apparel/">アパレル</a>
+        <a href="../products/collaboration/">コラボレーション</a>
+        <a href="../products/baby/">ベビー</a>
+        <a href="../products/service/">クリーンサイクルサービス</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="../concept/">ブランドコンセプト</a>
+        <a href="../concept/brand-story/">ブランドストーリー</a>
+        <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../concept/material/">素材のこだわり</a>
+        <a href="../down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="../magazine/">マガジン</a>
+        <a href="../about/">会社概要</a>
+        <a href="../gift/">ギフト</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../subscription/">サブスクリプション</a>
+        <a href="../inventory-view/">在庫状況</a>
+        <a href="../privacy-policy/">プライバシーポリシー</a>
+        <a href="../terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+
+<script src="../js/cart.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var menu=document.getElementById('mobileMenu');
+  var close=document.getElementById('menuClose');
+  if(!btn||!menu)return;
+  function openMenu(){menu.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');document.body.style.overflow='';}
+  btn.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+})();
+</script>
+<script>
+// View toggle
+(function(){
+  var gridBtn=document.querySelector('[data-view="grid"]');
+  var listBtn=document.querySelector('[data-view="list"]');
+  var gridView=document.getElementById('viewGrid');
+  var listView=document.getElementById('viewList');
+  if(!gridBtn||!listBtn)return;
+  gridBtn.addEventListener('click',function(){
+    gridBtn.classList.add('active');listBtn.classList.remove('active');
+    gridView.classList.add('active');listView.classList.remove('active');
+  });
+  listBtn.addEventListener('click',function(){
+    listBtn.classList.add('active');gridBtn.classList.remove('active');
+    listView.classList.add('active');gridView.classList.remove('active');
+  });
+})();
+
+// Category filter
+(function(){
+  var btns=document.querySelectorAll('.filter-cat-btn');
+  var gridCards=document.querySelectorAll('#viewGrid .mg-card');
+  var listCards=document.querySelectorAll('#viewList .ml-card');
+  var featured=document.getElementById('featuredSection');
+  var countEl=document.getElementById('articleCount');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      var filter=btn.getAttribute('data-filter');
+      var count=0;
+      gridCards.forEach(function(c){
+        if(filter==='all'||c.getAttribute('data-category')===filter){c.style.display='';count++}
+        else{c.style.display='none'}
+      });
+      listCards.forEach(function(c){
+        if(filter==='all'||c.getAttribute('data-category')===filter){c.style.display=''}
+        else{c.style.display='none'}
+      });
+      // featured
+      if(featured){
+        var fc=featured.querySelector('[data-category]');
+        if(fc){
+          if(filter==='all'||fc.getAttribute('data-category')===filter){featured.style.display='';count++}
+          else{featured.style.display='none'}
+        }
+      }
+      if(countEl)countEl.textContent=count+' articles';
+    });
+  });
+})();
+
+// Fade-up observer
+(function(){
+  var els=document.querySelectorAll('.fade-up');
+  if(!els.length)return;
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+  els.forEach(function(el){obs.observe(el);});
+})();
+</script>
+</body>
+</html>

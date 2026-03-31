@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カスタムフィールド | 表参道布団店。管理画面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+a { text-decoration:none; color:inherit; }
+
+/* Sidebar */
+.sidebar {
+  position:fixed; top:0; left:0; width:260px; height:100vh;
+  background:#fff; border-right:1px solid #EAEDF3;
+  display:flex; flex-direction:column; z-index:100;
+}
+.sidebar-logo {
+  padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;
+}
+.sidebar-logo h2 { font-size:18px; font-weight:700; color:#1A1A1A; }
+.sidebar-logo span { font-size:11px; color:#999; margin-top:2px; display:block; letter-spacing:0.04em; }
+.sidebar nav { flex:1; padding:16px 12px; }
+.sidebar nav a {
+  display:flex; align-items:center; gap:12px;
+  padding:11px 14px; border-radius:8px;
+  font-size:14px; font-weight:500; color:#555; margin-bottom:4px;
+  transition: background 0.15s;
+}
+.sidebar nav a:hover { background:#F5F6FA; }
+.sidebar nav a.active {
+  font-weight:600; color:#C9A96E; background:#FDF8F0;
+}
+.sidebar nav a .icon { width:20px; text-align:center; font-size:15px; }
+.sidebar-footer {
+  padding:16px 20px; border-top:1px solid #EAEDF3;
+  font-size:12px;
+}
+.sidebar-footer a { color:#AAA; transition: color 0.2s; }
+.sidebar-footer a:hover { color:#C9A96E; }
+
+/* Main area */
+.main { margin-left:260px; min-height:100vh; }
+
+/* Top bar */
+.topbar {
+  height:64px; background:#fff; border-bottom:1px solid #EAEDF3;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 32px; position:sticky; top:0; z-index:50;
+}
+.topbar h1 { font-size:18px; font-weight:700; color:#1A1A1A; }
+.topbar-user { display:flex; align-items:center; gap:12px; }
+.topbar-avatar {
+  width:36px; height:36px; border-radius:50%; background:#C9A96E;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:14px; font-weight:600;
+}
+
+/* Content */
+.content { padding:28px 32px; }
+
+/* Toolbar */
+.toolbar {
+  display:flex; align-items:center; gap:16px; margin-bottom:20px; flex-wrap:wrap;
+}
+.search-box {
+  flex:1; min-width:200px; max-width:400px; position:relative;
+}
+.search-box input {
+  width:100%; padding:10px 14px 10px 38px; border:1px solid #EAEDF3;
+  border-radius:8px; font-size:14px; font-family:inherit;
+  background:#fff; outline:none; transition: border-color 0.2s;
+}
+.search-box input:focus { border-color:#C9A96E; }
+.search-box::before {
+  content:'\1F50D'; position:absolute; left:12px; top:50%;
+  transform:translateY(-50%); font-size:14px; opacity:0.4;
+}
+.btn {
+  padding:10px 20px; border:none; border-radius:8px;
+  font-size:14px; font-weight:600; font-family:inherit;
+  cursor:pointer; transition: all 0.2s;
+}
+.btn-primary {
+  background:#C9A96E; color:#fff;
+}
+.btn-primary:hover { background:#B8944D; }
+.btn-outline {
+  background:#fff; color:#555; border:1px solid #EAEDF3;
+}
+.btn-outline:hover { background:#F5F6FA; }
+
+/* Filter tabs */
+.filter-tabs {
+  display:flex; gap:4px; margin-bottom:20px; flex-wrap:wrap;
+}
+.filter-tab {
+  padding:8px 18px; border-radius:20px; font-size:13px;
+  font-weight:500; border:1px solid #EAEDF3; background:#fff;
+  cursor:pointer; transition: all 0.2s; color:#666;
+}
+.filter-tab:hover { border-color:#C9A96E; color:#C9A96E; }
+.filter-tab.active {
+  background:#C9A96E; color:#fff; border-color:#C9A96E;
+}
+.filter-tab .count {
+  font-size:11px; margin-left:4px; opacity:0.7;
+}
+
+/* Product cards */
+.product-card {
+  background:#fff; border-radius:12px; padding:24px;
+  margin-bottom:16px; box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  border:1px solid #EAEDF3; transition: box-shadow 0.2s;
+}
+.product-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+.product-card-header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #F0F0F0;
+}
+.product-card-title {
+  display:flex; align-items:center; gap:12px;
+}
+.product-card-title h3 { font-size:16px; font-weight:700; color:#1A1A1A; }
+.product-card-title .slug {
+  font-size:12px; color:#999; background:#F5F6FA;
+  padding:3px 10px; border-radius:4px; font-family:'Inter',monospace;
+}
+.product-card-badges { display:flex; gap:8px; align-items:center; }
+.badge {
+  font-size:11px; font-weight:600; padding:4px 10px;
+  border-radius:12px; letter-spacing:0.02em;
+}
+.badge-category { background:#E8F4FD; color:#2B7BB9; }
+.badge-season { background:#FFF3E0; color:#C9A96E; }
+
+/* Field grid */
+.field-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:16px;
+}
+.field-group { display:flex; flex-direction:column; gap:6px; }
+.field-group label {
+  font-size:12px; font-weight:600; color:#666;
+  letter-spacing:0.02em;
+}
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding:9px 12px; border:1px solid #EAEDF3; border-radius:6px;
+  font-size:14px; font-family:inherit; background:#FAFBFD;
+  outline:none; transition: border-color 0.2s, background 0.2s;
+  color:#333;
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color:#C9A96E; background:#fff;
+}
+.field-group textarea { resize:vertical; min-height:70px; }
+.field-group.full-width { grid-column:1 / -1; }
+
+/* Toggle */
+.toggle-wrap {
+  display:flex; align-items:center; gap:10px; padding-top:4px;
+}
+.toggle {
+  position:relative; width:44px; height:24px; cursor:pointer;
+}
+.toggle input { display:none; }
+.toggle-track {
+  position:absolute; inset:0; background:#D5D8E0; border-radius:12px;
+  transition: background 0.2s;
+}
+.toggle input:checked + .toggle-track { background:#C9A96E; }
+.toggle-thumb {
+  position:absolute; top:2px; left:2px; width:20px; height:20px;
+  background:#fff; border-radius:50%; transition: transform 0.2s;
+  box-shadow:0 1px 3px rgba(0,0,0,0.15);
+}
+.toggle input:checked ~ .toggle-thumb { transform:translateX(20px); }
+.toggle-label { font-size:13px; font-weight:500; color:#555; }
+
+/* Checkbox */
+.checkbox-wrap {
+  display:flex; align-items:center; gap:8px; padding-top:4px;
+}
+.checkbox-wrap input[type="checkbox"] {
+  width:18px; height:18px; accent-color:#C9A96E; cursor:pointer;
+}
+.checkbox-wrap label { font-size:13px; color:#555; cursor:pointer; }
+
+/* Section dividers */
+.field-section-title {
+  grid-column:1 / -1; font-size:12px; font-weight:700; color:#C9A96E;
+  text-transform:uppercase; letter-spacing:0.08em; margin-top:8px;
+  padding-bottom:6px; border-bottom:1px solid #F0F0F0;
+}
+
+/* Stats bar */
+.stats-bar {
+  display:flex; gap:16px; margin-bottom:24px;
+}
+.stat-card {
+  flex:1; background:#fff; border-radius:10px; padding:18px 20px;
+  border:1px solid #EAEDF3; box-shadow:0 1px 4px rgba(0,0,0,0.03);
+}
+.stat-card .label { font-size:12px; color:#999; font-weight:500; }
+.stat-card .value { font-size:24px; font-weight:700; color:#1A1A1A; margin-top:4px; }
+
+/* Toast */
+.toast {
+  position:fixed; bottom:32px; right:32px; padding:14px 24px;
+  background:#1A1A1A; color:#fff; border-radius:10px;
+  font-size:14px; font-weight:500; z-index:1000;
+  transform:translateY(80px); opacity:0;
+  transition: transform 0.3s, opacity 0.3s;
+  box-shadow:0 8px 32px rgba(0,0,0,0.2);
+}
+.toast.show { transform:translateY(0); opacity:1; }
+
+/* Empty state */
+.empty-state {
+  text-align:center; padding:60px 20px; color:#999;
+}
+.empty-state .icon { font-size:48px; margin-bottom:16px; opacity:0.3; }
+.empty-state p { font-size:14px; }
+
+/* Responsive */
+@media(max-width:1024px) {
+  .sidebar { width:220px; }
+  .main { margin-left:220px; }
+  .field-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  .sidebar { display:none; }
+  .main { margin-left:0; }
+  .field-grid { grid-template-columns:1fr; }
+  .stats-bar { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>表参道布団店。</h2>
+    <span>管理画面</span>
+  </div>
+  <nav>
+    <a href="index.html">
+      <span class="icon">&#9632;</span> ダッシュボード
+    </a>
+    <a href="products.html">
+      <span class="icon">&#9776;</span> 商品管理
+    </a>
+    <a href="custom-fields.html" class="active">
+      <span class="icon">&#9998;</span> カスタムフィールド
+    </a>
+    <a href="inventory.html">
+      <span class="icon">&#9881;</span> 在庫管理
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="login/">ログアウト</a>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <h1>カスタムフィールド管理</h1>
+    <div class="topbar-user">
+      <div class="topbar-avatar">田</div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#333;">田中 管理者</div>
+        <div style="font-size:11px; color:#999;">admin@omotesando-futon.jp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="label">全商品数</div>
+        <div class="value" id="stat-total">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">公開中</div>
+        <div class="value" id="stat-published">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">カテゴリ数</div>
+        <div class="value" id="stat-categories">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">最終更新</div>
+        <div class="value" style="font-size:16px;" id="stat-updated">-</div>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="商品名・スラッグで検索...">
+      </div>
+      <button class="btn btn-outline" id="collapseAllBtn">すべて閉じる</button>
+      <button class="btn btn-outline" id="expandAllBtn">すべて開く</button>
+      <button class="btn btn-primary" id="saveBtn">保存</button>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div class="filter-tabs" id="filterTabs"></div>
+
+    <!-- Product list -->
+    <div id="productList"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  const CATEGORIES = {
+    all: 'すべて',
+    comforter: '掛け布団',
+    pillow: '枕',
+    bedding: '寝具',
+    apparel: 'アパレル',
+    collaboration: 'コラボ',
+    baby: 'ベビー',
+    service: 'サービス'
+  };
+
+  const SEASONS = {
+    winter: '冬用',
+    spring: '春秋用',
+    summer: '夏用',
+    all: 'オールシーズン'
+  };
+
+  let allProducts = [];
+  let activeFilter = 'all';
+  let expandedCards = new Set();
+
+  // Load products
+  async function loadProducts() {
+    try {
+      const res = await fetch('../data/products.json');
+      const data = await res.json();
+      allProducts = flattenProducts(data);
+      renderStats();
+      renderFilterTabs();
+      renderProducts();
+    } catch (e) {
+      console.error('products.json の読み込みに失敗しました:', e);
+      document.getElementById('productList').innerHTML =
+        '<div class="empty-state"><div class="icon">&#9888;</div><p>products.json の読み込みに失敗しました</p></div>';
+    }
+  }
+
+  // Flatten nested structure into a flat array
+  function flattenProducts(data) {
+    const products = [];
+    for (const [category, value] of Object.entries(data)) {
+      if (Array.isArray(value)) {
+        // pillow, bedding, apparel, collaboration, etc.
+        value.forEach(p => {
+          products.push(enrichProduct(p, category, null));
+        });
+      } else if (typeof value === 'object') {
+        // comforter with seasons
+        for (const [season, items] of Object.entries(value)) {
+          if (Array.isArray(items)) {
+            items.forEach(p => {
+              products.push(enrichProduct(p, category, season));
+            });
+          }
+        }
+      }
+    }
+    return products;
+  }
+
+  // Add custom fields with defaults
+  function enrichProduct(p, category, season) {
+    return {
+      slug: p.slug || '',
+      name: p.name || '',
+      price: p.price || 0,
+      catchphrase: p.catchphrase || '',
+      description: p.description || '',
+      down_type: p.down_type || p.sub || '',
+      down_power: p.down_power || '',
+      fill_weight: p.fill_weight || '',
+      fabric: p.fabric || '',
+      colors: p.colors || '',
+      sizes: p.sizes ? JSON.stringify(p.sizes) : '',
+      feature1: p.feature1 || '',
+      feature2: p.feature2 || '',
+      feature3: p.feature3 || '',
+      feature4: p.feature4 || '',
+      feature5: p.feature5 || '',
+      feature6: p.feature6 || '',
+      rds_certified: p.rds_certified || false,
+      img_dir: p.img_dir || '',
+      category: category || 'comforter',
+      season: season || 'all',
+      published: p.published !== undefined ? p.published : true,
+      _original: { ...p }
+    };
+  }
+
+  // Render stats
+  function renderStats() {
+    document.getElementById('stat-total').textContent = allProducts.length;
+    document.getElementById('stat-published').textContent =
+      allProducts.filter(p => p.published).length;
+    const cats = new Set(allProducts.map(p => p.category));
+    document.getElementById('stat-categories').textContent = cats.size;
+    document.getElementById('stat-updated').textContent = new Date().toLocaleDateString('ja-JP');
+  }
+
+  // Render filter tabs
+  function renderFilterTabs() {
+    const counts = { all: allProducts.length };
+    allProducts.forEach(p => {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+    });
+
+    const container = document.getElementById('filterTabs');
+    container.innerHTML = '';
+    for (const [key, label] of Object.entries(CATEGORIES)) {
+      if (key !== 'all' && !counts[key]) continue;
+      const tab = document.createElement('button');
+      tab.className = 'filter-tab' + (activeFilter === key ? ' active' : '');
+      tab.innerHTML = label + '<span class="count">(' + (counts[key] || 0) + ')</span>';
+      tab.addEventListener('click', () => {
+        activeFilter = key;
+        renderFilterTabs();
+        renderProducts();
+      });
+      container.appendChild(tab);
+    }
+  }
+
+  // Render product list
+  function renderProducts() {
+    const container = document.getElementById('productList');
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+    let filtered = allProducts;
+    if (activeFilter !== 'all') {
+      filtered = filtered.filter(p => p.category === activeFilter);
+    }
+    if (query) {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(query) ||
+        p.slug.toLowerCase().includes(query)
+      );
+    }
+
+    if (filtered.length === 0) {
+      container.innerHTML =
+        '<div class="empty-state"><div class="icon">&#128270;</div><p>該当する商品が見つかりません</p></div>';
+      return;
+    }
+
+    container.innerHTML = filtered.map((p, idx) => {
+      const globalIdx = allProducts.indexOf(p);
+      const isOpen = expandedCards.has(globalIdx);
+      return buildProductCard(p, globalIdx, isOpen);
+    }).join('');
+
+    // Bind events
+    container.querySelectorAll('.product-card-header').forEach(header => {
+      header.addEventListener('click', (e) => {
+        if (e.target.closest('.toggle') || e.target.tagName === 'INPUT') return;
+        const idx = parseInt(header.dataset.idx);
+        if (expandedCards.has(idx)) expandedCards.delete(idx);
+        else expandedCards.add(idx);
+        renderProducts();
+      });
+    });
+
+    // Bind input change events
+    container.querySelectorAll('[data-field]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const idx = parseInt(e.target.dataset.idx);
+        const field = e.target.dataset.field;
+        const product = allProducts[idx];
+        if (e.target.type === 'checkbox') {
+          product[field] = e.target.checked;
+        } else if (e.target.type === 'number') {
+          product[field] = parseFloat(e.target.value) || 0;
+        } else {
+          product[field] = e.target.value;
+        }
+      });
+    });
+
+    // Toggle published
+    container.querySelectorAll('.toggle input').forEach(toggle => {
+      toggle.addEventListener('change', (e) => {
+        const idx = parseInt(e.target.dataset.idx);
+        allProducts[idx].published = e.target.checked;
+      });
+    });
+  }
+
+  // Build a single product card HTML
+  function buildProductCard(p, idx, isOpen) {
+    const catLabel = CATEGORIES[p.category] || p.category;
+    const seasonLabel = p.season ? (SEASONS[p.season] || p.season) : '';
+    const chevron = isOpen ? '&#9660;' : '&#9654;';
+
+    let html = '<div class="product-card">';
+
+    // Header
+    html += '<div class="product-card-header" data-idx="' + idx + '" style="cursor:pointer;">';
+    html += '<div class="product-card-title">';
+    html += '<span style="font-size:12px; color:#BBB;">' + chevron + '</span>';
+    html += '<h3>' + escHtml(p.name || '(名称未設定)') + '</h3>';
+    html += '<span class="slug">' + escHtml(p.slug) + '</span>';
+    html += '</div>';
+    html += '<div class="product-card-badges">';
+    html += '<span class="badge badge-category">' + catLabel + '</span>';
+    if (seasonLabel) html += '<span class="badge badge-season">' + seasonLabel + '</span>';
+    // Published toggle in header
+    html += '<div class="toggle-wrap">';
+    html += '<label class="toggle">';
+    html += '<input type="checkbox" data-idx="' + idx + '"' + (p.published ? ' checked' : '') + '>';
+    html += '<div class="toggle-track"></div>';
+    html += '<div class="toggle-thumb"></div>';
+    html += '</label>';
+    html += '<span class="toggle-label">' + (p.published ? '公開' : '非公開') + '</span>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    // Fields (collapsible)
+    if (isOpen) {
+      html += '<div class="field-grid">';
+
+      // Basic info
+      html += sectionTitle('基本情報');
+      html += textField('商品名', 'name', p.name, idx);
+      html += numberField('価格', 'price', p.price, idx);
+      html += textField('キャッチコピー', 'catchphrase', p.catchphrase, idx);
+      html += textareaField('説明文', 'description', p.description, idx);
+
+      // Specs
+      html += sectionTitle('スペック');
+      html += textField('羽毛種', 'down_type', p.down_type, idx);
+      html += textField('ダウンパワー', 'down_power', p.down_power, idx);
+      html += textField('充填量', 'fill_weight', p.fill_weight, idx);
+      html += textField('側生地', 'fabric', p.fabric, idx);
+      html += textField('カラー (カンマ区切り)', 'colors', p.colors, idx);
+      html += textField('サイズ展開 (JSON)', 'sizes', p.sizes, idx, 'full-width');
+
+      // Features
+      html += sectionTitle('特徴');
+      html += textField('特徴1', 'feature1', p.feature1, idx);
+      html += textField('特徴2', 'feature2', p.feature2, idx);
+      html += textField('特徴3', 'feature3', p.feature3, idx);
+      html += textField('特徴4', 'feature4', p.feature4, idx);
+      html += textField('特徴5', 'feature5', p.feature5, idx);
+      html += textField('特徴6', 'feature6', p.feature6, idx);
+
+      // Meta
+      html += sectionTitle('メタ情報');
+      html += checkboxField('RDS認証', 'rds_certified', p.rds_certified, idx);
+      html += textField('画像ディレクトリ', 'img_dir', p.img_dir, idx);
+      html += selectField('カテゴリ', 'category', p.category, idx, {
+        comforter:'掛け布団', pillow:'枕', bedding:'寝具', apparel:'アパレル',
+        collaboration:'コラボ', baby:'ベビー', service:'サービス'
+      });
+      html += selectField('シーズン', 'season', p.season, idx, {
+        winter:'冬用', spring:'春秋用', summer:'夏用', all:'オールシーズン'
+      });
+
+      html += '</div>'; // .field-grid
+    }
+
+    html += '</div>'; // .product-card
+    return html;
+  }
+
+  // Field builders
+  function sectionTitle(title) {
+    return '<div class="field-section-title">' + title + '</div>';
+  }
+
+  function textField(label, field, value, idx, extraClass) {
+    return '<div class="field-group' + (extraClass ? ' ' + extraClass : '') + '">' +
+      '<label>' + label + '</label>' +
+      '<input type="text" data-field="' + field + '" data-idx="' + idx + '" value="' + escAttr(value) + '">' +
+      '</div>';
+  }
+
+  function numberField(label, field, value, idx) {
+    return '<div class="field-group">' +
+      '<label>' + label + '</label>' +
+      '<input type="number" data-field="' + field + '" data-idx="' + idx + '" value="' + value + '">' +
+      '</div>';
+  }
+
+  function textareaField(label, field, value, idx) {
+    return '<div class="field-group full-width">' +
+      '<label>' + label + '</label>' +
+      '<textarea data-field="' + field + '" data-idx="' + idx + '">' + escHtml(value) + '</textarea>' +
+      '</div>';
+  }
+
+  function selectField(label, field, value, idx, options) {
+    let html = '<div class="field-group">' +
+      '<label>' + label + '</label>' +
+      '<select data-field="' + field + '" data-idx="' + idx + '">';
+    for (const [k, v] of Object.entries(options)) {
+      html += '<option value="' + k + '"' + (value === k ? ' selected' : '') + '>' + v + '</option>';
+    }
+    html += '</select></div>';
+    return html;
+  }
+
+  function checkboxField(label, field, checked, idx) {
+    return '<div class="field-group">' +
+      '<label>' + label + '</label>' +
+      '<div class="checkbox-wrap">' +
+      '<input type="checkbox" id="cb-' + field + '-' + idx + '" data-field="' + field + '" data-idx="' + idx + '"' + (checked ? ' checked' : '') + '>' +
+      '<label for="cb-' + field + '-' + idx + '">認証あり</label>' +
+      '</div></div>';
+  }
+
+  // Escape helpers
+  function escHtml(str) {
+    if (!str && str !== 0) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function escAttr(str) {
+    if (!str && str !== 0) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Toast
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Save
+  function handleSave() {
+    const output = allProducts.map(p => {
+      const clean = { ...p };
+      delete clean._original;
+      // Parse sizes back to object if valid JSON
+      if (clean.sizes && typeof clean.sizes === 'string') {
+        try { clean.sizes = JSON.parse(clean.sizes); } catch(e) { /* keep as string */ }
+      }
+      return clean;
+    });
+    console.log('=== カスタムフィールド保存データ ===');
+    console.log(JSON.stringify(output, null, 2));
+    showToast('保存データをコンソールに出力しました (' + output.length + '件)');
+  }
+
+  // Collapse / Expand all
+  function collapseAll() {
+    expandedCards.clear();
+    renderProducts();
+  }
+  function expandAll() {
+    allProducts.forEach((_, i) => expandedCards.add(i));
+    renderProducts();
+  }
+
+  // Event listeners
+  document.getElementById('searchInput').addEventListener('input', renderProducts);
+  document.getElementById('saveBtn').addEventListener('click', handleSave);
+  document.getElementById('collapseAllBtn').addEventListener('click', collapseAll);
+  document.getElementById('expandAllBtn').addEventListener('click', expandAll);
+
+  // Init
+  loadProducts();
+})();
+</script>
+<script src="../js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ショッピングカート | 表参道布団店。</title>
+<meta name="description" content="表参道布団店。ショッピングカート。お選びいただいた商品をご確認ください。">
+<meta property="og:title" content="ショッピングカート | 表参道布団店。">
+<meta property="og:description" content="表参道布団店。ショッピングカート。">
+<meta property="og:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<meta property="og:url" content="https://omotesando-futon.com/cart/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ショッピングカート | 表参道布団店。">
+<meta name="twitter:description" content="表参道布団店。ショッピングカート。">
+<meta name="twitter:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+/* Mega menu for PRODUCTS (with images) */
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
+/* Actions */
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+/* Mobile Menu */
+.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;gap:0}
+.mobile-menu nav a{display:block;padding:16px 0;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.3s}
+.mobile-menu nav a:hover{color:#C9A96E}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu-overlay.active{opacity:1;pointer-events:all}
+/* === END GLOBAL NAV === */
+
+/* FOOTER */
+.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2D2D2D;min-height:100vh;display:flex;flex-direction:column}
+.main{flex:1;padding:120px 40px 60px;max-width:1100px;margin:0 auto;width:100%}
+.page-title{font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:#2D2D2D;margin-bottom:40px;letter-spacing:0.04em}
+.cart-layout{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start}
+.cart-items{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.04);overflow:hidden}
+.cart-item{display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:24px;border-bottom:1px solid #f0f0f0;align-items:center}
+.cart-item:last-child{border-bottom:none}
+.cart-item-img{width:120px;height:120px;background:#F7F6F3;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:11px}
+.cart-item-info h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.cart-item-info .meta{font-size:13px;color:#888;margin-bottom:8px}
+.cart-item-info .meta span{margin-right:12px}
+.qty-control{display:flex;align-items:center;gap:12px;margin-top:8px}
+.qty-control button{width:32px;height:32px;border:1px solid #ddd;border-radius:6px;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s}
+.qty-control button:hover{border-color:#C9A96E}
+.qty-control span{font-size:15px;font-weight:600;min-width:20px;text-align:center}
+.cart-item-price{text-align:right}
+.cart-item-price .price{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#2D2D2D}
+.cart-item-price .remove{display:block;margin-top:8px;font-size:12px;color:#999;text-decoration:none;cursor:pointer;border:none;background:none;font-family:inherit;transition:color 0.3s}
+.cart-item-price .remove:hover{color:#C9A96E}
+.cart-summary{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.04);padding:32px;position:sticky;top:100px}
+.cart-summary h2{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;margin-bottom:24px;letter-spacing:0.06em}
+.summary-row{display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.summary-row:last-of-type{border-bottom:none}
+.summary-row.total{font-size:18px;font-weight:700;border-top:2px solid #2D2D2D;border-bottom:none;padding-top:16px;margin-top:8px}
+.summary-row .label{color:#666}
+.summary-row.total .label,.summary-row.total .value{color:#2D2D2D}
+.summary-row .value{font-family:'DM Sans',sans-serif;font-weight:600}
+.btn-checkout{display:block;width:100%;padding:18px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;margin-top:24px;text-align:center;text-decoration:none}
+.btn-checkout:hover{background:#b8944f}
+.continue-link{display:block;text-align:center;margin-top:16px;font-size:13px;color:#C9A96E;text-decoration:none;transition:opacity 0.3s}
+.continue-link:hover{opacity:0.7}
+/* Empty state */
+.empty-cart{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.04);padding:80px 40px;text-align:center}
+.empty-cart svg{width:64px;height:64px;color:#ddd;margin-bottom:20px}
+.empty-cart p{font-size:16px;color:#888;margin-bottom:28px}
+.btn-shop{display:inline-block;padding:16px 48px;background:#C9A96E;color:#fff;border-radius:8px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:0.1em;text-decoration:none;transition:background 0.3s}
+.btn-shop:hover{background:#b8944f}
+.footer-simple{text-align:center;padding:24px;font-size:12px;color:#999;font-family:'DM Sans',sans-serif}
+@media(max-width:768px){
+.main{padding:100px 20px 40px}
+.cart-layout{grid-template-columns:1fr}
+.cart-item{grid-template-columns:80px 1fr;gap:16px}
+.cart-item-price{grid-column:1/-1;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.cart-item-img{width:80px;height:80px}
+}
+
+/* BREADCRUMB */
+.breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
+.bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.breadcrumb a{color:#999;text-decoration:none;transition:color 0.3s}
+.breadcrumb a:hover{color:#C9A96E}
+.breadcrumb span{color:#666}
+.bc-sep{margin:0 8px;color:#ccc}
+@media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TOP",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "カート",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/cart/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo"><img src="../images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="../concept/">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="../concept/">ブランドコンセプト</a>
+          <a href="../concept/brand-story/">ブランドストーリー</a>
+<a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="../concept/material/">素材のこだわり</a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../products/">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="../products/comforter/" class="nav-mega-card">
+            <img src="../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy">
+            <span class="nav-mega-card-label">COMFORTER</span>
+            <span class="nav-mega-card-name">掛け布団</span>
+          </a>
+          <a href="../products/pillow/" class="nav-mega-card">
+            <img src="../images/site/pillow_hero2.jpg" alt="枕" loading="lazy">
+            <span class="nav-mega-card-label">PILLOW</span>
+            <span class="nav-mega-card-name">枕／枕カバー</span>
+          </a>
+          <a href="../products/bedding/" class="nav-mega-card">
+            <img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy">
+            <span class="nav-mega-card-label">BEDDING</span>
+            <span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span>
+          </a>
+          <a href="../products/apparel/" class="nav-mega-card">
+            <img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy">
+            <span class="nav-mega-card-label">APPAREL</span>
+            <span class="nav-mega-card-name">アパレル</span>
+          </a>
+          <a href="../products/collaboration/" class="nav-mega-card">
+            <img src="../images/site/collab_hero.jpg" alt="コラボ" loading="lazy">
+            <span class="nav-mega-card-label">COLLABORATION</span>
+            <span class="nav-mega-card-name">コラボ</span>
+          </a>
+          <a href="../products/baby/" class="nav-mega-card">
+            <img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy">
+            <span class="nav-mega-card-label">BABY</span>
+            <span class="nav-mega-card-name">ベビー</span>
+          </a>
+          <a href="../products/service/" class="nav-mega-card">
+            <img src="../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy">
+            <span class="nav-mega-card-label">SERVICE</span>
+            <span class="nav-mega-card-name">クリーンサイクルサービス</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../magazine/">MAGAZINE</a>
+      </div>
+      <div class="header-nav-item">
+        <a href="../about/">ABOUT</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="../cart/">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="../index.html">TOP</a>
+    <a href="../concept/">CONCEPT</a>
+    <a href="../concept/brand-story/">BRAND STORY</a>
+    <a href="../products/">PRODUCTS</a>
+    <a href="../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../magazine/">MAGAZINE</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../gift/">GIFT</a>
+    <a href="../contact/">CONTACT</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../subscription/">サブスクリプション</a>
+    <a href="../cart/">CART</a>
+  </nav>
+</div>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <span>カート</span></div></nav>
+
+
+
+<main class="main">
+  <h1 class="page-title">SHOPPING CART</h1>
+  <div id="cartPageContent"></div>
+</main>
+<script>
+(function(){
+  var cart=window._cartGet?window._cartGet():[];
+  var el=document.getElementById('cartPageContent');
+  if(!cart.length){el.innerHTML='<div class="empty-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:64px;height:64px;color:#ddd;margin-bottom:20px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><p>\u30AB\u30FC\u30C8\u306B\u5546\u54C1\u304C\u3042\u308A\u307E\u305B\u3093</p><a href="../products/index.html" class="btn-shop">SHOP NOW</a></div>';return;}
+  var total=cart.reduce(function(s,i){return s+i.price*i.qty;},0);
+  var h='<div class="cart-layout"><div class="cart-items">';
+  cart.forEach(function(item,idx){
+    h+='<div class="cart-item"><div class="cart-item-img">'+(item.image?'<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover">':'No Image')+'</div>';
+    h+='<div class="cart-item-info"><h3>'+item.name+'</h3>';
+    var m=[];if(item.size)m.push('\u30B5\u30A4\u30BA: '+item.size);if(item.color)m.push('\u30AB\u30E9\u30FC: '+item.color);
+    h+='<p class="meta">'+m.map(function(x){return'<span>'+x+'</span>';}).join('')+'</p>';
+    h+='<div class="qty-control"><button onclick="window._cartQty('+idx+',-1);location.reload()">\u2212</button><span>'+item.qty+'</span><button onclick="window._cartQty('+idx+',1);location.reload()">+</button></div></div>';
+    h+='<div class="cart-item-price"><span class="price">&yen;'+(item.price*item.qty).toLocaleString()+'</span><button class="remove" onclick="window._cartRm('+idx+');location.reload()">\u524A\u9664</button></div></div>';
+  });
+  h+='</div><div class="cart-summary"><h2>ORDER SUMMARY</h2>';
+  h+='<div class="summary-row"><span class="label">\u5C0F\u8A08</span><span class="value">&yen;'+total.toLocaleString()+'</span></div>';
+  h+='<div class="summary-row"><span class="label">\u9001\u6599</span><span class="value">\u7121\u6599</span></div>';
+  h+='<div class="summary-row total"><span class="label">\u5408\u8A08\uFF08\u7A0E\u8FBC\uFF09</span><span class="value">&yen;'+total.toLocaleString()+'</span></div>';
+  h+='<a href="../checkout/index.html" class="btn-checkout">\u3054\u8CFC\u5165\u624B\u7D9A\u304D\u3078</a>';
+  h+='<a href="../products/index.html" class="continue-link">\u8CB7\u3044\u7269\u3092\u7D9A\u3051\u308B</a></div></div>';
+  el.innerHTML=h;
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../products/comforter/">掛け布団</a>
+        <a href="../products/pillow/">枕／枕カバー</a>
+        <a href="../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../products/apparel/">アパレル</a>
+        <a href="../products/collaboration/">コラボレーション</a>
+        <a href="../products/baby/">ベビー</a>
+        <a href="../products/service/">クリーンサイクルサービス</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="../concept/">ブランドコンセプト</a>
+        <a href="../concept/brand-story/">ブランドストーリー</a>
+        <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../concept/material/">素材のこだわり</a>
+        <a href="../down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="../magazine/">マガジン</a>
+        <a href="../about/">会社概要</a>
+        <a href="../gift/">ギフト</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../subscription/">サブスクリプション</a>
+        <a href="../inventory-view/">在庫状況</a>
+        <a href="../privacy-policy/">プライバシーポリシー</a>
+        <a href="../terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+<script src="../js/cart.js"></script>
+<script>
+// Mobile menu
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var menu=document.getElementById('mobileMenu');
+  var close=document.getElementById('menuClose');
+  var overlay=document.getElementById('mobileMenuOverlay');
+  if(!btn||!menu)return;
+  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
+  btn.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  if(overlay)overlay.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+})();
+</script>
+</body>
+</html>

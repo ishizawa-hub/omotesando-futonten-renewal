@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サブスクリプション | 表参道布団店。</title>
+<meta name="description" content="表参道布団店のサブスクリプションプラン。月額制で上質な掛け布団をご利用いただけます。季節ごとの交換やクリーニングも含まれます。">
+<meta property="og:title" content="サブスクリプション | 表参道布団店。">
+<meta property="og:description" content="月額制で上質な掛け布団をご利用。季節ごとの交換やクリーニングも含まれます。">
+<meta property="og:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<meta property="og:url" content="https://omotesando-futon.com/subscription.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="サブスクリプション | 表参道布団店。">
+<meta name="twitter:description" content="月額制で上質な掛け布団を。季節ごとの交換やクリーニングも。">
+<meta name="twitter:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+/* Mega menu for PRODUCTS (with images) */
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
+/* Actions */
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+/* === END GLOBAL NAV === */
+
+/* FOOTER */
+.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--color-bg:#FFF;--color-text:#1A1A1A;--color-text-light:#6B6B6B;--color-accent:#C9A96E;--color-accent-hover:#B8975A;--color-navy:#2D2D2D;--color-navy-light:#243447;--color-white:#FFF;--color-border:#E5E5E5;--color-card-bg:#F7F7F7;--header-height:72px;--max-width:1320px;--section-pad:120px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:400;color:var(--color-text);background:var(--color-bg);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}ul,ol{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-btn{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.icon-btn svg{width:20px;height:20px}
+.cart-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--color-accent);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
+
+
+.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
+.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}
+.mobile-menu nav a:hover{color:var(--color-accent)}
+
+/* PAGE HERO */
+.page-hero{padding:160px 0 80px;background:var(--color-card-bg);text-align:center}
+.page-hero-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.page-hero-title{font-family:var(--font-display);font-size:48px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.page-hero-desc{font-size:16px;color:var(--color-text-light);max-width:560px;margin:0 auto;line-height:2}
+
+/* INTRO */
+.sub-intro{padding:var(--section-pad) 0;text-align:center}
+.sub-intro-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.sub-intro-title{font-family:var(--font-jp);font-size:28px;font-weight:300;letter-spacing:.1em;line-height:2;margin-bottom:32px}
+.sub-intro-text{font-size:16px;color:var(--color-text-light);max-width:640px;margin:0 auto;line-height:2.2}
+
+/* PRICING CARDS */
+.pricing{padding:0 0 var(--section-pad)}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pricing-card{border:1px solid var(--color-border);padding:40px 28px;text-align:center;position:relative;transition:border-color .3s,box-shadow .3s}
+.pricing-card:hover{border-color:var(--color-accent);box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.pricing-card.popular{border-color:var(--color-accent);border-width:2px}
+.pricing-card.popular::before{content:'Most Popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);padding:6px 20px;background:var(--color-accent);color:#fff;font-size:16px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.pricing-plan{font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.pricing-plan-jp{font-family:var(--font-jp);font-size:16px;color:var(--color-text-light);margin-bottom:24px}
+.pricing-price{font-family:var(--font-display);font-size:40px;font-weight:700;line-height:1;margin-bottom:4px}
+.pricing-price small{font-size:16px;font-weight:400}
+.pricing-period{font-size:16px;color:var(--color-text-light);margin-bottom:32px}
+.pricing-features{text-align:left;margin-bottom:32px}
+.pricing-feature{font-size:17px;padding:10px 0;border-bottom:1px solid var(--color-card-bg);display:flex;align-items:center;gap:10px}
+.pricing-feature svg{width:16px;height:16px;color:var(--color-accent);flex-shrink:0}
+.pricing-feature.disabled{color:var(--color-text-light);opacity:.5}
+.pricing-feature.disabled svg{color:var(--color-border)}
+.pricing-btn{display:block;padding:14px;background:var(--color-text);color:#fff;font-size:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:0;transition:background .3s;text-align:center}
+.pricing-btn:hover{background:var(--color-accent)}
+.pricing-card.popular .pricing-btn{background:var(--color-accent)}
+.pricing-card.popular .pricing-btn:hover{background:var(--color-accent-hover)}
+
+/* HOW IT WORKS */
+.how{padding:var(--section-pad) 0;background:var(--color-card-bg)}
+.how-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.how-sub{text-align:center;font-size:16px;color:var(--color-text-light);margin-bottom:64px}
+.how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:0 auto}
+.how-step{text-align:center}
+.how-step-num{width:56px;height:56px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;border:2px solid var(--color-accent);font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--color-accent)}
+.how-step-name{font-family:var(--font-jp);font-size:17px;font-weight:600;margin-bottom:8px}
+.how-step-desc{font-size:16px;color:var(--color-text-light);line-height:1.8}
+
+/* BENEFITS */
+.benefits{padding:var(--section-pad) 0}
+.benefits-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.benefits-sub{text-align:center;font-size:16px;color:var(--color-text-light);margin-bottom:64px}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.benefit{text-align:center}
+.benefit-icon{width:64px;height:64px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;background:var(--color-card-bg);color:var(--color-accent)}
+.benefit-icon svg{width:28px;height:28px}
+.benefit-name{font-family:var(--font-jp);font-size:16px;font-weight:600;margin-bottom:8px}
+.benefit-desc{font-size:17px;color:var(--color-text-light);line-height:2}
+
+/* FAQ MINI */
+.sub-faq{padding:var(--section-pad) 0;background:var(--color-navy);color:#fff}
+.sub-faq-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:.04em;margin-bottom:48px}
+.sub-faq-item{max-width:800px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.1);padding:24px 0}
+.sub-faq-q{font-family:var(--font-jp);font-size:17px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.sub-faq-q span{color:var(--color-accent);font-family:var(--font-display);font-size:17px;font-weight:700}
+.sub-faq-a{font-size:17px;color:rgba(255,255,255,.6);line-height:2;padding-left:32px}
+
+/* CTA */
+.sub-cta{padding:100px 0;text-align:center;background:var(--color-card-bg)}
+.sub-cta-title{font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.sub-cta-desc{font-size:16px;color:var(--color-text-light);margin-bottom:40px}
+.sub-cta-btn{display:inline-block;padding:18px 56px;background:var(--color-accent);color:#fff;font-size:17px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:0;transition:background .3s}
+.sub-cta-btn:hover{background:var(--color-accent-hover)}
+
+
+/* Hide scrollbars */
+*::-webkit-scrollbar{width:0;height:0}
+*{scrollbar-width:none;-ms-overflow-style:none}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+
+/* BREADCRUMB */
+.breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
+.bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.breadcrumb a{color:#999;text-decoration:none;transition:color 0.3s}
+.breadcrumb a:hover{color:#C9A96E}
+.breadcrumb span{color:#666}
+.bc-sep{margin:0 8px;color:#ccc}
+@media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TOP",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "サブスクリプション",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/subscription/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo"><img src="../images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="../concept/">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="../concept/">ブランドコンセプト</a>
+          <a href="../concept/brand-story/">ブランドストーリー</a>
+          <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="../concept/material/">素材のこだわり</a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../products/">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="../products/comforter/" class="nav-mega-card">
+            <img src="../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy">
+            <span class="nav-mega-card-label">COMFORTER</span>
+            <span class="nav-mega-card-name">掛け布団</span>
+          </a>
+          <a href="../products/pillow/" class="nav-mega-card">
+            <img src="../images/site/pillow_hero2.jpg" alt="枕" loading="lazy">
+            <span class="nav-mega-card-label">PILLOW</span>
+            <span class="nav-mega-card-name">枕／枕カバー</span>
+          </a>
+          <a href="../products/bedding/" class="nav-mega-card">
+            <img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy">
+            <span class="nav-mega-card-label">BEDDING</span>
+            <span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span>
+          </a>
+          <a href="../products/apparel/" class="nav-mega-card">
+            <img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy">
+            <span class="nav-mega-card-label">APPAREL</span>
+            <span class="nav-mega-card-name">アパレル</span>
+          </a>
+          <a href="../products/collaboration/" class="nav-mega-card">
+            <img src="../images/site/collab_hero.jpg" alt="コラボ" loading="lazy">
+            <span class="nav-mega-card-label">COLLABORATION</span>
+            <span class="nav-mega-card-name">コラボ</span>
+          </a>
+          <a href="../products/baby/" class="nav-mega-card">
+            <img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy">
+            <span class="nav-mega-card-label">BABY</span>
+            <span class="nav-mega-card-name">ベビー</span>
+          </a>
+          <a href="../products/service/" class="nav-mega-card">
+            <img src="../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy">
+            <span class="nav-mega-card-label">SERVICE</span>
+            <span class="nav-mega-card-name">クリーンサイクルサービス</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../magazine/">MAGAZINE</a>
+      </div>
+      <div class="header-nav-item">
+        <a href="../about/">ABOUT</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="../cart/">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="../index.html">TOP</a>
+    <a href="../concept/">CONCEPT</a>
+    <a href="../concept/brand-story/">BRAND STORY</a>
+    <a href="../products/">PRODUCTS</a>
+    <a href="../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../magazine/">MAGAZINE</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../gift/">GIFT</a>
+    <a href="../contact/">CONTACT</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../subscription/">サブスクリプション</a>
+    <a href="../cart/">CART</a>
+  </nav>
+</div>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <span>サブスクリプション</span></div></nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="page-hero-en fade-up">Subscription</p>
+    <h1 class="page-hero-title fade-up">SUBSCRIPTION</h1>
+    <p class="page-hero-desc fade-up">月額制で上質な掛け布団をご利用いただけます。季節ごとの交換やクリーニングも含まれます。</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="sub-intro">
+  <div class="container">
+    <p class="sub-intro-en fade-up">Sleep Better, Live Better</p>
+    <h2 class="sub-intro-title fade-up">最高の眠りを、<br>月額制で。</h2>
+    <p class="sub-intro-text fade-up">初期費用を抑えながら、表参道布団店の上質な掛け布団をご自宅でお試しいただけます。季節に合わせた交換、定期クリーニング、すべてお任せください。</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <div class="pricing-grid">
+      <!-- LITE -->
+      <div class="pricing-card fade-up">
+        <h3 class="pricing-plan">Lite</h3>
+        <p class="pricing-plan-jp">ライトプラン</p>
+        <p class="pricing-price">&yen;1,980<small>/月</small></p>
+        <p class="pricing-period">最低利用期間：3ヶ月</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Flower 掛け布団</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>年1回クリーニング</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>送料無料</div>
+          <div class="pricing-feature disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>季節交換</div>
+          <div class="pricing-feature disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>ショールーム優先予約</div>
+        </div>
+        <a href="../contact/" class="pricing-btn">Start Plan</a>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="pricing-card popular fade-up">
+        <h3 class="pricing-plan">Standard</h3>
+        <p class="pricing-plan-jp">スタンダードプラン</p>
+        <p class="pricing-price">&yen;3,980<small>/月</small></p>
+        <p class="pricing-period">最低利用期間：6ヶ月</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>CCD 掛け布団</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>年2回クリーニング</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>送料無料</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>季節交換（年2回）</div>
+          <div class="pricing-feature disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>ショールーム優先予約</div>
+        </div>
+        <a href="../contact/" class="pricing-btn">Start Plan</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="pricing-card fade-up">
+        <h3 class="pricing-plan">Premium</h3>
+        <p class="pricing-plan-jp">プレミアムプラン</p>
+        <p class="pricing-price">&yen;6,980<small>/月</small></p>
+        <p class="pricing-period">最低利用期間：12ヶ月</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>RDS 掛け布団</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>年4回クリーニング</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>送料無料</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>季節交換（年4回）</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>ショールーム優先予約</div>
+        </div>
+        <a href="../contact/" class="pricing-btn">Start Plan</a>
+      </div>
+
+      <!-- LUXURY -->
+      <div class="pricing-card fade-up">
+        <h3 class="pricing-plan">Luxury</h3>
+        <p class="pricing-plan-jp">ラグジュアリープラン</p>
+        <p class="pricing-price">&yen;14,800<small>/月</small></p>
+        <p class="pricing-period">最低利用期間：12ヶ月</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Premium RDS 掛け布団</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>無制限クリーニング</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>送料無料</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>季節交換（無制限）</div>
+          <div class="pricing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>専任コンシェルジュ</div>
+        </div>
+        <a href="../contact/" class="pricing-btn">Start Plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <h2 class="how-title fade-up">How It Works</h2>
+    <p class="how-sub fade-up">かんたん4ステップでスタート</p>
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="how-step-num">1</div>
+        <h3 class="how-step-name">プランを選ぶ</h3>
+        <p class="how-step-desc">ライフスタイルに合った<br>プランをお選びください</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">2</div>
+        <h3 class="how-step-name">お届け</h3>
+        <p class="how-step-desc">最短3日で<br>ご自宅にお届けします</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">3</div>
+        <h3 class="how-step-name">体験する</h3>
+        <p class="how-step-desc">上質な眠りを<br>毎日ご体感ください</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">4</div>
+        <h3 class="how-step-name">交換・クリーニング</h3>
+        <p class="how-step-desc">季節に合わせて交換<br>クリーニングもお任せ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <h2 class="benefits-title fade-up">Benefits</h2>
+    <p class="benefits-sub fade-up">サブスクリプションならではのメリット</p>
+    <div class="benefits-grid">
+      <div class="benefit fade-up">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3 class="benefit-name">初期費用を抑えられる</h3>
+        <p class="benefit-desc">高品質な掛け布団を月額制で。まとまった初期投資なしに、最高の眠りをスタートできます。</p>
+      </div>
+      <div class="benefit fade-up">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h3 class="benefit-name">常に最適な状態</h3>
+        <p class="benefit-desc">季節に合わせた交換と定期クリーニングで、常にベストコンディションの掛け布団でお休みいただけます。</p>
+      </div>
+      <div class="benefit fade-up">
+        <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="benefit-name">サステナブル</h3>
+        <p class="benefit-desc">使い終わった布団は回収してリサイクル。循環型の仕組みで、環境に配慮した眠りを実現します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sub-faq">
+  <div class="container">
+    <h2 class="sub-faq-title fade-up">FAQ</h2>
+    <div class="sub-faq-item fade-up">
+      <p class="sub-faq-q"><span>Q.</span>途中でプラン変更はできますか？</p>
+      <p class="sub-faq-a">はい、最低利用期間経過後であれば、いつでもプラン変更が可能です。アップグレードは即日、ダウングレードは次回更新時に反映されます。</p>
+    </div>
+    <div class="sub-faq-item fade-up">
+      <p class="sub-faq-q"><span>Q.</span>解約時の違約金はありますか？</p>
+      <p class="sub-faq-a">最低利用期間内の解約の場合、残月分の50%の違約金が発生します。最低利用期間経過後は、違約金なしでいつでも解約可能です。</p>
+    </div>
+    <div class="sub-faq-item fade-up">
+      <p class="sub-faq-q"><span>Q.</span>布団のサイズは選べますか？</p>
+      <p class="sub-faq-a">はい、シングル・セミダブル・ダブル・クイーンの4サイズからお選びいただけます。サイズによる追加料金はございません。</p>
+    </div>
+    <div class="sub-faq-item fade-up">
+      <p class="sub-faq-q"><span>Q.</span>気に入った場合、購入に切り替えられますか？</p>
+      <p class="sub-faq-a">はい、ご利用中の布団をそのまま購入いただくことも可能です。サブスクリプション会員様限定の割引価格をご用意しております。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sub-cta">
+  <div class="container">
+    <h2 class="sub-cta-title fade-up">Start Your Journey</h2>
+    <p class="sub-cta-desc fade-up">まずは無料カウンセリングから。最適なプランをご提案いたします。</p>
+    <a href="../contact/" class="sub-cta-btn fade-up">Free Consultation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../products/comforter/">掛け布団</a>
+        <a href="../products/pillow/">枕／枕カバー</a>
+        <a href="../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../products/apparel/">アパレル</a>
+        <a href="../products/collaboration/">コラボレーション</a>
+        <a href="../products/baby/">ベビー</a>
+        <a href="../products/service/">クリーンサイクルサービス</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="../concept/">ブランドコンセプト</a>
+        <a href="../concept/brand-story/">ブランドストーリー</a>
+        <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../concept/material/">素材のこだわり</a>
+        <a href="../down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="../magazine/">マガジン</a>
+        <a href="../about/">会社概要</a>
+        <a href="../gift/">ギフト</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../subscription/">サブスクリプション</a>
+        <a href="../inventory-view/">在庫状況</a>
+        <a href="../privacy-policy/">プライバシーポリシー</a>
+        <a href="../terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function(){
+  if(typeof gsap!=='undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.fade-up').forEach(function(el){
+      ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:function(){el.classList.add('visible')},once:true});
+    });
+  }
+})();
+</script>
+<script src="../js/cart.js"></script>
+<script>
+// Mobile menu
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var menu=document.getElementById('mobileMenu');
+  var close=document.getElementById('menuClose');
+  var overlay=document.getElementById('mobileMenuOverlay');
+  if(!btn||!menu)return;
+  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
+  btn.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  if(overlay)overlay.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+})();
+</script>
+</body>
+</html>

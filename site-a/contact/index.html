@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 表参道布団店。</title>
+<meta name="description" content="表参道布団店へのお問い合わせ。商品に関するご質問、ショールームのご予約、法人・メディアのお問い合わせを承ります。">
+<meta property="og:title" content="お問い合わせ | 表参道布団店。">
+<meta property="og:description" content="商品に関するご質問、ショールームのご予約、法人・メディアのお問い合わせを承ります。">
+<meta property="og:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<meta property="og:url" content="https://omotesando-futon.com/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="お問い合わせ | 表参道布団店。">
+<meta name="twitter:description" content="商品に関するご質問、ショールームのご予約を承ります。">
+<meta name="twitter:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+/* Mega menu for PRODUCTS (with images) */
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
+/* Actions */
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+/* === END GLOBAL NAV === */
+
+/* FOOTER */
+.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--color-bg:#FFF;--color-text:#1A1A1A;--color-text-light:#6B6B6B;--color-accent:#C9A96E;--color-accent-hover:#B8975A;--color-navy:#2D2D2D;--color-white:#FFF;--color-border:#E5E5E5;--color-card-bg:#F7F7F7;--header-height:72px;--max-width:1320px;--section-pad:120px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:400;color:var(--color-text);background:var(--color-bg);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}ul,ol{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-btn{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.icon-btn svg{width:20px;height:20px}
+.cart-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--color-accent);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
+
+
+.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
+.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}
+.mobile-menu nav a:hover{color:var(--color-accent)}
+
+/* PAGE HERO */
+.page-hero{padding:160px 0 80px;background:var(--color-card-bg);text-align:center}
+.page-hero-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.page-hero-title{font-family:var(--font-display);font-size:48px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px}
+.page-hero-desc{font-size:16px;color:var(--color-text-light);max-width:560px;margin:0 auto}
+
+/* CONTACT INFO BAR */
+.contact-info{padding:64px 0;border-bottom:1px solid var(--color-border)}
+.contact-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;text-align:center}
+.contact-info-item{}
+.contact-info-icon{width:48px;height:48px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:var(--color-card-bg);color:var(--color-accent)}
+.contact-info-icon svg{width:22px;height:22px}
+.contact-info-label{font-size:17px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px}
+.contact-info-value{font-size:16px;line-height:1.8}
+.contact-info-note{font-size:17px;color:var(--color-text-light);margin-top:4px}
+
+/* FORM TABS */
+.form-section{padding:var(--section-pad) 0}
+.form-tabs{display:flex;justify-content:center;gap:0;margin-bottom:64px;border-bottom:1px solid var(--color-border)}
+.form-tab{padding:16px 40px;font-family:var(--font-body);font-size:17px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-light);border-bottom:2px solid transparent;transition:color .3s,border-color .3s;cursor:pointer;margin-bottom:-1px}
+.form-tab:hover{color:var(--color-text)}
+.form-tab.active{color:var(--color-accent);border-bottom-color:var(--color-accent)}
+
+/* FORM PANEL */
+.form-panel{display:none;max-width:720px;margin:0 auto}
+.form-panel.active{display:block}
+.form-panel-title{font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:.04em;margin-bottom:8px}
+.form-panel-desc{font-size:16px;color:var(--color-text-light);margin-bottom:40px}
+
+/* FORM ELEMENTS */
+.form-row{margin-bottom:24px}
+.form-row-half{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.form-label{display:block;font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;color:var(--color-text)}
+.form-label .req{color:var(--color-accent);margin-left:4px;font-size:16px}
+.form-input,.form-select,.form-textarea{width:100%;padding:14px 16px;border:1px solid var(--color-border);font-family:var(--font-body);font-size:16px;color:var(--color-text);background:var(--color-white);border-radius:0;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--color-accent)}
+.form-input::placeholder,.form-textarea::placeholder{color:#bbb}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B6B6B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.form-textarea{min-height:160px;resize:vertical}
+.form-checkbox{display:flex;align-items:flex-start;gap:12px;margin-bottom:32px}
+.form-checkbox input{width:18px;height:18px;margin-top:2px;accent-color:var(--color-accent);flex-shrink:0}
+.form-checkbox label{font-size:17px;color:var(--color-text-light);line-height:1.6}
+.form-checkbox label a{color:var(--color-accent);text-decoration:underline}
+.form-submit{display:inline-block;padding:18px 64px;background:var(--color-accent);color:#fff;font-family:var(--font-body);font-size:17px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:0;cursor:pointer;transition:background .3s}
+.form-submit:hover{background:var(--color-accent-hover)}
+
+/* DATE/TIME ROW */
+.form-row-third{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:24px}
+
+
+/* Hide scrollbars */
+*::-webkit-scrollbar{width:0;height:0}
+*{scrollbar-width:none;-ms-overflow-style:none}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+
+/* BREADCRUMB */
+.breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
+.bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.breadcrumb a{color:#999;text-decoration:none;transition:color 0.3s}
+.breadcrumb a:hover{color:#C9A96E}
+.breadcrumb span{color:#666}
+.bc-sep{margin:0 8px;color:#ccc}
+@media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "TOP",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "お問い合わせ",
+      "item": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/contact/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo"><img src="../images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="../concept/">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="../concept/">ブランドコンセプト</a>
+          <a href="../concept/brand-story/">ブランドストーリー</a>
+<a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="../concept/material/">素材のこだわり</a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../products/">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="../products/comforter/" class="nav-mega-card">
+            <img src="../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy">
+            <span class="nav-mega-card-label">COMFORTER</span>
+            <span class="nav-mega-card-name">掛け布団</span>
+          </a>
+          <a href="../products/pillow/" class="nav-mega-card">
+            <img src="../images/site/pillow_hero2.jpg" alt="枕" loading="lazy">
+            <span class="nav-mega-card-label">PILLOW</span>
+            <span class="nav-mega-card-name">枕／枕カバー</span>
+          </a>
+          <a href="../products/bedding/" class="nav-mega-card">
+            <img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy">
+            <span class="nav-mega-card-label">BEDDING</span>
+            <span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span>
+          </a>
+          <a href="../products/apparel/" class="nav-mega-card">
+            <img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy">
+            <span class="nav-mega-card-label">APPAREL</span>
+            <span class="nav-mega-card-name">アパレル</span>
+          </a>
+          <a href="../products/collaboration/" class="nav-mega-card">
+            <img src="../images/site/collab_hero.jpg" alt="コラボ" loading="lazy">
+            <span class="nav-mega-card-label">COLLABORATION</span>
+            <span class="nav-mega-card-name">コラボ</span>
+          </a>
+          <a href="../products/baby/" class="nav-mega-card">
+            <img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy">
+            <span class="nav-mega-card-label">BABY</span>
+            <span class="nav-mega-card-name">ベビー</span>
+          </a>
+          <a href="../products/service/" class="nav-mega-card">
+            <img src="../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy">
+            <span class="nav-mega-card-label">SERVICE</span>
+            <span class="nav-mega-card-name">クリーンサイクルサービス</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../magazine/">MAGAZINE</a>
+      </div>
+      <div class="header-nav-item">
+        <a href="../about/">ABOUT</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="../cart/">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="../index.html">TOP</a>
+    <a href="../concept/">CONCEPT</a>
+    <a href="../concept/brand-story/">BRAND STORY</a>
+    <a href="../products/">PRODUCTS</a>
+    <a href="../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../magazine/">MAGAZINE</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../gift/">GIFT</a>
+    <a href="../contact/">CONTACT</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../subscription/">サブスクリプション</a>
+    <a href="../cart/">CART</a>
+  </nav>
+</div>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <span>お問い合わせ</span></div></nav>
+
+
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-tabs fade-up">
+      <button class="form-tab active" data-form="general">General</button>
+      <button class="form-tab" data-form="business">Business</button>
+    </div>
+
+    <!-- GENERAL INQUIRY -->
+    <div class="form-panel active" data-panel="general">
+      <h2 class="form-panel-title fade-up">General Inquiry</h2>
+      <p class="form-panel-desc fade-up">商品やサービスに関するお問い合わせ</p>
+      <form onsubmit="return false" class="fade-up">
+        <div class="form-row-half">
+          <div>
+            <label class="form-label">お名前（姓）<span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="山田" required>
+          </div>
+          <div>
+            <label class="form-label">お名前（名）<span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="太郎" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">メールアドレス<span class="req">*</span></label>
+          <input type="email" class="form-input" placeholder="your@email.com" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">電話番号</label>
+          <input type="tel" class="form-input" placeholder="090-0000-0000">
+        </div>
+        <div class="form-row">
+          <label class="form-label">お問い合わせカテゴリ<span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="" disabled selected>選択してください</option>
+            <option>商品について</option>
+            <option>ご注文について</option>
+            <option>配送について</option>
+            <option>返品・交換について</option>
+            <option>サブスクリプションについて</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">お問い合わせ内容<span class="req">*</span></label>
+          <textarea class="form-textarea" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+        </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="privacy1" required>
+          <label for="privacy1"><a href="../privacy-policy/">プライバシーポリシー</a>に同意の上、送信してください。</label>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+
+    <!-- BUSINESS / MEDIA -->
+    <div class="form-panel" data-panel="business">
+      <h2 class="form-panel-title fade-up">Business / Media</h2>
+      <p class="form-panel-desc fade-up">法人のお取引・メディア掲載に関するお問い合わせ</p>
+      <form onsubmit="return false" class="fade-up">
+        <div class="form-row-half">
+          <div>
+            <label class="form-label">会社名<span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="株式会社◯◯" required>
+          </div>
+          <div>
+            <label class="form-label">部署名</label>
+            <input type="text" class="form-input" placeholder="広報部">
+          </div>
+        </div>
+        <div class="form-row-half">
+          <div>
+            <label class="form-label">ご担当者名<span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="山田 太郎" required>
+          </div>
+          <div>
+            <label class="form-label">お役職</label>
+            <input type="text" class="form-input" placeholder="マネージャー">
+          </div>
+        </div>
+        <div class="form-row-half">
+          <div>
+            <label class="form-label">メールアドレス<span class="req">*</span></label>
+            <input type="email" class="form-input" placeholder="your@company.com" required>
+          </div>
+          <div>
+            <label class="form-label">電話番号<span class="req">*</span></label>
+            <input type="tel" class="form-input" placeholder="03-0000-0000" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">お問い合わせ種別<span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="" disabled selected>選択してください</option>
+            <option>法人購入・ノベルティ</option>
+            <option>ホテル・旅館向け導入</option>
+            <option>メディア取材・掲載</option>
+            <option>コラボレーション・タイアップ</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">お問い合わせ内容<span class="req">*</span></label>
+          <textarea class="form-textarea" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+        </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="privacy3" required>
+          <label for="privacy3"><a href="../privacy-policy/">プライバシーポリシー</a>に同意の上、送信してください。</label>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../products/comforter/">掛け布団</a>
+        <a href="../products/pillow/">枕／枕カバー</a>
+        <a href="../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../products/apparel/">アパレル</a>
+        <a href="../products/collaboration/">コラボレーション</a>
+        <a href="../products/baby/">ベビー</a>
+        <a href="../products/service/">クリーンサイクルサービス</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="../concept/">ブランドコンセプト</a>
+        <a href="../concept/brand-story/">ブランドストーリー</a>
+        <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../concept/material/">素材のこだわり</a>
+        <a href="../down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="../magazine/">マガジン</a>
+        <a href="../about/">会社概要</a>
+        <a href="../gift/">ギフト</a>
+        <a href="../faq/">FAQ</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../subscription/">サブスクリプション</a>
+        <a href="../inventory-view/">在庫状況</a>
+        <a href="../privacy-policy/">プライバシーポリシー</a>
+        <a href="../terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function(){
+  
+</script>
+<script src="../js/cart.js"></script>
+<script>
+// Mobile menu
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var menu=document.getElementById('mobileMenu');
+  var close=document.getElementById('menuClose');
+  var overlay=document.getElementById('mobileMenuOverlay');
+  if(!btn||!menu)return;
+  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
+  btn.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  if(overlay)overlay.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+})();
+</script>
+</body>
+</html>

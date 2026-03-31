@@ -1,0 +1,73 @@
+{
+  "completed_migrations": [
+    {
+      "from": "/concept.html",
+      "to": "/concept/index.html",
+      "status": "done"
+    },
+    {
+      "from": "/down/index.html",
+      "to": "/concept/clean-cycle-down.html",
+      "status": "done"
+    },
+    {
+      "from": "/down/material.html",
+      "to": "/concept/material.html",
+      "status": "done"
+    },
+    {
+      "from": "/down/technology.html",
+      "to": "/concept/technology.html",
+      "status": "done"
+    }
+  ],
+  "legacy_files_kept": [
+    {
+      "path": "/concept.html",
+      "reason": "redirect compatibility"
+    },
+    {
+      "path": "/down/index.html",
+      "reason": "redirect compatibility"
+    },
+    {
+      "path": "/down/material.html",
+      "reason": "redirect compatibility"
+    },
+    {
+      "path": "/down/technology.html",
+      "reason": "redirect compatibility"
+    },
+    {
+      "path": "/products.html",
+      "reason": "legacy alternate product listing"
+    },
+    {
+      "path": "/ccd.html",
+      "reason": "legacy CCD page"
+    },
+    {
+      "path": "/product-detail.html",
+      "reason": "generic template"
+    }
+  ],
+  "directory_structure": {
+    "/": "Landing page",
+    "/concept/": "Brand concept pages (4 pages)",
+    "/products/": "Product hub",
+    "/products/comforter/": "Comforter category (12 products + index)",
+    "/products/pillow/": "Pillow category (3 products + index)",
+    "/products/bedding/": "Bedding category (5 products + index)",
+    "/products/apparel/": "Apparel category (2 products + index)",
+    "/products/collaboration/": "Collaboration category (2 products + index)",
+    "/products/baby/": "Baby category (2 products + index)",
+    "/products/service/": "Service category (4 products)",
+    "/magazine/": "Magazine articles (5 articles)",
+    "/account/": "User account pages",
+    "/admin/": "Admin pages",
+    "/cart/": "Shopping cart",
+    "/checkout/": "Checkout flow",
+    "/images/": "All image assets",
+    "/data/": "JSON data files"
+  }
+}

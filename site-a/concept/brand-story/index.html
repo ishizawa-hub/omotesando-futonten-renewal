@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブランドストーリー | 表参道布団店。</title>
+<meta name="description" content="表参道布団店のブランドストーリー。2015年の創業から現在まで、「日本の寝室に、デザインを。」をコンセプトに歩み続ける表参道布団店の軌跡。">
+<meta property="og:title" content="ブランドストーリー | 表参道布団店。">
+<meta property="og:description" content="2015年の創業から現在まで、「日本の寝室に、デザインを。」をコンセプトに歩み続ける軌跡。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === RESET & VARIABLES === */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans','Noto Sans JP',sans-serif;
+  --font-jp:'Noto Sans JP',sans-serif;
+  --color-bg:#FFF;
+  --color-text:#1A1A1A;
+  --color-text-light:#6B6B6B;
+  --color-accent:#C9A96E;
+  --color-accent-hover:#B8975A;
+  --color-navy:#2D2D2D;
+  --color-white:#FFF;
+  --color-border:#E5E5E5;
+  --color-card-bg:#F7F7F7;
+  --header-height:72px;
+  --max-width:1320px;
+  --section-pad:120px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--color-text);background:var(--color-bg);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1998;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.mobile-menu-overlay.active{opacity:1;visibility:visible}
+.mobile-menu{position:fixed;top:0;right:-320px;width:320px;height:100vh;background:#2D2D2D;z-index:1999;transition:right .35s cubic-bezier(.4,0,.2,1);padding:80px 32px 32px;overflow-y:auto}
+.mobile-menu.active{right:0}
+.mobile-menu-close{position:absolute;top:20px;right:20px;background:none;border:none;cursor:pointer;color:#fff;width:32px;height:32px}
+.mobile-menu nav{display:flex;flex-direction:column;gap:0}
+.mobile-menu nav a{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:#fff;letter-spacing:.1em;text-transform:uppercase;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none;transition:color .3s}
+.mobile-menu nav a:hover{color:#C9A96E}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 20px}}
+
+/* ANIMATION */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* === HERO === */
+.hero{position:relative;height:60vh;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:72px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,30,0.25) 0%,rgba(30,30,30,0.4) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff}
+.hero-label{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:20px}
+.hero-title{font-family:var(--font-display);font-size:56px;font-weight:700;letter-spacing:0.08em;margin-bottom:16px;line-height:1.1}
+.hero-subtitle{font-family:var(--font-jp);font-size:16px;font-weight:400;letter-spacing:0.15em;opacity:0.7}
+@media(max-width:768px){.hero{height:50vh;margin-top:64px}.hero-title{font-size:36px}.hero-subtitle{font-size:14px}}
+
+/* BREADCRUMB */
+.breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
+.bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.breadcrumb a{color:#999;text-decoration:none;transition:color 0.3s}
+.breadcrumb a:hover{color:#C9A96E}
+.breadcrumb span{color:#666}
+.bc-sep{margin:0 8px;color:#ccc}
+@media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+
+/* === CONCEPT SIBLING NAV === */
+.concept-sibling-nav{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0;position:sticky;top:72px;z-index:99}
+.concept-sibling-nav-inner{max-width:var(--max-width);margin:0 auto;padding:0 40px;display:flex;gap:0}
+.concept-sibling-link{flex:1;padding:20px 16px;text-align:center;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:0.06em;color:#6B6B6B;text-decoration:none;transition:color 0.3s,background 0.3s;border-bottom:3px solid transparent;position:relative}
+.concept-sibling-link:hover{color:var(--color-accent);background:rgba(201,169,110,0.04)}
+.concept-sibling-link.active{color:var(--color-accent);border-bottom-color:var(--color-accent);font-weight:700}
+.concept-sibling-link-en{display:block;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.6;margin-top:4px}
+@media(max-width:768px){.concept-sibling-nav{top:64px}.concept-sibling-nav-inner{flex-wrap:wrap}.concept-sibling-link{flex:1 1 25%;font-size:11px;padding:14px 8px}}
+
+/* === PHILOSOPHY === */
+.philosophy{padding:var(--section-pad) 0;background:#fff}
+.philosophy-inner{max-width:800px;margin:0 auto;padding:0 40px;text-align:center}
+.philosophy-en{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:24px}
+.philosophy-title{font-family:var(--font-jp);font-size:28px;font-weight:600;letter-spacing:0.06em;line-height:1.8;margin-bottom:40px;color:var(--color-text)}
+.philosophy-body{font-family:var(--font-jp);font-size:15px;line-height:2.2;color:var(--color-text-light);letter-spacing:0.04em}
+@media(max-width:768px){.philosophy-title{font-size:22px}.philosophy-body{font-size:14px}}
+
+/* === VISUAL STORY === */
+.visual-story{padding:0 0 var(--section-pad)}
+.visual-story-row{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.visual-story-row.reversed .visual-story-img{order:2}
+.visual-story-row.reversed .visual-story-text{order:1}
+.visual-story-img{position:relative;overflow:hidden}
+.visual-story-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.visual-story-row:hover .visual-story-img img{transform:scale(1.03)}
+.visual-story-text{display:flex;flex-direction:column;justify-content:center;padding:80px 80px}
+.visual-story-en{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.visual-story-heading{font-family:var(--font-jp);font-size:32px;font-weight:600;letter-spacing:0.06em;margin-bottom:24px;line-height:1.5}
+.visual-story-desc{font-family:var(--font-jp);font-size:15px;line-height:2.2;color:var(--color-text-light)}
+@media(max-width:1024px){
+  .visual-story-row{grid-template-columns:1fr;min-height:auto}
+  .visual-story-row.reversed .visual-story-img{order:0}
+  .visual-story-row.reversed .visual-story-text{order:0}
+  .visual-story-img{aspect-ratio:16/10}
+  .visual-story-text{padding:60px 40px}
+}
+@media(max-width:768px){
+  .visual-story-text{padding:48px 24px}
+  .visual-story-heading{font-size:24px}
+}
+
+/* === TIMELINE === */
+.timeline{padding:var(--section-pad) 0;background:#FAF7F2}
+.timeline-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:0.04em;margin-bottom:8px}
+.timeline-sub{text-align:center;font-family:var(--font-jp);font-size:14px;color:var(--color-text-light);margin-bottom:80px;letter-spacing:0.06em}
+.timeline-items{position:relative;max-width:900px;margin:0 auto;padding-left:40px}
+.timeline-items::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--color-accent);opacity:0.3}
+.timeline-item{position:relative;margin-bottom:64px;display:grid;grid-template-columns:auto 1fr;gap:32px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-29px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--color-accent);border:3px solid #FAF7F2;z-index:1}
+.timeline-year{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--color-accent);letter-spacing:0.02em;line-height:1;min-width:120px}
+.timeline-img{width:200px;border-radius:4px;overflow:hidden;margin-bottom:16px}
+.timeline-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.timeline-content h3{font-family:var(--font-jp);font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:0.04em}
+.timeline-content p{font-family:var(--font-jp);font-size:14px;line-height:2;color:var(--color-text-light)}
+@media(max-width:768px){
+  .timeline-items{padding-left:32px}
+  .timeline-items::before{left:11px}
+  .timeline-dot{left:-21px;width:12px;height:12px}
+  .timeline-year{font-size:32px;min-width:80px}
+  .timeline-img{width:160px}
+  .timeline-item{gap:20px}
+}
+
+/* === VALUES === */
+.values{padding:var(--section-pad) 0;background:#fff}
+.values-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:0.04em;margin-bottom:8px}
+.values-sub{text-align:center;font-family:var(--font-jp);font-size:14px;color:var(--color-text-light);margin-bottom:64px;letter-spacing:0.06em}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1100px;margin:0 auto}
+.value-card{text-align:center;padding:48px 32px;background:var(--color-card-bg);border-radius:8px;transition:transform 0.3s,box-shadow 0.3s}
+.value-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
+.value-num{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--color-accent);opacity:0.3;margin-bottom:16px;line-height:1}
+.value-name{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:0.06em;margin-bottom:4px}
+.value-name-jp{font-family:var(--font-jp);font-size:13px;color:var(--color-text-light);margin-bottom:20px}
+.value-desc{font-family:var(--font-jp);font-size:14px;line-height:2;color:var(--color-text-light);text-align:left}
+@media(max-width:768px){.values-grid{grid-template-columns:1fr;gap:24px}.value-card{padding:36px 24px}}
+
+/* === TEAM === */
+.team{padding:var(--section-pad) 0;background:var(--color-card-bg)}
+.team-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1100px;margin:0 auto}
+.team-img{border-radius:4px;overflow:hidden}
+.team-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.team-en{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:20px}
+.team-title{font-family:var(--font-jp);font-size:28px;font-weight:600;letter-spacing:0.06em;line-height:1.8;margin-bottom:28px}
+.team-text{font-family:var(--font-jp);font-size:15px;line-height:2.2;color:var(--color-text-light);margin-bottom:32px}
+.team-founder{display:flex;align-items:center;gap:16px}
+.team-founder-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid var(--color-accent)}
+.team-founder-avatar img{width:100%;height:100%;object-fit:cover}
+.team-founder-name{font-family:var(--font-jp);font-size:16px;font-weight:600}
+.team-founder-role{font-family:var(--font-body);font-size:12px;color:var(--color-text-light);letter-spacing:0.04em}
+@media(max-width:768px){.team-inner{grid-template-columns:1fr;gap:40px}.team-title{font-size:22px}}
+
+/* === STATS BAR === */
+.stats-bar{background:var(--color-navy);padding:80px 0}
+.stats-bar-inner{max-width:var(--max-width);margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.stat-item{text-align:center}
+.stat-number{font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--color-accent);letter-spacing:0.02em;line-height:1.2}
+.stat-unit{font-family:var(--font-body);font-size:14px;color:var(--color-accent);font-weight:600;letter-spacing:0.04em}
+.stat-label{font-family:var(--font-jp);font-size:13px;color:rgba(255,255,255,0.5);margin-top:8px;letter-spacing:0.06em}
+@media(max-width:768px){.stats-bar-inner{grid-template-columns:repeat(2,1fr);gap:40px 24px}.stat-number{font-size:36px}}
+
+/* === NAV CARDS === */
+.nav-cards{padding:var(--section-pad) 0;background:#FAF7F2}
+.nav-cards-inner{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+.nav-cards-header{text-align:center;margin-bottom:64px}
+.nav-cards-en{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:12px}
+.nav-cards-title{font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:0.04em}
+.nav-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.nav-card{position:relative;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:flex-end;text-decoration:none;border-radius:4px}
+.nav-card-img{position:absolute;inset:0;z-index:0}
+.nav-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.nav-card:hover .nav-card-img img{transform:scale(1.05)}
+.nav-card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.1) 60%);z-index:1;transition:background 0.4s}
+.nav-card:hover .nav-card-overlay{background:linear-gradient(0deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.2) 60%)}
+.nav-card-content{position:relative;z-index:2;padding:40px;color:#fff;width:100%}
+.nav-card-label{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px}
+.nav-card-name{font-family:var(--font-display);font-size:24px;font-weight:700;letter-spacing:0.04em;margin-bottom:4px}
+.nav-card-jp{font-family:var(--font-jp);font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:0.06em}
+.nav-card-arrow{position:absolute;bottom:40px;right:40px;z-index:2;width:48px;height:48px;border:1px solid rgba(255,255,255,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s,background 0.3s,transform 0.3s}
+.nav-card:hover .nav-card-arrow{border-color:var(--color-accent);background:var(--color-accent);transform:translateX(4px)}
+.nav-card-arrow svg{width:18px;height:18px;color:#fff}
+@media(max-width:768px){
+  .nav-cards-grid{grid-template-columns:1fr}
+  .nav-card-content{padding:24px}
+  .nav-card-name{font-size:20px}
+  .nav-card-arrow{bottom:24px;right:24px;width:40px;height:40px}
+}
+
+/* === CTA === */
+.cta-section{padding:100px 0;background:#fff;text-align:center}
+.cta-btn{display:inline-block;padding:18px 60px;background:var(--color-text);color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.3s,transform 0.3s}
+.cta-btn:hover{background:var(--color-accent);transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{background:var(--color-navy);color:#fff;padding:80px 0 0}
+.footer-inner{max-width:var(--max-width);margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px}
+.footer-logo img{height:24px;margin-bottom:16px;filter:brightness(0) invert(1)}
+.footer-desc{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.8}
+.footer-nav-title{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:20px}
+.footer-nav{display:flex;flex-direction:column;gap:12px}
+.footer-nav a{font-family:var(--font-jp);font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
+.footer-nav a:hover{color:#fff}
+.footer-copy{text-align:center;font-size:12px;color:rgba(255,255,255,0.25);padding:40px 0 24px;margin-top:64px;border-top:1px solid rgba(255,255,255,0.08)}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}.footer-copy{margin-top:40px}}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo"><img src="../../images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="../../concept/">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="../../concept/">ブランドコンセプト</a>
+          <a href="../../concept/brand-story/">ブランドストーリー</a>
+          <a href="../../concept/brand-story/">ブランドストーリー</a>
+          <a href="../../concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="../../concept/material/">素材のこだわり</a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../../products/">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="../../products/comforter/" class="nav-mega-card"><img src="../../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy"><span class="nav-mega-card-label">COMFORTER</span><span class="nav-mega-card-name">掛け布団</span></a>
+          <a href="../../products/pillow/" class="nav-mega-card"><img src="../../images/site/pillow_hero2.jpg" alt="枕" loading="lazy"><span class="nav-mega-card-label">PILLOW</span><span class="nav-mega-card-name">枕／枕カバー</span></a>
+          <a href="../../products/bedding/" class="nav-mega-card"><img src="../../images/site/bedding_hero.jpg" alt="寝具" loading="lazy"><span class="nav-mega-card-label">BEDDING</span><span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span></a>
+          <a href="../../products/apparel/" class="nav-mega-card"><img src="../../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy"><span class="nav-mega-card-label">APPAREL</span><span class="nav-mega-card-name">アパレル</span></a>
+          <a href="../../products/collaboration/" class="nav-mega-card"><img src="../../images/site/collab_hero.jpg" alt="コラボ" loading="lazy"><span class="nav-mega-card-label">COLLABORATION</span><span class="nav-mega-card-name">コラボ</span></a>
+          <a href="../../products/baby/" class="nav-mega-card"><img src="../../images/site/baby_hero.jpg" alt="ベビー" loading="lazy"><span class="nav-mega-card-label">BABY</span><span class="nav-mega-card-name">ベビー</span></a>
+          <a href="../../products/service/" class="nav-mega-card"><img src="../../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy"><span class="nav-mega-card-label">SERVICE</span><span class="nav-mega-card-name">クリーンサイクルサービス</span></a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="../../magazine/">MAGAZINE</a>
+      </div>
+      <div class="header-nav-item">
+        <a href="../../about/">ABOUT</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="../../cart/">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="../../index.html">TOP</a>
+    <a href="../../concept/">CONCEPT</a>
+    <a href="../../concept/brand-story/">BRAND STORY</a>
+    <a href="../../products/">PRODUCTS</a>
+    <a href="../../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../../magazine/">MAGAZINE</a>
+    <a href="../../about/">ABOUT</a>
+    <a href="../../gift/">GIFT</a>
+    <a href="../../contact/">CONTACT</a>
+    <a href="../../faq/">FAQ</a>
+    <a href="../../subscription/">サブスクリプション</a>
+    <a href="../../cart/">CART</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://omotesando-futonten.com/wp/wp-content/uploads/2024/07/c-2.jpg" alt="表参道布団店 ブランドストーリー" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">Concept</p>
+    <h1 class="hero-title">Brand Story</h1>
+    <p class="hero-subtitle">眠りの質を、人生の質へ。</p>
+  </div>
+</section>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../../index.html">TOP</a> <span class="bc-sep">/</span> <a href="../../concept/">CONCEPT</a> <span class="bc-sep">/</span> <span>ブランドストーリー</span></div></nav>
+
+<!-- CONCEPT SIBLING NAV -->
+<nav class="concept-sibling-nav">
+  <div class="concept-sibling-nav-inner">
+    <a href="../" class="concept-sibling-link">ブランドコンセプト<span class="concept-sibling-link-en">Brand Concept</span></a>
+    <a href="../brand-story/" class="concept-sibling-link active">ブランドストーリー<span class="concept-sibling-link-en">Brand Story</span></a>
+    <a href="../clean-cycle-down/" class="concept-sibling-link">Clean Cycle Down<span class="concept-sibling-link-en">Clean Cycle Down</span></a>
+    <a href="../material/" class="concept-sibling-link">素材のこだわり<span class="concept-sibling-link-en">Materials</span></a>
+  </div>
+</nav>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="philosophy-inner fade-up">
+    <p class="philosophy-en">Philosophy</p>
+    <h2 class="philosophy-title">人生の三分の一を過ごす場所に、<br>最高の品質と倫理を。</h2>
+    <p class="philosophy-body">
+      表参道布団店は、代表取締役 古賀貴之が2015年に創業。布団業界は長年50〜60代をターゲットとしており、若年層へのアプローチが皆無でした。「高級羽毛布団は高額で当然」という認識が若い世代には納得感を持たない。30〜40代が将来布団に何十万円もかけるようにはならないと予測し、東京・表参道という従来の布団店らしくない立地に店舗を構えました。ブランドコンセプトは「日本の寝室に、デザインを。」
+    </p>
+  </div>
+</section>
+
+<!-- VISUAL STORY -->
+<section class="visual-story">
+  <div class="visual-story-row fade-up">
+    <div class="visual-story-img">
+      <img src="../../images/brand/竣工写真_表参道布団店002.webp" alt="表参道布団店 店舗" loading="lazy">
+    </div>
+    <div class="visual-story-text">
+      <p class="visual-story-en">ORIGIN</p>
+      <h3 class="visual-story-heading">表参道から始まる挑戦</h3>
+      <p class="visual-story-desc">
+        東京・表参道。ファッションとカルチャーが交差するこの街に、あえて布団店を構えました。寝具業界の常識を覆し、デザイン性と機能性を兼ね備えた、新しい眠りの文化を発信するために。
+      </p>
+    </div>
+  </div>
+  <div class="visual-story-row reversed fade-up">
+    <div class="visual-story-img">
+      <img src="../../images/video-caps/cap_007.jpg" alt="山梨県白州の山々" loading="lazy">
+    </div>
+    <div class="visual-story-text">
+      <p class="visual-story-en">HAKUSHU</p>
+      <h3 class="visual-story-heading">白州の水が育む品質</h3>
+      <p class="visual-story-desc">
+        南アルプスの花崗岩層を20年以上かけて浸透した地下天然水。この水だからこそ実現できる、残脂率0.5%以下という驚異的な清浄度。ダウン本来のふくらみを損なうことなく、究極のクリーンを追求しています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="container">
+    <h2 class="timeline-title fade-up">Our Journey</h2>
+    <p class="timeline-sub fade-up">表参道布団店のあゆみ</p>
+    <div class="timeline-items">
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2015</div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店ロゴ" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
+        <div class="timeline-content">
+          <h3>ブランド創業</h3>
+          <p>代表取締役 古賀貴之が表参道布団店を創業。「日本の寝室に、デザインを。」をブランドコンセプトに、従来の布団店らしくない表参道の地から、寝具業界の変革に挑戦を開始しました。</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2021</div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_007.jpg" alt="山梨県白州の山々" loading="lazy"></div>
+        <div class="timeline-content">
+          <h3>白州水洗浄の確立</h3>
+          <p>山梨県白州町の天然水を使ったダウン洗浄技術を確立。従来比150%の洗浄力を実現し、リサイクルダウンの品質を飛躍的に向上させました。</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2023</div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_019.jpg" alt="Clean Cycle Downブランドタグ" loading="lazy"></div>
+        <div class="timeline-content">
+          <h3>Clean Cycle Down発売</h3>
+          <p>白州水洗浄のリサイクルダウンを富士吉田の職人が仕立てる、シグネチャーシリーズ「Clean Cycle Down」を発売。大きな反響をいただきました。</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024</div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_003.jpg" alt="RDS認証ポーランド原産地証明書" loading="lazy"></div>
+        <div class="timeline-content">
+          <h3>RDS認証ダウンラインナップ拡充</h3>
+          <p>動物福祉に配慮したRDS認証ダウンシリーズを展開。ホワイトグースとプレミアムマザーグースの2ラインを追加しました。</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2026</div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店 リブランディング" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
+        <div class="timeline-content">
+          <h3>ブランドリブランディング・ECサイトリニューアル</h3>
+          <p>ブランドの世界観を一新し、ECサイトを全面リニューアル。より直感的な購買体験と、ものづくりのストーリーを伝えるコンテンツを充実させました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <h2 class="values-title fade-up">Our Values</h2>
+    <p class="values-sub fade-up">3つの価値観が、すべてのものづくりの指針です</p>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-num">01</div>
+        <h3 class="value-name">Quality</h3>
+        <p class="value-name-jp">妥協なき品質</p>
+        <p class="value-desc">原料の選定から最終検品まで、すべての工程で品質を追求します。白州水洗浄と富士吉田の職人技が、他にはない品質を実現します。</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">02</div>
+        <h3 class="value-name">Sustainability</h3>
+        <p class="value-name-jp">持続可能性</p>
+        <p class="value-desc">リサイクルダウンの活用、RDS認証の採用。環境と動物福祉に配慮したものづくりを通じて、循環型社会の実現に貢献します。</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-num">03</div>
+        <h3 class="value-name">Craftsmanship</h3>
+        <p class="value-name-jp">職人の技</p>
+        <p class="value-desc">1000年以上の織物の歴史を持つ富士吉田の職人たち。その熟練の技が、機械では再現できない繊細な仕立てを可能にします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="team-inner">
+      <div class="team-img fade-up">
+        <img src="../../images/brand/竣工写真_表参道布団店003.webp" alt="表参道布団店 店舗内観" style="object-fit:cover;width:100%;height:100%">
+      </div>
+      <div class="fade-up">
+        <p class="team-en">Founder's Message</p>
+        <h2 class="team-title">日本の寝室に、<br>デザインを。</h2>
+        <p class="team-text">布団業界は長年50〜60代をターゲットとしており、若年層へのアプローチが皆無でした。「高級羽毛布団は高額で当然」という認識は、若い世代には納得感を持ちません。だからこそ、品質に妥協せず、適正な価格で、デザイン性のある寝具を届けたい。表参道という立地から、寝具業界の常識を変える挑戦を始めました。</p>
+        <div class="team-founder">
+          <div class="team-founder-avatar">
+            <img src="../../images/koga-portrait.jpg" alt="表参道布団店 代表取締役 古賀貴之">
+          </div>
+          <div>
+            <p class="team-founder-name">古賀 貴之</p>
+            <p class="team-founder-role">代表取締役 / Founder &amp; CEO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item fade-up">
+      <p class="stat-number">15,000<span class="stat-unit">+</span></p>
+      <p class="stat-label">累計販売枚数</p>
+    </div>
+    <div class="stat-item fade-up">
+      <p class="stat-number">4.8<span class="stat-unit">/5</span></p>
+      <p class="stat-label">お客様満足度</p>
+    </div>
+    <div class="stat-item fade-up">
+      <p class="stat-number">98<span class="stat-unit">%</span></p>
+      <p class="stat-label">リピート率</p>
+    </div>
+    <div class="stat-item fade-up">
+      <p class="stat-number">12<span class="stat-unit">t</span></p>
+      <p class="stat-label">年間リサイクルダウン再生量</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION CARDS -->
+<section class="nav-cards">
+  <div class="nav-cards-inner">
+    <div class="nav-cards-header fade-up">
+      <p class="nav-cards-en">EXPLORE</p>
+      <h2 class="nav-cards-title">Learn More</h2>
+    </div>
+    <div class="nav-cards-grid">
+      <a href="../" class="nav-card fade-up">
+        <div class="nav-card-img"><img src="../../images/site/concept_hero.jpg" alt="ブランドコンセプト" loading="lazy"></div>
+        <div class="nav-card-overlay"></div>
+        <div class="nav-card-content">
+          <p class="nav-card-label">Concept</p>
+          <h3 class="nav-card-name">Brand Concept</h3>
+          <p class="nav-card-jp">ブランドコンセプト</p>
+        </div>
+        <div class="nav-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="../clean-cycle-down/" class="nav-card fade-up">
+        <div class="nav-card-img"><img src="../../images/site/ccd01.jpg" alt="Clean Cycle Down" loading="lazy"></div>
+        <div class="nav-card-overlay"></div>
+        <div class="nav-card-content">
+          <p class="nav-card-label">Process</p>
+          <h3 class="nav-card-name">Clean Cycle Down</h3>
+          <p class="nav-card-jp">循環型ダウンの製造工程</p>
+        </div>
+        <div class="nav-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+      <a href="../material/" class="nav-card fade-up">
+        <div class="nav-card-img"><img src="../../images/blog/rds_down_01.png" alt="素材のこだわり" loading="lazy"></div>
+        <div class="nav-card-overlay"></div>
+        <div class="nav-card-content">
+          <p class="nav-card-label">Materials</p>
+          <h3 class="nav-card-name">素材のこだわり</h3>
+          <p class="nav-card-jp">厳選されたダウン素材</p>
+        </div>
+        <div class="nav-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-up">
+  <a href="../../products/index.html" class="cta-btn">View Products</a>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../../products/comforter/">掛け布団</a>
+        <a href="../../products/pillow/">枕／枕カバー</a>
+        <a href="../../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../../products/apparel/">アパレル</a>
+        <a href="../../products/collaboration/">コラボレーション</a>
+        <a href="../../products/baby/">ベビー</a>
+        <a href="../../products/service/">クリーンサイクルサービス</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="../../concept/">ブランドコンセプト</a>
+        <a href="../../concept/brand-story/">ブランドストーリー</a>
+        <a href="../../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../../concept/material/">素材のこだわり</a>
+        <a href="../../down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="../../magazine/">マガジン</a>
+        <a href="../../about/">会社概要</a>
+        <a href="../../gift/">ギフト</a>
+        <a href="../../faq/">FAQ</a>
+        <a href="../../contact/">お問い合わせ</a>
+        <a href="../../subscription/">サブスクリプション</a>
+        <a href="../../inventory-view/">在庫状況</a>
+        <a href="../../privacy-policy/">プライバシーポリシー</a>
+        <a href="../../terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  if(typeof gsap!=='undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.fade-up').forEach(function(el){
+      ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:function(){el.classList.add('visible')},once:true});
+    });
+  }
+})();
+</script>
+<script src="../../js/cart.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('hamburgerBtn');
+  var menu=document.getElementById('mobileMenu');
+  var close=document.getElementById('menuClose');
+  var overlay=document.getElementById('mobileMenuOverlay');
+  if(!btn||!menu)return;
+  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
+  btn.addEventListener('click',openMenu);
+  if(close)close.addEventListener('click',closeMenu);
+  if(overlay)overlay.addEventListener('click',closeMenu);
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商品管理 | 表参道布団店。管理画面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+/* Mega menu for PRODUCTS (with images) */
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
+/* Actions */
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+/* === END GLOBAL NAV === */
+
+/* FOOTER */
+.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+  a { text-decoration:none; color:inherit; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
+  td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
+  tr:hover { background:#FAFBFD; }
+  .btn { display:inline-block; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; font-family:inherit; transition:opacity 0.2s; }
+  .btn:hover { opacity:0.85; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
+  <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
+    <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
+    <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
+  </div>
+  <nav style="flex:1; padding:16px 12px;">
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9632;</span> ダッシュボード
+    </a>
+    <a href="products.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+      <span style="width:20px; text-align:center;">&#9776;</span> 商品管理
+    </a>
+    <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 在庫管理
+    </a>
+    <a href="#" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
+    <a href="#" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
+    </a>
+    <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 設定
+    </a>
+  </nav>
+  <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
+    <a href="login/" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
+  </div>
+</div>
+
+<!-- Main -->
+<div style="margin-left:260px; min-height:100vh;">
+  <!-- Top Bar -->
+  <div style="height:64px; background:#fff; border-bottom:1px solid #EAEDF3; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:50;">
+    <h1 style="font-size:18px; font-weight:700; color:#1A1A1A;">商品管理</h1>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:36px; height:36px; border-radius:50%; background:#C9A96E; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:600;">田</div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#333;">田中 管理者</div>
+        <div style="font-size:11px; color:#999;">admin@omotesando-futon.jp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="padding:28px 32px;">
+
+    <!-- Toolbar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <input type="text" placeholder="商品名で検索..."
+          style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; width:280px; outline:none; background:#fff;"
+          onfocus="this.style.borderColor='#C9A96E';" onblur="this.style.borderColor='#DDD';">
+        <select style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; outline:none; background:#fff; color:#555; cursor:pointer;">
+          <option>すべてのカテゴリ</option>
+          <option>掛け布団</option>
+          <option>枕</option>
+          <option>寝具</option>
+          <option>アパレル</option>
+          <option>ベビー</option>
+        </select>
+      </div>
+      <button class="btn" style="background:#C9A96E; color:#fff; padding:10px 20px; font-size:13px;"
+        onmouseover="this.style.background='#B8964E';" onmouseout="this.style.background='#C9A96E';">
+        + 新規商品を追加
+      </button>
+    </div>
+
+    <!-- Product Table -->
+    <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60px;">画像</th>
+            <th>商品名</th>
+            <th>カテゴリ</th>
+            <th>価格</th>
+            <th>在庫</th>
+            <th>ステータス</th>
+            <th style="width:140px;">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Product 1 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
+            <td style="font-weight:600;">Premium RDS Down 冬用本掛け</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
+            <td style="font-weight:600;">&yen;198,000</td>
+            <td>12</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 2 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
+            <td style="font-weight:600;">RDS Down 冬用本掛け</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
+            <td style="font-weight:600;">&yen;88,000</td>
+            <td>18</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 3 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
+            <td style="font-weight:600;">Clean Cycle Down 冬用本掛け</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
+            <td style="font-weight:600;">&yen;53,800</td>
+            <td>25</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 4 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
+            <td style="font-weight:600;">Flower Down 冬用本掛け</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
+            <td style="font-weight:600;">&yen;35,800</td>
+            <td style="color:#E53935; font-weight:600;">3</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 5 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#EBF0F5; display:flex; align-items:center; justify-content:center; font-size:18px;">&#129412;</div></td>
+            <td style="font-weight:600;">ホワイトグースダウン枕</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E3F2FD; color:#1976D2;">枕</span></td>
+            <td style="font-weight:600;">&yen;27,800</td>
+            <td style="color:#E53935; font-weight:600;">2</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 6 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F0F5F0; display:flex; align-items:center; justify-content:center; font-size:18px;">&#127744;</div></td>
+            <td style="font-weight:600;">掛け布団カバー</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F3E5F5; color:#7B1FA2;">寝具</span></td>
+            <td style="font-weight:600;">&yen;13,800</td>
+            <td>34</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 7 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#129509;</div></td>
+            <td style="font-weight:600;">ダウンジャケット</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FFF3E0; color:#E65100;">アパレル</span></td>
+            <td style="font-weight:600;">&yen;146,300</td>
+            <td>8</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+          <!-- Product 8 -->
+          <tr>
+            <td><div style="width:44px; height:44px; border-radius:6px; background:#FFF5F5; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128118;</div></td>
+            <td style="font-weight:600;">ベビー用布団はじめてセット</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FCE4EC; color:#C2185B;">ベビー</span></td>
+            <td style="font-weight:600;">&yen;39,000</td>
+            <td>15</td>
+            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
+            <td>
+              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
+              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-top:1px solid #EAEDF3;">
+        <div style="font-size:13px; color:#999;">全8件中 1-8件を表示</div>
+        <div style="display:flex; gap:4px;">
+          <button class="btn" style="background:#C9A96E; color:#fff; min-width:36px; text-align:center;">1</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/cart.js"></script>
+</body>
+</html>

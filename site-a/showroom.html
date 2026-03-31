@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ショールーム | 表参道布団店。</title>
+<meta name="description" content="表参道布団店のショールーム。実際に製品を体感いただける空間です。完全予約制でゆっくりとご体験ください。">
+<meta property="og:title" content="ショールーム | 表参道布団店。">
+<meta property="og:description" content="実際に製品を体感いただける空間です。完全予約制でゆっくりとご体験ください。">
+<meta property="og:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<meta property="og:url" content="https://omotesando-futon.com/showroom.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="表参道布団店。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ショールーム | 表参道布団店。">
+<meta name="twitter:description" content="表参道のショールームで、上質な眠りを体感してください。">
+<meta name="twitter:image" content="https://omotesando-futon.com/images/ogp.jpg">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Syne:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+/* === GLOBAL NAV WITH DROPDOWNS === */
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px}
+.header-nav-item{position:relative}
+.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
+.header-nav-item>a:hover{color:#C9A96E}
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
+.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
+.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
+.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
+/* Mega menu for PRODUCTS (with images) */
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
+.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
+.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
+/* Actions */
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
+@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+/* === END GLOBAL NAV === */
+
+/* FOOTER */
+.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--color-bg:#FFF;--color-text:#1A1A1A;--color-text-light:#6B6B6B;--color-accent:#C9A96E;--color-accent-hover:#B8975A;--color-navy:#2D2D2D;--color-navy-light:#243447;--color-white:#FFF;--color-border:#E5E5E5;--color-card-bg:#F7F7F7;--header-height:72px;--max-width:1320px;--section-pad:120px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:400;color:var(--color-text);background:var(--color-bg);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}ul,ol{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 40px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-btn{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.icon-btn svg{width:20px;height:20px}
+.cart-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--color-accent);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
+
+
+.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
+.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}
+.mobile-menu nav a:hover{color:var(--color-accent)}
+
+/* HERO */
+.sr-hero{position:relative;height:70vh;min-height:500px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1117,#2D2D2D 50%,#2A3A4E);color:#fff;text-align:center;overflow:hidden}
+.sr-hero-bg{position:absolute;inset:0;background:url('images/showroom-hero.jpg') center/cover no-repeat;opacity:.35}
+.sr-hero-content{position:relative;z-index:2;max-width:640px;padding:0 40px}
+.sr-hero-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:20px}
+.sr-hero-title{font-family:var(--font-display);font-size:52px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+.sr-hero-sub{font-family:var(--font-jp);font-size:16px;font-weight:300;color:rgba(255,255,255,.7);line-height:2}
+
+/* GALLERY SWIPER */
+.gallery{padding:var(--section-pad) 0 64px}
+.gallery-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.gallery-sub{text-align:center;font-size:16px;color:var(--color-text-light);margin-bottom:48px}
+.gallery-swiper{overflow:hidden}
+.gallery-swiper .swiper-slide{aspect-ratio:16/10;overflow:hidden}
+.gallery-swiper .swiper-slide img{width:100%;height:100%;object-fit:cover}
+.swiper-pagination-bullet{background:var(--color-text)!important;opacity:.3!important}
+.swiper-pagination-bullet-active{opacity:1!important;background:var(--color-accent)!important}
+
+/* INFO */
+.sr-info{padding:64px 0 var(--section-pad)}
+.sr-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.sr-info-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.sr-info-title{font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:.04em;margin-bottom:24px}
+.sr-info-text{font-size:16px;color:var(--color-text-light);line-height:2.2;margin-bottom:32px}
+.sr-detail{margin-bottom:24px}
+.sr-detail-label{font-size:17px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px}
+.sr-detail-value{font-size:16px;line-height:2}
+.sr-map{aspect-ratio:1/1;background:var(--color-card-bg);overflow:hidden}
+.sr-map iframe{width:100%;height:100%;border:0}
+
+/* EXPERIENCE */
+.experience{padding:var(--section-pad) 0;background:var(--color-card-bg)}
+.experience-title{text-align:center;font-family:var(--font-display);font-size:36px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.experience-sub{text-align:center;font-size:16px;color:var(--color-text-light);margin-bottom:64px}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.exp-card{background:#fff;transition:transform .4s,box-shadow .4s}
+.exp-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.exp-card-img{aspect-ratio:4/3;overflow:hidden}
+.exp-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.exp-card:hover .exp-card-img img{transform:scale(1.04)}
+.exp-card-body{padding:28px 24px}
+.exp-card-num{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:.15em;color:var(--color-accent);margin-bottom:8px}
+.exp-card-name{font-family:var(--font-jp);font-size:18px;font-weight:600;margin-bottom:12px}
+.exp-card-desc{font-size:17px;color:var(--color-text-light);line-height:1.9}
+.exp-card-time{font-size:16px;color:var(--color-accent);font-weight:600;margin-top:12px}
+
+/* RESERVATION CTA */
+.reserve{padding:100px 0;background:var(--color-navy);color:#fff;text-align:center}
+.reserve-en{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px}
+.reserve-title{font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
+.reserve-desc{font-size:16px;color:rgba(255,255,255,.6);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
+.reserve-btn{display:inline-block;padding:18px 56px;background:var(--color-accent);color:#fff;font-size:17px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:0;transition:background .3s}
+.reserve-btn:hover{background:var(--color-accent-hover)}
+.reserve-note{font-size:16px;color:rgba(255,255,255,.4);margin-top:20px}
+
+
+/* Hide scrollbars */
+*::-webkit-scrollbar{width:0;height:0}
+*{scrollbar-width:none;-ms-overflow-style:none}
+.gallery-thumbs::-webkit-scrollbar{display:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo"><img src="images/logo.svg" alt="表参道布団店。| Clean Cycle Down"></a>
+    <nav class="header-nav" id="headerNav">
+      <div class="header-nav-item">
+        <a href="concept/index.html">CONCEPT</a>
+        <div class="nav-dropdown">
+          <a href="concept/index.html">ブランドコンセプト</a>
+          <a href="concept/clean-cycle-down/">Clean Cycle Down</a>
+          <a href="concept/material/">素材のこだわり</a>
+                  </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="products/index.html">PRODUCTS</a>
+        <div class="nav-mega">
+          <a href="products/comforter/index.html" class="nav-mega-card">
+            <img src="images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy">
+            <span class="nav-mega-card-label">COMFORTER</span>
+            <span class="nav-mega-card-name">掛け布団</span>
+          </a>
+          <a href="products/pillow/index.html" class="nav-mega-card">
+            <img src="images/site/pillow_hero2.jpg" alt="枕" loading="lazy">
+            <span class="nav-mega-card-label">PILLOW</span>
+            <span class="nav-mega-card-name">枕／枕カバー</span>
+          </a>
+          <a href="products/bedding/index.html" class="nav-mega-card">
+            <img src="images/site/bedding_hero.jpg" alt="寝具" loading="lazy">
+            <span class="nav-mega-card-label">BEDDING</span>
+            <span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span>
+          </a>
+          <a href="products/apparel/index.html" class="nav-mega-card">
+            <img src="images/site/apparel_hero.jpg" alt="アパレル" loading="lazy">
+            <span class="nav-mega-card-label">APPAREL</span>
+            <span class="nav-mega-card-name">アパレル</span>
+          </a>
+          <a href="products/collaboration/index.html" class="nav-mega-card">
+            <img src="images/site/collab_hero.jpg" alt="コラボ" loading="lazy">
+            <span class="nav-mega-card-label">COLLABORATION</span>
+            <span class="nav-mega-card-name">コラボ</span>
+          </a>
+          <a href="products/baby/index.html" class="nav-mega-card">
+            <img src="images/site/baby_hero.jpg" alt="ベビー" loading="lazy">
+            <span class="nav-mega-card-label">BABY</span>
+            <span class="nav-mega-card-name">ベビー</span>
+          </a>
+          <a href="service/index.html" class="nav-mega-card">
+            <img src="images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy">
+            <span class="nav-mega-card-label">SERVICE</span>
+            <span class="nav-mega-card-name">クリーンサイクルサービス</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-nav-item">
+        <a href="magazine/">MAGAZINE</a>
+      </div>
+      <div class="header-nav-item">
+        <a href="about/">ABOUT</a>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a href="cart/index.html">CART(0)</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+  <nav>
+    <a href="index.html">TOP</a>
+    <a href="concept/">CONCEPT</a>
+    <a href="concept/brand-story/">BRAND STORY</a>
+    <a href="products/">PRODUCTS</a>
+    <a href="concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="magazine/">MAGAZINE</a>
+    <a href="about/">ABOUT</a>
+    <a href="gift/">GIFT</a>
+    <a href="contact/">CONTACT</a>
+    <a href="faq/">FAQ</a>
+    <a href="subscription/">サブスクリプション</a>
+    <a href="cart/">CART</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="sr-hero">
+  <div class="sr-hero-bg"></div>
+  <div class="sr-hero-content">
+    <p class="sr-hero-en fade-up">Visit Us</p>
+    <h1 class="sr-hero-title fade-up">Showroom</h1>
+    <p class="sr-hero-sub fade-up">表参道のショールームで、<br>上質な眠りを体感してください。</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <h2 class="gallery-title fade-up">Gallery</h2>
+    <p class="gallery-sub fade-up">洗練された空間で、すべての製品をご体感いただけます</p>
+  </div>
+  <div class="container">
+    <div class="swiper gallery-swiper fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/showroom-01.jpg" alt="表参道布団店ショールーム内観 | 表参道布団店"></div>
+        <div class="swiper-slide"><img src="images/showroom-02.jpg" alt="表参道布団店ショールーム製品展示 | 表参道布団店"></div>
+        <div class="swiper-slide"><img src="images/showroom-03.jpg" alt="表参道布団店ショールーム体験スペース | 表参道布団店"></div>
+        <div class="swiper-slide"><img src="images/showroom-04.jpg" alt="表参道布団店スリープカウンセリングルーム | 表参道布団店"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="sr-info">
+  <div class="container">
+    <div class="sr-info-grid">
+      <div class="fade-up">
+        <p class="sr-info-en">Information</p>
+        <h2 class="sr-info-title">Omotesando<br>Showroom</h2>
+        <p class="sr-info-text">完全予約制のプライベートショールームです。専任スタッフが、お客様の眠りのお悩みをヒアリングし、最適な製品をご提案いたします。全シリーズの掛け布団を実際にお試しいただけます。</p>
+        <div class="sr-detail">
+          <p class="sr-detail-label">Address</p>
+          <p class="sr-detail-value">〒150-0001<br>東京都渋谷区神宮前4-12-10<br>表参道ヒルズ 西館 2F</p>
+        </div>
+        <div class="sr-detail">
+          <p class="sr-detail-label">Hours</p>
+          <p class="sr-detail-value">11:00 - 19:00（完全予約制）<br>定休日：火曜日・水曜日</p>
+        </div>
+        <div class="sr-detail">
+          <p class="sr-detail-label">Access</p>
+          <p class="sr-detail-value">東京メトロ 表参道駅 A2出口 徒歩3分<br>東京メトロ 明治神宮前駅 徒歩5分</p>
+        </div>
+        <div class="sr-detail">
+          <p class="sr-detail-label">Contact</p>
+          <p class="sr-detail-value">TEL: 03-6712-0000<br>MAIL: showroom@omotesando-futon.com</p>
+        </div>
+      </div>
+      <div class="sr-map fade-up">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.169!2d139.7071!3d35.6651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6KGo5Y-C6YGT!5e0!3m2!1sja!2sjp!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="container">
+    <h2 class="experience-title fade-up">Experience</h2>
+    <p class="experience-sub fade-up">ショールームでの体験メニュー</p>
+    <div class="exp-grid">
+      <div class="exp-card fade-up">
+        <div class="exp-card-img"><img src="images/exp-consult.jpg" alt="スリープカウンセリング体験 | 表参道布団店"></div>
+        <div class="exp-card-body">
+          <p class="exp-card-num">Experience 01</p>
+          <h3 class="exp-card-name">スリープカウンセリング</h3>
+          <p class="exp-card-desc">専任スタッフが、あなたの睡眠環境やお悩みをヒアリング。体質やライフスタイルに合った最適な掛け布団をご提案いたします。</p>
+          <p class="exp-card-time">所要時間：約30分</p>
+        </div>
+      </div>
+      <div class="exp-card fade-up">
+        <div class="exp-card-img"><img src="images/exp-trial.jpg" alt="全製品お試し体験 | 表参道布団店ショールーム"></div>
+        <div class="exp-card-body">
+          <p class="exp-card-num">Experience 02</p>
+          <h3 class="exp-card-name">全製品お試し体験</h3>
+          <p class="exp-card-desc">Flower DownからPremium RDSまで、全シリーズの掛け布団を実際に掛けてお試しいただけます。シリーズごとの違いを体感してください。</p>
+          <p class="exp-card-time">所要時間：約20分</p>
+        </div>
+      </div>
+      <div class="exp-card fade-up">
+        <div class="exp-card-img"><img src="images/exp-factory.jpg" alt="ものづくり体験 | 表参道布団店ショールーム"></div>
+        <div class="exp-card-body">
+          <p class="exp-card-num">Experience 03</p>
+          <h3 class="exp-card-name">ものづくり体験</h3>
+          <p class="exp-card-desc">白州水洗浄前後のダウンの比較や、富士吉田の職人技を映像でご覧いただけます。表参道布団店のこだわりを深くご理解いただけます。</p>
+          <p class="exp-card-time">所要時間：約15分</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reserve">
+  <div class="container">
+    <p class="reserve-en fade-up">Reservation</p>
+    <h2 class="reserve-title fade-up">Book Your Visit</h2>
+    <p class="reserve-desc fade-up">完全予約制のため、事前のご予約をお願いいたします。オンラインまたはお電話にて承っております。</p>
+    <a href="contact/" class="reserve-btn fade-up">Reserve Now</a>
+    <p class="reserve-note fade-up">TEL: 03-6712-0000（11:00 - 19:00 / 火水定休）</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-newsletter" style="margin-top:24px">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+          <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
+          <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="products/comforter/index.html">掛け布団</a>
+        <a href="products/pillow/index.html">枕／枕カバー</a>
+        <a href="products/bedding/index.html">カバー／シーツ／敷パット／マットレス</a>
+        <a href="products/apparel/index.html">アパレル</a>
+        <a href="products/baby/index.html">ベビー</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">CONCEPT</h4>
+      <nav class="footer-nav">
+        <a href="concept/">ブランドコンセプト</a>
+        <a href="concept/brand-story/">ブランドストーリー</a>
+        <a href="concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="concept/material/">素材のこだわり</a>
+        <a href="down/">ダウンについて</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">INFORMATION</h4>
+      <nav class="footer-nav">
+        <a href="magazine/">マガジン</a>
+        <a href="about/">会社概要</a>
+        <a href="gift/">ギフト</a>
+        <a href="faq/">FAQ</a>
+        <a href="contact/">お問い合わせ</a>
+        <a href="subscription/">サブスクリプション</a>
+        <a href="inventory-view/">在庫状況</a>
+        <a href="privacy-policy/">プライバシーポリシー</a>
+        <a href="terms/">利用規約</a>
+      </nav>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function(){
+  const mm=document.getElementById('mobileMenu');
+  document.getElementById('menuOpen').addEventListener('click',()=>mm.classList.add('active'));
+  document.getElementById('menuClose').addEventListener('click',()=>mm.classList.remove('active'));
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('active')));
+  // Gallery Swiper
+  if(typeof Swiper!=='undefined'){
+    new Swiper('.gallery-swiper',{
+      slidesPerView:1.2,
+      spaceBetween:20,
+      centeredSlides:true,
+      loop:true,
+      pagination:{el:'.swiper-pagination',clickable:true},
+      breakpoints:{768:{slidesPerView:1.5,spaceBetween:32}}
+    });
+  }
+  if(typeof gsap!=='undefined'){
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.fade-up').forEach(el=>{
+      ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:()=>el.classList.add('visible'),once:true});
+    });
+  }
+})();
+</script>
+<script src="js/cart.js"></script>
+</body>
+</html>
