@@ -210,74 +210,162 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .breadcrumb a:hover { color: var(--gold); }
 .breadcrumb span { color: var(--text-light); opacity: 0.4; }
 
-/* CATEGORY GRID */
-.categories {
-  max-width: var(--max-w); margin: 0 auto; padding: 40px 40px 120px;
+/* ===========================
+   FLAGSHIP: 掛け布団 ヒーローセクション
+   =========================== */
+.flagship-section{
+  max-width:var(--max-w);margin:0 auto;padding:48px 40px 0;
+}
+.flagship-card{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:0;
+  background:#F5F3F0;border-radius:12px;overflow:hidden;
+  position:relative;transition:box-shadow 0.5s;
+}
+.flagship-card:hover{box-shadow:0 24px 80px rgba(0,0,0,0.08)}
+.flagship-img{
+  position:relative;aspect-ratio:4/3;overflow:hidden;
+}
+.flagship-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.flagship-card:hover .flagship-img img{transform:scale(1.04)}
+.flagship-badge{
+  position:absolute;top:24px;left:24px;
+  background:var(--gold);color:#fff;
+  font-family:var(--font-display);font-size:11px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  padding:8px 18px;border-radius:2px;
+}
+.flagship-body{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:48px 56px;
+}
+.flagship-en{
+  font-family:var(--font-display);font-size:13px;font-weight:600;
+  letter-spacing:0.35em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.flagship-title{
+  font-family:var(--font-body);font-size:40px;font-weight:800;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);margin-bottom:4px;line-height:1.15;
+}
+.flagship-jp{
+  font-family:var(--font-jp);font-size:15px;font-weight:400;
+  color:var(--text-light);letter-spacing:0.15em;margin-bottom:20px;
+}
+.flagship-desc{
+  font-family:var(--font-jp);font-size:14px;line-height:2;
+  color:var(--text-light);margin-bottom:28px;
+}
+.flagship-stats{
+  display:flex;gap:32px;margin-bottom:32px;
+}
+.flagship-stat{text-align:center}
+.flagship-stat-num{
+  font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;
+  color:var(--text);line-height:1.2;
+}
+.flagship-stat-label{
+  font-family:var(--font-jp);font-size:11px;font-weight:500;
+  color:var(--text-light);letter-spacing:0.06em;margin-top:4px;
+}
+.flagship-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--text);color:#fff;
+  padding:16px 36px;border-radius:2px;
+  font-family:var(--font-body);font-size:13px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  transition:background 0.3s,gap 0.3s;
+  align-self:flex-start;
+}
+.flagship-cta:hover{background:var(--gold);gap:16px}
+.flagship-cta svg{width:16px;height:16px;transition:transform 0.3s}
+.flagship-cta:hover svg{transform:translateX(3px)}
+
+/* ===========================
+   ACCESSORIES: 他商材グリッド
+   =========================== */
+.accessories-section{
+  max-width:var(--max-w);margin:0 auto;padding:64px 40px 120px;
+}
+.accessories-label{
+  font-family:var(--font-display);font-size:12px;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--text-light);margin-bottom:8px;
+}
+.accessories-title{
+  font-family:var(--font-jp);font-size:20px;font-weight:600;
+  color:var(--text);letter-spacing:0.06em;margin-bottom:36px;
 }
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 24px;
 }
 .category-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
-  background: var(--cream);
-  transition: transform 0.4s, box-shadow 0.4s;
+  background: #fff;
+  border:1px solid var(--border);
+  transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
 }
 .category-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  border-color:var(--gold);
 }
 .category-card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/2;
   overflow: hidden;
 }
 .category-card-image img {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.6s;
+  filter:brightness(0.97);
 }
 .category-card:hover .category-card-image img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 .category-card-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35) 100%);
   pointer-events: none;
 }
 .category-card-body {
-  padding: 24px 28px 28px;
+  padding: 18px 22px 22px;
 }
 .category-card-en {
-  font-family: var(--font-body); font-size: 20px; font-weight: 800;
+  font-family: var(--font-body); font-size: 16px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text); margin-bottom: 2px;
 }
 .category-card-jp {
-  font-family: var(--font-jp); font-size:17px; font-weight: 400;
-  color: var(--text-light); letter-spacing: 0.1em;
-  margin-bottom: 12px; white-space: nowrap;
+  font-family: var(--font-jp); font-size:13px; font-weight: 400;
+  color: var(--text-light); letter-spacing: 0.08em;
+  margin-bottom: 10px; white-space: nowrap;
 }
 .category-card-meta {
   display: flex; align-items: center; justify-content: space-between;
-  font-size:16px; color: var(--text-light); letter-spacing: 0.02em;
-  padding-right: 52px;
+  font-size:12px; color: var(--text-light); letter-spacing: 0.02em;
+  padding-right: 44px;
 }
 .category-card-count {
   font-weight: 600; color: var(--gold);
 }
 .category-card-price {
   font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 .category-card-arrow {
-  position: absolute; bottom: 28px; right: 28px;
-  width: 36px; height: 36px;
+  position: absolute; bottom: 22px; right: 22px;
+  width: 32px; height: 32px;
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -288,7 +376,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   border-color: var(--gold);
 }
 .category-card-arrow svg {
-  width: 14px; height: 14px;
+  width: 12px; height: 12px;
   stroke: var(--text-light);
   transition: stroke 0.3s;
 }
@@ -303,50 +391,46 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .category-card--wide .category-card-image {
   aspect-ratio: 16/5;
 }
-.category-card--wide .category-card-meta {
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
-.category-card--wide .category-card-price {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  
-  
+  .flagship-card{grid-template-columns:1fr;}
+  .flagship-body{padding:32px 36px}
+  .flagship-title{font-size:32px}
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .page-hero-title { font-size: 44px; }
   .page-hero::before { font-size: 100px; }
 }
 @media (max-width: 768px) {
   :root { --header-h: 60px; }
-  
-  .breadcrumb { padding: 16px 24px; }
-  .categories { padding: 24px 24px 80px; }
-  .category-grid { gap: 20px; }
+  .flagship-section{padding:32px 24px 0}
+  .flagship-body{padding:28px 24px}
+  .flagship-title{font-size:26px}
+  .flagship-stats{gap:20px}
+  .flagship-stat-num{font-size:22px}
+  .accessories-section{padding:48px 24px 80px}
+  .category-grid { gap: 16px; }
   .page-hero-title { font-size: 36px; }
   .page-hero::before { font-size: 80px; }
 }
 @media (max-width: 640px) {
-  
-  .category-grid { grid-template-columns: 1fr; }
-  .categories { padding: 20px 16px 60px; }
-  .breadcrumb { padding: 12px 16px; }
+  .flagship-section{padding:24px 16px 0}
+  .flagship-body{padding:24px 20px}
+  .flagship-title{font-size:22px}
+  .flagship-cta{padding:14px 28px;font-size:12px}
+  .flagship-desc{font-size:13px}
+  .category-grid { grid-template-columns: 1fr 1fr; }
+  .accessories-section{padding:36px 16px 60px}
   .page-hero { padding-top: calc(var(--header-h) + 48px); padding-bottom: 40px; }
   .page-hero-title { font-size: 28px; }
   .page-hero::before { font-size: 60px; }
-  .category-card--wide .category-card-image { aspect-ratio: 4/3; }
+  .category-card--wide .category-card-image { aspect-ratio: 3/2; }
 }
 @media (max-width: 480px) {
   :root { --header-h: 56px; }
   .page-hero-title { font-size: 24px; }
   .nav-overlay-links a { font-size: 24px; }
+  .category-grid{grid-template-columns:1fr}
 }
 
 /* Hide scrollbars */
@@ -490,28 +574,33 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 <!-- BREADCRUMB -->
 
 
-<!-- CATEGORY GRID -->
-<section class="categories">
-  <div class="category-grid">
+<!-- FLAGSHIP: 掛け布団 -->
+<section class="flagship-section">
+  <a href="comforter/index.html" class="flagship-card">
+    <div class="flagship-img">
+      <img src="../images/site/comforter_hero.jpg" alt="掛け布団 | 表参道布団店" loading="lazy">
+      <div class="flagship-badge">Flagship</div>
+    </div>
+    <div class="flagship-body">
+      <p class="flagship-en">Omotesando Futon Ten.</p>
+      <h2 class="flagship-title">COMFORTER</h2>
+      <p class="flagship-jp">掛け布団コレクション</p>
+      <p class="flagship-desc">最高品質のマザーグースダウンから、サステナブルなリサイクルダウンまで。<br>4シリーズ×3シーズンの全12アイテムで、あなたの眠りを最適化します。</p>
+      <div class="flagship-stats">
+        <div class="flagship-stat"><div class="flagship-stat-num">4</div><div class="flagship-stat-label">シリーズ</div></div>
+        <div class="flagship-stat"><div class="flagship-stat-num">12</div><div class="flagship-stat-label">アイテム</div></div>
+        <div class="flagship-stat"><div class="flagship-stat-num">¥20,800~</div><div class="flagship-stat-label">税込</div></div>
+      </div>
+      <span class="flagship-cta">VIEW COLLECTION <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+    </div>
+  </a>
+</section>
 
-    <!-- 1. 掛け布団 COMFORTER -->
-    <a href="comforter/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/comforter_hero.jpg" alt="掛け布団 | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
-      </div>
-      <div class="category-card-body">
-        <div class="category-card-en">COMFORTER</div>
-        <div class="category-card-jp">掛け布団</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">12 items</span>
-          <span class="category-card-price">&yen;20,800 &ndash; &yen;428,000</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
+<!-- ACCESSORIES: 他商材 -->
+<section class="accessories-section">
+  <p class="accessories-label">Accessories &amp; More</p>
+  <h3 class="accessories-title">その他のプロダクト</h3>
+  <div class="category-grid">
 
     <!-- 2. ピロー PILLOW -->
     <a href="pillow/index.html" class="category-card">
@@ -630,7 +719,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER  -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
