@@ -102,8 +102,13 @@ img{max-width:100%;height:auto;display:block}
 .comforter-card{display:block;border:1px solid var(--border);background:var(--white);transition:border-color 0.3s,box-shadow 0.3s,transform 0.3s;overflow:hidden}
 .comforter-card:hover{border-color:var(--gold);box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-4px)}
 .comforter-card.hidden{display:none}
-.comforter-card-img{aspect-ratio:1/1;overflow:hidden;background:var(--card-bg)}
-.comforter-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s}
+.comforter-card-img{aspect-ratio:1/1;overflow:hidden;background:var(--card-bg);position:relative}
+.comforter-card-img img{width:100%;height:100%;object-fit:contain;transition:transform 0.6s;position:relative;z-index:1;padding:6%}
+/* シリーズ別背景色 — サージを敷いたような質感 */
+.comforter-card[data-series="premium-rds"] .comforter-card-img{background:linear-gradient(145deg,#DADADA 0%,#CCCCCC 50%,#D4D4D4 100%)}
+.comforter-card[data-series="rds-goose"] .comforter-card-img{background:linear-gradient(145deg,#F2EDE5 0%,#EAE4DA 50%,#EFECE6 100%)}
+.comforter-card[data-series="ccd"] .comforter-card-img{background:linear-gradient(145deg,#CEC6AE 0%,#C2BA9E 50%,#CAC2AC 100%)}
+.comforter-card[data-series="flower"] .comforter-card-img{background:linear-gradient(145deg,#303654 0%,#272D48 50%,#2E3450 100%)}
 .comforter-card:hover .comforter-card-img img{transform:scale(1.05)}
 .comforter-card-body{padding:20px}
 .comforter-card-series{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#fff;margin-bottom:8px;background:rgba(85,90,70,0.85);display:inline-block;padding:4px 12px;border-radius:2px}
@@ -265,7 +270,7 @@ img{max-width:100%;height:auto;display:block}
 
 <section class="comforter-grid" id="productGrid">
   
-      <a href="premium-rds-winter/" class="comforter-card fade-up" data-season="winter">
+      <a href="premium-rds-winter/" class="comforter-card" data-series="premium-rds" fade-up" data-season="winter">
         <div class="comforter-card-img"><img src="../../images/products/premium-rds-winter/premium-rds-winter01.jpg" alt="Premium RDS Sleep Down-冬用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Premium RDS Down Series</p>
@@ -274,7 +279,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥198,000<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="rds-goose-winter/" class="comforter-card fade-up" data-season="winter">
+      <a href="rds-goose-winter/" class="comforter-card" data-series="rds-goose" fade-up" data-season="winter">
         <div class="comforter-card-img"><img src="../../images/products/rds-goose-winter/rds-goose-winter01.webp" alt="RDS Sleep Down-冬用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">RDS Down Series</p>
@@ -283,7 +288,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥88,000<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="ccd-winter/" class="comforter-card fade-up" data-season="winter">
+      <a href="ccd-winter/" class="comforter-card" data-series="ccd" fade-up" data-season="winter">
         <div class="comforter-card-img"><img src="../../images/products/ccd-winter/ccd-winter01.webp" alt="Clean Cycle Sleep Down-冬用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Clean Cycle Down Series</p>
@@ -292,7 +297,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥53,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="flower-winter/" class="comforter-card fade-up" data-season="winter">
+      <a href="flower-winter/" class="comforter-card" data-series="flower" fade-up" data-season="winter">
         <div class="comforter-card-img"><img src="../../images/products/flower-winter/flower-winter01.webp" alt="Flower Sleep Down-冬用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Flower Down Series</p>
@@ -301,7 +306,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥35,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="premium-rds-spring/" class="comforter-card fade-up" data-season="spring">
+      <a href="premium-rds-spring/" class="comforter-card" data-series="premium-rds" fade-up" data-season="spring">
         <div class="comforter-card-img"><img src="../../images/products/premium-rds-spring/premium-rds-spring01.jpg" alt="Premium RDS Sleep Down-春秋用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Premium RDS Down Series</p>
@@ -310,7 +315,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥158,000<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="rds-goose-spring/" class="comforter-card fade-up" data-season="spring">
+      <a href="rds-goose-spring/" class="comforter-card" data-series="rds-goose" fade-up" data-season="spring">
         <div class="comforter-card-img"><img src="../../images/products/rds-goose-spring/rds-goose-spring01.webp" alt="RDS Sleep Down-春秋用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">RDS Down Series</p>
@@ -319,7 +324,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥68,000<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="ccd-spring/" class="comforter-card fade-up" data-season="spring">
+      <a href="ccd-spring/" class="comforter-card" data-series="ccd" fade-up" data-season="spring">
         <div class="comforter-card-img"><img src="../../images/products/ccd-spring/ccd-spring01.webp" alt="Clean Cycle Sleep Down-春秋用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Clean Cycle Down Series</p>
@@ -328,7 +333,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥42,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="flower-spring/" class="comforter-card fade-up" data-season="spring">
+      <a href="flower-spring/" class="comforter-card" data-series="flower" fade-up" data-season="spring">
         <div class="comforter-card-img"><img src="../../images/products/flower-spring/flower-spring01.webp" alt="Flower Sleep Down-春秋用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Flower Down Series</p>
@@ -337,7 +342,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥30,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="premium-rds-summer/" class="comforter-card fade-up" data-season="summer">
+      <a href="premium-rds-summer/" class="comforter-card" data-series="premium-rds" fade-up" data-season="summer">
         <div class="comforter-card-img"><img src="../../images/products/premium-rds-summer/premium-rds-summer01.jpg" alt="Premium RDS Sleep Down-夏用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Premium RDS Down Series</p>
@@ -346,7 +351,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥78,000<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="rds-goose-summer/" class="comforter-card fade-up" data-season="summer">
+      <a href="rds-goose-summer/" class="comforter-card" data-series="rds-goose" fade-up" data-season="summer">
         <div class="comforter-card-img"><img src="../../images/products/rds-goose-summer/rds-goose-summer01.webp" alt="RDS Sleep Down-夏用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">RDS Down Series</p>
@@ -355,7 +360,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥38,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="ccd-summer/" class="comforter-card fade-up" data-season="summer">
+      <a href="ccd-summer/" class="comforter-card" data-series="ccd" fade-up" data-season="summer">
         <div class="comforter-card-img"><img src="../../images/products/ccd-summer/ccd-summer01.webp" alt="Clean Cycle Sleep Down-夏用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Clean Cycle Down Series</p>
@@ -364,7 +369,7 @@ img{max-width:100%;height:auto;display:block}
           <p class="comforter-card-price">¥28,800<span class="comforter-card-tax">〜（税込）</span></p>
         </div>
       </a>
-      <a href="flower-summer/" class="comforter-card fade-up" data-season="summer">
+      <a href="flower-summer/" class="comforter-card" data-series="flower" fade-up" data-season="summer">
         <div class="comforter-card-img"><img src="../../images/products/flower-summer/flower-summer01.webp" alt="Flower Sleep Down-夏用-" loading="lazy"></div>
         <div class="comforter-card-body">
           <p class="comforter-card-series">Flower Down Series</p>
