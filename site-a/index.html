@@ -892,44 +892,30 @@ body.loading .hero-logo,body.loading .hero-en,body.loading .hero-catch,body.load
 }
 
 /* ============================================================
-   HERO SLIDESHOW
+   HERO VIDEO BACKGROUND
    ============================================================ */
-.hero-slides{
+.hero-video-bg{
   position:absolute;inset:0;z-index:0;
 }
-.hero-slide{
+.hero-video{
   position:absolute;inset:0;
-  opacity:0;
-  transition:opacity 1.5s cubic-bezier(0.16,1,0.3,1);
-}
-.hero-slide.active{opacity:1}
-.hero-slide img{
   width:100%;height:100%;object-fit:cover;
-  transform:scale(1.05);
-  transition:transform 8s cubic-bezier(0.16,1,0.3,1);
+  opacity:0;
+  transition:opacity 1.5s ease;
 }
-.hero-slide.active img{transform:scale(1)}
-.hero-slide-overlay{
+.hero-video.active{opacity:1}
+.hero-video-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(10,10,10,0.25) 0%,rgba(10,10,10,0.15) 40%,rgba(10,10,10,0.35) 100%);
+  background:linear-gradient(180deg,rgba(10,10,10,0.3) 0%,rgba(10,10,10,0.15) 40%,rgba(10,10,10,0.4) 100%);
+  z-index:1;
 }
 
-/* Hero slide indicators */
-.hero-indicators{
-  position:absolute;bottom:80px;left:50%;transform:translateX(-50%);
-  z-index:10;display:flex;gap:12px;
-}
-.hero-dot{
-  width:32px;height:2px;background:rgba(255,255,255,0.25);
-  cursor:pointer;transition:background 0.4s,width 0.4s;
-  border:none;padding:0;
-}
-.hero-dot.active{background:#C9A96E;width:48px}
-
-/* Override old hero-bg with slides */
+/* Hide old elements */
+.hero-slides{display:none}
 .hero-bg{display:none}
 .hero-overlay{display:none}
 .hero-particles{display:none}
+.hero-indicators{display:none}
 
 /* Body hidden during intro */
 body.loading .header{opacity:0;transform:translateY(-20px)}
@@ -943,31 +929,6 @@ body:not(.loading) .hero-content{
   transition:opacity 1s 0.5s,transform 1s 0.5s cubic-bezier(0.16,1,0.3,1);
 }
 
-/* ============================================================
-   BRAND FILM VIDEO (2 videos alternating with crossfade)
-   ============================================================ */
-.brand-film{
-  position:relative;
-  background:#000;
-  overflow:hidden;
-}
-.brand-film-video{
-  width:100%;
-  display:block;
-  position:absolute;top:0;left:0;
-  opacity:0;
-  transition:opacity 1.5s ease;
-}
-.brand-film-video.active{
-  position:relative;
-  opacity:1;
-}
-.brand-film-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,0) 70%,rgba(0,0,0,0.25) 100%);
-  pointer-events:none;
-  z-index:1;
-}
 </style>
 
 <header class="header" id="header">
@@ -1078,51 +1039,17 @@ body:not(.loading) .hero-content{
     </div>
   </nav>
 </div>
-    <div class="mm-accordion">
-      <button class="mm-link mm-toggle">PRODUCTS<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-      <div class="mm-sub">
-        <a href="products/">全商品一覧</a>
-        <a href="products/comforter/">掛け布団</a>
-        <a href="products/pillow/">枕</a>
-        <a href="products/bedding/">カバー・シーツ・寝具</a>
-        <a href="products/apparel/">アパレル</a>
-        <a href="products/collaboration/">コラボレーション</a>
-        <a href="products/baby/">ベビー</a>
-        <a href="products/service/">サービス</a>
-      </div>
-    </div>
-    <a href="magazine/" class="mm-link">MAGAZINE</a>
-    <a href="about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
-    <div class="mm-divider"></div>
-    <div class="mm-bottom">
-      <a href="account/login/" class="mm-btn-outline">ログイン</a>
-      <a href="cart/" class="mm-btn-gold">カート</a>
-    </div>
-  </nav>
-</div>
-    <div class="hero-slide">
-      <img src="images/site/hero_mountain.webp" alt="白州の自然">
-      <div class="hero-slide-overlay"></div>
-    </div>
-    <div class="hero-slide">
-      <img src="images/products/rds-goose-winter/rds-goose-winter-colored.jpg" alt="RDS Goose Down Comforter">
-      <div class="hero-slide-overlay"></div>
-    </div>
-    <div class="hero-slide">
-      <img src="images/brand/竣工写真_表参道布団店002.webp" alt="表参道布団店 店舗">
-      <div class="hero-slide-overlay"></div>
-    </div>
-  </div>
-  <div class="hero-indicators" id="heroIndicators">
-    <button class="hero-dot active" data-index="0"></button>
-    <button class="hero-dot" data-index="1"></button>
-    <button class="hero-dot" data-index="2"></button>
-    <button class="hero-dot" data-index="3"></button>
+
+<section class="hero" id="hero">
+  <!-- Hero Video Background -->
+  <div class="hero-video-bg">
+    <video class="hero-video active" id="heroVideo1" autoplay muted playsinline>
+      <source src="videos/brand_film.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" id="heroVideo2" muted playsinline>
+      <source src="videos/bedmaking.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
   </div>
   <div class="hero-content">
     <div class="hero-logo">
@@ -1156,18 +1083,6 @@ body:not(.loading) .hero-content{
   </div>
 </section>
 
-<!-- ============================================================
-     BRAND FILM VIDEO (2 videos alternating)
-     ============================================================ -->
-<section class="brand-film">
-  <video class="brand-film-video active" id="brandFilm1" autoplay muted playsinline>
-    <source src="videos/brand_film.mp4" type="video/mp4">
-  </video>
-  <video class="brand-film-video" id="brandFilm2" muted playsinline>
-    <source src="videos/bedmaking.mp4" type="video/mp4">
-  </video>
-  <div class="brand-film-overlay"></div>
-</section>
 
 <!-- ============================================================
      BRAND STORY - Warm cream bg
@@ -1754,11 +1669,11 @@ body:not(.loading) .hero-content{
 })();
 </script>
 
-<!-- Brand Film: 2 videos alternating with crossfade -->
+<!-- Hero Video: 2 videos alternating with crossfade -->
 <script>
 (function(){
-  var v1=document.getElementById('brandFilm1');
-  var v2=document.getElementById('brandFilm2');
+  var v1=document.getElementById('heroVideo1');
+  var v2=document.getElementById('heroVideo2');
   if(!v1||!v2)return;
   var current=v1;
   var next=v2;
