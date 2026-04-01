@@ -103,6 +103,15 @@
 .hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu nav{display:flex;flex-direction:column;gap:0}
+.mobile-menu nav a{display:block;padding:16px 0;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.1em;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.3s}
+.mobile-menu nav a:hover{color:#C9A96E}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu-overlay.active{opacity:1;pointer-events:all}
 /* FOOTER */
 
 @media(max-width:1024px){}
@@ -332,38 +341,6 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
   .price-table th,.price-table td{padding:10px 8px}
 }
 
-@media(max-width:1024px){}
-@media(max-width:768px){.footer-brand{grid-column:1/-1;text-align:center}}
-
-@media(max-width:1024px){}
-@media(max-width:768px){.footer-brand{grid-column:1/-1;text-align:center}}
-
-/* === MOBILE MENU (Accordion) === */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
-.mobile-menu.active{transform:translateX(0)}
-.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.mobile-menu-close svg{width:24px;height:24px}
-.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;opacity:0;pointer-events:none;transition:opacity 0.4s}
-.mobile-menu-overlay.active{opacity:1;pointer-events:all}
-.mm-nav{display:flex;flex-direction:column;padding:0 28px}
-.mm-link{display:flex;align-items:center;justify-content:space-between;padding:15px 0;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.3s;background:none;border-top:none;border-left:none;border-right:none;width:100%;text-align:left;cursor:pointer}
-.mm-link:hover{color:#C9A96E}
-.mm-sub-link{font-size:13px;font-weight:500;letter-spacing:0.06em;color:rgba(255,255,255,0.5);padding:12px 0}
-.mm-sub-link:hover{color:#C9A96E}
-.mm-toggle{position:relative}
-.mm-arrow{transition:transform 0.3s;color:rgba(255,255,255,0.4)}
-.mm-accordion.open .mm-arrow{transform:rotate(180deg)}
-.mm-sub{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
-.mm-accordion.open .mm-sub{max-height:500px}
-.mm-sub a{display:block;padding:10px 0 10px 16px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.04em;transition:color 0.3s;border-bottom:1px solid rgba(255,255,255,0.03)}
-.mm-sub a:hover{color:#C9A96E}
-.mm-divider{height:1px;background:rgba(255,255,255,0.1);margin:8px 0}
-.mm-bottom{display:flex;gap:10px;margin-top:16px}
-.mm-btn-outline{flex:1;text-align:center;padding:12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.3s}
-.mm-btn-outline:hover{border-color:#C9A96E;color:#C9A96E}
-.mm-btn-gold{flex:1;text-align:center;padding:12px;background:#C9A96E;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#fff;text-decoration:none;transition:background 0.3s}
-.mm-btn-gold:hover{background:#B8975A}
-
 /* === FOOTER === */
 .footer{padding:80px 0 0;background:#2D2D2D;color:#fff}
 .footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:48px}
@@ -373,9 +350,6 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
 .footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
 .footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav a:hover{color:#C9A96E}
-.footer-nav-sub a{display:block;font-size:12px;color:rgba(255,255,255,0.28);padding:4px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
-.footer-nav-sub a:hover{color:rgba(255,255,255,0.6)}
-.footer-col-last{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
 .footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .footer-legal{display:flex;gap:24px}
 .footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
@@ -421,47 +395,44 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
   </div>
 </header>
 <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
-  <nav class="mm-nav">
-    <a href="../../../index.html" class="mm-link">TOP</a>
-    <div class="mm-accordion">
-      <button class="mm-link mm-toggle">CONCEPT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-      <div class="mm-sub">
-        <a href="../../../concept/">ブランドコンセプト</a>
-        <a href="../../../concept/brand-story/">ブランドストーリー</a>
-        <a href="../../../concept/clean-cycle-down/">Clean Cycle Down</a>
-        <a href="../../../concept/material/">素材のこだわり</a>
-      </div>
-    </div>
-    <div class="mm-accordion">
-      <button class="mm-link mm-toggle">PRODUCTS<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-      <div class="mm-sub">
-        <a href="../../../products/">全商品一覧</a>
-        <a href="../../../products/comforter/">掛け布団</a>
-        <a href="../../../products/pillow/">枕</a>
-        <a href="../../../products/bedding/">カバー・シーツ・寝具</a>
-        <a href="../../../products/apparel/">アパレル</a>
-        <a href="../../../products/collaboration/">コラボレーション</a>
-        <a href="../../../products/baby/">ベビー</a>
-        <a href="../../../products/service/">サービス</a>
-      </div>
-    </div>
-    <a href="../../../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../../../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../../../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../../../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../../../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
-    <div class="mm-divider"></div>
-    <div class="mm-bottom">
-      <a href="../../../account/login/" class="mm-btn-outline">ログイン</a>
-      <a href="../../../cart/" class="mm-btn-gold">カート</a>
-    </div>
+  <nav>
+    <a href="../../../index.html">TOP</a>
+    <a href="../../../concept/">CONCEPT</a>
+    <a href="../../../concept/brand-story/">BRAND STORY</a>
+    <a href="../../../products/">PRODUCTS</a>
+    <a href="../../../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
+    <a href="../../../magazine/">MAGAZINE</a>
+    <a href="../../../about/">ABOUT</a>
+    <a href="../../../gift/">GIFT</a>
+    <a href="../../../contact/">CONTACT</a>
+    <a href="../../../faq/">FAQ</a>
+    <a href="../../../subscription/">サブスクリプション</a>
+    <a href="../../../cart/">CART</a>
   </nav>
 </div>
+
+<nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../../../">TOP</a> <span class="bc-sep">/</span> <a href="../../../products/">商品一覧</a> <span class="bc-sep">/</span> <a href="../../../products/comforter/">掛け布団</a> <span class="bc-sep">/</span> <span>Flower Sleep Down-春秋用-</span></div></nav>
+<div style="height:var(--header-h)"></div>
+
+<section class="product-top">
+  <div class="gallery">
+    <div class="gallery-thumbs">
+      <div class="gallery-thumb active" data-index="0"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2024/03/semidouble_720x610-350x350-1.webp" alt="Flower Sleep Down-春秋用- 1" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="1"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/single_720x610.jpg" alt="Flower Sleep Down-春秋用- 2" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="2"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/double_720x610.jpg" alt="Flower Sleep Down-春秋用- 3" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="3"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/queen_720x610.jpg" alt="Flower Sleep Down-春秋用- 4" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="4"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/king_720x610.jpg" alt="Flower Sleep Down-春秋用- 5" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="5"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/bedset_720x610.jpg" alt="Flower Sleep Down-春秋用- 6" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="6"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/bedsetside_720x610.jpg" alt="Flower Sleep Down-春秋用- 7" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="7"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/front_720x610.jpg" alt="Flower Sleep Down-春秋用- 8" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="8"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/compact_720x610.jpg" alt="Flower Sleep Down-春秋用- 9" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="9"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/futontag_720x610.jpg" alt="Flower Sleep Down-春秋用- 10" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="10"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/color_720x610.jpg" alt="Flower Sleep Down-春秋用- 11" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="11"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/1102_0983-Edit.jpg" alt="Flower Sleep Down-春秋用- 12" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="12"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/02/kapok-1.jpg" alt="Flower Sleep Down-春秋用- 13" loading="lazy"></div>
+    </div>
     <div class="gallery-main">
       <div class="swiper" id="mainSwiper">
         <div class="swiper-wrapper">
@@ -888,6 +859,7 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
     <div>
       <h4 class="footer-nav-title">PRODUCTS</h4>
       <nav class="footer-nav">
+        <a href="../../../products/">全商品一覧</a>
         <a href="../../../products/comforter/">掛け布団</a>
         <a href="../../../products/pillow/">枕</a>
         <a href="../../../products/bedding/">カバー・シーツ・寝具</a>
@@ -909,30 +881,24 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
       <nav class="footer-nav">
         <a href="../../../magazine/">記事一覧</a>
         <a href="../../../down/">ダウンについて</a>
+        <a href="../../../glossary/">用語集</a>
       </nav>
     </div>
-    <div class="footer-col-last">
-      <div>
-        <h4 class="footer-nav-title">GUIDE</h4>
-        <nav class="footer-nav">
-          <a href="../../../about/">会社概要</a>
-          <a href="../../../faq/">よくあるご質問</a>
-          <a href="../../../contact/">お問い合わせ</a>
-          <a href="../../../gift/">ギフト</a>
-          <a href="../../../subscription/">サブスクリプション</a>
-        </nav>
-      </div>
-      <div>
-        <h4 class="footer-nav-title">ACCOUNT</h4>
-        <nav class="footer-nav">
-          <a href="../../../account/login/">ログイン</a>
-          <a href="../../../account/register/">新規会員登録</a>
-          <a href="../../../cart/">カート</a>
-        </nav>
-        <nav class="footer-nav-sub" style="margin-top:16px">
-          <a href="../../../glossary/">用語集</a>
-        </nav>
-      </div>
+    <div>
+      <h4 class="footer-nav-title">GUIDE</h4>
+      <nav class="footer-nav">
+        <a href="../../../about/">会社概要</a>
+        <a href="../../../gift/">ギフト</a>
+        <a href="../../../faq/">よくあるご質問</a>
+        <a href="../../../contact/">お問い合わせ</a>
+        <a href="../../../subscription/">サブスクリプション</a>
+      </nav>
+      <h4 class="footer-nav-title" style="margin-top:28px">ACCOUNT</h4>
+      <nav class="footer-nav">
+        <a href="../../../account/login/">ログイン</a>
+        <a href="../../../account/register/">新規会員登録</a>
+        <a href="../../../cart/">カート</a>
+      </nav>
     </div>
   </div>
   <div class="footer-bottom">
@@ -959,34 +925,6 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
   document.querySelectorAll('.fade-up').forEach(function(el){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});obs.observe(el)});
 })();
 (function(){var btn=document.getElementById('hamburgerBtn');var menu=document.getElementById('mobileMenu');var close=document.getElementById('menuClose');var overlay=document.getElementById('mobileMenuOverlay');if(!btn||!menu)return;function open(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden'}function cl(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow=''}btn.addEventListener('click',open);if(close)close.addEventListener('click',cl);if(overlay)overlay.addEventListener('click',cl);menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cl)})})();
-</script>
-
-
-<script>
-// Mobile menu accordion
-(function(){
-  var menu=document.getElementById('mobileMenu');
-  if(!menu)return;
-  var toggles=menu.querySelectorAll('.mm-toggle');
-  toggles.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var acc=btn.closest('.mm-accordion');
-      var wasOpen=acc.classList.contains('open');
-      // close all
-      menu.querySelectorAll('.mm-accordion').forEach(function(a){a.classList.remove('open');});
-      if(!wasOpen)acc.classList.add('open');
-    });
-  });
-  // open/close handlers
-  var overlay=document.getElementById('mobileMenuOverlay');
-  var closeBtn=document.getElementById('menuClose');
-  var hamburger=document.getElementById('hamburgerBtn');
-  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
-  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
-  if(hamburger)hamburger.addEventListener('click',openMenu);
-  if(closeBtn)closeBtn.addEventListener('click',closeMenu);
-  if(overlay)overlay.addEventListener('click',closeMenu);
-})();
 </script>
 </body>
 </html>

@@ -21,33 +21,5 @@
 </head>
 <body>
 <p>リダイレクト中... <a href="../products/service/">サービスページはこちら</a></p>
-
-
-<script>
-// Mobile menu accordion
-(function(){
-  var menu=document.getElementById('mobileMenu');
-  if(!menu)return;
-  var toggles=menu.querySelectorAll('.mm-toggle');
-  toggles.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var acc=btn.closest('.mm-accordion');
-      var wasOpen=acc.classList.contains('open');
-      // close all
-      menu.querySelectorAll('.mm-accordion').forEach(function(a){a.classList.remove('open');});
-      if(!wasOpen)acc.classList.add('open');
-    });
-  });
-  // open/close handlers
-  var overlay=document.getElementById('mobileMenuOverlay');
-  var closeBtn=document.getElementById('menuClose');
-  var hamburger=document.getElementById('hamburgerBtn');
-  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
-  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
-  if(hamburger)hamburger.addEventListener('click',openMenu);
-  if(closeBtn)closeBtn.addEventListener('click',closeMenu);
-  if(overlay)overlay.addEventListener('click',closeMenu);
-})();
-</script>
 </body>
 </html>
