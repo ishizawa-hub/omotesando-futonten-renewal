@@ -692,8 +692,8 @@ body.loading .hero-logo,body.loading .hero-en,body.loading .hero-catch,body.load
   .collection-grid { grid-template-columns: repeat(2, 1fr); }
   .experience-grid { grid-template-columns: repeat(2, 1fr); }
   .craft-inner { grid-template-columns: 1fr; gap: 48px; }
-  .trial-inner { grid-template-columns: 1fr; }
-  .trial-image { display: none; }
+  .trial-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .trial-image video { height: 360px; }
   .collection::before { top: 30px; left: 30px; right: 30px; bottom: 30px; }
 }
 
@@ -788,7 +788,7 @@ body.loading .hero-logo,body.loading .hero-en,body.loading .hero-catch,body.load
 
 /* === FOOTER === */
 .footer{padding:80px 0 0;background:#2D2D2D;color:#fff}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:48px}
 .footer-logo{margin-bottom:16px}
 .footer-logo img{height:24px}
 .footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
@@ -797,14 +797,14 @@ body.loading .hero-logo,body.loading .hero-en,body.loading .hero-catch,body.load
 .footer-nav a:hover{color:#C9A96E}
 .footer-nav-sub a{display:block;font-size:12px;color:rgba(255,255,255,0.28);padding:4px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav-sub a:hover{color:rgba(255,255,255,0.6)}
-.footer-col-last{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.footer-col-last{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
 .footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .footer-legal{display:flex;gap:24px}
 .footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
 .footer-legal a:hover{color:rgba(255,255,255,0.6)}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
 </style>
 <noscript>
 <style>
@@ -1344,7 +1344,9 @@ body:not(.loading) .hero-content{
       <a href="contact/" class="btn-gold">Start Free Trial</a>
     </div>
     <div class="trial-image" data-anim="fade-left">
-      <img src="images/video-caps/cap_015.jpg" alt="上質な羽毛布団 | 表参道布団店">
+      <video autoplay muted loop playsinline style="width:100%;height:480px;object-fit:cover;">
+        <source src="videos/trial_comforter.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -1439,7 +1441,7 @@ body:not(.loading) .hero-content{
       <div>
         <h4 class="footer-nav-title">GUIDE</h4>
         <nav class="footer-nav">
-          <a href="about/">会社概要・ショールーム</a>
+          <a href="about/">会社概要</a>
           <a href="faq/">よくあるご質問</a>
           <a href="contact/">お問い合わせ</a>
           <a href="gift/">ギフト</a>
