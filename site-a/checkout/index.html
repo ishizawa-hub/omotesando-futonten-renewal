@@ -91,17 +91,9 @@
 .mobile-menu-overlay.active{opacity:1;pointer-events:all}
 /* === END GLOBAL NAV === */
 /* FOOTER */
-.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
-.footer-logo{margin-bottom:16px}
-.footer-logo img{height:24px}
-.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
-.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
-.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
-.footer-nav a:hover{color:#C9A96E}
-.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
-@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+
+@media(max-width:1024px){}
+@media(max-width:768px){.footer-brand{grid-column:1/-1;text-align:center}}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#C9A96E;--gold-hover:#B8975A;--text:#1A1A1A;--text-light:#6B6B6B;--border:#E5E5E5;--white:#FFFFFF;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif}
 body{font-family:var(--font-body);color:var(--text);background:#F7F6F3;line-height:1.8}
@@ -131,7 +123,19 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .bo{display:block;width:100%;padding:18px;background:var(--gold);color:var(--white);border:none;border-radius:8px;font-size:15px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:background .3s;margin-top:20px;text-align:center}
 .bo:hover{background:var(--gold-hover)}
 .sn{text-align:center;margin-top:12px;font-size:11px;color:var(--text-light);display:flex;align-items:center;justify-content:center;gap:4px}
-@media(max-width:768px){.co-wrap{grid-template-columns:1fr;padding:80px 20px 40px}.fr{grid-template-columns:1fr}.co-main{padding:24px}}
+@media(max-width:768px){.co-wrap{grid-template-columns:1fr;padding:80px 20px 40px}.fr{grid-template-columns:1fr}.co-main{padding:24px}.checkout-progress{padding:16px 20px}.progress-inner{gap:8px}.step-label{font-size:10px}}
+/* Progress Steps */
+.checkout-progress{background:#fff;border-bottom:1px solid #E5E5E5;padding:20px 40px}
+.progress-inner{max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px}
+.progress-step{display:flex;align-items:center;gap:8px}
+.step-num{width:28px;height:28px;border-radius:50%;border:2px solid #E5E5E5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#999;transition:all .3s}
+.progress-step.active .step-num{border-color:#C9A96E;background:#C9A96E;color:#fff}
+.progress-step.done .step-num{border-color:#C9A96E;background:transparent;color:#C9A96E}
+.step-label{font-size:12px;font-weight:600;color:#999;letter-spacing:.02em}
+.progress-step.active .step-label{color:#1A1A1A}
+.progress-step.done .step-label{color:#C9A96E}
+.progress-line{flex:1;max-width:60px;height:2px;background:#E5E5E5;border-radius:1px}
+.progress-line.done{background:#C9A96E}
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -141,6 +145,23 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .breadcrumb span{color:#666}
 .bc-sep{margin:0 8px;color:#ccc}
 @media(max-width:768px){.bc-inner{padding:10px 20px;font-size:11px}}
+
+/* === FOOTER === */
+.footer{padding:80px 0 0;background:#2D2D2D;color:#fff}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.footer-logo{margin-bottom:16px}
+.footer-logo img{height:24px}
+.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
+.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
+.footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav a:hover{color:#C9A96E}
+.footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
+.footer-legal a:hover{color:rgba(255,255,255,0.6)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
 </style>
 </head>
 <body>
@@ -232,18 +253,72 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 
 <nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <a href="../cart/">カート</a> <span class="bc-sep">/</span> <span>お会計</span></div></nav>
 
+<!-- Progress Steps -->
+<div class="checkout-progress">
+  <div class="progress-inner">
+    <div class="progress-step done"><span class="step-num">1</span><span class="step-label">カート</span></div>
+    <div class="progress-line done"></div>
+    <div class="progress-step active"><span class="step-num">2</span><span class="step-label">お届け先・お支払い</span></div>
+    <div class="progress-line"></div>
+    <div class="progress-step"><span class="step-num">3</span><span class="step-label">注文完了</span></div>
+  </div>
+</div>
+
 <div class="co-wrap">
   <div class="co-main">
     <h1>ご購入手続き</h1>
+
+    <!-- Guest / Member toggle -->
+    <div class="guest-member" style="margin-bottom:28px;padding:20px;background:#FAF7F2;border-radius:10px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:14px;font-weight:600;color:#1A1A1A">会員の方はログインすると入力が簡単です</span>
+      <a href="../account/login/?redirect=checkout" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#2D2D2D;color:#fff;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:.06em;transition:background .3s" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2D2D2D'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>ログイン
+      </a>
+      <span style="font-size:13px;color:#999">または、このままゲスト購入も可能です</span>
+    </div>
+
     <div class="fs">
       <h2>お届け先情報</h2>
-      <div class="fr"><div class="fg"><label>姓<span class="req">*</span></label><input type="text" placeholder="山田"></div><div class="fg"><label>名<span class="req">*</span></label><input type="text" placeholder="太郎"></div></div>
-      <div class="fr full"><div class="fg"><label>メールアドレス<span class="req">*</span></label><input type="email" placeholder="example@email.com"></div></div>
-      <div class="fr full"><div class="fg"><label>電話番号<span class="req">*</span></label><input type="tel" placeholder="090-1234-5678"></div></div>
-      <div class="fr"><div class="fg"><label>郵便番号<span class="req">*</span></label><input type="text" placeholder="150-0001" maxlength="8"></div><div class="fg"><label>都道府県<span class="req">*</span></label><select><option value="">選択</option><option>東京都</option><option>神奈川県</option><option>大阪府</option><option>埼玉県</option><option>千葉県</option><option>愛知県</option><option>福岡県</option><option>北海道</option><option>その他</option></select></div></div>
-      <div class="fr full"><div class="fg"><label>市区町村・番地<span class="req">*</span></label><input type="text" placeholder="渋谷区神宮前4-xx-xx"></div></div>
-      <div class="fr full"><div class="fg"><label>建物名・部屋番号</label><input type="text" placeholder="○○マンション 101号室"></div></div>
+      <div class="fr">
+        <div class="fg"><label>姓<span class="req">*</span></label><input type="text" placeholder="山田" required id="lastName" autocomplete="family-name"></div>
+        <div class="fg"><label>名<span class="req">*</span></label><input type="text" placeholder="太郎" required id="firstName" autocomplete="given-name"></div>
+      </div>
+      <div class="fr full"><div class="fg"><label>メールアドレス<span class="req">*</span></label><input type="email" placeholder="example@email.com" required id="email" autocomplete="email"></div></div>
+      <div class="fr full"><div class="fg"><label>電話番号<span class="req">*</span></label><input type="tel" placeholder="090-1234-5678" required id="phone" autocomplete="tel"></div></div>
+      <div class="fr">
+        <div class="fg"><label>郵便番号<span class="req">*</span></label><input type="text" placeholder="150-0001" maxlength="8" required id="postalCode" autocomplete="postal-code" oninput="autoFillAddress(this.value)"></div>
+        <div class="fg"><label>都道府県<span class="req">*</span></label>
+          <select required id="prefecture" autocomplete="address-level1">
+            <option value="">選択してください</option>
+            <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option>
+            <option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option>
+            <option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option>
+            <option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option>
+            <option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option>
+            <option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option>
+            <option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
+          </select>
+        </div>
+      </div>
+      <div class="fr full"><div class="fg"><label>市区町村・番地<span class="req">*</span></label><input type="text" placeholder="渋谷区神宮前4-xx-xx" required id="address" autocomplete="address-line1"></div></div>
+      <div class="fr full"><div class="fg"><label>建物名・部屋番号</label><input type="text" placeholder="○○マンション 101号室" id="building" autocomplete="address-line2"></div></div>
     </div>
+
+    <!-- Delivery note -->
+    <div class="fs">
+      <h2>配送オプション</h2>
+      <div style="padding:16px;background:#FAFAFA;border-radius:8px;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <p style="font-size:14px;font-weight:600">通常配送（無料）</p>
+            <p style="font-size:13px;color:#999;margin-top:4px">ご注文から3〜5営業日でお届け</p>
+          </div>
+          <span style="font-size:14px;font-weight:700;color:#C9A96E">¥0</span>
+        </div>
+      </div>
+      <div class="fr full"><div class="fg"><label>配送時のご要望（任意）</label><input type="text" placeholder="例：置き配希望、日時指定など" id="deliveryNote"></div></div>
+    </div>
+
     <div class="fs">
       <h2>お支払い方法</h2>
       <div class="pm">
@@ -252,12 +327,13 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
           <div class="pi"><span class="pic">VISA</span><span class="pic">MC</span><span class="pic">AMEX</span><span class="pic">JCB</span></div>
         </label>
         <div class="cf vis" id="cf">
-          <div class="fr full" style="margin-bottom:12px"><div class="fg"><label>カード番号</label><input placeholder="1234 5678 9012 3456" maxlength="19"></div></div>
-          <div class="fr"><div class="fg"><label>有効期限</label><input placeholder="MM/YY" maxlength="5"></div><div class="fg"><label>セキュリティコード</label><input placeholder="123" maxlength="4"></div></div>
-          <div class="fr full"><div class="fg"><label>カード名義人</label><input placeholder="TARO YAMADA" style="text-transform:uppercase"></div></div>
+          <div class="fr full" style="margin-bottom:12px"><div class="fg"><label>カード番号</label><input placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number"></div></div>
+          <div class="fr"><div class="fg"><label>有効期限</label><input placeholder="MM/YY" maxlength="5" autocomplete="cc-exp"></div><div class="fg"><label>セキュリティコード</label><input placeholder="123" maxlength="4" autocomplete="cc-csc"></div></div>
+          <div class="fr full"><div class="fg"><label>カード名義人</label><input placeholder="TARO YAMADA" style="text-transform:uppercase" autocomplete="cc-name"></div></div>
         </div>
         <label class="po" onclick="document.querySelectorAll('.po').forEach(function(el){el.classList.remove('sel')});this.classList.add('sel');document.getElementById('cf').classList.remove('vis')">
           <input type="radio" name="pay" value="bank"><span style="font-size:14px;font-weight:500">銀行振込</span>
+          <span style="font-size:12px;color:#999;margin-left:8px">※ご注文確認後、振込先をメールでお知らせします</span>
         </label>
         <label class="po" onclick="document.querySelectorAll('.po').forEach(function(el){el.classList.remove('sel')});this.classList.add('sel');document.getElementById('cf').classList.remove('vis')">
           <input type="radio" name="pay" value="cvs"><span style="font-size:14px;font-weight:500">コンビニ払い</span>
@@ -265,23 +341,106 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
         </label>
       </div>
     </div>
+
+    <!-- Amazon Pay / Apple Pay quick checkout -->
+    <div style="margin-top:8px;padding:20px;background:#FAFAFA;border-radius:10px;text-align:center">
+      <p style="font-size:12px;color:#999;margin-bottom:12px">または、かんたん決済</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button disabled style="display:flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid #E5E5E5;border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:not-allowed;opacity:0.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Apple Pay（準備中）
+        </button>
+      </div>
+    </div>
   </div>
+
   <div class="co-sum">
     <h2>ORDER SUMMARY</h2>
     <div id="coItems"></div>
     <div class="sl"><span class="l">小計</span><span class="v" id="coSub">&yen;0</span></div>
-    <div class="sl"><span class="l">送料</span><span class="v">無料</span></div>
+    <div class="sl"><span class="l">送料</span><span class="v" style="color:#C9A96E">無料</span></div>
     <div class="st"><span>合計（税込）</span><span id="coTotal">&yen;0</span></div>
-    <button class="bo" onclick="localStorage.removeItem('oft_cart');location.href='success/'">注文を確定する</button>
+    <button class="bo" id="submitOrder" onclick="validateAndSubmit()">注文を確定する</button>
     <p class="sn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> SSL暗号化通信で保護されています</p>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid #F0F0F0">
+      <p style="font-size:11px;color:#999;line-height:1.6">ご注文確定後、確認メールをお送りいたします。<br>商品は受注生産のため、お届けまで2〜3週間程度いただいております。</p>
+    </div>
+    <!-- Trust badges -->
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap">
+      <span style="font-size:11px;color:#999;display:flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>安心品質保証</span>
+      <span style="font-size:11px;color:#999;display:flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>全国送料無料</span>
+      <span style="font-size:11px;color:#999;display:flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>注文確認メール</span>
+    </div>
   </div>
 </div>
+
+<script>
+// 郵便番号から住所自動入力（zipcloud API）
+function autoFillAddress(zip) {
+  var clean = zip.replace(/[^0-9]/g, '');
+  if (clean.length === 7) {
+    fetch('https://zipcloud.ibsnet.co.jp/api/search?zipcode=' + clean)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.results && data.results[0]) {
+          var r = data.results[0];
+          document.getElementById('prefecture').value = r.address1;
+          document.getElementById('address').value = r.address2 + r.address3;
+          document.getElementById('address').focus();
+        }
+      }).catch(function(){});
+  }
+}
+// バリデーション
+function validateAndSubmit() {
+  var fields = ['lastName','firstName','email','phone','postalCode','prefecture','address'];
+  var valid = true;
+  fields.forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var val = el.tagName === 'SELECT' ? el.value : el.value.trim();
+    if (!val) {
+      el.style.borderColor = '#e74c3c';
+      el.style.background = 'rgba(231,76,60,0.04)';
+      valid = false;
+    } else {
+      el.style.borderColor = '#E5E5E5';
+      el.style.background = '';
+    }
+  });
+  if (!valid) {
+    var firstInvalid = document.querySelector('[style*="border-color: rgb(231, 76, 60)"]');
+    if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  // メールバリデーション
+  var emailEl = document.getElementById('email');
+  if (emailEl && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+    emailEl.style.borderColor = '#e74c3c';
+    emailEl.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  // 送信アニメーション
+  var btn = document.getElementById('submitOrder');
+  btn.textContent = '処理中...';
+  btn.style.opacity = '0.7';
+  btn.style.pointerEvents = 'none';
+  setTimeout(function(){
+    localStorage.removeItem('oft_cart');
+    location.href = 'success/';
+  }, 1200);
+}
+</script>
 
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
       <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+      <div class="footer-sns" style="display:flex;gap:16px;margin-top:20px">
+        <a href="https://www.instagram.com/omotesando_futonten/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(255,255,255,0.5);transition:color 0.3s" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://lin.ee/omotesandofutonten" target="_blank" rel="noopener" aria-label="LINE" style="color:rgba(255,255,255,0.5);transition:color 0.3s" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.5)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></a>
+      </div>
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
@@ -294,13 +453,14 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
     <div>
       <h4 class="footer-nav-title">PRODUCTS</h4>
       <nav class="footer-nav">
+        <a href="../products/">全商品一覧</a>
         <a href="../products/comforter/">掛け布団</a>
-        <a href="../products/pillow/">枕／枕カバー</a>
-        <a href="../products/bedding/">カバー／シーツ／敷パット／マットレス</a>
+        <a href="../products/pillow/">枕</a>
+        <a href="../products/bedding/">カバー・シーツ・寝具</a>
         <a href="../products/apparel/">アパレル</a>
         <a href="../products/collaboration/">コラボレーション</a>
         <a href="../products/baby/">ベビー</a>
-        <a href="../products/service/">クリーンサイクルサービス</a>
+        <a href="../products/service/">サービス</a>
       </nav>
     </div>
     <div>
@@ -310,24 +470,39 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
         <a href="../concept/brand-story/">ブランドストーリー</a>
         <a href="../concept/clean-cycle-down/">Clean Cycle Down</a>
         <a href="../concept/material/">素材のこだわり</a>
+      </nav>
+      <h4 class="footer-nav-title" style="margin-top:28px">MAGAZINE</h4>
+      <nav class="footer-nav">
+        <a href="../magazine/">記事一覧</a>
         <a href="../down/">ダウンについて</a>
+        <a href="../glossary/">用語集</a>
       </nav>
     </div>
     <div>
-      <h4 class="footer-nav-title">INFORMATION</h4>
+      <h4 class="footer-nav-title">GUIDE</h4>
       <nav class="footer-nav">
-        <a href="../magazine/">マガジン</a>
-        <a href="../about/">会社概要</a>
+        <a href="../about/">会社概要・ショールーム</a>
         <a href="../gift/">ギフト</a>
-        <a href="../faq/">FAQ</a>
+        <a href="../faq/">よくあるご質問</a>
         <a href="../contact/">お問い合わせ</a>
         <a href="../subscription/">サブスクリプション</a>
-<a href="../privacy-policy/">プライバシーポリシー</a>
-        <a href="../terms/">利用規約</a>
+      </nav>
+      <h4 class="footer-nav-title" style="margin-top:28px">ACCOUNT</h4>
+      <nav class="footer-nav">
+        <a href="../account/login/">ログイン</a>
+        <a href="../account/register/">新規会員登録</a>
+        <a href="../cart/">カート</a>
       </nav>
     </div>
   </div>
-  <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+  <div class="footer-bottom">
+    <nav class="footer-legal">
+      <a href="../privacy-policy/">プライバシーポリシー</a>
+      <a href="../terms/">利用規約</a>
+      <a href="../faq/">特定商取引法に基づく表記</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+  </div>
 </footer>
 
 <script src="../js/cart.js"></script>
