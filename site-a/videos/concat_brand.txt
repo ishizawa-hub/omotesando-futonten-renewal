@@ -1,3 +1,0 @@
-file 'clip1_cool.mp4'
-file 'clip_wash_cool.mp4'
-file 'clip_tag_cool.mp4'

@@ -1,3 +1,0 @@
-file 'clip1_new.mp4'
-file 'clip2_new.mp4'
-file 'clip3_new.mp4'
