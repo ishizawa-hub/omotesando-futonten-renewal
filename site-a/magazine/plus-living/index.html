@@ -97,11 +97,11 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
-.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
-.mobile-menu.active{opacity:1;pointer-events:all}
+
+
 .mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}.mobile-menu-close svg{width:24px;height:24px}
-.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
-.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}.mobile-menu nav a:hover{color:var(--color-accent)}
+
+.mobile-menu nav a:hover{color:var(--color-accent)}
 
 /* Breadcrumb */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5}
@@ -257,12 +257,36 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav a:hover{color:#C9A96E}
 .footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-legal{display:flex;gap:24px}
-.footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
+.footer-legal{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em;white-space:nowrap}
 .footer-legal a:hover{color:rgba(255,255,255,0.6)}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
+.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu-overlay.active{opacity:1;pointer-events:all}
+.mm-nav{display:flex;flex-direction:column;padding:0 28px}
+.mm-link{display:flex;align-items:center;justify-content:space-between;padding:15px 0;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.3s;background:none;border-top:none;border-left:none;border-right:none;width:100%;text-align:left;cursor:pointer}
+.mm-link:hover{color:#C9A96E}
+.mm-sub-link{font-size:13px;font-weight:500;letter-spacing:0.06em;color:rgba(255,255,255,0.5);padding:12px 0}
+.mm-sub-link:hover{color:#C9A96E}
+.mm-toggle{position:relative}
+.mm-arrow{transition:transform 0.3s;color:rgba(255,255,255,0.4)}
+.mm-accordion.open .mm-arrow{transform:rotate(180deg)}
+.mm-sub{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.mm-accordion.open .mm-sub{max-height:500px}
+.mm-sub a{display:block;padding:10px 0 10px 16px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.04em;transition:color 0.3s;border-bottom:1px solid rgba(255,255,255,0.03)}
+.mm-sub a:hover{color:#C9A96E}
+.mm-divider{height:1px;background:rgba(255,255,255,0.1);margin:8px 0}
+.mm-bottom{display:flex;gap:10px;margin-top:16px}
+.mm-btn-outline{flex:1;text-align:center;padding:12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.3s}
+.mm-btn-outline:hover{border-color:#C9A96E;color:#C9A96E}
+.mm-btn-gold{flex:1;text-align:center;padding:12px;background:#C9A96E;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#fff;text-decoration:none;transition:background 0.3s}
+.mm-btn-gold:hover{background:#B8975A}
 </style>
 </head>
 <body>
@@ -301,21 +325,46 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
     </div>
   </div>
 </header>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
-  <nav>
-    <a href="../../index.html">TOP</a>
-    <a href="../../concept/">CONCEPT</a>
-    <a href="../../concept/brand-story/">BRAND STORY</a>
-    <a href="../../products/">PRODUCTS</a>
-    <a href="../../concept/clean-cycle-down/">CLEAN CYCLE DOWN</a>
-    <a href="../../magazine/">MAGAZINE</a>
-    <a href="../../about/">ABOUT</a>
-    <a href="../../gift/">GIFT</a>
-    <a href="../../contact/">CONTACT</a>
-    <a href="../../faq/">FAQ</a>
-    <a href="../../subscription/">サブスクリプション</a>
-    <a href="../../cart/">CART</a>
+  <nav class="mm-nav">
+    <a href="../../index.html" class="mm-link">TOP</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONCEPT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../concept/">ブランドコンセプト</a>
+        <a href="../../concept/brand-story/">ブランドストーリー</a>
+        <a href="../../concept/clean-cycle-down/">Clean Cycle Down</a>
+        <a href="../../concept/material/">素材のこだわり</a>
+      </div>
+    </div>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">PRODUCTS<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../products/">全商品一覧</a>
+        <a href="../../products/comforter/">掛け布団</a>
+        <a href="../../products/pillow/">枕</a>
+        <a href="../../products/bedding/">カバー・シーツ・寝具</a>
+        <a href="../../products/apparel/">アパレル</a>
+        <a href="../../products/collaboration/">コラボレーション</a>
+        <a href="../../products/baby/">ベビー</a>
+        <a href="../../products/service/">サービス</a>
+      </div>
+    </div>
+    <a href="../../magazine/" class="mm-link">MAGAZINE</a>
+    <a href="../../about/" class="mm-link">ABOUT</a>
+    <div class="mm-divider"></div>
+    <a href="../../gift/" class="mm-link mm-sub-link">GIFT</a>
+    <a href="../../faq/" class="mm-link mm-sub-link">FAQ</a>
+    <a href="../../contact/" class="mm-link mm-sub-link">CONTACT</a>
+    <a href="../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-divider"></div>
+    <div class="mm-bottom">
+      <a href="../../account/login/" class="mm-btn-outline">ログイン</a>
+      <a href="../../cart/" class="mm-btn-gold">カート</a>
+    </div>
   </nav>
 </div>
 
@@ -502,8 +551,18 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 
 <script src="../../js/cart.js"></script>
 <script>
-(function(){var btn=document.getElementById('hamburgerBtn');var menu=document.getElementById('mobileMenu');var close=document.getElementById('menuClose');if(!btn||!menu)return;function o(){menu.classList.add('active');document.body.style.overflow='hidden'}function c(){menu.classList.remove('active');document.body.style.overflow=''}btn.addEventListener('click',o);if(close)close.addEventListener('click',c);menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});})();
+
 (function(){var els=document.querySelectorAll('.fade-up');if(!els.length)return;var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});els.forEach(function(el){obs.observe(el)});})();
+var hamburger=document.getElementById('hamburgerBtn');
+var mobileMenu=document.getElementById('mobileMenu');
+var menuClose=document.getElementById('menuClose');
+var menuOverlay=document.getElementById('mobileMenuOverlay');
+function openMenu(){mobileMenu.classList.add('active');menuOverlay.classList.add('active');document.body.style.overflow='hidden'}
+function closeMenu(){mobileMenu.classList.remove('active');menuOverlay.classList.remove('active');document.body.style.overflow=''}
+if(hamburger)hamburger.addEventListener('click',openMenu);
+if(menuClose)menuClose.addEventListener('click',closeMenu);
+if(menuOverlay)menuOverlay.addEventListener('click',closeMenu);
+document.querySelectorAll('.mm-toggle').forEach(function(btn){btn.addEventListener('click',function(){this.parentElement.classList.toggle('open')})});
 </script>
 </body>
 </html>
