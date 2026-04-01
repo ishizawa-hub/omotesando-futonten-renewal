@@ -97,12 +97,6 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
-.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
-.mobile-menu.active{opacity:1;pointer-events:all}
-.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}.mobile-menu-close svg{width:24px;height:24px}
-.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
-.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}.mobile-menu nav a:hover{color:var(--color-accent)}
-
 /* Breadcrumb */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5}
 .bc-inner{max-width:1320px;margin:0 auto;padding:12px 40px;font-size:12px;font-family:'DM Sans','Noto Sans JP',sans-serif;color:#999;letter-spacing:0.02em;display:flex;align-items:center;flex-wrap:wrap}
@@ -247,6 +241,38 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
+@media(max-width:1024px){}
+@media(max-width:768px){.footer-brand{grid-column:1/-1;text-align:center}}
+
+@media(max-width:1024px){}
+@media(max-width:768px){.footer-brand{grid-column:1/-1;text-align:center}}
+
+/* === MOBILE MENU (Accordion) === */
+.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu.active{transform:translateX(0)}
+.mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mobile-menu-close svg{width:24px;height:24px}
+.mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu-overlay.active{opacity:1;pointer-events:all}
+.mm-nav{display:flex;flex-direction:column;padding:0 28px}
+.mm-link{display:flex;align-items:center;justify-content:space-between;padding:15px 0;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.12em;color:rgba(255,255,255,0.9);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.3s;background:none;border-top:none;border-left:none;border-right:none;width:100%;text-align:left;cursor:pointer}
+.mm-link:hover{color:#C9A96E}
+.mm-sub-link{font-size:13px;font-weight:500;letter-spacing:0.06em;color:rgba(255,255,255,0.5);padding:12px 0}
+.mm-sub-link:hover{color:#C9A96E}
+.mm-toggle{position:relative}
+.mm-arrow{transition:transform 0.3s;color:rgba(255,255,255,0.4)}
+.mm-accordion.open .mm-arrow{transform:rotate(180deg)}
+.mm-sub{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.mm-accordion.open .mm-sub{max-height:500px}
+.mm-sub a{display:block;padding:10px 0 10px 16px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.04em;transition:color 0.3s;border-bottom:1px solid rgba(255,255,255,0.03)}
+.mm-sub a:hover{color:#C9A96E}
+.mm-divider{height:1px;background:rgba(255,255,255,0.1);margin:8px 0}
+.mm-bottom{display:flex;gap:10px;margin-top:16px}
+.mm-btn-outline{flex:1;text-align:center;padding:12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:rgba(255,255,255,0.7);text-decoration:none;transition:all 0.3s}
+.mm-btn-outline:hover{border-color:#C9A96E;color:#C9A96E}
+.mm-btn-gold{flex:1;text-align:center;padding:12px;background:#C9A96E;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#fff;text-decoration:none;transition:background 0.3s}
+.mm-btn-gold:hover{background:#B8975A}
+
 /* === FOOTER === */
 .footer{padding:80px 0 0;background:#2D2D2D;color:#fff}
 .footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
@@ -256,6 +282,9 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
 .footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav a:hover{color:#C9A96E}
+.footer-nav-sub a{display:block;font-size:12px;color:rgba(255,255,255,0.28);padding:4px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav-sub a:hover{color:rgba(255,255,255,0.6)}
+.footer-col-last{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .footer-legal{display:flex;gap:24px}
 .footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em}
@@ -283,7 +312,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
       <div class="header-nav-item">
         <a href="../../products/">PRODUCTS</a>
         <div class="nav-mega">
-          <a href="../../products/comforter/" class="nav-mega-card"><img src="../../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy"><span class="nav-mega-card-label">COMFORTER</span><span class="nav-mega-card-name">掛け布団</span></a>
+          <a href="../../products/comforter/" class="nav-mega-card"><img src="../../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy"><span class="nav-mega-card-label">SLEEP DOWN</span><span class="nav-mega-card-name">掛け布団</span></a>
           <a href="../../products/pillow/" class="nav-mega-card"><img src="../../images/site/pillow_hero2.jpg" alt="枕" loading="lazy"><span class="nav-mega-card-label">PILLOW</span><span class="nav-mega-card-name">枕／枕カバー</span></a>
           <a href="../../products/bedding/" class="nav-mega-card"><img src="../../images/site/bedding_hero.jpg" alt="寝具" loading="lazy"><span class="nav-mega-card-label">BEDDING</span><span class="nav-mega-card-name">カバー／シーツ／敷パット／マットレス</span></a>
           <a href="../../products/apparel/" class="nav-mega-card"><img src="../../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy"><span class="nav-mega-card-label">APPAREL</span><span class="nav-mega-card-name">アパレル</span></a>
@@ -476,7 +505,6 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
     <div>
       <h4 class="footer-nav-title">PRODUCTS</h4>
       <nav class="footer-nav">
-        <a href="../../products/">全商品一覧</a>
         <a href="../../products/comforter/">掛け布団</a>
         <a href="../../products/pillow/">枕</a>
         <a href="../../products/bedding/">カバー・シーツ・寝具</a>
@@ -498,24 +526,30 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
       <nav class="footer-nav">
         <a href="../../magazine/">記事一覧</a>
         <a href="../../down/">ダウンについて</a>
-        <a href="../../glossary/">用語集</a>
       </nav>
     </div>
-    <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
-      <nav class="footer-nav">
-        <a href="../../about/">会社概要・ショールーム</a>
-        <a href="../../gift/">ギフト</a>
-        <a href="../../faq/">よくあるご質問</a>
-        <a href="../../contact/">お問い合わせ</a>
-        <a href="../../subscription/">サブスクリプション</a>
-      </nav>
-      <h4 class="footer-nav-title" style="margin-top:28px">ACCOUNT</h4>
-      <nav class="footer-nav">
-        <a href="../../account/login/">ログイン</a>
-        <a href="../../account/register/">新規会員登録</a>
-        <a href="../../cart/">カート</a>
-      </nav>
+    <div class="footer-col-last">
+      <div>
+        <h4 class="footer-nav-title">GUIDE</h4>
+        <nav class="footer-nav">
+          <a href="../../about/">会社概要・ショールーム</a>
+          <a href="../../faq/">よくあるご質問</a>
+          <a href="../../contact/">お問い合わせ</a>
+          <a href="../../gift/">ギフト</a>
+          <a href="../../subscription/">サブスクリプション</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="footer-nav-title">ACCOUNT</h4>
+        <nav class="footer-nav">
+          <a href="../../account/login/">ログイン</a>
+          <a href="../../account/register/">新規会員登録</a>
+          <a href="../../cart/">カート</a>
+        </nav>
+        <nav class="footer-nav-sub" style="margin-top:16px">
+          <a href="../../glossary/">用語集</a>
+        </nav>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -532,6 +566,34 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 <script>
 (function(){var btn=document.getElementById('hamburgerBtn');var menu=document.getElementById('mobileMenu');var close=document.getElementById('menuClose');if(!btn||!menu)return;function o(){menu.classList.add('active');document.body.style.overflow='hidden'}function c(){menu.classList.remove('active');document.body.style.overflow=''}btn.addEventListener('click',o);if(close)close.addEventListener('click',c);menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)});})();
 (function(){var els=document.querySelectorAll('.fade-up');if(!els.length)return;var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});els.forEach(function(el){obs.observe(el)});})();
+</script>
+
+
+<script>
+// Mobile menu accordion
+(function(){
+  var menu=document.getElementById('mobileMenu');
+  if(!menu)return;
+  var toggles=menu.querySelectorAll('.mm-toggle');
+  toggles.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var acc=btn.closest('.mm-accordion');
+      var wasOpen=acc.classList.contains('open');
+      // close all
+      menu.querySelectorAll('.mm-accordion').forEach(function(a){a.classList.remove('open');});
+      if(!wasOpen)acc.classList.add('open');
+    });
+  });
+  // open/close handlers
+  var overlay=document.getElementById('mobileMenuOverlay');
+  var closeBtn=document.getElementById('menuClose');
+  var hamburger=document.getElementById('hamburgerBtn');
+  function openMenu(){menu.classList.add('active');if(overlay)overlay.classList.add('active');document.body.style.overflow='hidden';}
+  function closeMenu(){menu.classList.remove('active');if(overlay)overlay.classList.remove('active');document.body.style.overflow='';}
+  if(hamburger)hamburger.addEventListener('click',openMenu);
+  if(closeBtn)closeBtn.addEventListener('click',closeMenu);
+  if(overlay)overlay.addEventListener('click',closeMenu);
+})();
 </script>
 </body>
 </html>
