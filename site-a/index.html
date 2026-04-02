@@ -2025,11 +2025,8 @@ body:not(.loading) .hero-content{
 <section class="hero" id="hero">
   <!-- Hero Video Background -->
   <div class="hero-video-bg">
-    <video class="hero-video active" id="heroVideo1" autoplay muted playsinline>
+    <video class="hero-video active" autoplay muted loop playsinline>
       <source src="videos/brand_film.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" id="heroVideo2" muted playsinline>
-      <source src="videos/bedmaking.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay"></div>
   </div>
@@ -2652,26 +2649,5 @@ body:not(.loading) .hero-content{
 })();
 </script>
 
-<!-- Hero Video: 2 videos alternating with crossfade -->
-<script>
-(function(){
-  var v1=document.getElementById('heroVideo1');
-  var v2=document.getElementById('heroVideo2');
-  if(!v1||!v2)return;
-  var current=v1;
-  var next=v2;
-  function swap(){
-    next.currentTime=0;
-    next.play();
-    next.classList.add('active');
-    current.classList.remove('active');
-    var tmp=current;
-    current=next;
-    next=tmp;
-  }
-  v1.addEventListener('ended',swap);
-  v2.addEventListener('ended',swap);
-})();
-</script>
 </body>
 </html>
