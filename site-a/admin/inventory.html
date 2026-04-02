@@ -65,19 +65,17 @@
   .stock-input:focus { border-color:#C9A96E; }
 </style>
 
-<style id="mobile-responsive">
-/* ================================================================
-   MOBILE RESPONSIVE OVERRIDES
-   共通モバイル最適化CSS - 全ページで読み込み
+<style id="mobile-responsive">/* ================================================================
+   MOBILE RESPONSIVE OVERRIDES v2
    ================================================================ */
 
-/* ---- GLOBAL: 横スクロール防止 ---- */
+/* ---- GLOBAL ---- */
 html, body {
   overflow-x: hidden !important;
   max-width: 100vw;
 }
 
-/* ---- HEADER: モバイル最適化 ---- */
+/* ---- HEADER ---- */
 @media (max-width: 768px) {
   .header {
     height: 56px !important;
@@ -97,7 +95,13 @@ html, body {
     letter-spacing: 0.04em !important;
   }
   .hamburger {
-    padding: 2px !important;
+    padding: 10px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   .hamburger span {
     width: 24px !important;
@@ -114,7 +118,7 @@ html, body {
   }
 }
 
-/* ---- MOBILE MENU: はみ出し防止 ---- */
+/* ---- MOBILE MENU ---- */
 .mobile-menu {
   max-width: 85vw;
 }
@@ -122,7 +126,7 @@ html, body {
   overflow: hidden !important;
 }
 
-/* ---- FOOTER: レイアウト修正 ---- */
+/* ---- FOOTER ---- */
 @media (max-width: 768px) {
   .footer {
     padding: 48px 0 0 !important;
@@ -136,7 +140,6 @@ html, body {
     grid-column: 1 / -1 !important;
     text-align: center !important;
   }
-  /* GUIDE/ACCOUNTのfooter-col-lastをグリッドに溶け込ませる */
   .footer-col-last {
     display: contents !important;
   }
@@ -166,15 +169,14 @@ html, body {
     font-size: 11px !important;
   }
   .footer-copy {
-    font-size: 10px !important;
+    font-size: 11px !important;
   }
-  /* NEWSLETTER フォーム最適化 */
   .footer-newsletter {
     margin-top: 16px !important;
   }
 }
 
-/* ---- PAGE HERO: 縦幅削減 ---- */
+/* ---- PAGE HERO ---- */
 @media (max-width: 768px) {
   .page-hero {
     padding: 100px 0 40px !important;
@@ -193,16 +195,15 @@ html, body {
 
 @media (max-width: 480px) {
   .page-hero {
-    padding: 80px 0 32px !important;
+    padding: 72px 0 28px !important;
   }
   .page-hero-title {
-    font-size: 26px !important;
+    font-size: 24px !important;
   }
 }
 
-/* ---- PRODUCTS一覧: カテゴリカード最適化 ---- */
+/* ---- PRODUCTS LISTING ---- */
 @media (max-width: 768px) {
-  /* Flagship (SLEEP DOWN) セクション */
   .flagship-section {
     padding: 32px 16px !important;
   }
@@ -229,7 +230,6 @@ html, body {
     font-size: 18px !important;
   }
 
-  /* カテゴリカードグリッド: 2列 */
   .category-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 12px !important;
@@ -262,7 +262,6 @@ html, body {
     font-size: 11px !important;
   }
 
-  /* アクセサリーセクション */
   .accessories-section {
     padding: 32px 0 !important;
   }
@@ -276,7 +275,7 @@ html, body {
   }
 }
 
-/* ---- 商品詳細ページ: モバイル最適化 ---- */
+/* ---- PRODUCT DETAIL ---- */
 @media (max-width: 768px) {
   .product-top {
     grid-template-columns: 1fr !important;
@@ -300,7 +299,24 @@ html, body {
     font-size: 20px !important;
   }
 
-  /* セクション間の余白削減 */
+  /* Gallery thumbnails horizontal on mobile */
+  .gallery {
+    flex-direction: column-reverse !important;
+  }
+  .gallery-thumbs {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 72px !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .gallery-thumb {
+    width: 60px !important;
+    height: 60px !important;
+    flex-shrink: 0 !important;
+  }
+
   .product-desc,
   .story-section,
   .features-section,
@@ -310,10 +326,9 @@ html, body {
   .related-mag-section,
   .related-products-section,
   .compare-section {
-    padding: 48px 0 !important;
+    padding: 40px 0 !important;
   }
 
-  /* 特徴セクション: 横並びリスト化 */
   .features-grid {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
@@ -346,7 +361,6 @@ html, body {
     line-height: 1.6 !important;
   }
 
-  /* スペックテーブル */
   .spec-table th {
     width: 100px !important;
     min-width: 80px !important;
@@ -355,15 +369,17 @@ html, body {
   .spec-table td {
     font-size: 13px !important;
   }
+  .spec-inner {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
 
-  /* 価格テーブル */
   .price-table th,
   .price-table td {
     font-size: 12px !important;
     padding: 8px !important;
   }
 
-  /* 関連商品: 2列 */
   .related-products-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 16px !important;
@@ -377,8 +393,10 @@ html, body {
   .related-product-price {
     font-size: 13px !important;
   }
+  .related-product-series {
+    font-size: 11px !important;
+  }
 
-  /* 関連マガジン: 横スクロール */
   .related-mag-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
@@ -387,7 +405,6 @@ html, body {
     height: 160px !important;
   }
 
-  /* レビュー */
   .review-card {
     padding: 20px !important;
   }
@@ -395,7 +412,6 @@ html, body {
     font-size: 14px !important;
   }
 
-  /* 比較テーブル */
   .compare-table {
     font-size: 12px !important;
   }
@@ -403,8 +419,22 @@ html, body {
   .compare-table td {
     padding: 8px 6px !important;
   }
+  .compare-badge {
+    font-size: 11px !important;
+  }
+  .compare-row-label {
+    font-size: 11px !important;
+  }
+  .compare-current-label {
+    font-size: 11px !important;
+  }
+  .purchase-color-label {
+    font-size: 11px !important;
+  }
+  .concept-sibling-link {
+    font-size: 12px !important;
+  }
 
-  /* Section共通 */
   .section-title {
     font-size: 22px !important;
   }
@@ -416,7 +446,7 @@ html, body {
   }
 }
 
-/* ---- カテゴリ一覧ページ（pillow, bedding等）---- */
+/* ---- CATEGORY LISTING (pillow, bedding) ---- */
 @media (max-width: 768px) {
   .cat-hero {
     height: 280px !important;
@@ -429,7 +459,6 @@ html, body {
     font-size: 14px !important;
   }
 
-  /* 商品リスト: 2列グリッド */
   .product-list-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 16px !important;
@@ -448,7 +477,6 @@ html, body {
     display: none !important;
   }
 
-  /* カテゴリ紹介セクション縮小 */
   .cat-intro {
     padding: 40px 16px !important;
   }
@@ -460,7 +488,7 @@ html, body {
   }
 }
 
-/* ---- MAGAZINE記事ページ ---- */
+/* ---- MAGAZINE ARTICLE ---- */
 @media (max-width: 768px) {
   .article-hero {
     height: 280px !important;
@@ -486,7 +514,6 @@ html, body {
     border-radius: 8px !important;
   }
 
-  /* 関連記事: 横並びリスト化 */
   .related-articles-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
@@ -509,8 +536,72 @@ html, body {
   }
 }
 
-/* ---- MAGAZINE一覧ページ ---- */
+/* ---- MAGAZINE LISTING ---- */
 @media (max-width: 768px) {
+  /* Grid view: 2 columns compact */
+  .view-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    padding: 0 12px !important;
+  }
+  .mg-card-img {
+    height: 110px !important;
+  }
+  .mg-card-title {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .mg-card-excerpt {
+    display: none !important;
+  }
+  .mg-card-meta {
+    font-size: 10px !important;
+  }
+  .mg-card-body {
+    padding: 8px !important;
+  }
+  .mg-card-cat {
+    font-size: 11px !important;
+  }
+
+  /* List view compact */
+  .ml-card {
+    gap: 12px !important;
+  }
+  .ml-card-img {
+    width: 100px !important;
+    height: 70px !important;
+    flex-shrink: 0 !important;
+  }
+  .ml-card-title {
+    font-size: 14px !important;
+  }
+  .ml-card-excerpt {
+    display: none !important;
+  }
+
+  /* Featured card */
+  .mag-featured-card {
+    flex-direction: column !important;
+  }
+  .mag-featured-card img {
+    height: 200px !important;
+  }
+
+  /* Magazine hero */
+  .mag-hero {
+    padding: 80px 16px 32px !important;
+    min-height: auto !important;
+  }
+  .mag-hero-en,
+  .mag-hero-sub {
+    font-size: 12px !important;
+  }
+
   .magazine-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 16px !important;
@@ -531,7 +622,7 @@ html, body {
   }
 }
 
-/* ---- GIFTページ ---- */
+/* ---- GIFT PAGE ---- */
 @media (max-width: 768px) {
   .gift-grid {
     grid-template-columns: 1fr 1fr !important;
@@ -589,7 +680,7 @@ html, body {
   }
 }
 
-/* ---- FAQページ ---- */
+/* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
   .faq-section {
     padding: 32px 16px !important;
@@ -607,9 +698,8 @@ html, body {
   }
 }
 
-/* ---- TOPページ: セクション縦幅削減 ---- */
+/* ---- TOP PAGE: HERO ---- */
 @media (max-width: 768px) {
-  /* ヒーロー */
   .hero {
     min-height: 85vh !important;
   }
@@ -618,14 +708,38 @@ html, body {
   }
   .hero-sub {
     font-size: 14px !important;
+    margin-bottom: 32px !important;
   }
   .hero-en {
     font-size: 14px !important;
   }
+  .hero-content {
+    padding: 0 24px !important;
+  }
+  .hero-cta {
+    padding: 14px 32px !important;
+    font-size: 13px !important;
+  }
+  .hero-logo {
+    width: 80px !important;
+    height: 110px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-badges {
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .hero-badge {
+    font-size: 11px !important;
+  }
 
-  /* ブランドストーリー */
+  /* Brand story */
   .brand-story {
-    padding: 48px 0 !important;
+    padding: 40px 0 !important;
+  }
+  .brand-story-inner {
+    gap: 32px !important;
   }
   .brand-story-quote {
     font-size: 18px !important;
@@ -633,36 +747,150 @@ html, body {
   .brand-story-desc {
     font-size: 14px !important;
   }
+  .brand-story-image img {
+    height: 240px !important;
+  }
 
-  /* コレクション */
+  /* Collection: compact cards */
   .collection {
-    padding: 48px 0 !important;
+    padding: 40px 0 !important;
+  }
+  .collection-grid {
+    gap: 16px !important;
+    padding: 0 16px !important;
   }
   .collection-card {
-    min-height: 300px !important;
+    min-height: auto !important;
+  }
+  .collection-card-img {
+    height: 180px !important;
+  }
+  .collection-card-en {
+    font-size: 13px !important;
+  }
+  .collection-card-jp {
+    font-size: 14px !important;
+  }
+  .collection-card-body {
+    padding: 16px !important;
+  }
+  .collection-card-desc {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
 
-  /* コンセプト */
+  /* Concept */
   .concept-section {
-    padding: 48px 0 !important;
+    padding: 40px 0 !important;
   }
 
-  /* ニュース */
-  .news-section {
-    padding: 48px 0 !important;
+  /* Experience: 2-column grid on mobile */
+  .experience-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    padding: 0 16px !important;
+  }
+  .exp-card {
+    padding: 20px 14px !important;
+    border-radius: 12px !important;
+  }
+  .exp-card-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 12px !important;
+  }
+  .exp-card-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .exp-card-label {
+    font-size: 12px !important;
+  }
+  .exp-card-title {
+    font-size: 15px !important;
+  }
+  .exp-card-desc {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+  .experience-card {
+    padding: 20px !important;
+  }
+  .experience-card-icon {
+    font-size: 28px !important;
+  }
+  .experience-card h3 {
+    font-size: 16px !important;
+  }
+  .experience-card p {
+    font-size: 13px !important;
   }
 
-  /* TRY */
-  .trial-section {
-    padding: 48px 0 !important;
-  }
-  .trial-inner {
+  /* Craft */
+  .craft-inner {
     gap: 24px !important;
   }
+  .craft-img-main {
+    max-height: 280px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+  .craft-img-sub {
+    max-height: 200px !important;
+    object-fit: cover !important;
+  }
+  .craft-text {
+    padding: 0 4px !important;
+  }
+  .craft-text h3 {
+    font-size: 18px !important;
+  }
+  .craft-text p {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
 
-  /* セクション共通 */
+  /* Brand story points compact */
+  .brand-story-points {
+    gap: 12px !important;
+  }
+  .brand-story-point {
+    gap: 8px !important;
+    font-size: 13px !important;
+  }
+
+  /* News */
+  .news-section {
+    padding: 40px 0 !important;
+  }
+  .news-item {
+    padding: 12px 0 !important;
+  }
+
+  /* Trial: 1 column on mobile */
+  .trial-section {
+    padding: 40px 0 !important;
+  }
+  .trial-inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .trial-image video,
+  .trial-image img {
+    height: 240px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .trial-body {
+    padding: 0 16px !important;
+  }
+
   .section-heading {
-    font-size: 36px !important;
+    font-size: 32px !important;
   }
   .section-watermark {
     font-size: 48px !important;
@@ -675,13 +903,26 @@ html, body {
   }
   .hero-catch {
     font-size: 20px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .hero-sub {
+    font-size: 13px !important;
   }
   .section-heading {
-    font-size: 28px !important;
+    font-size: 26px !important;
+  }
+  .collection-card {
+    min-height: auto !important;
+  }
+  .collection-card-img {
+    height: 160px !important;
+  }
+  .brand-story-image img {
+    height: 200px !important;
   }
 }
 
-/* ---- CONCEPTページ ---- */
+/* ---- CONCEPT PAGE ---- */
 @media (max-width: 768px) {
   .concept-hero {
     height: 300px !important;
@@ -705,7 +946,7 @@ html, body {
   }
 }
 
-/* ---- ABOUTページ ---- */
+/* ---- ABOUT PAGE ---- */
 @media (max-width: 768px) {
   .about-hero {
     height: 280px !important;
@@ -725,9 +966,17 @@ html, body {
     font-size: 12px !important;
     padding-top: 12px !important;
   }
+  .team-inner {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .team-img {
+    max-height: 280px !important;
+    object-fit: cover !important;
+  }
 }
 
-/* ---- 共通: ボタン/CTA最適化 ---- */
+/* ---- BUTTONS & CTA ---- */
 @media (max-width: 768px) {
   .btn-primary,
   .cta-btn,
@@ -735,9 +984,12 @@ html, body {
     font-size: 14px !important;
     padding: 14px 24px !important;
   }
+  .concept-cta-section {
+    padding: 48px 16px !important;
+  }
 }
 
-/* ---- 共通: コンテナ幅 ---- */
+/* ---- CONTAINER ---- */
 @media (max-width: 768px) {
   .container {
     padding: 0 16px !important;
@@ -750,6 +1002,58 @@ html, body {
   }
 }
 
+/* ---- SERVICE PAGE ---- */
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .service-card {
+    padding: 24px !important;
+  }
+  .service-steps {
+    gap: 16px !important;
+  }
+  .service-step {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .price-card {
+    padding: 20px !important;
+  }
+}
+
+/* ---- CONTACT PAGE ---- */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 32px 16px !important;
+  }
+  .form-group label {
+    font-size: 13px !important;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px !important; /* prevent zoom on iOS */
+    padding: 12px !important;
+  }
+}
+
+/* ---- GENERAL: Reduce vertical space ---- */
+@media (max-width: 480px) {
+  section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Override specific sections that need different padding */
+  .hero, .page-hero, .cat-hero, .article-hero,
+  .concept-hero, .about-hero, .mag-hero,
+  .header, .footer, .footer-bottom {
+    padding-top: revert !important;
+    padding-bottom: revert !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -772,11 +1076,11 @@ html, body {
     <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
       <span style="width:20px; text-align:center;">&#9881;</span> 在庫管理
     </a>
-    <a href="#" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+    <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
     </a>
-    <a href="#" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+    <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
     </a>
@@ -1033,6 +1337,177 @@ html, body {
   </div>
 </div>
 
+<!-- Toast -->
+<div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;z-index:10000;background:#2D2D2D;color:#fff;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-left:4px solid #C9A96E;transition:opacity 0.3s,transform 0.3s;opacity:0;transform:translateY(12px);"></div>
+
 <script src="../js/cart.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // === TOAST ===
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    requestAnimationFrame(() => {
+      t.style.opacity = '1';
+      t.style.transform = 'translateY(0)';
+    });
+    setTimeout(() => {
+      t.style.opacity = '0';
+      t.style.transform = 'translateY(12px)';
+      setTimeout(() => { t.style.display = 'none'; }, 300);
+    }, 3000);
+  }
+
+  // === STATUS HELPERS ===
+  function getStatusInfo(qty) {
+    qty = parseInt(qty, 10);
+    if (qty <= 0) return { label:'在庫切れ', bg:'#FFCDD2', color:'#E53935' };
+    if (qty <= 5) return { label:'残りわずか', bg:'#FFF9C4', color:'#F9A825' };
+    return { label:'在庫あり', bg:'#E8F5E9', color:'#4CAF50' };
+  }
+
+  function updateBadge(row, qty) {
+    const info = getStatusInfo(qty);
+    const badge = row.cells[4].querySelector('span');
+    badge.textContent = info.label;
+    badge.style.background = info.bg;
+    badge.style.color = info.color;
+  }
+
+  function updateInputStyle(input, qty) {
+    qty = parseInt(qty, 10);
+    if (qty <= 0) {
+      input.style.borderColor = '#E53935';
+      input.style.color = '#E53935';
+    } else if (qty <= 5) {
+      input.style.borderColor = '#F9A825';
+      input.style.color = '#F9A825';
+    } else {
+      input.style.borderColor = '#DDD';
+      input.style.color = '';
+    }
+  }
+
+  // === PERSISTENCE ===
+  function loadInventory() {
+    try { return JSON.parse(localStorage.getItem('admin_inventory') || '{}'); } catch(e) { return {}; }
+  }
+  function saveInventory(data) {
+    localStorage.setItem('admin_inventory', JSON.stringify(data));
+  }
+
+  // === ELEMENTS ===
+  const toolbar = document.querySelector('[style*="justify-content:space-between"][style*="margin-bottom:20px"]') ||
+    document.querySelectorAll('div[style]')[0];
+  const searchInput = document.querySelector('input[placeholder*="検索"]');
+  const statusSelect = document.querySelector('select');
+  const batchBtn = document.querySelector('button.btn[style*="C9A96E"]');
+  const tbody = document.querySelector('table tbody');
+  const rows = tbody.querySelectorAll('tr');
+
+  // === APPLY SAVED DATA ===
+  (function applySaved() {
+    const data = loadInventory();
+    rows.forEach(row => {
+      const sku = row.cells[1].textContent.trim();
+      if (data[sku] !== undefined) {
+        const input = row.querySelector('.stock-input');
+        input.value = data[sku];
+        updateInputStyle(input, data[sku]);
+        updateBadge(row, data[sku]);
+      }
+    });
+  })();
+
+  // === SEARCH ===
+  searchInput.addEventListener('input', filterRows);
+  statusSelect.addEventListener('change', filterRows);
+
+  function filterRows() {
+    const query = searchInput.value.trim().toLowerCase();
+    const statusFilter = statusSelect.value;
+    rows.forEach(row => {
+      const name = row.cells[0].textContent.toLowerCase();
+      const sku = row.cells[1].textContent.toLowerCase();
+      const status = row.cells[4].textContent.trim();
+      const matchSearch = !query || name.includes(query) || sku.includes(query);
+      const matchStatus = statusFilter === 'すべて' || status === statusFilter;
+      row.style.display = (matchSearch && matchStatus) ? '' : 'none';
+    });
+  }
+
+  // === INPUT CHANGE TRACKING ===
+  const changedInputs = new Set();
+  rows.forEach(row => {
+    const input = row.querySelector('.stock-input');
+    const origVal = input.value;
+    input.dataset.original = origVal;
+    input.addEventListener('input', function() {
+      if (this.value !== this.dataset.original) {
+        this.style.boxShadow = '0 0 0 2px rgba(201,169,110,0.4)';
+        this.style.borderColor = '#C9A96E';
+        changedInputs.add(this);
+      } else {
+        this.style.boxShadow = '';
+        updateInputStyle(this, this.value);
+        changedInputs.delete(this);
+      }
+    });
+  });
+
+  // === INDIVIDUAL UPDATE ===
+  rows.forEach(row => {
+    const btn = row.querySelector('.btn');
+    const input = row.querySelector('.stock-input');
+    const sku = row.cells[1].textContent.trim();
+
+    btn.addEventListener('click', function() {
+      const qty = parseInt(input.value, 10);
+      updateBadge(row, qty);
+      updateInputStyle(input, qty);
+      input.style.boxShadow = '';
+      input.dataset.original = input.value;
+      changedInputs.delete(input);
+
+      // Persist
+      const data = loadInventory();
+      data[sku] = qty;
+      saveInventory(data);
+
+      showToast('在庫を更新しました');
+    });
+  });
+
+  // === BATCH SAVE ===
+  batchBtn.addEventListener('click', function() {
+    const data = loadInventory();
+    let count = 0;
+    rows.forEach(row => {
+      const input = row.querySelector('.stock-input');
+      if (input.dataset.original !== input.value) {
+        const sku = row.cells[1].textContent.trim();
+        const qty = parseInt(input.value, 10);
+        data[sku] = qty;
+        updateBadge(row, qty);
+        updateInputStyle(input, qty);
+        input.style.boxShadow = '';
+        input.dataset.original = input.value;
+        changedInputs.delete(input);
+        count++;
+      }
+    });
+    saveInventory(data);
+    if (count > 0) {
+      showToast('一括更新を保存しました（' + count + '件）');
+    } else {
+      showToast('変更はありません');
+    }
+  });
+
+})();
+</script>
 </body>
 </html>
