@@ -73,9 +73,6 @@ FOOTER_TEMPLATE = '''<footer class="footer">
           <a href="{P}account/register/">新規会員登録</a>
           <a href="{P}cart/">カート</a>
         </nav>
-        <nav class="footer-nav-sub" style="margin-top:16px">
-          <a href="{P}glossary/">用語集</a>
-        </nav>
       </div>
     </div>
   </div>
