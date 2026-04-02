@@ -1469,7 +1469,7 @@ html, body {
     <h1 class="purchase-name">Premium RDS Sleep Down-春秋用-</h1>
     <p class="purchase-subtitle">マザーグース</p>
     <p class="purchase-catch">ポーランド産プレミアムマザーグースの新品羽毛を使った最高級羽毛掛け布団。表参道布団店のプレミアムマザーグースダウンが新たにRDS認証を取得。RDS認証は持続可能な羽毛調達を保証し、厳格なアニマルウェル</p>
-    <p class="purchase-price">¥158,000〜¥258,000 <span class="purchase-price-tax">（税込）</span></p>
+    <p class="purchase-price">¥158,000 <span class="purchase-price-tax">（税込）</span></p>
     <p class="purchase-shipping">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
       送料無料 ・ 30日間返品無料
@@ -1979,7 +1979,7 @@ html, body {
   document.querySelectorAll('.purchase-size').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.purchase-size').forEach(function(x){x.classList.remove('active')});this.classList.add('active');var p=parseInt(this.dataset.price);var hasCover=document.querySelector('.purchase-cover-btn[data-cover="yes"].active');var total=hasCover?p+13800:p;document.querySelector('.purchase-price').innerHTML='\u00A5'+total.toLocaleString()+' <span class="purchase-price-tax">\uFF08\u7A0E\u8FBC\uFF09</span>'});});
   document.querySelectorAll('.purchase-color').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.purchase-color').forEach(function(x){x.classList.remove('active')});this.classList.add('active')});});
   document.querySelectorAll('.purchase-cover-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.purchase-cover-btn').forEach(function(x){x.classList.remove('active')});this.classList.add('active');var sizeBtn=document.querySelector('.purchase-size.active');if(sizeBtn)sizeBtn.click()});});
-  var fs=document.querySelector('.purchase-size');if(fs)fs.classList.add('active');
+  var fs=document.querySelector('.purchase-size');if(fs)fs.click();
   var fc=document.querySelector('.purchase-color');if(fc)fc.classList.add('active');
   document.querySelectorAll('.fade-up').forEach(function(el){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});obs.observe(el)});
 })();
