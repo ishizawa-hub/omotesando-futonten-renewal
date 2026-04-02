@@ -80,7 +80,7 @@
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
 /* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -160,7 +160,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -241,7 +241,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -743,63 +743,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1235,7 +1179,12 @@ html, body {
         <a href="../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../about/">ABOUT</a>
+        <a href="../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../about/">会社概要</a>
+          <a href="../faq/">よくあるご質問</a>
+          <a href="../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1273,12 +1222,14 @@ html, body {
       </div>
     </div>
     <a href="../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../about/">会社概要</a>
+        <a href="../faq/">よくあるご質問</a>
+        <a href="../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1304,17 +1255,20 @@ html, body {
   <div class="co-main">
     <h1>ご購入手続き</h1>
 
-    <!-- Guest / Member toggle -->
-    <div class="guest-member" style="margin-bottom:28px;padding:20px;background:#FAF7F2;border-radius:10px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-      <span style="font-size:14px;font-weight:600;color:#1A1A1A">会員の方はログインすると入力が簡単です</span>
-      <a href="../account/login/?redirect=checkout" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#2D2D2D;color:#fff;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:.06em;transition:background .3s" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2D2D2D'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>ログイン
-      </a>
-      <span style="font-size:13px;color:#999">または、このままゲスト購入も可能です</span>
-    </div>
+    <!-- Guest / Member toggle OR Saved address selector -->
+    <div id="guestMemberArea"></div>
 
     <div class="fs">
       <h2>お届け先情報</h2>
+      <!-- Saved addresses selector (shown for logged-in users) -->
+      <div id="savedAddresses" style="display:none;margin-bottom:20px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px" id="addrCards"></div>
+        <label style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:#FAFAFA;border:2px dashed #E5E5E5;border-radius:8px;cursor:pointer;font-size:13px;color:#999;transition:border-color 0.3s" onmouseover="this.style.borderColor='#C9A96E'" onmouseout="this.style.borderColor='#E5E5E5'">
+          <input type="radio" name="addrSelect" value="new" style="accent-color:#C9A96E" onchange="clearAddressFields()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-7-7h14"/></svg>
+          新しい住所を入力
+        </label>
+      </div>
       <div class="fr">
         <div class="fg"><label>姓<span class="req">*</span></label><input type="text" placeholder="山田" required id="lastName" autocomplete="family-name"></div>
         <div class="fg"><label>名<span class="req">*</span></label><input type="text" placeholder="太郎" required id="firstName" autocomplete="given-name"></div>
@@ -1375,17 +1329,30 @@ html, body {
           <input type="radio" name="pay" value="cvs"><span style="font-size:14px;font-weight:500">コンビニ払い</span>
           <div class="pi"><span class="pic">セブン</span><span class="pic">ローソン</span><span class="pic">ファミマ</span></div>
         </label>
+        <label class="po" onclick="document.querySelectorAll('.po').forEach(function(el){el.classList.remove('sel')});this.classList.add('sel');document.getElementById('cf').classList.remove('vis')">
+          <input type="radio" name="pay" value="amazon"><span style="font-size:14px;font-weight:500">Amazon Pay</span>
+          <div class="pi"><button type="button" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:linear-gradient(to bottom,#f7dea0,#f0c14b);color:#111;border:1px solid #a88734;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M7.5 12.6c-2.4-1.8-3.7-4.3-3.7-7.3C3.8 3.6 4.6 2 6 .8c-.4.5-.6 1.2-.6 2 0 3.2 2.6 6.2 6.4 7.6-1.2 1.3-2.7 2-4.3 2.2zm8.2-1.4c-.4.3-1.1.5-1.6.5-1.2 0-1.8-.9-1.8-2.1V5.2h3.2V3.4h-3.2V.6L10 1.4v8.3c0 2.3 1.2 3.8 3.4 3.8 1 0 1.9-.3 2.6-.8l-.3-1.5z" fill="#F90"/><path d="M18.3 13.2C16.2 14.9 13 15.8 10.2 15.8c-4 0-7.6-1.5-10.2-4 0 0-.2-.2.2 0 2.8 1.6 6.2 2.6 9.8 2.6 2.4 0 5-.5 7.4-1.5.4-.1.6.3.9.3z" fill="#F90"/></svg>Amazon Pay</button></div>
+        </label>
       </div>
     </div>
 
-    <!-- Amazon Pay / Apple Pay quick checkout -->
-    <div style="margin-top:8px;padding:20px;background:#FAFAFA;border-radius:10px;text-align:center">
-      <p style="font-size:12px;color:#999;margin-bottom:12px">または、かんたん決済</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button disabled style="display:flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid #E5E5E5;border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:not-allowed;opacity:0.5">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Apple Pay（準備中）
-        </button>
+    <!-- Account creation option -->
+    <div class="fs" id="accountCreateSection">
+      <h2>アカウント作成</h2>
+      <div style="padding:16px;background:#FAF7F2;border-radius:8px">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;font-weight:500;color:#1A1A1A">
+          <input type="checkbox" id="createAccount" checked style="accent-color:#C9A96E;width:18px;height:18px" onchange="document.getElementById('pwFields').style.display=this.checked?'block':'none'">
+          購入と同時にアカウントを作成する
+        </label>
+        <p style="font-size:12px;color:#999;margin-top:6px;margin-left:28px">次回のご購入がスムーズになります</p>
+        <div id="pwFields" style="margin-top:16px">
+          <div class="fr full" style="margin-bottom:12px"><div class="fg"><label>パスワード<span class="req">*</span></label><input type="password" id="newPassword" placeholder="8文字以上" autocomplete="new-password" minlength="8"></div></div>
+          <div class="fr full"><div class="fg"><label>パスワード（確認）<span class="req">*</span></label><input type="password" id="confirmPassword" placeholder="パスワードを再入力" autocomplete="new-password"></div></div>
+          <label style="display:flex;align-items:center;gap:8px;margin-top:12px;cursor:pointer;font-size:13px;color:#666">
+            <input type="checkbox" id="newsletter" checked style="accent-color:#C9A96E;width:16px;height:16px">
+            新商品やお得な情報をメールで受け取る
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -1456,15 +1423,172 @@ function validateAndSubmit() {
     emailEl.scrollIntoView({behavior:'smooth', block:'center'});
     return;
   }
+  // アカウント作成チェック
+  var createAcct = document.getElementById('createAccount');
+  if (createAcct && createAcct.checked) {
+    var pw = document.getElementById('newPassword');
+    var pwc = document.getElementById('confirmPassword');
+    if (!pw.value || pw.value.length < 8) {
+      pw.style.borderColor = '#e74c3c';
+      pw.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    if (pw.value !== pwc.value) {
+      pwc.style.borderColor = '#e74c3c';
+      pwc.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    pw.style.borderColor = '#E5E5E5';
+    pwc.style.borderColor = '#E5E5E5';
+  }
+
   // 送信アニメーション
   var btn = document.getElementById('submitOrder');
   btn.textContent = '処理中...';
   btn.style.opacity = '0.7';
   btn.style.pointerEvents = 'none';
   setTimeout(function(){
+    // 注文データを保存
+    var cart = [];
+    try { cart = JSON.parse(localStorage.getItem('oft_cart') || '[]'); } catch(e) {}
+    var now = new Date();
+    var dateStr = now.getFullYear() + ('0'+(now.getMonth()+1)).slice(-2) + ('0'+now.getDate()).slice(-2);
+    var rand = ('00' + Math.floor(Math.random()*1000)).slice(-3);
+    function parsePrice(p){if(typeof p==='number')return p;return parseInt(String(p).replace(/[^0-9]/g,''),10)||0;}
+    var total = cart.reduce(function(s,x){ return s + parsePrice(x.price) * x.qty; }, 0);
+    var payEl = document.querySelector('input[name="pay"]:checked');
+    var payLabels = {card:'クレジットカード', bank:'銀行振込', cvs:'コンビニ払い', amazon:'Amazon Pay'};
+    var order = {
+      id: 'OMT-' + dateStr + '-' + rand,
+      items: cart,
+      total: total,
+      date: now.toISOString(),
+      status: '処理中',
+      shipping: {
+        lastName: (document.getElementById('lastName') || {}).value || '',
+        firstName: (document.getElementById('firstName') || {}).value || '',
+        email: (document.getElementById('email') || {}).value || '',
+        phone: (document.getElementById('phone') || {}).value || '',
+        postalCode: (document.getElementById('postalCode') || {}).value || '',
+        prefecture: (document.getElementById('prefecture') || {}).value || '',
+        address: (document.getElementById('address') || {}).value || '',
+        building: (document.getElementById('building') || {}).value || '',
+        deliveryNote: (document.getElementById('deliveryNote') || {}).value || ''
+      },
+      payment: payEl ? (payLabels[payEl.value] || payEl.value) : ''
+    };
+    // oft_ordersに追加
+    var orders = [];
+    try { orders = JSON.parse(localStorage.getItem('oft_orders') || '[]'); } catch(e) {}
+    orders.push(order);
+    localStorage.setItem('oft_orders', JSON.stringify(orders));
+    // 最後の注文を保存（success pageで参照）
+    localStorage.setItem('oft_last_order', JSON.stringify(order));
+    // アカウント作成
+    var createAcct = document.getElementById('createAccount');
+    var createdAccount = false;
+    if (createAcct && createAcct.checked && !localStorage.getItem('oft_user')) {
+      var nl = document.getElementById('newsletter');
+      var newUser = {
+        lastName: order.shipping.lastName,
+        firstName: order.shipping.firstName,
+        email: order.shipping.email,
+        verified: false,
+        newsletter: nl ? nl.checked : true,
+        addresses: [{
+          name: order.shipping.lastName + ' ' + order.shipping.firstName,
+          postal: order.shipping.postalCode,
+          prefecture: order.shipping.prefecture,
+          city: order.shipping.address,
+          building: order.shipping.building,
+          phone: order.shipping.phone
+        }],
+        createdAt: new Date().toISOString()
+      };
+      localStorage.setItem('oft_user', JSON.stringify(newUser));
+      createdAccount = true;
+    }
+    localStorage.setItem('oft_account_created_at_checkout', createdAccount ? 'true' : 'false');
     localStorage.removeItem('oft_cart');
     location.href = 'success/';
   }, 1200);
+}
+
+// ログイン済みユーザーの住所選択機能
+(function(){
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('oft_user')); } catch(e) {}
+  var area = document.getElementById('guestMemberArea');
+  var savedDiv = document.getElementById('savedAddresses');
+
+  if (user && user.verified) {
+    // ログイン済みはアカウント作成セクション非表示
+    var acctSec = document.getElementById('accountCreateSection');
+    if (acctSec) acctSec.style.display = 'none';
+    // ログイン済み表示
+    area.innerHTML = '<div style="margin-bottom:28px;padding:20px;background:#F0EDE6;border-radius:10px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">' +
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>' +
+      '<span style="font-size:14px;font-weight:600;color:#1A1A1A">' + user.lastName + ' ' + user.firstName + ' 様としてログイン中</span>' +
+      '<span style="font-size:13px;color:#999">(' + user.email + ')</span></div>';
+
+    // メール自動入力
+    var emailEl = document.getElementById('email');
+    if (emailEl && user.email) emailEl.value = user.email;
+    var lnEl = document.getElementById('lastName');
+    var fnEl = document.getElementById('firstName');
+    if (lnEl && user.lastName) lnEl.value = user.lastName;
+    if (fnEl && user.firstName) fnEl.value = user.firstName;
+
+    // 保存済み住所を表示
+    if (user.addresses && user.addresses.length > 0) {
+      savedDiv.style.display = 'block';
+      var cardsHtml = '';
+      user.addresses.forEach(function(addr, idx) {
+        var isDefault = idx === 0;
+        cardsHtml += '<label style="flex:1;min-width:200px;padding:14px 16px;background:#fff;border:2px solid ' + (isDefault ? '#C9A96E' : '#E5E5E5') + ';border-radius:8px;cursor:pointer;transition:border-color 0.3s" onmouseover="this.style.borderColor=\'#C9A96E\'" onmouseout="if(!this.querySelector(\'input\').checked)this.style.borderColor=\'#E5E5E5\'">';
+        cardsHtml += '<input type="radio" name="addrSelect" value="' + idx + '" style="accent-color:#C9A96E;margin-bottom:8px" ' + (isDefault ? 'checked' : '') + ' onchange="fillAddress(' + idx + ')">';
+        if (isDefault) cardsHtml += '<span style="display:inline-block;font-size:10px;font-weight:700;color:#C9A96E;letter-spacing:0.1em;margin-left:8px">DEFAULT</span>';
+        cardsHtml += '<div style="margin-top:6px;font-size:13px;font-weight:600">' + (addr.name || '') + '</div>';
+        cardsHtml += '<div style="font-size:12px;color:#999;margin-top:2px">〒' + (addr.postal || '') + ' ' + (addr.prefecture || '') + (addr.city || '') + '</div>';
+        cardsHtml += '</label>';
+      });
+      document.getElementById('addrCards').innerHTML = cardsHtml;
+      // 自動で最初の住所をフィル
+      if (user.addresses[0]) fillAddress(0);
+    }
+  } else {
+    // ゲスト表示
+    area.innerHTML = '<div style="margin-bottom:28px;padding:20px;background:#FAF7F2;border-radius:10px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">' +
+      '<span style="font-size:14px;font-weight:600;color:#1A1A1A">会員の方はログインすると入力が簡単です</span>' +
+      '<a href="../account/login/?redirect=checkout" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:#2D2D2D;color:#fff;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:.06em;transition:background .3s" onmouseover="this.style.background=\'#C9A96E\'" onmouseout="this.style.background=\'#2D2D2D\'">' +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>ログイン</a>' +
+      '<span style="font-size:13px;color:#999">または、このままゲスト購入も可能です</span></div>';
+  }
+})();
+
+function fillAddress(idx) {
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('oft_user')); } catch(e) {}
+  if (!user || !user.addresses || !user.addresses[idx]) return;
+  var a = user.addresses[idx];
+  var nameParts = (a.name || '').split(/\s+/);
+  var el;
+  if ((el = document.getElementById('lastName')) && nameParts[0]) el.value = nameParts[0];
+  if ((el = document.getElementById('firstName')) && nameParts[1]) el.value = nameParts[1] || '';
+  if ((el = document.getElementById('phone')) && a.phone) el.value = a.phone;
+  if ((el = document.getElementById('postalCode')) && a.postal) el.value = a.postal;
+  if ((el = document.getElementById('prefecture')) && a.prefecture) el.value = a.prefecture;
+  if ((el = document.getElementById('address')) && a.city) el.value = a.city;
+  if ((el = document.getElementById('building')) && a.building) el.value = a.building || '';
+}
+
+function clearAddressFields() {
+  ['lastName','firstName','phone','postalCode','address','building'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  var pref = document.getElementById('prefecture');
+  if (pref) pref.value = '';
 }
 </script>
 
@@ -1480,7 +1604,7 @@ function validateAndSubmit() {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1517,14 +1641,11 @@ function validateAndSubmit() {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../about/">会社概要</a>
-        <a href="../gift/">ギフト</a>
         <a href="../faq/">よくあるご質問</a>
-        <a href="../contact/">お問い合わせ</a>
-        <a href="../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>
@@ -1550,16 +1671,20 @@ function validateAndSubmit() {
 <script src="../js/cart.js"></script>
 <script>
 (function(){
-  var cart=window._cartGet?window._cartGet():[];
+  function parsePrice(p){if(typeof p==='number')return p;return parseInt(String(p).replace(/[^0-9]/g,''),10)||0;}
+  var cart=[];try{cart=JSON.parse(localStorage.getItem('oft_cart')||'[]')}catch(e){}
   var el=document.getElementById('coItems');var sub=0;
   if(!cart.length){el.innerHTML='<p style="text-align:center;color:#888;padding:20px;font-size:14px">カートが空です</p>';return;}
   var h='';cart.forEach(function(i){
-    sub+=i.price*i.qty;
+    var pr=parsePrice(i.price);
+    sub+=pr*i.qty;
     h+='<div class="oi"><div class="oi-img">'+(i.image?'<img src="'+i.image+'">':'')+'</div>';
     h+='<div><p style="font-size:13px;font-weight:500;line-height:1.4">'+i.name+'</p>';
     var m=[];if(i.size)m.push(i.size);if(i.color)m.push(i.color);
-    if(m.length)h+='<p style="font-size:11px;color:#6B6B6B">'+m.join(' / ')+' x '+i.qty+'</p>';
-    h+='</div><div style="font-size:14px;font-weight:600;text-align:right">&yen;'+(i.price*i.qty).toLocaleString()+'</div></div>';
+    m.push('x '+i.qty);
+    if(i.isGift)m.push('<span style="color:#C9A96E">GIFT</span>');
+    h+='<p style="font-size:11px;color:#6B6B6B">'+m.join(' / ')+'</p>';
+    h+='</div><div style="font-size:14px;font-weight:600;text-align:right">&yen;'+(pr*i.qty).toLocaleString()+'</div></div>';
   });
   el.innerHTML=h;
   document.getElementById('coSub').textContent='\u00A5'+sub.toLocaleString();

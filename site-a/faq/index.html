@@ -123,10 +123,10 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .faq-answer-inner{padding:0 0 24px;font-size:16px;color:var(--color-text-light);line-height:2.2}
 
 /* CONTACT CTA */
-.faq-cta{padding:100px 0;background:var(--color-navy);color:#fff;text-align:center}
-.faq-cta-title{font-family:var(--font-display);font-size:32px;font-weight:700;letter-spacing:.04em;margin-bottom:16px}
-.faq-cta-desc{font-size:16px;color:rgba(255,255,255,.6);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
-.faq-cta-btn{display:inline-block;padding:18px 56px;background:var(--color-accent);color:#fff;font-size:17px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:0;transition:background .3s}
+.faq-cta{padding:48px 0;background:#3A3A3A;color:#fff;text-align:center}
+.faq-cta-title{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.04em;margin-bottom:12px}
+.faq-cta-desc{font-size:15px;color:rgba(255,255,255,.55);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto}
+.faq-cta-btn{display:inline-block;padding:14px 48px;background:var(--color-accent);color:#fff;font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:0;transition:background .3s}
 .faq-cta-btn:hover{background:var(--color-accent-hover)}
 
 /* Hide scrollbars */
@@ -152,14 +152,14 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
 .footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav a:hover{color:#C9A96E}
-.footer-bottom{max-width:1400px;margin:0 auto;padding:32px 40px 24px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-legal{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.footer-bottom{max-width:1400px;margin:0 auto;padding:20px 40px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:24px}
+.footer-legal{display:flex;gap:24px;flex-wrap:nowrap;align-items:center}
 .footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em;white-space:nowrap}
 .footer-legal a:hover{color:rgba(255,255,255,0.6)}
-.footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em;white-space:nowrap}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -240,7 +240,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -742,63 +742,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1236,7 +1180,12 @@ html, body {
         <a href="../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../about/">ABOUT</a>
+        <a href="../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../about/">会社概要</a>
+          <a href="../faq/">よくあるご質問</a>
+          <a href="../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1274,12 +1223,14 @@ html, body {
       </div>
     </div>
     <a href="../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../about/">会社概要</a>
+        <a href="../faq/">よくあるご質問</a>
+        <a href="../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1355,25 +1306,6 @@ html, body {
         <div class="faq-answer"><div class="faq-answer-inner">適切なお手入れをしていただければ、10年以上ご使用いただけます。使用感が低下した場合は、当店のリフレッシュサービス（ダウン洗浄・側生地交換）もご利用いただけます。</div></div>
       </div>
     </div>
-
-    <!-- SUBSCRIPTION -->
-    <div class="faq-group fade-up" data-group="subscription">
-      <h2 class="faq-group-title">Subscription</h2>
-      <p class="faq-group-title-jp">サブスクリプションについて</p>
-      <div class="faq-item">
-        <button class="faq-question">サブスクリプションの仕組みを教えてください。<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-answer"><div class="faq-answer-inner">月額制で掛け布団をご利用いただけるサービスです。4つのプランからお選びいただき、季節ごとの布団交換やクリーニングも含まれます。詳しくはサブスクリプションページをご覧ください。</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">解約の手続きはどのように行いますか？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-answer"><div class="faq-answer-inner">マイページまたはお問い合わせフォームから解約手続きが可能です。最低利用期間内の解約の場合は残月分の50%の違約金が発生します。最低利用期間経過後はいつでも違約金なしで解約できます。</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">利用中の布団を購入することはできますか？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-        <div class="faq-answer"><div class="faq-answer-inner">はい、サブスクリプション会員様限定の特別価格でご購入いただけます。詳しくはカスタマーサポートまでお問い合わせください。</div></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1399,7 +1331,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1436,14 +1368,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../about/">会社概要</a>
-        <a href="../gift/">ギフト</a>
         <a href="../faq/">よくあるご質問</a>
-        <a href="../contact/">お問い合わせ</a>
-        <a href="../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>

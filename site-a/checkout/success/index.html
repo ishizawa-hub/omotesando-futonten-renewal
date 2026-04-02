@@ -80,7 +80,7 @@
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
 /* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -117,7 +117,15 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .continue-link{display:inline-block;margin-top:20px;font-size:13px;color:#C9A96E;text-decoration:none;transition:opacity 0.3s}
 .continue-link:hover{opacity:0.7}
 .footer-simple{text-align:center;padding:24px;font-size:12px;color:#999;font-family:'DM Sans',sans-serif}
-@media(max-width:480px){.success-card{padding:40px 24px}}
+.gift-badge{display:inline-block;background:linear-gradient(135deg,#C9A96E,#d4b97e);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.06em;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.shipping-summary{background:#F7F6F3;border-radius:8px;padding:20px 24px;text-align:left;margin-bottom:24px;font-size:13px;line-height:1.8;color:#555}
+.shipping-summary h3{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#888;letter-spacing:0.1em;margin-bottom:12px;text-transform:uppercase}
+.shipping-summary .label{color:#888;font-size:12px;min-width:80px;display:inline-block}
+.payment-info{background:#F7F6F3;border-radius:8px;padding:16px 24px;text-align:left;margin-bottom:32px;font-size:13px;color:#555;display:flex;align-items:center;gap:8px}
+.payment-info .label{color:#888;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+.no-order-fallback{text-align:center;padding:40px 20px}
+.no-order-fallback p{font-size:15px;color:#888;margin-bottom:24px;line-height:1.7}
+@media(max-width:480px){.success-card{padding:40px 24px}.success-card{max-width:100%}}
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -144,7 +152,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -225,7 +233,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -727,63 +735,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1219,7 +1171,12 @@ html, body {
         <a href="../../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../../about/">ABOUT</a>
+        <a href="../../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../../about/">会社概要</a>
+          <a href="../../faq/">よくあるご質問</a>
+          <a href="../../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1257,12 +1214,14 @@ html, body {
       </div>
     </div>
     <a href="../../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../about/">会社概要</a>
+        <a href="../../faq/">よくあるご質問</a>
+        <a href="../../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1285,37 +1244,115 @@ html, body {
 </div>
 
 <main class="main">
-  <div class="success-card">
-    <div class="checkmark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h1>ご注文ありがとうございます</h1>
-    <p class="order-number">注文番号: <span>#OMT-20260330-001</span></p>
-    <p class="confirm-msg">注文確認メールを送信しました。<br>メールが届かない場合は、迷惑メールフォルダをご確認ください。</p>
-
-    <div class="order-summary">
-      <h3>Order Summary</h3>
-      <div class="order-item">
-        <div>
-          <div class="item-name">Premium RDS Down 冬用本掛け</div>
-          <div class="item-detail">サイズ: S (150&times;210cm) / 数量: 1</div>
-        </div>
-        <div class="item-price">&yen;198,000</div>
-      </div>
-      <div class="order-item">
-        <span>送料</span>
-        <span class="item-price">無料</span>
-      </div>
-      <div class="order-total">
-        <span>合計（税込）</span>
-        <span class="value">&yen;198,000</span>
-      </div>
-    </div>
-
-    <a href="../../account/index.html" class="btn-mypage">マイページで注文状況を確認</a>
-    <a href="../../products/index.html" class="continue-link">お買い物を続ける</a>
+  <div class="success-card" id="successCard">
   </div>
 </main>
+
+<script>
+(function(){
+  var order = null;
+  try { order = JSON.parse(localStorage.getItem('oft_last_order')); } catch(e) {}
+
+  var card = document.getElementById('successCard');
+
+  if (!order || !order.items || !order.items.length) {
+    // フォールバック表示
+    card.innerHTML =
+      '<div class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+      '<div class="no-order-fallback">' +
+        '<h1 style="font-family:DM Sans,sans-serif;font-size:24px;font-weight:700;margin-bottom:16px">注文情報が見つかりません</h1>' +
+        '<p>注文データが見つかりませんでした。<br>すでに注文は完了している可能性があります。<br>マイページで注文状況をご確認ください。</p>' +
+        '<a href="../../account/index.html" class="btn-mypage">マイページを確認</a>' +
+        '<a href="../../products/index.html" class="continue-link">お買い物を続ける</a>' +
+      '</div>';
+    return;
+  }
+
+  // 注文データから動的にレンダリング
+  var h = '';
+
+  // チェックマーク
+  h += '<div class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>';
+
+  // タイトル・注文番号
+  h += '<h1>\u3054\u6CE8\u6587\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059</h1>';
+  h += '<p class="order-number">\u6CE8\u6587\u756A\u53F7: <span>#' + order.id + '</span></p>';
+  h += '<p class="confirm-msg">\u6CE8\u6587\u78BA\u8A8D\u30E1\u30FC\u30EB\u3092\u9001\u4FE1\u3057\u307E\u3057\u305F\u3002<br>\u30E1\u30FC\u30EB\u304C\u5C4A\u304B\u306A\u3044\u5834\u5408\u306F\u3001\u8FF7\u60D1\u30E1\u30FC\u30EB\u30D5\u30A9\u30EB\u30C0\u3092\u3054\u78BA\u8A8D\u304F\u3060\u3055\u3044\u3002</p>';
+
+  // 注文概要
+  h += '<div class="order-summary">';
+  h += '<h3>Order Summary</h3>';
+
+  order.items.forEach(function(item) {
+    h += '<div class="order-item"><div>';
+    h += '<div class="item-name">' + item.name;
+    if (item.isGift) {
+      h += '<span class="gift-badge">GIFT</span>';
+    }
+    h += '</div>';
+    var details = [];
+    if (item.size) details.push('\u30B5\u30A4\u30BA: ' + item.size);
+    if (item.color) details.push(item.color);
+    details.push('\u6570\u91CF: ' + item.qty);
+    h += '<div class="item-detail">' + details.join(' / ') + '</div>';
+    h += '</div>';
+    h += '<div class="item-price">&yen;' + (item.price * item.qty).toLocaleString() + '</div>';
+    h += '</div>';
+  });
+
+  h += '<div class="order-item"><span>\u9001\u6599</span><span class="item-price">\u7121\u6599</span></div>';
+  h += '<div class="order-total"><span>\u5408\u8A08\uFF08\u7A0E\u8FBC\uFF09</span><span class="value">&yen;' + order.total.toLocaleString() + '</span></div>';
+  h += '</div>';
+
+  // 配送先情報
+  if (order.shipping) {
+    var s = order.shipping;
+    h += '<div class="shipping-summary">';
+    h += '<h3>Shipping</h3>';
+    h += '<div><span class="label">\u304A\u540D\u524D</span> ' + s.lastName + ' ' + s.firstName + '</div>';
+    if (s.email) h += '<div><span class="label">\u30E1\u30FC\u30EB</span> ' + s.email + '</div>';
+    if (s.phone) h += '<div><span class="label">\u96FB\u8A71</span> ' + s.phone + '</div>';
+    var addr = '';
+    if (s.postalCode) addr += '\u3012' + s.postalCode + ' ';
+    if (s.prefecture) addr += s.prefecture;
+    if (s.address) addr += s.address;
+    if (s.building) addr += ' ' + s.building;
+    if (addr) h += '<div><span class="label">\u4F4F\u6240</span> ' + addr + '</div>';
+    if (s.deliveryNote) h += '<div><span class="label">\u5099\u8003</span> ' + s.deliveryNote + '</div>';
+    h += '</div>';
+  }
+
+  // 支払い方法
+  if (order.payment) {
+    h += '<div class="payment-info">';
+    h += '<span class="label">Payment</span> ' + order.payment;
+    h += '</div>';
+  }
+
+  // アカウント作成通知
+  var acctCreated = localStorage.getItem('oft_account_created_at_checkout') === 'true';
+  if (acctCreated) {
+    h += '<div style="margin-top:24px;padding:20px;background:#F0EDE6;border-radius:10px;text-align:left">';
+    h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">';
+    h += '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>';
+    h += '<span style="font-size:15px;font-weight:700;color:#1A1A1A">アカウントが作成されました</span></div>';
+    h += '<p style="font-size:13px;color:#666;line-height:1.8;margin-bottom:12px">以下の2通のメールをお送りしました：</p>';
+    h += '<ul style="font-size:13px;color:#666;line-height:2;padding-left:20px;margin-bottom:12px">';
+    h += '<li><strong style="color:#1A1A1A">ご注文確認メール</strong> — ご注文内容の詳細</li>';
+    h += '<li><strong style="color:#1A1A1A">アカウント認証メール</strong> — メール内のリンクをクリックして認証を完了してください</li>';
+    h += '</ul>';
+    h += '<p style="font-size:12px;color:#999">認証完了後、マイページの全機能（住所管理・注文履歴など）がご利用いただけます。</p>';
+    h += '</div>';
+    localStorage.removeItem('oft_account_created_at_checkout');
+  }
+
+  // ボタン
+  h += '<a href="../../account/index.html" class="btn-mypage">\u30DE\u30A4\u30DA\u30FC\u30B8\u3067\u6CE8\u6587\u72B6\u6CC1\u3092\u78BA\u8A8D</a>';
+  h += '<a href="../../products/index.html" class="continue-link">\u304A\u8CB7\u3044\u7269\u3092\u7D9A\u3051\u308B</a>';
+
+  card.innerHTML = h;
+})();
+</script>
 
 <footer class="footer">
   <div class="footer-inner">
@@ -1329,7 +1366,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1366,14 +1403,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../../about/">会社概要</a>
-        <a href="../../gift/">ギフト</a>
         <a href="../../faq/">よくあるご質問</a>
-        <a href="../../contact/">お問い合わせ</a>
-        <a href="../../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>

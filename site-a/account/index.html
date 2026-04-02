@@ -74,7 +74,7 @@
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
 /* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -99,19 +99,61 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .user-info dd{color:#2D2D2D}
 .empty-state{text-align:center;padding:32px 0;color:#999;font-size:14px}
 .empty-state svg{width:48px;height:48px;color:#ddd;margin-bottom:12px}
-.address-card{border:1px solid #eee;border-radius:8px;padding:20px;font-size:14px;line-height:1.8;color:#555}
+.address-card{border:1px solid #eee;border-radius:8px;padding:20px;font-size:14px;line-height:1.8;color:#555;margin-bottom:12px;position:relative}
 .address-card .label{display:inline-block;background:#F7F6F3;color:#888;font-size:11px;font-weight:600;padding:2px 10px;border-radius:4px;margin-bottom:8px;letter-spacing:0.06em}
+.address-card .label--default{background:#C9A96E;color:#fff}
 .address-card .name{font-weight:600;color:#2D2D2D;font-size:15px}
-.favorites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.fav-item{border:1px solid #eee;border-radius:8px;padding:16px;text-align:center}
-.fav-item .thumb{width:100%;aspect-ratio:1;background:#F7F6F3;border-radius:6px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:12px}
-.fav-item .name{font-size:13px;font-weight:500;color:#2D2D2D;margin-bottom:4px}
-.fav-item .price{font-size:13px;color:#C9A96E;font-weight:600}
+.address-card-actions{display:flex;gap:8px;margin-top:12px}
+.address-card-actions button{background:none;border:1px solid #ddd;border-radius:6px;padding:6px 16px;font-size:12px;font-family:inherit;cursor:pointer;color:#666;transition:all 0.3s}
+.address-card-actions button:hover{border-color:#C9A96E;color:#C9A96E}
+.address-card-actions .btn-delete:hover{border-color:#d44;color:#d44}
 .btn-logout{display:inline-block;padding:14px 40px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#666;font-size:14px;font-weight:500;font-family:inherit;cursor:pointer;transition:all 0.3s;text-decoration:none}
 .btn-logout:hover{border-color:#C9A96E;color:#C9A96E}
 .actions-bar{text-align:center;margin-top:16px}
 .footer-simple{text-align:center;padding:24px;font-size:12px;color:#999;font-family:'DM Sans',sans-serif}
-@media(max-width:768px){.main{padding:100px 20px 40px}.user-info{grid-template-columns:1fr}.favorites-grid{grid-template-columns:repeat(2,1fr)}}
+/* Verification pending */
+.verify-pending{text-align:center;padding:60px 20px;max-width:520px;margin:0 auto}
+.verify-pending .envelope-icon{width:80px;height:80px;color:#C9A96E;margin:0 auto 24px}
+.verify-pending h2{font-size:22px;font-weight:700;margin-bottom:16px;color:#2D2D2D}
+.verify-pending .verify-msg{font-size:14px;color:#666;line-height:1.9;margin-bottom:20px}
+.verify-pending .verify-email{font-size:15px;font-weight:600;color:#2D2D2D;background:#F7F6F3;padding:12px 20px;border-radius:8px;margin-bottom:28px;display:inline-block}
+.btn-gold{display:inline-block;padding:14px 40px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:background 0.3s;text-decoration:none;letter-spacing:0.04em}
+.btn-gold:hover{background:#B8975A}
+.btn-outline{display:inline-block;padding:14px 40px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#666;font-size:14px;font-weight:500;font-family:inherit;cursor:pointer;transition:all 0.3s;text-decoration:none}
+.btn-outline:hover{border-color:#C9A96E;color:#C9A96E}
+.verify-pending .verify-note{font-size:12px;color:#999;margin-top:24px}
+.verify-pending .demo-link{font-size:12px;color:#aaa;margin-top:32px;cursor:pointer;text-decoration:underline}
+.verify-pending .demo-link:hover{color:#C9A96E}
+.verify-btns{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:0}
+/* Toast */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);background:#2D2D2D;color:#fff;padding:14px 32px;border-radius:8px;font-size:14px;font-weight:500;z-index:9999;opacity:0;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+/* Add address button */
+.btn-add-address{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:2px dashed #ddd;border-radius:8px;background:transparent;color:#888;font-size:14px;font-family:inherit;cursor:pointer;transition:all 0.3s}
+.btn-add-address:hover{border-color:#C9A96E;color:#C9A96E}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.3s}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:12px;max-width:560px;width:90%;max-height:90vh;overflow-y:auto;padding:32px;position:relative}
+.modal h3{font-size:18px;font-weight:700;margin-bottom:24px;color:#2D2D2D}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#999;transition:color 0.3s}
+.modal-close:hover{color:#2D2D2D}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#555;margin-bottom:6px}
+.form-group input,.form-group select{width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;color:#2D2D2D;transition:border-color 0.3s;background:#fff}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#C9A96E}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-actions{display:flex;gap:12px;margin-top:24px}
+.form-actions button{flex:1}
+/* Order card */
+.order-card{border:1px solid #eee;border-radius:8px;padding:20px;margin-bottom:12px}
+.order-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.order-card-header .order-id{font-family:'DM Sans',sans-serif;font-size:13px;color:#888;font-weight:500}
+.order-card-header .order-date{font-size:13px;color:#888}
+.order-card-header .order-status{font-size:12px;font-weight:600;padding:3px 12px;border-radius:20px;background:#F0F7F0;color:#4a8;letter-spacing:0.04em}
+.order-items{font-size:14px;color:#555;line-height:1.8}
+.order-total{text-align:right;font-size:15px;font-weight:600;color:#2D2D2D;margin-top:8px;padding-top:8px;border-top:1px solid #eee}
+@media(max-width:768px){.main{padding:100px 20px 40px}.user-info{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -138,7 +180,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -219,7 +261,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -721,63 +763,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1213,7 +1199,12 @@ html, body {
         <a href="../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../about/">ABOUT</a>
+        <a href="../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../about/">会社概要</a>
+          <a href="../faq/">よくあるご質問</a>
+          <a href="../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1251,12 +1242,14 @@ html, body {
       </div>
     </div>
     <a href="../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../about/">会社概要</a>
+        <a href="../faq/">よくあるご質問</a>
+        <a href="../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1267,68 +1260,55 @@ html, body {
 
 <nav class="breadcrumb" aria-label="パンくずリスト"><div class="bc-inner"><a href="../index.html">TOP</a> <span class="bc-sep">/</span> <span>マイアカウント</span></div></nav>
 
-<main class="main">
-  <h1 class="page-title">MY PAGE</h1>
-
-  <div class="section">
-    <h2 class="section-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-      会員情報
-    </h2>
-    <dl class="user-info">
-      <dt>お名前</dt><dd>表参道 太郎</dd>
-      <dt>メールアドレス</dt><dd>taro@example.com</dd>
-      <dt>会員登録日</dt><dd>2026年1月15日</dd>
-    </dl>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      注文履歴
-    </h2>
-    <div class="empty-state">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
-      <p>注文履歴はありません</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-      お気に入り
-    </h2>
-    <div class="favorites-grid">
-      <div class="fav-item">
-        <div class="thumb">No Image</div>
-        <p class="name">Premium RDS Down 冬用本掛け</p>
-        <p class="price">&yen;198,000</p>
-      </div>
-      <div class="fav-item">
-        <div class="thumb">No Image</div>
-        <p class="name">CCD 合掛け</p>
-        <p class="price">&yen;148,000</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-      配送先情報
-    </h2>
-    <div class="address-card">
-      <span class="label">DEFAULT</span>
-      <p class="name">表参道 太郎</p>
-      <p>〒150-0001<br>東京都渋谷区神宮前4-1-1<br>表参道マンション 301号室</p>
-      <p>TEL: 03-1234-5678</p>
-    </div>
-  </div>
-
-  <div class="actions-bar">
-    <a href="login/" class="btn-logout">ログアウト</a>
-  </div>
+<main class="main" id="myPageMain">
+  <!-- Content is rendered by JS based on localStorage -->
 </main>
+
+<!-- Address Modal -->
+<div class="modal-overlay" id="addressModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
+    <h3 id="modalTitle">配送先を追加</h3>
+    <form id="addressForm">
+      <input type="hidden" id="addrEditIndex" value="-1">
+      <div class="form-group">
+        <label for="addrName">お名前 <span style="color:#d44">*</span></label>
+        <input type="text" id="addrName" required placeholder="表参道 太郎">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="addrPostal">郵便番号 <span style="color:#d44">*</span></label>
+          <input type="text" id="addrPostal" required placeholder="150-0001" maxlength="8">
+        </div>
+        <div class="form-group">
+          <label for="addrPref">都道府県 <span style="color:#d44">*</span></label>
+          <select id="addrPref" required>
+            <option value="">選択してください</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="addrCity">市区町村・番地 <span style="color:#d44">*</span></label>
+        <input type="text" id="addrCity" required placeholder="渋谷区神宮前4-1-1">
+      </div>
+      <div class="form-group">
+        <label for="addrBuilding">建物名・部屋番号</label>
+        <input type="text" id="addrBuilding" placeholder="表参道マンション 301号室">
+      </div>
+      <div class="form-group">
+        <label for="addrPhone">電話番号 <span style="color:#d44">*</span></label>
+        <input type="tel" id="addrPhone" required placeholder="03-1234-5678">
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-outline" id="modalCancel">キャンセル</button>
+        <button type="submit" class="btn-gold">保存する</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <footer class="footer">
   <div class="footer-inner">
@@ -1342,7 +1322,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1379,14 +1359,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../about/">会社概要</a>
-        <a href="../gift/">ギフト</a>
         <a href="../faq/">よくあるご質問</a>
-        <a href="../contact/">お問い合わせ</a>
-        <a href="../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>
@@ -1434,6 +1411,273 @@ if(hamburger)hamburger.addEventListener('click',openMenu);
 if(menuClose)menuClose.addEventListener('click',closeMenu);
 if(menuOverlay)menuOverlay.addEventListener('click',closeMenu);
 document.querySelectorAll('.mm-toggle').forEach(function(btn){btn.addEventListener('click',function(){this.parentElement.classList.toggle('open')})});
+</script>
+
+<script>
+(function(){
+  // --- Helpers ---
+  var mainEl = document.getElementById('myPageMain');
+  var toastEl = document.getElementById('toast');
+  var modalEl = document.getElementById('addressModal');
+  var modalTitleEl = document.getElementById('modalTitle');
+  var addrForm = document.getElementById('addressForm');
+  var prefSelect = document.getElementById('addrPref');
+  var modalCancelBtn = document.getElementById('modalCancel');
+  var modalCloseBtn = document.getElementById('modalClose');
+
+  // 47 prefectures
+  var prefs = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
+  prefs.forEach(function(p){
+    var opt = document.createElement('option');
+    opt.value = p; opt.textContent = p;
+    prefSelect.appendChild(opt);
+  });
+
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    setTimeout(function(){ toastEl.classList.remove('show'); }, 2500);
+  }
+
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem('oft_user')); } catch(e){ return null; }
+  }
+  function saveUser(u) {
+    localStorage.setItem('oft_user', JSON.stringify(u));
+  }
+  function getOrders() {
+    try { return JSON.parse(localStorage.getItem('oft_orders')) || []; } catch(e){ return []; }
+  }
+
+  // --- Auth check ---
+  var user = getUser();
+  if (!user) {
+    window.location.href = 'login/';
+    return;
+  }
+
+  // --- Render ---
+  function render() {
+    user = getUser();
+    if (!user) { window.location.href = 'login/'; return; }
+
+    if (user.verified === false) {
+      renderVerifyPending();
+    } else {
+      renderFullPage();
+    }
+  }
+
+  // --- Verify Pending ---
+  function renderVerifyPending() {
+    mainEl.innerHTML = '<h1 class="page-title">MY PAGE</h1>'
+      + '<div class="section">'
+      + '<div class="verify-pending">'
+      + '<svg class="envelope-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'
+      + '<rect x="2" y="4" width="20" height="16" rx="2"/>'
+      + '<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>'
+      + '</svg>'
+      + '<h2>アカウント認証中です</h2>'
+      + '<p class="verify-msg">ご登録いただいたメールアドレスに認証メールを送信しました。<br>メール内のリンクをクリックして認証を完了してください。</p>'
+      + '<div class="verify-email">' + escHtml(user.email || '') + '</div>'
+      + '<div class="verify-btns">'
+      + '<button class="btn-gold" id="resendBtn">認証メールを再送する</button>'
+      + '<button class="btn-outline" id="logoutBtnPending">ログアウト</button>'
+      + '</div>'
+      + '<p class="verify-note">認証が完了するとマイページの全機能がご利用いただけます</p>'
+      + '<p class="demo-link" id="demoVerify">（デモ用）認証を完了する</p>'
+      + '</div></div>';
+
+    document.getElementById('resendBtn').addEventListener('click', function(){
+      showToast('認証メールを再送しました');
+    });
+    document.getElementById('logoutBtnPending').addEventListener('click', function(){
+      localStorage.removeItem('oft_user');
+      window.location.href = 'login/';
+    });
+    document.getElementById('demoVerify').addEventListener('click', function(){
+      user.verified = true;
+      saveUser(user);
+      render();
+    });
+  }
+
+  // --- Full Page ---
+  function renderFullPage() {
+    var addresses = user.addresses || [];
+    var orders = getOrders();
+
+    var html = '<h1 class="page-title">MY PAGE</h1>';
+
+    // 会員情報
+    html += '<div class="section">'
+      + '<h2 class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>会員情報</h2>'
+      + '<dl class="user-info">'
+      + '<dt>お名前</dt><dd>' + escHtml(user.name || '') + '</dd>'
+      + '<dt>メールアドレス</dt><dd>' + escHtml(user.email || '') + '</dd>'
+      + '<dt>会員登録日</dt><dd>' + escHtml(user.registeredAt || '') + '</dd>'
+      + '</dl></div>';
+
+    // 配送先住所
+    html += '<div class="section">'
+      + '<h2 class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>配送先住所</h2>';
+    if (addresses.length === 0) {
+      html += '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><p>配送先が登録されていません</p></div>';
+    } else {
+      for (var i = 0; i < addresses.length; i++) {
+        var a = addresses[i];
+        var labelCls = i === 0 ? 'label label--default' : 'label';
+        var labelText = i === 0 ? 'DEFAULT' : '配送先 ' + (i + 1);
+        html += '<div class="address-card">'
+          + '<span class="' + labelCls + '">' + labelText + '</span>'
+          + '<p class="name">' + escHtml(a.name || '') + '</p>'
+          + '<p>〒' + escHtml(a.postal || '') + '<br>' + escHtml(a.prefecture || '') + escHtml(a.city || '') + (a.building ? '<br>' + escHtml(a.building) : '') + '</p>'
+          + '<p>TEL: ' + escHtml(a.phone || '') + '</p>'
+          + '<div class="address-card-actions">'
+          + '<button data-edit="' + i + '">編集</button>'
+          + '<button class="btn-delete" data-delete="' + i + '">削除</button>'
+          + '</div></div>';
+      }
+    }
+    html += '<button class="btn-add-address" id="addAddrBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>新しい配送先を追加</button>';
+    html += '</div>';
+
+    // 注文履歴
+    html += '<div class="section">'
+      + '<h2 class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>注文履歴</h2>';
+    if (orders.length === 0) {
+      html += '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg><p>注文履歴はありません</p></div>';
+    } else {
+      for (var j = 0; j < orders.length; j++) {
+        var o = orders[j];
+        html += '<div class="order-card">'
+          + '<div class="order-card-header">'
+          + '<span class="order-id">注文番号: ' + escHtml(o.id || '') + '</span>'
+          + '<span class="order-date">' + escHtml(o.date || '') + '</span>'
+          + '<span class="order-status">' + escHtml(o.status || '処理中') + '</span>'
+          + '</div>'
+          + '<div class="order-items">' + escHtml(o.items || '') + '</div>'
+          + '<div class="order-total">合計: &yen;' + escHtml(o.total || '0') + '</div>'
+          + '</div>';
+      }
+    }
+    html += '</div>';
+
+    // ログアウト
+    html += '<div class="actions-bar"><button class="btn-logout" id="logoutBtn">ログアウト</button></div>';
+
+    mainEl.innerHTML = html;
+
+    // Event listeners
+    document.getElementById('logoutBtn').addEventListener('click', function(){
+      localStorage.removeItem('oft_user');
+      window.location.href = 'login/';
+    });
+    document.getElementById('addAddrBtn').addEventListener('click', function(){
+      openAddressModal(-1);
+    });
+    // Edit/Delete buttons
+    mainEl.querySelectorAll('[data-edit]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        openAddressModal(parseInt(this.getAttribute('data-edit')));
+      });
+    });
+    mainEl.querySelectorAll('[data-delete]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var idx = parseInt(this.getAttribute('data-delete'));
+        if (confirm('この配送先を削除しますか？')) {
+          user.addresses.splice(idx, 1);
+          saveUser(user);
+          render();
+          showToast('配送先を削除しました');
+        }
+      });
+    });
+  }
+
+  // --- Address Modal ---
+  function openAddressModal(idx) {
+    var editIdx = document.getElementById('addrEditIndex');
+    editIdx.value = idx;
+    if (idx >= 0 && user.addresses && user.addresses[idx]) {
+      var a = user.addresses[idx];
+      modalTitleEl.textContent = '配送先を編集';
+      document.getElementById('addrName').value = a.name || '';
+      document.getElementById('addrPostal').value = a.postal || '';
+      document.getElementById('addrPref').value = a.prefecture || '';
+      document.getElementById('addrCity').value = a.city || '';
+      document.getElementById('addrBuilding').value = a.building || '';
+      document.getElementById('addrPhone').value = a.phone || '';
+    } else {
+      modalTitleEl.textContent = '配送先を追加';
+      addrForm.reset();
+    }
+    modalEl.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAddressModal() {
+    modalEl.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  modalCancelBtn.addEventListener('click', closeAddressModal);
+  modalCloseBtn.addEventListener('click', closeAddressModal);
+  modalEl.addEventListener('click', function(e){
+    if (e.target === modalEl) closeAddressModal();
+  });
+
+  addrForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var idx = parseInt(document.getElementById('addrEditIndex').value);
+    var addr = {
+      name: document.getElementById('addrName').value.trim(),
+      postal: document.getElementById('addrPostal').value.trim(),
+      prefecture: document.getElementById('addrPref').value,
+      city: document.getElementById('addrCity').value.trim(),
+      building: document.getElementById('addrBuilding').value.trim(),
+      phone: document.getElementById('addrPhone').value.trim()
+    };
+    if (!user.addresses) user.addresses = [];
+    if (idx >= 0) {
+      user.addresses[idx] = addr;
+      showToast('配送先を更新しました');
+    } else {
+      user.addresses.push(addr);
+      showToast('配送先を追加しました');
+    }
+    saveUser(user);
+    closeAddressModal();
+    render();
+  });
+
+  // --- Zipcloud auto-fill ---
+  document.getElementById('addrPostal').addEventListener('input', function(){
+    var val = this.value.replace(/[^0-9]/g, '');
+    if (val.length === 7) {
+      var script = document.createElement('script');
+      script.src = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=' + val + '&callback=_zipCallback';
+      document.body.appendChild(script);
+    }
+  });
+  window._zipCallback = function(data) {
+    if (data && data.results && data.results[0]) {
+      var r = data.results[0];
+      document.getElementById('addrPref').value = r.address1 || '';
+      document.getElementById('addrCity').value = (r.address2 || '') + (r.address3 || '');
+    }
+  };
+
+  // --- Escape HTML ---
+  function escHtml(s) {
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+
+  // --- Init ---
+  render();
+})();
 </script>
 </body>
 </html>

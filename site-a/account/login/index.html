@@ -80,7 +80,7 @@
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
 /* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -142,7 +142,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -223,7 +223,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -725,63 +725,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1217,7 +1161,12 @@ html, body {
         <a href="../../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../../about/">ABOUT</a>
+        <a href="../../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../../about/">会社概要</a>
+          <a href="../../faq/">よくあるご質問</a>
+          <a href="../../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1255,12 +1204,14 @@ html, body {
       </div>
     </div>
     <a href="../../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../about/">会社概要</a>
+        <a href="../../faq/">よくあるご質問</a>
+        <a href="../../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1275,7 +1226,29 @@ html, body {
   <div class="card">
     <div class="card-logo"><img src="../../images/logo.svg" alt="表参道布団店。" height="24" style="filter:none"></div>
     <h1>ログイン</h1>
-    <form onsubmit="return false;">
+    <!-- Social Login -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+      <button type="button" onclick="socialLogin('Google')" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:#fff;border:1px solid #ddd;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:box-shadow 0.3s;font-family:inherit" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'" onmouseout="this.style.boxShadow='none'">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Googleでログイン
+      </button>
+      <button type="button" onclick="socialLogin('X')" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:#000;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.3s;font-family:inherit" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Xでログイン
+      </button>
+      <button type="button" onclick="socialLogin('Amazon')" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:linear-gradient(to bottom,#f7dea0,#f0c14b);color:#111;border:1px solid #a88734;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.3s;font-family:inherit" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        <svg width="20" height="16" viewBox="0 0 20 16"><path d="M7.5 12.6c-2.4-1.8-3.7-4.3-3.7-7.3C3.8 3.6 4.6 2 6 .8c-.4.5-.6 1.2-.6 2 0 3.2 2.6 6.2 6.4 7.6-1.2 1.3-2.7 2-4.3 2.2zm8.2-1.4c-.4.3-1.1.5-1.6.5-1.2 0-1.8-.9-1.8-2.1V5.2h3.2V3.4h-3.2V.6L10 1.4v8.3c0 2.3 1.2 3.8 3.4 3.8 1 0 1.9-.3 2.6-.8l-.3-1.5z" fill="#F90"/><path d="M18.3 13.2C16.2 14.9 13 15.8 10.2 15.8c-4 0-7.6-1.5-10.2-4 0 0-.2-.2.2 0 2.8 1.6 6.2 2.6 9.8 2.6 2.4 0 5-.5 7.4-1.5.4-.1.6.3.9.3z" fill="#F90"/></svg>
+        Amazonでログイン
+      </button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
+      <div style="flex:1;height:1px;background:#E5E5E5"></div>
+      <span style="font-size:12px;color:#999;white-space:nowrap">または メールでログイン</span>
+      <div style="flex:1;height:1px;background:#E5E5E5"></div>
+    </div>
+
+    <form onsubmit="return handleLogin(event)">
       <div class="form-group">
         <label for="email">メールアドレス</label>
         <input type="email" id="email" placeholder="example@email.com" autocomplete="email">
@@ -1284,25 +1257,76 @@ html, body {
         <label for="password">パスワード</label>
         <input type="password" id="password" placeholder="パスワードを入力" autocomplete="current-password">
       </div>
-      <button type="submit" class="btn-primary">ログイン</button>
+      <div id="loginError" style="display:none;padding:12px;background:rgba(231,76,60,0.08);border-radius:6px;font-size:13px;color:#e74c3c;margin-bottom:16px"></div>
+      <button type="submit" class="btn-primary" id="loginBtn">ログイン</button>
     </form>
     <div class="links">
       <a href="../forgot-password/">パスワードをお忘れの方</a>
       <a href="../register/">新規会員登録</a>
     </div>
-    <div class="divider">or</div>
-    <div class="social-btns">
-      <button class="btn-social" type="button">
-        <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-        Googleでログイン
-      </button>
-      <button class="btn-social" type="button">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.74 3.3 8.71 7.73 9.74.07-.6.13-1.52-.03-2.18-.14-.6-.92-3.89-.92-3.89s-.24-.47-.24-1.16c0-1.09.63-1.9 1.42-1.9.67 0 1 .5 1 1.11 0 .67-.43 1.68-.65 2.61-.19.78.39 1.42 1.15 1.42 1.38 0 2.44-1.45 2.44-3.55 0-1.86-1.34-3.16-3.25-3.16-2.21 0-3.51 1.66-3.51 3.38 0 .67.26 1.39.58 1.78.06.08.07.15.05.23-.06.25-.19.78-.22.89-.03.14-.12.17-.27.1-1.01-.47-1.64-1.94-1.64-3.13 0-2.55 1.85-4.89 5.34-4.89 2.8 0 4.98 2 4.98 4.67 0 2.78-1.75 5.02-4.19 5.02-.82 0-1.59-.43-1.85-.93l-.5 1.93c-.18.71-.68 1.59-1.01 2.13A10 10 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#06C755"/></svg>
-        LINEでログイン
-      </button>
-    </div>
   </div>
 </main>
+
+<script>
+function handleLogin(e) {
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
+  var errEl = document.getElementById('loginError');
+  errEl.style.display = 'none';
+
+  if (!email || !password) {
+    errEl.textContent = 'メールアドレスとパスワードを入力してください。';
+    errEl.style.display = 'block';
+    return false;
+  }
+
+  // Check if user exists in localStorage
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('oft_user')); } catch(e) {}
+  if (!user || user.email !== email) {
+    errEl.textContent = 'メールアドレスまたはパスワードが正しくありません。';
+    errEl.style.display = 'block';
+    return false;
+  }
+
+  // Simulate login success
+  var btn = document.getElementById('loginBtn');
+  btn.textContent = 'ログイン中...';
+  btn.style.opacity = '0.7';
+  setTimeout(function() {
+    // Check redirect param
+    var params = new URLSearchParams(window.location.search);
+    var redirect = params.get('redirect');
+    if (redirect === 'checkout') {
+      location.href = '../../checkout/';
+    } else {
+      location.href = '../';
+    }
+  }, 800);
+  return false;
+}
+
+function socialLogin(provider) {
+  // Check if user exists
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('oft_user')); } catch(e) {}
+  if (!user) {
+    // No account - redirect to register
+    alert(provider + 'アカウントが見つかりません。新規登録ページへ移動します。');
+    location.href = '../register/';
+    return;
+  }
+  // Simulate social login
+  var params = new URLSearchParams(window.location.search);
+  var redirect = params.get('redirect');
+  if (redirect === 'checkout') {
+    location.href = '../../checkout/';
+  } else {
+    location.href = '../';
+  }
+}
+</script>
 
 <footer class="footer">
   <div class="footer-inner">
@@ -1316,7 +1340,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1353,14 +1377,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../../about/">会社概要</a>
-        <a href="../../gift/">ギフト</a>
         <a href="../../faq/">よくあるご質問</a>
-        <a href="../../contact/">お問い合わせ</a>
-        <a href="../../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>

@@ -181,7 +181,7 @@ img{max-width:100%;display:block}
 .timeline-sub{text-align:center;font-family:var(--font-jp);font-size:14px;color:var(--color-text-light);margin-bottom:48px;letter-spacing:0.06em}
 .timeline-items{position:relative;max-width:960px;margin:0 auto;padding-left:40px}
 .timeline-items::before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--color-accent);opacity:0.3}
-.timeline-item{position:relative;margin-bottom:36px;display:grid;grid-template-columns:80px 180px 1fr;gap:20px;align-items:start}
+.timeline-item{position:relative;margin-bottom:36px;display:grid;grid-template-columns:80px 1fr 180px;gap:24px;align-items:start}
 .timeline-item:last-child{margin-bottom:0}
 .timeline-dot{position:absolute;left:-29px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--color-accent);border:3px solid #FAF7F2;z-index:1}
 .timeline-year{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--color-accent);letter-spacing:0.02em;line-height:1}
@@ -290,7 +290,7 @@ img{max-width:100%;display:block}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -371,7 +371,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -873,63 +873,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1339,7 +1283,12 @@ html, body {
         <a href="../../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../../about/">ABOUT</a>
+        <a href="../../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../../about/">会社概要</a>
+          <a href="../../faq/">よくあるご質問</a>
+          <a href="../../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1377,12 +1326,14 @@ html, body {
       </div>
     </div>
     <a href="../../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../about/">会社概要</a>
+        <a href="../../faq/">よくあるご質問</a>
+        <a href="../../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1464,47 +1415,47 @@ html, body {
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2015</div>
-        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店ロゴ" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
         <div class="timeline-content">
           <h3>ブランド創業</h3>
           <p>代表取締役 古賀貴之が表参道布団店を創業。「日本の寝室に、デザインを。」をブランドコンセプトに、従来の布団店らしくない表参道の地から、寝具業界の変革に挑戦を開始しました。</p>
         </div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店ロゴ" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
       </div>
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2021</div>
-        <div class="timeline-img"><img src="../../images/video-caps/cap_007.jpg" alt="山梨県白州の山々" loading="lazy"></div>
         <div class="timeline-content">
           <h3>白州水洗浄の確立</h3>
           <p>山梨県白州町の天然水を使ったダウン洗浄技術を確立。従来比150%の洗浄力を実現し、リサイクルダウンの品質を飛躍的に向上させました。</p>
         </div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_007.jpg" alt="山梨県白州の山々" loading="lazy"></div>
       </div>
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2023</div>
-        <div class="timeline-img"><img src="../../images/video-caps/cap_019.jpg" alt="Clean Cycle Downブランドタグ" loading="lazy"></div>
         <div class="timeline-content">
           <h3>Clean Cycle Down発売</h3>
           <p>白州水洗浄のリサイクルダウンを富士吉田の職人が仕立てる、シグネチャーシリーズ「Clean Cycle Down」を発売。大きな反響をいただきました。</p>
         </div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_019.jpg" alt="Clean Cycle Downブランドタグ" loading="lazy"></div>
       </div>
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2024</div>
-        <div class="timeline-img"><img src="../../images/video-caps/cap_003.jpg" alt="RDS認証ポーランド原産地証明書" loading="lazy"></div>
         <div class="timeline-content">
           <h3>RDS認証ダウンラインナップ拡充</h3>
           <p>動物福祉に配慮したRDS認証ダウンシリーズを展開。ホワイトグースとプレミアムマザーグースの2ラインを追加しました。</p>
         </div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_003.jpg" alt="RDS認証ポーランド原産地証明書" loading="lazy"></div>
       </div>
       <div class="timeline-item fade-up">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2026</div>
-        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店 リブランディング" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
         <div class="timeline-content">
           <h3>ブランドリブランディング・ECサイトリニューアル</h3>
           <p>ブランドの世界観を一新し、ECサイトを全面リニューアル。より直感的な購買体験と、ものづくりのストーリーを伝えるコンテンツを充実させました。</p>
         </div>
+        <div class="timeline-img"><img src="../../images/video-caps/cap_021.jpg" alt="表参道布団店 リブランディング" loading="lazy" style="object-fit:contain;background:#fff;padding:20px;"></div>
       </div>
     </div>
   </div>
@@ -1644,7 +1595,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1681,14 +1632,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../../about/">会社概要</a>
-        <a href="../../gift/">ギフト</a>
         <a href="../../faq/">よくあるご質問</a>
-        <a href="../../contact/">お問い合わせ</a>
-        <a href="../../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>

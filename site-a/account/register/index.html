@@ -80,7 +80,7 @@
 @media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
 @media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
 /* Mobile Menu */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 40px 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -100,23 +100,41 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .card-logo{text-align:center;margin-bottom:32px}
 .card-logo img{height:24px}
 .card h1{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:#2D2D2D;margin-bottom:32px;letter-spacing:0.04em;text-align:center}
+/* Social Login */
+.social-login{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.btn-social{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 16px;border-radius:8px;font-size:14px;font-weight:600;font-family:'DM Sans','Noto Sans JP',sans-serif;letter-spacing:0.04em;cursor:pointer;transition:opacity 0.3s,box-shadow 0.3s;text-decoration:none;border:none}
+.btn-social:hover{opacity:0.9;box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.btn-social svg{flex-shrink:0}
+.btn-social--google{background:#fff;color:#333;border:1px solid #ddd}
+.btn-social--google:hover{background:#f8f8f8}
+.btn-social--x{background:#000;color:#fff}
+.btn-social--amazon{background:linear-gradient(to bottom,#f7dea0,#f0c14b);color:#111;border:1px solid #a88734}
+/* Divider */
+.divider{display:flex;align-items:center;gap:16px;margin:28px 0;font-size:13px;color:#999;letter-spacing:0.02em;white-space:nowrap}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#ddd}
+/* Form */
 .form-row{display:flex;gap:12px;margin-bottom:20px}
 .form-row .form-group{flex:1;margin-bottom:0}
 .form-group{margin-bottom:20px;text-align:left}
 .form-group label{display:block;font-size:13px;font-weight:500;color:#666;margin-bottom:6px;letter-spacing:0.02em}
 .form-group input{width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:15px;font-family:inherit;transition:border-color 0.3s;outline:none}
 .form-group input:focus{border-color:#C9A96E}
-.checkbox-group{display:flex;align-items:flex-start;gap:10px;margin-bottom:28px;font-size:13px;color:#666;line-height:1.6}
+.form-group input.input-error{border-color:#e53e3e}
+.form-error{color:#e53e3e;font-size:12px;margin-top:4px;display:none}
+/* Checkbox groups */
+.checkbox-group{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;font-size:13px;color:#666;line-height:1.6}
 .checkbox-group input[type="checkbox"]{margin-top:4px;accent-color:#C9A96E;width:16px;height:16px;flex-shrink:0}
 .checkbox-group a{color:#C9A96E;text-decoration:none}
 .checkbox-group a:hover{text-decoration:underline}
+.newsletter-check{margin-bottom:12px}
+.newsletter-check label{color:#555}
 .btn-primary{display:block;width:100%;padding:16px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s}
 .btn-primary:hover{background:#b8944f}
 .login-link{text-align:center;margin-top:24px;font-size:13px;color:#666}
 .login-link a{color:#C9A96E;text-decoration:none;font-weight:500}
 .login-link a:hover{opacity:0.7}
 .footer-simple{text-align:center;padding:24px;font-size:12px;color:#999;font-family:'DM Sans',sans-serif}
-@media(max-width:480px){.card{padding:36px 24px}.form-row{flex-direction:column;gap:0}.form-row .form-group{margin-bottom:20px}}
+@media(max-width:480px){.card{padding:36px 24px}.form-row{flex-direction:column;gap:0}.form-row .form-group{margin-bottom:20px}.social-login{gap:10px}.btn-social{padding:12px 14px;font-size:13px}}
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -143,7 +161,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-col-last{grid-template-columns:1fr 1fr;gap:20px}.footer-bottom{flex-direction:column;align-items:center;text-align:center;padding:24px 20px 20px}.footer-legal{gap:16px}.footer-copy{font-size:10px}}
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -224,7 +242,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -726,63 +744,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1218,7 +1180,12 @@ html, body {
         <a href="../../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../../about/">ABOUT</a>
+        <a href="../../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../../about/">会社概要</a>
+          <a href="../../faq/">よくあるご質問</a>
+          <a href="../../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1256,12 +1223,14 @@ html, body {
       </div>
     </div>
     <a href="../../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../../about/">会社概要</a>
+        <a href="../../faq/">よくあるご質問</a>
+        <a href="../../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1276,32 +1245,62 @@ html, body {
   <div class="card">
     <div class="card-logo"><img src="../../images/logo.svg" alt="表参道布団店。" height="24" style="filter:none"></div>
     <h1>新規会員登録</h1>
-    <form onsubmit="return false;">
+
+    <!-- Social Login -->
+    <div class="social-login">
+      <button type="button" class="btn-social btn-social--google" onclick="socialRegister('Google')">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Googleで登録
+      </button>
+      <button type="button" class="btn-social btn-social--x" onclick="socialRegister('X')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Xで登録
+      </button>
+      <button type="button" class="btn-social btn-social--amazon" onclick="socialRegister('Amazon')">
+        <svg width="20" height="16" viewBox="0 0 20 16"><path d="M7.5 12.6c-2.4-1.8-3.7-4.3-3.7-7.3C3.8 3.6 4.6 2 6 .8c-.4.5-.6 1.2-.6 2 0 3.2 2.6 6.2 6.4 7.6-1.2 1.3-2.7 2-4.3 2.2zm8.2-1.4c-.4.3-1.1.5-1.6.5-1.2 0-1.8-.9-1.8-2.1V5.2h3.2V3.4h-3.2V.6L10 1.4v8.3c0 2.3 1.2 3.8 3.4 3.8 1 0 1.9-.3 2.6-.8l-.3-1.5z" fill="#F90"/><path d="M18.3 13.2C16.2 14.9 13 15.8 10.2 15.8c-4 0-7.6-1.5-10.2-4 0 0-.2-.2.2 0 2.8 1.6 6.2 2.6 9.8 2.6 2.4 0 5-.5 7.4-1.5.4-.1.6.3.9.3z" fill="#F90"/></svg>
+        Amazonで登録
+      </button>
+    </div>
+
+    <div class="divider">または メールで登録</div>
+
+    <!-- Registration Form -->
+    <form id="registerForm" novalidate>
       <div class="form-row">
         <div class="form-group">
           <label for="lastName">姓</label>
-          <input type="text" id="lastName" placeholder="表参道" autocomplete="family-name">
+          <input type="text" id="lastName" placeholder="表参道" autocomplete="family-name" required>
+          <p class="form-error" id="lastNameError">姓を入力してください</p>
         </div>
         <div class="form-group">
           <label for="firstName">名</label>
-          <input type="text" id="firstName" placeholder="太郎" autocomplete="given-name">
+          <input type="text" id="firstName" placeholder="太郎" autocomplete="given-name" required>
+          <p class="form-error" id="firstNameError">名を入力してください</p>
         </div>
       </div>
       <div class="form-group">
         <label for="email">メールアドレス</label>
-        <input type="email" id="email" placeholder="example@email.com" autocomplete="email">
+        <input type="email" id="email" placeholder="example@email.com" autocomplete="email" required>
+        <p class="form-error" id="emailError">有効なメールアドレスを入力してください</p>
       </div>
       <div class="form-group">
         <label for="password">パスワード</label>
-        <input type="password" id="password" placeholder="8文字以上" autocomplete="new-password">
+        <input type="password" id="password" placeholder="8文字以上" autocomplete="new-password" required>
+        <p class="form-error" id="passwordError">パスワードは8文字以上で入力してください</p>
       </div>
       <div class="form-group">
         <label for="passwordConfirm">パスワード（確認）</label>
-        <input type="password" id="passwordConfirm" placeholder="パスワードを再入力" autocomplete="new-password">
+        <input type="password" id="passwordConfirm" placeholder="パスワードを再入力" autocomplete="new-password" required>
+        <p class="form-error" id="passwordConfirmError">パスワードが一致しません</p>
+      </div>
+      <div class="checkbox-group newsletter-check">
+        <input type="checkbox" id="newsletter" checked>
+        <label for="newsletter">新商品やお得な情報をメールで受け取る</label>
       </div>
       <div class="checkbox-group">
-        <input type="checkbox" id="terms">
+        <input type="checkbox" id="terms" required>
         <label for="terms"><a href="../../terms/">利用規約</a>および<a href="../../privacy-policy/">プライバシーポリシー</a>に同意する</label>
+        <p class="form-error" id="termsError" style="margin-left:-26px">利用規約への同意が必要です</p>
       </div>
       <button type="submit" class="btn-primary">会員登録</button>
     </form>
@@ -1321,7 +1320,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1358,14 +1357,11 @@ html, body {
     <div class="footer-col-last">
       <div>
       <div>
-      <h4 class="footer-nav-title">GUIDE</h4>
+      <h4 class="footer-nav-title">CONTACT</h4>
       <nav class="footer-nav">
         <a href="../../about/">会社概要</a>
-        <a href="../../gift/">ギフト</a>
         <a href="../../faq/">よくあるご質問</a>
-        <a href="../../contact/">お問い合わせ</a>
-        <a href="../../subscription/">サブスクリプション</a>
-      </nav>
+        <a href="../../contact/">お問い合わせ</a>      </nav>
       </div>
       <div>
       <h4 class="footer-nav-title">ACCOUNT</h4>
@@ -1413,6 +1409,78 @@ if(hamburger)hamburger.addEventListener('click',openMenu);
 if(menuClose)menuClose.addEventListener('click',closeMenu);
 if(menuOverlay)menuOverlay.addEventListener('click',closeMenu);
 document.querySelectorAll('.mm-toggle').forEach(function(btn){btn.addEventListener('click',function(){this.parentElement.classList.toggle('open')})});
+
+// Registration form validation and submission
+function clearErrors() {
+  document.querySelectorAll('.form-error').forEach(function(el) { el.style.display = 'none'; });
+  document.querySelectorAll('.input-error').forEach(function(el) { el.classList.remove('input-error'); });
+}
+
+function showError(inputId, errorId) {
+  var input = document.getElementById(inputId);
+  var error = document.getElementById(errorId);
+  if (input) input.classList.add('input-error');
+  if (error) error.style.display = 'block';
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Social login simulation
+function socialRegister(provider) {
+  var userData = {
+    lastName: '',
+    firstName: provider + 'ユーザー',
+    email: provider.toLowerCase() + '_user@example.com',
+    verified: false,
+    newsletter: true,
+    addresses: [],
+    provider: provider,
+    createdAt: new Date().toISOString()
+  };
+  localStorage.setItem('oft_user', JSON.stringify(userData));
+  window.location.href = '../';
+}
+
+// Form submit
+var form = document.getElementById('registerForm');
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearErrors();
+
+    var lastName = document.getElementById('lastName').value.trim();
+    var firstName = document.getElementById('firstName').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('passwordConfirm').value;
+    var terms = document.getElementById('terms').checked;
+    var newsletter = document.getElementById('newsletter').checked;
+    var valid = true;
+
+    if (!lastName) { showError('lastName', 'lastNameError'); valid = false; }
+    if (!firstName) { showError('firstName', 'firstNameError'); valid = false; }
+    if (!email || !validateEmail(email)) { showError('email', 'emailError'); valid = false; }
+    if (!password || password.length < 8) { showError('password', 'passwordError'); valid = false; }
+    if (password !== passwordConfirm) { showError('passwordConfirm', 'passwordConfirmError'); valid = false; }
+    if (!terms) { showError('terms', 'termsError'); valid = false; }
+
+    if (!valid) return;
+
+    var userData = {
+      lastName: lastName,
+      firstName: firstName,
+      email: email,
+      verified: false,
+      newsletter: newsletter,
+      addresses: [],
+      createdAt: new Date().toISOString()
+    };
+    localStorage.setItem('oft_user', JSON.stringify(userData));
+    window.location.href = '../';
+  });
+}
 </script>
 </body>
 </html>

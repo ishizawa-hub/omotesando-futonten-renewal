@@ -2314,18 +2314,16 @@ section.section-black {
 }
 
 /* ----------------------------------------------------------------
-   20. Subscription Plans
+   20. Plans
    ---------------------------------------------------------------- */
-.plan-grid,
-.subscription-grid {
+.plan-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   align-items: start;
 }
 
-.plan-card,
-.subscription-card {
+.plan-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -2335,20 +2333,17 @@ section.section-black {
   position: relative;
 }
 
-.plan-card:hover,
-.subscription-card:hover {
+.plan-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
 }
 
-.plan-card--featured,
-.subscription-card--featured {
+.plan-card--featured {
   border-color: var(--color-gold);
   box-shadow: 0 0 0 1px var(--color-gold);
 }
 
-.plan-card__badge,
-.subscription-badge {
+.plan-card__badge {
   position: absolute;
   top: -12px;
   left: 50%;
@@ -2363,8 +2358,7 @@ section.section-black {
   white-space: nowrap;
 }
 
-.plan-card__name,
-.subscription-card__name {
+.plan-card__name {
   font-family: var(--font-heading-en);
   font-size: 1.2rem;
   color: var(--color-navy);
@@ -2372,36 +2366,31 @@ section.section-black {
   letter-spacing: 0.06em;
 }
 
-.plan-card__price,
-.subscription-card__price {
+.plan-card__price {
   font-family: var(--font-heading-en);
   font-size: 2.4rem;
   color: var(--color-navy);
   margin-bottom: 4px;
 }
 
-.plan-card__price span,
-.subscription-card__price span {
+.plan-card__price span {
   font-size: 0.85rem;
   color: var(--color-text-muted);
 }
 
-.plan-card__period,
-.subscription-card__period {
+.plan-card__period {
   font-size: 0.78rem;
   color: var(--color-text-muted);
   margin-bottom: 24px;
 }
 
-.plan-card__features,
-.subscription-card__features {
+.plan-card__features {
   list-style: none;
   margin-bottom: 32px;
   text-align: left;
 }
 
-.plan-card__features li,
-.subscription-card__features li {
+.plan-card__features li {
   padding: 8px 0;
   font-size: 0.85rem;
   color: var(--color-text-muted);
@@ -2411,21 +2400,18 @@ section.section-black {
   gap: 10px;
 }
 
-.plan-card__features li:last-child,
-.subscription-card__features li:last-child {
+.plan-card__features li:last-child {
   border-bottom: none;
 }
 
-.plan-card__features li svg,
-.subscription-card__features li svg {
+.plan-card__features li svg {
   width: 16px;
   height: 16px;
   color: var(--color-gold);
   flex-shrink: 0;
 }
 
-.plan-card__features li::before,
-.subscription-card__features li::before {
+.plan-card__features li::before {
   content: none;
 }
 
@@ -4002,8 +3988,7 @@ section.section-black {
     gap: 20px;
   }
 
-  .plan-grid,
-  .subscription-grid {
+  .plan-grid {
     grid-template-columns: 1fr;
     gap: 24px;
     max-width: 400px;

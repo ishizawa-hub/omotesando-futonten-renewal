@@ -111,10 +111,6 @@ const BREADCRUMBS = {
     { name: 'TOP', path: '' },
     { name: 'お問い合わせ', path: 'contact/' }
   ],
-  'subscription/index.html': [
-    { name: 'TOP', path: '' },
-    { name: 'サブスクリプション', path: 'subscription/' }
-  ],
   'glossary/index.html': [
     { name: 'TOP', path: '' },
     { name: '用語集', path: 'glossary/' }
@@ -309,7 +305,6 @@ function generateMobileMenu(prefix) {
     <a href="${p}gift/">GIFT</a>
     <a href="${p}contact/">CONTACT</a>
     <a href="${p}faq/">FAQ</a>
-    <a href="${p}subscription/">サブスクリプション</a>
     <a href="${p}cart/">CART</a>
   </nav>
 </div>`;
@@ -363,7 +358,6 @@ function generateFooter(prefix) {
         <a href="${p}gift/">ギフト</a>
         <a href="${p}faq/">FAQ</a>
         <a href="${p}contact/">お問い合わせ</a>
-        <a href="${p}subscription/">サブスクリプション</a>
         <a href="${p}inventory-view/">在庫状況</a>
         <a href="${p}privacy-policy/">プライバシーポリシー</a>
         <a href="${p}terms/">利用規約</a>

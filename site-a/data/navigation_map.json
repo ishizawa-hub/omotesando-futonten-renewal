@@ -163,10 +163,6 @@
             "href": "/contact.html"
           },
           {
-            "label": "サブスクリプション",
-            "href": "/subscription.html"
-          },
-          {
             "label": "在庫状況",
             "href": "/inventory-view.html"
           }

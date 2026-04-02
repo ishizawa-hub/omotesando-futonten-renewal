@@ -288,11 +288,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-family:var(--font-jp);font-size:20px;font-weight:600;
   color:var(--text);letter-spacing:0.06em;margin-bottom:36px;
 }
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
+
+/* Category card (used by service wide card) */
 .category-card {
   position: relative;
   border-radius: 6px;
@@ -381,14 +378,65 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   aspect-ratio: 16/5;
 }
 
+/* ===========================
+   ACCESSORY LIST (横長カード)
+   =========================== */
+.acc-list{
+  display:flex;flex-direction:column;gap:1px;
+  background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;
+}
+.acc-item{
+  display:grid;grid-template-columns:160px 1fr auto;align-items:center;gap:0;
+  background:#fff;text-decoration:none;color:inherit;transition:background 0.3s;
+}
+.acc-item:hover{background:#FAFAF8}
+.acc-item-img{
+  width:160px;height:100px;overflow:hidden;
+}
+.acc-item-img img{
+  width:100%;height:100%;object-fit:cover;transition:transform 0.5s;
+}
+.acc-item:hover .acc-item-img img{transform:scale(1.06)}
+.acc-item-body{
+  padding:16px 24px;display:flex;flex-direction:column;gap:2px;
+}
+.acc-item-en{
+  font-family:var(--font-body);font-size:15px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--text);
+}
+.acc-item-jp{
+  font-family:var(--font-jp);font-size:12px;font-weight:400;
+  color:var(--text-light);letter-spacing:0.06em;
+}
+.acc-item-right{
+  display:flex;align-items:center;gap:24px;padding-right:28px;
+}
+.acc-item-count{
+  font-family:var(--font-body);font-size:12px;font-weight:600;
+  color:var(--gold);letter-spacing:0.04em;
+}
+.acc-item-price{
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  color:var(--text-light);letter-spacing:0.02em;min-width:140px;text-align:right;
+}
+.acc-item-arrow{
+  width:28px;height:28px;border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.3s,border-color 0.3s;flex-shrink:0;
+}
+.acc-item:hover .acc-item-arrow{background:var(--gold);border-color:var(--gold)}
+.acc-item-arrow svg{width:11px;height:11px;stroke:var(--text-light);transition:stroke 0.3s}
+.acc-item:hover .acc-item-arrow svg{stroke:#fff}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .flagship-card{grid-template-columns:1fr;}
   .flagship-body{padding:32px 36px}
   .flagship-title{font-size:32px}
-  .category-grid { grid-template-columns: repeat(2, 1fr); }
   .page-hero-title { font-size: 44px; }
   .page-hero::before { font-size: 100px; }
+  .acc-item{grid-template-columns:140px 1fr auto}
+  .acc-item-img{width:140px;height:90px}
 }
 @media (max-width: 768px) {
   :root { --header-h: 60px; }
@@ -398,9 +446,12 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .flagship-stats{gap:20px}
   .flagship-stat-num{font-size:22px}
   .accessories-section{padding:48px 24px 80px}
-  .category-grid { gap: 16px; }
   .page-hero-title { font-size: 36px; }
   .page-hero::before { font-size: 80px; }
+  .acc-item{grid-template-columns:110px 1fr}
+  .acc-item-img{width:110px;height:80px}
+  .acc-item-right{display:none}
+  .acc-item-body{padding:12px 16px}
 }
 @media (max-width: 640px) {
   .flagship-section{padding:24px 16px 0}
@@ -408,18 +459,20 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .flagship-title{font-size:22px}
   .flagship-cta{padding:14px 28px;font-size:12px}
   .flagship-desc{font-size:13px}
-  .category-grid { grid-template-columns: 1fr 1fr; }
   .accessories-section{padding:36px 16px 60px}
   .page-hero { padding-top: calc(var(--header-h) + 48px); padding-bottom: 40px; }
   .page-hero-title { font-size: 28px; }
   .page-hero::before { font-size: 60px; }
   .category-card--wide .category-card-image { aspect-ratio: 3/2; }
+  .acc-item{grid-template-columns:90px 1fr}
+  .acc-item-img{width:90px;height:68px}
+  .acc-item-en{font-size:13px}
+  .acc-item-jp{font-size:11px}
 }
 @media (max-width: 480px) {
   :root { --header-h: 56px; }
   .page-hero-title { font-size: 24px; }
   .nav-overlay-links a { font-size: 24px; }
-  .category-grid{grid-template-columns:1fr}
 }
 
 /* Hide scrollbars */
@@ -428,7 +481,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .gallery-thumbs::-webkit-scrollbar{display:none}
 
 /* === MOBILE MENU (Accordion) === */
-.mobile-menu{position:fixed;top:0;right:0;width:320px;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
+.mobile-menu{position:fixed;top:0;right:0;width:100%;height:100vh;background:#2D2D2D;z-index:2000;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);padding:80px 0 40px;overflow-y:auto}
 .mobile-menu.active{transform:translateX(0)}
 .mobile-menu-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .mobile-menu-close svg{width:24px;height:24px}
@@ -529,7 +582,7 @@ html, body {
 
 /* ---- MOBILE MENU ---- */
 .mobile-menu {
-  max-width: 85vw;
+  max-width: 100%;
 }
 .mobile-menu-overlay {
   overflow: hidden !important;
@@ -1031,63 +1084,7 @@ html, body {
   }
 }
 
-/* ---- GIFT PAGE ---- */
-@media (max-width: 768px) {
-  .gift-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .gift-card-img {
-    aspect-ratio: 1 !important;
-  }
-  .gift-card-body {
-    padding: 12px !important;
-  }
-  .gift-card-body h3 {
-    font-size: 14px !important;
-  }
-  .gift-card-body p {
-    font-size: 13px !important;
-  }
-  .gift-card-price {
-    font-size: 14px !important;
-  }
 
-  .wrapping {
-    padding: 40px 16px !important;
-  }
-  .wrapping-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .wrapping-img {
-    height: 200px !important;
-  }
-
-  .occasions-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .occasion-card-icon {
-    font-size: 32px !important;
-  }
-  .occasion-card h4 {
-    font-size: 14px !important;
-  }
-
-  .gift-cta {
-    padding: 48px 16px !important;
-  }
-  .gift-cta-title {
-    font-size: 22px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .gift-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
 
 /* ---- FAQ PAGE ---- */
 @media (max-width: 768px) {
@@ -1525,7 +1522,12 @@ html, body {
         <a href="../magazine/">MAGAZINE</a>
       </div>
       <div class="header-nav-item">
-        <a href="../about/">ABOUT</a>
+        <a href="../contact/">CONTACT</a>
+        <div class="nav-dropdown">
+          <a href="../about/">会社概要</a>
+          <a href="../faq/">よくあるご質問</a>
+          <a href="../contact/">お問い合わせ</a>
+        </div>
       </div>
     </nav>
     <div class="header-actions">
@@ -1563,12 +1565,14 @@ html, body {
       </div>
     </div>
     <a href="../magazine/" class="mm-link">MAGAZINE</a>
-    <a href="../about/" class="mm-link">ABOUT</a>
-    <div class="mm-divider"></div>
-    <a href="../gift/" class="mm-link mm-sub-link">GIFT</a>
-    <a href="../faq/" class="mm-link mm-sub-link">FAQ</a>
-    <a href="../contact/" class="mm-link mm-sub-link">CONTACT</a>
-    <a href="../subscription/" class="mm-link mm-sub-link">サブスクリプション</a>
+    <div class="mm-accordion">
+      <button class="mm-link mm-toggle">CONTACT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <div class="mm-sub">
+        <a href="../about/">会社概要</a>
+        <a href="../faq/">よくあるご質問</a>
+        <a href="../contact/">お問い合わせ</a>
+      </div>
+    </div>
     <div class="mm-divider"></div>
     <div class="mm-bottom">
       <a href="../account/login/" class="mm-btn-outline">ログイン</a>
@@ -1611,11 +1615,11 @@ html, body {
 </section>
 
 <!-- CLEAN CYCLE SERVICE -->
-<section class="accessories-section" style="padding:60px 40px 60px;">
+<section class="accessories-section" style="padding:24px 40px 24px;">
   <div style="max-width:1400px; margin:0 auto;">
     <a href="service/index.html" class="category-card category-card--wide">
       <div class="category-card-image">
-        <img src="../images/site/service_hero2.png" alt="クリーンサイクルサービス" loading="lazy">
+        <img src="../images/site/concept_wash.jpg" alt="クリーンサイクルサービス" loading="lazy">
       </div>
       <div class="category-card-body">
         <div class="category-card-en">Clean Cycle Service</div>
@@ -1636,103 +1640,72 @@ html, body {
 <section class="accessories-section">
   <p class="accessories-label">Accessories &amp; More</p>
   <h3 class="accessories-title">アクセサリー</h3>
-  <div class="category-grid">
+  <div class="acc-list">
 
-    <!-- 2. ピロー PILLOW -->
-    <a href="pillow/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/pillow_hero2.jpg" alt="ピロー | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
+    <a href="pillow/index.html" class="acc-item">
+      <div class="acc-item-img"><img src="../images/site/pillow_hero2.jpg" alt="ピロー" loading="lazy"></div>
+      <div class="acc-item-body">
+        <div class="acc-item-en">Pillow</div>
+        <div class="acc-item-jp">枕／枕カバー</div>
       </div>
-      <div class="category-card-body">
-        <div class="category-card-en">Pillow</div>
-        <div class="category-card-jp">枕／枕カバー</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">3 items</span>
-          <span class="category-card-price">&yen;19,800 &ndash; &yen;27,800</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <div class="acc-item-right">
+        <span class="acc-item-count">3 items</span>
+        <span class="acc-item-price">&yen;19,800 &ndash; &yen;27,800</span>
+        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
-    <!-- 3. 寝具 BEDDING -->
-    <a href="bedding/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/bedding_hero.jpg" alt="寝具 | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
+    <a href="bedding/index.html" class="acc-item">
+      <div class="acc-item-img"><img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy"></div>
+      <div class="acc-item-body">
+        <div class="acc-item-en">Bedding</div>
+        <div class="acc-item-jp">カバー／シーツ／敷パット／マットレス</div>
       </div>
-      <div class="category-card-body">
-        <div class="category-card-en">Bedding</div>
-        <div class="category-card-jp">カバー／シーツ／敷パット／マットレス</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">5 items</span>
-          <span class="category-card-price">&yen;3,800 &ndash; &yen;180,500</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <div class="acc-item-right">
+        <span class="acc-item-count">5 items</span>
+        <span class="acc-item-price">&yen;3,800 &ndash; &yen;180,500</span>
+        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
-    <!-- 4. アパレル APPAREL -->
-    <a href="apparel/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/apparel_hero.jpg" alt="アパレル | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
+    <a href="apparel/index.html" class="acc-item">
+      <div class="acc-item-img"><img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy"></div>
+      <div class="acc-item-body">
+        <div class="acc-item-en">Apparel</div>
+        <div class="acc-item-jp">アパレル</div>
       </div>
-      <div class="category-card-body">
-        <div class="category-card-en">Apparel</div>
-        <div class="category-card-jp">アパレル</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">2 items</span>
-          <span class="category-card-price">&yen;107,800 &ndash; &yen;146,300</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <div class="acc-item-right">
+        <span class="acc-item-count">2 items</span>
+        <span class="acc-item-price">&yen;107,800 &ndash; &yen;146,300</span>
+        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
-    <!-- 5. コラボ COLLABORATION -->
-    <a href="collaboration/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/collab_hero.jpg" alt="コラボレーション | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
+    <a href="collaboration/index.html" class="acc-item">
+      <div class="acc-item-img"><img src="../images/site/collab_hero.jpg" alt="コラボレーション" loading="lazy"></div>
+      <div class="acc-item-body">
+        <div class="acc-item-en">Collaboration</div>
+        <div class="acc-item-jp">コラボ</div>
       </div>
-      <div class="category-card-body">
-        <div class="category-card-en">Collaboration</div>
-        <div class="category-card-jp">コラボ</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">2 items</span>
-          <span class="category-card-price">&yen;57,200 &ndash; &yen;118,000</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <div class="acc-item-right">
+        <span class="acc-item-count">2 items</span>
+        <span class="acc-item-price">&yen;57,200 &ndash; &yen;118,000</span>
+        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
       </div>
     </a>
 
-    <!-- 6. ベビー BABY -->
-    <a href="baby/index.html" class="category-card">
-      <div class="category-card-image">
-        <img src="../images/site/baby_hero.jpg" alt="ベビー | 表参道布団店" loading="lazy">
-        <div class="category-card-overlay"></div>
+    <a href="baby/index.html" class="acc-item">
+      <div class="acc-item-img"><img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy"></div>
+      <div class="acc-item-body">
+        <div class="acc-item-en">Baby</div>
+        <div class="acc-item-jp">ベビー</div>
       </div>
-      <div class="category-card-body">
-        <div class="category-card-en">Baby</div>
-        <div class="category-card-jp">ベビー</div>
-        <div class="category-card-meta">
-          <span class="category-card-count">2 items</span>
-          <span class="category-card-price">&yen;19,800 &ndash; &yen;39,000</span>
-        </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      <div class="acc-item-right">
+        <span class="acc-item-count">2 items</span>
+        <span class="acc-item-price">&yen;19,800 &ndash; &yen;39,000</span>
+        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
       </div>
     </a>
-
 
   </div>
 </section>
@@ -1750,7 +1723,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='登録完了';this.querySelector('input').value='';setTimeout(function(){document.querySelector('.footer-newsletter button').textContent='登録'},2000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1784,14 +1757,12 @@ html, body {
     </div>
     <div class="footer-col-last">
       <div>
-        <h4 class="footer-nav-title">GUIDE</h4>
+        <h4 class="footer-nav-title">CONTACT</h4>
         <nav class="footer-nav">
           <a href="../about/">会社概要</a>
           <a href="../faq/">よくあるご質問</a>
           <a href="../contact/">お問い合わせ</a>
-          <a href="../gift/">ギフト</a>
-          <a href="../subscription/">サブスクリプション</a>
-        </nav>
+</nav>
       </div>
       <div>
         <h4 class="footer-nav-title">ACCOUNT</h4>
