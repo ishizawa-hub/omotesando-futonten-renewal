@@ -291,8 +291,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-family:var(--font-jp);font-size:20px;font-weight:600;
   color:var(--text);letter-spacing:0.06em;margin-bottom:36px;
 }
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-/* Category card (used by service wide card) */
+/* Category card */
 .category-card {
   position: relative;
   border-radius: 6px;
@@ -380,8 +385,15 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .category-card--wide .category-card-image {
   aspect-ratio: 16/5;
 }
-.category-card--wide .category-card-body {
+.category-card--wide {
   background: #2D2D2D;
+  border-color: rgba(255,255,255,0.1);
+}
+.category-card--wide:hover {
+  background: #2D2D2D;
+  border-color: var(--gold);
+}
+.category-card--wide .category-card-body {
   padding: 20px 24px 24px;
 }
 .category-card--wide .category-card-en {
@@ -399,7 +411,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   color: var(--gold);
 }
 .category-card--wide .category-card-price {
-  color: rgba(255,255,255,0.7);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
 }
 .category-card--wide .category-card-arrow {
   border-color: rgba(255,255,255,0.2);
@@ -1670,70 +1684,95 @@ html, body {
 <section class="accessories-section">
   <p class="accessories-label">Accessories &amp; More</p>
   <h3 class="accessories-title">アクセサリー</h3>
-  <div class="acc-list">
+  <div class="category-grid">
 
-    <a href="pillow/index.html" class="acc-item">
-      <div class="acc-item-img"><img src="../images/site/pillow_hero2.jpg" alt="ピロー" loading="lazy"></div>
-      <div class="acc-item-body">
-        <div class="acc-item-en">Pillow</div>
-        <div class="acc-item-jp">枕／枕カバー</div>
+    <a href="pillow/index.html" class="category-card">
+      <div class="category-card-image">
+        <img src="../images/site/pillow_hero2.jpg" alt="ピロー | 表参道布団店" loading="lazy">
+        <div class="category-card-overlay"></div>
       </div>
-      <div class="acc-item-right">
-        <span class="acc-item-count">3 items</span>
-        <span class="acc-item-price">&yen;19,800 &ndash; &yen;27,800</span>
-        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+      <div class="category-card-body">
+        <div class="category-card-en">Pillow</div>
+        <div class="category-card-jp">枕／枕カバー</div>
+        <div class="category-card-meta">
+          <span class="category-card-count">3 items</span>
+          <span class="category-card-price">&yen;19,800 &ndash; &yen;27,800</span>
+        </div>
+      </div>
+      <div class="category-card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
     </a>
 
-    <a href="bedding/index.html" class="acc-item">
-      <div class="acc-item-img"><img src="../images/site/bedding_hero.jpg" alt="寝具" loading="lazy"></div>
-      <div class="acc-item-body">
-        <div class="acc-item-en">Bedding</div>
-        <div class="acc-item-jp">カバー／シーツ／敷パット／マットレス</div>
+    <a href="bedding/index.html" class="category-card">
+      <div class="category-card-image">
+        <img src="../images/site/bedding_hero.jpg" alt="寝具 | 表参道布団店" loading="lazy">
+        <div class="category-card-overlay"></div>
       </div>
-      <div class="acc-item-right">
-        <span class="acc-item-count">5 items</span>
-        <span class="acc-item-price">&yen;3,800 &ndash; &yen;180,500</span>
-        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+      <div class="category-card-body">
+        <div class="category-card-en">Bedding</div>
+        <div class="category-card-jp">カバー／シーツ／敷パット／マットレス</div>
+        <div class="category-card-meta">
+          <span class="category-card-count">5 items</span>
+          <span class="category-card-price">&yen;3,800 &ndash; &yen;180,500</span>
+        </div>
       </div>
-    </a>
-
-    <a href="apparel/index.html" class="acc-item">
-      <div class="acc-item-img"><img src="../images/site/apparel_hero.jpg" alt="アパレル" loading="lazy"></div>
-      <div class="acc-item-body">
-        <div class="acc-item-en">Apparel</div>
-        <div class="acc-item-jp">アパレル</div>
-      </div>
-      <div class="acc-item-right">
-        <span class="acc-item-count">2 items</span>
-        <span class="acc-item-price">&yen;107,800 &ndash; &yen;146,300</span>
-        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+      <div class="category-card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
     </a>
 
-    <a href="collaboration/index.html" class="acc-item">
-      <div class="acc-item-img"><img src="../images/site/collab_hero.jpg" alt="コラボレーション" loading="lazy"></div>
-      <div class="acc-item-body">
-        <div class="acc-item-en">Collaboration</div>
-        <div class="acc-item-jp">コラボ</div>
+    <a href="apparel/index.html" class="category-card">
+      <div class="category-card-image">
+        <img src="../images/site/apparel_hero.jpg" alt="アパレル | 表参道布団店" loading="lazy">
+        <div class="category-card-overlay"></div>
       </div>
-      <div class="acc-item-right">
-        <span class="acc-item-count">2 items</span>
-        <span class="acc-item-price">&yen;57,200 &ndash; &yen;118,000</span>
-        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+      <div class="category-card-body">
+        <div class="category-card-en">Apparel</div>
+        <div class="category-card-jp">アパレル</div>
+        <div class="category-card-meta">
+          <span class="category-card-count">2 items</span>
+          <span class="category-card-price">&yen;107,800 &ndash; &yen;146,300</span>
+        </div>
+      </div>
+      <div class="category-card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
     </a>
 
-    <a href="baby/index.html" class="acc-item">
-      <div class="acc-item-img"><img src="../images/site/baby_hero.jpg" alt="ベビー" loading="lazy"></div>
-      <div class="acc-item-body">
-        <div class="acc-item-en">Baby</div>
-        <div class="acc-item-jp">ベビー</div>
+    <a href="collaboration/index.html" class="category-card">
+      <div class="category-card-image">
+        <img src="../images/site/collab_hero.jpg" alt="コラボレーション | 表参道布団店" loading="lazy">
+        <div class="category-card-overlay"></div>
       </div>
-      <div class="acc-item-right">
-        <span class="acc-item-count">2 items</span>
-        <span class="acc-item-price">&yen;19,800 &ndash; &yen;39,000</span>
-        <div class="acc-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></div>
+      <div class="category-card-body">
+        <div class="category-card-en">Collaboration</div>
+        <div class="category-card-jp">コラボ</div>
+        <div class="category-card-meta">
+          <span class="category-card-count">2 items</span>
+          <span class="category-card-price">&yen;57,200 &ndash; &yen;118,000</span>
+        </div>
+      </div>
+      <div class="category-card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <a href="baby/index.html" class="category-card">
+      <div class="category-card-image">
+        <img src="../images/site/baby_hero.jpg" alt="ベビー | 表参道布団店" loading="lazy">
+        <div class="category-card-overlay"></div>
+      </div>
+      <div class="category-card-body">
+        <div class="category-card-en">Baby</div>
+        <div class="category-card-jp">ベビー</div>
+        <div class="category-card-meta">
+          <span class="category-card-count">2 items</span>
+          <span class="category-card-price">&yen;19,800 &ndash; &yen;39,000</span>
+        </div>
+      </div>
+      <div class="category-card-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
     </a>
 
