@@ -1601,6 +1601,8 @@ html, body {
   if(typeof gsap!=='undefined'){
     gsap.registerPlugin(ScrollTrigger);
     document.querySelectorAll('.fade-up').forEach(function(el){
+      var rect=el.getBoundingClientRect();
+      if(rect.top<window.innerHeight*1.5){el.classList.add('visible');return;}
       ScrollTrigger.create({trigger:el,start:'top 85%',onEnter:function(){el.classList.add('visible')},once:true});
     });
   }
