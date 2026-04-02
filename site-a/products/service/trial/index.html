@@ -88,13 +88,13 @@
 .header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
 .nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
 .nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
-.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
 .nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
 .nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
-.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:6px 4px 4px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 6px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
 .nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
 .header-actions{display:flex;align-items:center;gap:16px}
 .header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
@@ -1269,6 +1269,31 @@ html, body {
 .gift-field textarea{resize:vertical;min-height:60px}
 .gift-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:640px){.gift-row{grid-template-columns:1fr}}
+
+/* Rental Confirmation Modal */
+.rental-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s}
+.rental-modal-overlay.active{opacity:1;visibility:visible}
+.rental-modal{background:#fff;max-width:440px;width:90%;padding:40px 32px;text-align:center;position:relative}
+.rental-modal-icon{width:56px;height:56px;margin:0 auto 20px;background:rgba(201,169,110,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rental-modal-icon svg{width:28px;height:28px;color:#C9A96E}
+.rental-modal-title{font-family:var(--font-jp);font-size:16px;font-weight:600;margin-bottom:12px;line-height:1.7}
+.rental-modal-text{font-family:var(--font-jp);font-size:14px;color:var(--text-light);line-height:1.8;margin-bottom:28px}
+.rental-modal-actions{display:flex;gap:12px;justify-content:center}
+.rental-modal-actions button{padding:14px 32px;font-size:14px;font-weight:600;letter-spacing:0.08em;border:none;cursor:pointer;transition:all 0.3s;font-family:var(--font-jp)}
+.btn-rental-yes{background:#C9A96E;color:#fff}
+.btn-rental-yes:hover{background:#B8975A}
+.btn-rental-no{background:none;border:1px solid var(--border)!important;color:var(--text)}
+.btn-rental-no:hover{border-color:var(--text)!important}
+.rental-badge{display:inline-block;background:#C9A96E;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
+
+/* Gift Multi-Destination */
+.gift-dest-mode{display:none;margin-bottom:14px;padding:10px;background:var(--gold-faint,rgba(201,169,110,0.06));border-radius:4px}
+.gift-dest-mode.show{display:flex;gap:16px;flex-wrap:wrap}
+.gift-mode-option{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:500;font-family:'Noto Sans JP',sans-serif;color:var(--text,#1A1A1A)}
+.gift-mode-option input[type="radio"]{accent-color:#C9A96E;width:14px;height:14px}
+.gift-dest-group{border:1px solid var(--border,#E5E5E5);padding:14px;margin-bottom:12px;position:relative}
+.gift-dest-group-title{font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C9A96E;margin-bottom:10px;font-family:'DM Sans',sans-serif}
+@media(max-width:640px){.gift-dest-mode{flex-direction:column;gap:8px}}
 </style>
 </head>
 <body>
@@ -1288,6 +1313,11 @@ html, body {
       <div class="header-nav-item">
         <a href="../../../products/">PRODUCTS</a>
         <div class="nav-mega">
+          <a href="../../../products/" class="nav-mega-card">
+            <img src="../../../images/site/futon_hero.jpg" alt="全商品" loading="lazy" style="background:#F7F6F3">
+            <span class="nav-mega-card-label">ALL ITEM</span>
+            <span class="nav-mega-card-name">全商品一覧</span>
+          </a>
           <a href="../../../products/comforter/" class="nav-mega-card"><img src="../../../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy"><span class="nav-mega-card-label">SLEEP DOWN</span><span class="nav-mega-card-name">掛け布団</span></a>
           <a href="../../../products/service/" class="nav-mega-card"><img src="../../../images/site/service_hero2.png" alt="サービス＆サブスクリプション" loading="lazy"><span class="nav-mega-card-label">SERVICE</span><span class="nav-mega-card-name">サービス＆サブスクリプション</span></a>
           <a href="../../../products/pillow/" class="nav-mega-card"><img src="../../../images/site/pillow_hero2.jpg" alt="枕" loading="lazy"><span class="nav-mega-card-label">PILLOW</span><span class="nav-mega-card-name">枕／枕カバー</span></a>
@@ -1364,12 +1394,29 @@ html, body {
 <section class="product-top">
   <div class="gallery">
     <div class="gallery-thumbs">
-      <div class="gallery-thumb active" data-index="0"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2024/03/semidouble_720x610-350x350-1.webp" alt="本掛け布団 1week トライアル 1"></div>
+      <div class="gallery-thumb active" data-index="0"><img src="../../../images/products/semidouble_720x610.webp" alt="本掛け布団 1week トライアル 1" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="1"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/single_720x610.jpg" alt="本掛け布団 1week トライアル 2" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="2"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/double_720x610.jpg" alt="本掛け布団 1week トライアル 3" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="3"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/bedsetside_720x610.jpg" alt="本掛け布団 1week トライアル 4" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="4"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/front_720x610.jpg" alt="本掛け布団 1week トライアル 5" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="5"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/compact_720x610.jpg" alt="本掛け布団 1week トライアル 6" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="6"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/color_720x610.jpg" alt="本掛け布団 1week トライアル 7" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="7"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/1102_0983-Edit.jpg" alt="本掛け布団 1week トライアル 8" loading="lazy"></div>
+      <div class="gallery-thumb" data-index="8"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/02/cleancycledown.jpg" alt="本掛け布団 1week トライアル 9" loading="lazy"></div>
     </div>
     <div class="gallery-main">
       <div class="swiper" id="mainSwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="../../../images/products/semidouble_720x610.webp" alt="本掛け布団 1week トライアル 1"></div>
+          <div class="swiper-slide"><img src="../../../images/products/semidouble_720x610.webp" alt="本掛け布団 1week トライアル 1" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/single_720x610.jpg" alt="本掛け布団 1week トライアル 2" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/double_720x610.jpg" alt="本掛け布団 1week トライアル 3" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/bedsetside_720x610.jpg" alt="本掛け布団 1week トライアル 4" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/front_720x610.jpg" alt="本掛け布団 1week トライアル 5" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/compact_720x610.jpg" alt="本掛け布団 1week トライアル 6" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2018/08/color_720x610.jpg" alt="本掛け布団 1week トライアル 7" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/1102_0983-Edit.jpg" alt="本掛け布団 1week トライアル 8" loading="lazy"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2022/02/cleancycledown.jpg" alt="本掛け布団 1week トライアル 9" loading="lazy"></div>
+        </div>
         </div>
       </div>
     </div>
@@ -1396,7 +1443,7 @@ html, body {
     <!-- GIFT OPTION -->
     <div class="gift-option">
       <label class="gift-check">
-        <input type="checkbox" id="giftToggle" onchange="document.getElementById('giftFields').classList.toggle('open',this.checked)">
+        <input type="checkbox" id="giftToggle" >
         <span class="gift-check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>
         <span class="gift-check-label">ギフトとして送る</span>
         <span class="gift-check-icon">&#127873;</span>
@@ -1404,27 +1451,11 @@ html, body {
       <div class="gift-fields" id="giftFields">
         <div class="gift-fields-inner">
           <p class="gift-note">ギフトラッピング（無料）でお届けします。送付先をご入力ください。</p>
-          <div class="gift-row">
-            <div class="gift-field"><label>お届け先氏名 <span style="color:#C9A96E">*</span></label><input type="text" id="giftName" placeholder="山田 太郎" required></div>
-            <div class="gift-field"><label>電話番号 <span style="color:#C9A96E">*</span></label><input type="tel" id="giftTel" placeholder="090-0000-0000" required></div>
+          <div class="gift-dest-mode" id="giftDestMode">
+            <label class="gift-mode-option"><input type="radio" name="giftMode" value="same" checked> 全て同じ送り先</label>
+            <label class="gift-mode-option"><input type="radio" name="giftMode" value="different"> 個別に送り先を指定</label>
           </div>
-          <div class="gift-row">
-            <div class="gift-field"><label>郵便番号 <span style="color:#C9A96E">*</span></label><input type="text" id="giftZip" placeholder="000-0000" required></div>
-            <div class="gift-field"><label>配達希望時間</label>
-              <select id="giftTime" style="width:100%;padding:10px 12px;border:1px solid #E5E5E5;font-size:13px;font-family:'Noto Sans JP',sans-serif;color:#1A1A1A;outline:none;border-radius:2px;background:#fff">
-                <option value="">指定なし</option>
-                <option value="am">午前中</option>
-                <option value="12-14">12:00〜14:00</option>
-                <option value="14-16">14:00〜16:00</option>
-                <option value="16-18">16:00〜18:00</option>
-                <option value="18-20">18:00〜20:00</option>
-                <option value="20-21">20:00〜21:00</option>
-              </select>
-            </div>
-          </div>
-          <div class="gift-field"><label>住所 <span style="color:#C9A96E">*</span></label><input type="text" id="giftAddr" placeholder="都道府県 市区町村 番地" required></div>
-          <div class="gift-field"><label>建物名・部屋番号（任意）</label><input type="text" id="giftBldg" placeholder="マンション名 000号室"></div>
-          <div class="gift-field"><label>メッセージカード（任意）</label><textarea id="giftMsg" placeholder="メッセージを入力してください（100文字以内）" maxlength="100"></textarea></div>
+          <div id="giftDestContainer"></div>
         </div>
       </div>
     </div>
@@ -1434,7 +1465,9 @@ html, body {
     </button>
     <div class="purchase-badges">
       <div class="purchase-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>送料込み</div>
-      <div class="purchase-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>購入割引</div>
+      <div class="purchase-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>購入割引¥3,000</div>
+      <div class="purchase-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>お一人様1回限り</div>
+      <div class="purchase-badge" style="color:#E74C3C"><svg viewBox="0 0 24 24" fill="none" stroke="#E74C3C" stroke-width="1.5"><path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>14日超過で月額レンタル自動移行</div>
     </div>
   </div>
 </section>
@@ -1490,11 +1523,18 @@ html, body {
     <table class="spec-table">
       <tbody>
         <tr><th>商品名</th><td>本掛け布団 1week トライアル</td></tr>
-        <tr><th>対象商品</th><td>RDS Sleep Down-冬用-（ホワイトグース）</td></tr>
+        <tr><th>対象商品</th><td>ポーランド産ホワイトグースダウン93% / スモールフェザー7%</td></tr>
+        <tr><th>ダウンパワー</th><td>400cm³/g</td></tr>
+        <tr><th>側生地</th><td>綿100% 80番手サテン</td></tr>
+        <tr><th>サイズ</th><td>150cm × 210cm（シングル）※ダブルも選択可</td></tr>
+        <tr><th>カラー</th><td>黒 / 白（パイピング色選択）</td></tr>
         <tr><th>期間</th><td>1週間</td></tr>
         <tr><th>料金</th><td>¥3,300（税込・送料込み）</td></tr>
         <tr><th>購入特典</th><td>¥3,000割引クーポン</td></tr>
-        <tr><th>返却</th><td>クリーニング不要</td></tr>
+        <tr><th>返却期限</th><td style="color:#E74C3C;font-weight:600">14日以内に返却が必要です</td></tr>
+        <tr><th>自動移行</th><td style="color:#E74C3C;font-weight:600">14日を超過した場合、月額¥7,480のマンスリーレンタルに自動移行</td></tr>
+        <tr><th>利用回数</th><td>お一人様1回限り</td></tr>
+        <tr><th>返却方法</th><td>クリーニング不要で返却可能</td></tr>
       </tbody>
     </table>
   </div>
@@ -1565,7 +1605,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var inp=this.querySelector('input'),btn=this.querySelector('button');var e=inp.value.trim().toLowerCase();if(!e)return;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');var dup=a.some(function(x){return x.toLowerCase()===e});var msg,col;if(dup){msg='\u3053\u306e\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u306f\u65e2\u306b\u767b\u9332\u6e08\u307f\u3067\u3059';col='#999'}else{a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a));msg='\u30e1\u30eb\u30de\u30ac\u767b\u9332\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01';col='#C9A96E'}btn.textContent='\u767b\u9332\u5b8c\u4e86 \u2713';inp.value='';setTimeout(function(){btn.textContent='\u767b\u9332'},3000);var t=document.createElement('div');t.textContent=msg;t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:'+col+';padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid '+col+';opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1574,7 +1614,6 @@ html, body {
     <div>
       <h4 class="footer-nav-title">PRODUCTS</h4>
       <nav class="footer-nav">
-        <a href="../../../products/">全商品一覧</a>
         <a href="../../../products/comforter/">掛け布団</a>
         <a href="../../../products/pillow/">枕</a>
         <a href="../../../products/bedding/">カバー・シーツ・寝具</a>
@@ -1596,25 +1635,27 @@ html, body {
       <nav class="footer-nav">
         <a href="../../../magazine/">記事一覧</a>
         <a href="../../../down/">ダウンについて</a>
-        <a href="../../../glossary/">用語集</a>
       </nav>
     </div>
     <div class="footer-col-last">
       <div>
-      <div>
-      <h4 class="footer-nav-title">CONTACT</h4>
-      <nav class="footer-nav">
-        <a href="../../../about/">会社概要</a>
-        <a href="../../../faq/">よくあるご質問</a>
-        <a href="../../../contact/">お問い合わせ</a>      </nav>
+        <h4 class="footer-nav-title">CONTACT</h4>
+        <nav class="footer-nav">
+          <a href="../../../about/">会社概要</a>
+          <a href="../../../faq/">よくあるご質問</a>
+          <a href="../../../contact/">お問い合わせ</a>
+        </nav>
       </div>
       <div>
-      <h4 class="footer-nav-title">ACCOUNT</h4>
-      <nav class="footer-nav">
-        <a href="../../../account/login/">ログイン</a>
-        <a href="../../../account/register/">新規会員登録</a>
-        <a href="../../../cart/">カート</a>
-      </nav>
+        <h4 class="footer-nav-title">ACCOUNT</h4>
+        <nav class="footer-nav">
+          <a href="../../../account/login/">ログイン</a>
+          <a href="../../../account/register/">新規会員登録</a>
+          <a href="../../../cart/">カート</a>
+        </nav>
+        <nav class="footer-nav-sub" style="margin-top:16px">
+          <a href="../../../glossary/">用語集</a>
+        </nav>
       </div>
     </div>
   </div>
@@ -1671,58 +1712,42 @@ document.querySelectorAll('.mm-toggle').forEach(function(btn){btn.addEventListen
     var cartBtn=document.querySelector('.purchase-cart');
     if(!cartBtn) return;
 
-    cartBtn.addEventListener('click',function(e){
-      e.preventDefault();
-      // Get product info
+    // レンタル確認モーダル制御
+    var rentalModal=document.getElementById('rentalModal');
+    var rentalYes=document.getElementById('rentalModalYes');
+    var rentalNo=document.getElementById('rentalModalNo');
+    function showRentalModal(){rentalModal.classList.add('active')}
+    function hideRentalModal(){rentalModal.classList.remove('active')}
+    if(rentalNo)rentalNo.addEventListener('click',hideRentalModal);
+    rentalModal.addEventListener('click',function(e){if(e.target===rentalModal)hideRentalModal()});
+
+    function addRentalToCart(){
       var nameEl=document.querySelector('.purchase-name')||document.querySelector('.purchase-series');
       var productName=nameEl?nameEl.textContent.trim():'商品';
       var priceEl=document.querySelector('.purchase-price-num');
       var price=priceEl?priceEl.textContent.trim():'';
       var qtyEl=document.querySelector('.purchase-qty input');
       var qty=qtyEl?parseInt(qtyEl.value)||1:1;
+      var sizeBtn=document.querySelector('.purchase-size.active');
+      var size=sizeBtn?sizeBtn.querySelector('span:first-child').textContent.trim():'';
+      var colorBtn=document.querySelector('.purchase-color.active');
+      var color=colorBtn?colorBtn.dataset.color:'';
 
-      // Check gift mode
-      var giftCheck=document.getElementById('giftToggle');
-      var isGift=giftCheck&&giftCheck.checked;
-      var giftInfo=null;
-
-      if(isGift){
-        var gn=document.getElementById('giftName');
-        var gt=document.getElementById('giftTel');
-        var gz=document.getElementById('giftZip');
-        var ga=document.getElementById('giftAddr');
-        if(!gn.value||!gt.value||!gz.value||!ga.value){
-          alert('ギフト送付先の必須項目をすべてご入力ください。');
-          return;
-        }
-        giftInfo={
-          name:gn.value,
-          tel:gt.value,
-          zip:gz.value,
-          addr:ga.value,
-          bldg:(document.getElementById('giftBldg')||{}).value||'',
-          time:(document.getElementById('giftTime')||{}).value||'',
-          msg:(document.getElementById('giftMsg')||{}).value||''
-        };
-      }
-
-      // Add to cart
       var cart=getCart();
       var item={
         id:location.pathname,
-        name:productName,
+        name:'【レンタル】'+productName,
         price:price,
         qty:qty,
-        isGift:isGift,
-        giftInfo:giftInfo,
+        size:size,
+        color:color,
+        isRental:true,
         addedAt:new Date().toISOString()
       };
-      // Check if same product already in cart
       var found=false;
       for(var i=0;i<cart.length;i++){
-        if(cart[i].id===item.id&&cart[i].isGift===item.isGift){
+        if(cart[i].id===item.id&&cart[i].size===item.size&&cart[i].color===item.color){
           cart[i].qty+=qty;
-          if(isGift) cart[i].giftInfo=giftInfo;
           found=true;
           break;
         }
@@ -1730,24 +1755,37 @@ document.querySelectorAll('.mm-toggle').forEach(function(btn){btn.addEventListen
       if(!found) cart.push(item);
       saveCart(cart);
 
-      // Show confirmation
-      var msg=isGift?'ギフトとしてカートに追加しました':'カートに追加しました';
+      hideRentalModal();
       var toast=document.createElement('div');
       toast.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#2D2D2D;color:#fff;padding:16px 32px;border-radius:4px;font-size:14px;font-family:inherit;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px;animation:fadeInUp .3s';
-      toast.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'+msg;
+      toast.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>レンタル商品をカートに追加しました <span class="rental-badge">レンタル</span></span>';
       document.body.appendChild(toast);
       setTimeout(function(){toast.style.opacity='0';toast.style.transition='opacity .3s';setTimeout(function(){toast.remove()},300)},2500);
+    }
+    if(rentalYes)rentalYes.addEventListener('click',addRentalToCart);
 
-      // If gift, redirect to gift checkout
-      if(isGift){
-        setTimeout(function(){
-          var base=location.pathname.split('/products/')[0]||'';
-          location.href=base+'/checkout-gift/';
-        },1500);
-      }
+    cartBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      showRentalModal();
     });
   });
 })();
 </script>
+
+
+<!-- Rental Confirmation Modal -->
+<div class="rental-modal-overlay" id="rentalModal">
+  <div class="rental-modal">
+    <div class="rental-modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v3m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    </div>
+    <h3 class="rental-modal-title">レンタル商品の確認</h3>
+    <p class="rental-modal-text">こちらは月額サブスクリプション支払い型の<br>レンタル商品となりますが大丈夫ですか？</p>
+    <div class="rental-modal-actions">
+      <button class="btn-rental-no" id="rentalModalNo">いいえ</button>
+      <button class="btn-rental-yes" id="rentalModalYes">はい</button>
+    </div>
+  </div>
+</div>
 
 </body></html>

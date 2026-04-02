@@ -58,13 +58,13 @@
 .nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
 .nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
 /* Mega menu for PRODUCTS (with images) */
-.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
 .nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
 .nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
-.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
+.nav-mega-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.nav-mega-card-label{display:block;padding:6px 4px 4px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
+.nav-mega-card-name{display:block;padding:0 4px 6px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
 .nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
 /* Actions */
 .header-actions{display:flex;align-items:center;gap:16px}
@@ -152,6 +152,9 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
 .footer-nav a{display:block;font-size:14px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
 .footer-nav a:hover{color:#C9A96E}
+.footer-col-last{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.footer-nav-sub a{display:block;font-size:13px;color:rgba(255,255,255,0.35);padding:4px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
+.footer-nav-sub a:hover{color:#C9A96E}
 .footer-bottom{max-width:1400px;margin:0 auto;padding:20px 40px;margin-top:48px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:24px}
 .footer-legal{display:flex;gap:24px;flex-wrap:nowrap;align-items:center}
 .footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em;white-space:nowrap}
@@ -1139,6 +1142,11 @@ html, body {
       <div class="header-nav-item">
         <a href="../products/">PRODUCTS</a>
         <div class="nav-mega">
+          <a href="../products/" class="nav-mega-card">
+            <img src="../images/site/futon_hero.jpg" alt="全商品" loading="lazy" style="background:#F7F6F3">
+            <span class="nav-mega-card-label">ALL ITEM</span>
+            <span class="nav-mega-card-name">全商品一覧</span>
+          </a>
           <a href="../products/comforter/" class="nav-mega-card">
             <img src="../images/site/comforter_hero.jpg" alt="掛け布団" loading="lazy">
             <span class="nav-mega-card-label">COMFORTER</span>
@@ -1306,6 +1314,70 @@ html, body {
         <div class="faq-answer"><div class="faq-answer-inner">適切なお手入れをしていただければ、10年以上ご使用いただけます。使用感が低下した場合は、当店のリフレッシュサービス（ダウン洗浄・側生地交換）もご利用いただけます。</div></div>
       </div>
     </div>
+    <div class="faq-group fade-up" data-group="glossary">
+      <h2 class="faq-group-title">Glossary</h2>
+      <p class="faq-group-title-jp">用語集</p>
+      <div class="faq-item">
+        <button class="faq-question">ダウン（Down）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">水鳥の胸元に生えるふわふわした綿毛のこと。タンポポの綿毛のような形状で、軽くて保温性に優れています。グース（ガチョウ）とダック（アヒル）の2種類があり、一般的にグースダウンの方が大きく保温性が高いとされます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">フェザー（Feather）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">水鳥の羽根のうち、軸のある部分。ダウンに比べて弾力性があり、型崩れを防ぐ役割を果たします。ダウンとフェザーの比率（ダウン率）が品質の指標の一つです。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">ダウンパワー（dp）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">ダウンの膨らむ力（かさ高性）を数値化したもの。1gのダウンが何cm³の体積を占めるかを示します。数値が高いほど少量で暖かく、軽い布団になります。300dp以下が一般的、350dp以上が良質、400dp以上が高品質とされます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">フィルパワー（Fill Power）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">ダウンパワーと同様に膨らむ力を示す国際的な指標。1オンス（28.4g）のダウンが何立方インチを占めるかで示します。700FP以上が高品質の目安です。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">RDS認証（Responsible Down Standard）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">動物福祉に配慮したダウンの調達を保証する国際認証。生きた鳥からの採取（ライブプラッキング）や強制給餌（フォアグラ生産）を行わないことが第三者機関により認証されます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">CCD（Clean Cycle Down）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">表参道布団店。独自のリサイクルダウン。使用済み羽毛布団から回収したダウンを、山梨県白州の天然水で丁寧に洗浄・再生したサステナブルな素材です。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">側生地（がわきじ）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">布団の外側の生地のこと。ダウンを包む役割を持ち、生地の密度（打ち込み本数）によって軽さや肌触り、ダウンの吹き出し防止性能が異なります。60番手、80番手、100番手サテンなど糸の細さで品質が区分されます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">番手（ばんて）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">糸の太さを表す単位。数字が大きいほど糸が細く、滑らかで軽い生地になります。60番手は標準的、80番手はしなやか、100番手は最高級のシルクのような肌触りです。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">サテン織りとは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">生地の織り方の一つで、表面に光沢があり滑らかな質感が特徴。朱子織とも呼ばれます。羽毛布団の側生地に多く使われ、番手が高いほど上品な光沢が出ます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">立体キルトとは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">布団の中のダウンが偏らないよう、仕切り（マチ）を立体的に設けた縫製方法。平面キルトに比べて保温性が高く、体にフィットしやすい構造です。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">合い掛け（あいがけ）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">春・秋向けの中厚の掛け布団。本掛け（冬用）と肌掛け（夏用）の中間の厚さで、一年を通して活躍する万能タイプです。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">肌掛け（はだがけ）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">夏向けの薄手の掛け布団。エアコンの冷えから体を守りつつ、蒸れにくい快適な寝心地を提供します。ダウンケットとも呼ばれます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">マザーグースとは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">繁殖用に長期間飼育されたグース（ガチョウ）のこと。通常のグースよりダウンボールが大きく成熟しているため、保温性・耐久性に優れた最高級ダウンが採取できます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">カポックとは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">熱帯に生育するカポック（パンヤ）の木から採取される天然繊維。綿の約1/8の軽さで、保温性・吸湿性に優れています。表参道布団店。のFlower Downシリーズに使用されています。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">打ち直し（リフォーム）とは？<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">使用済みの羽毛布団から中身のダウンを取り出し、洗浄・補充して新しい側生地で仕立て直すサービス。資源を有効活用するサステナブルなサービスです。</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1331,7 +1403,7 @@ html, body {
       <div class="footer-newsletter" style="margin-top:24px">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:10px">NEWSLETTER</p>
         <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:12px;line-height:1.6">新商品やキャンペーン情報をお届けします</p>
-        <form onsubmit="event.preventDefault();var e=this.querySelector('input').value;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');if(a.indexOf(e)===-1){a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a))}this.querySelector('button').textContent='登録完了 \u2713';this.querySelector('input').value='';var t=document.createElement('div');t.textContent='\u30E1\u30EB\u30DE\u30AC\u767B\u9332\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002\u3042\u308A\u304C\u3068\u3046\u3054\u3056\u3044\u307E\u3059\uFF01';t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#C9A96E;padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid #C9A96E;opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
+        <form onsubmit="event.preventDefault();var inp=this.querySelector('input'),btn=this.querySelector('button');var e=inp.value.trim().toLowerCase();if(!e)return;var a=JSON.parse(localStorage.getItem('oft_newsletter')||'[]');var dup=a.some(function(x){return x.toLowerCase()===e});var msg,col;if(dup){msg='\u3053\u306e\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u306f\u65e2\u306b\u767b\u9332\u6e08\u307f\u3067\u3059';col='#999'}else{a.push(e);localStorage.setItem('oft_newsletter',JSON.stringify(a));msg='\u30e1\u30eb\u30de\u30ac\u767b\u9332\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\uff01';col='#C9A96E'}btn.textContent='\u767b\u9332\u5b8c\u4e86 \u2713';inp.value='';setTimeout(function(){btn.textContent='\u767b\u9332'},3000);var t=document.createElement('div');t.textContent=msg;t.style.cssText='position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:'+col+';padding:16px 32px;border-radius:8px;font-size:14px;z-index:99999;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:1px solid '+col+';opacity:1;transition:opacity 0.5s';document.body.appendChild(t);setTimeout(function(){t.style.opacity='0'},2500);setTimeout(function(){t.remove()},3000)" style="display:flex;gap:0">
           <input type="email" placeholder="メールアドレス" required style="flex:1;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:border-color 0.3s" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='rgba(255,255,255,0.15)'">
           <button type="submit" style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;font-size:14px;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:background 0.3s;white-space:nowrap" onmouseover="this.style.background='#B8975A'" onmouseout="this.style.background='#C9A96E'">登録</button>
         </form>
@@ -1340,7 +1412,6 @@ html, body {
     <div>
       <h4 class="footer-nav-title">PRODUCTS</h4>
       <nav class="footer-nav">
-        <a href="../products/">全商品一覧</a>
         <a href="../products/comforter/">掛け布団</a>
         <a href="../products/pillow/">枕</a>
         <a href="../products/bedding/">カバー・シーツ・寝具</a>
@@ -1362,25 +1433,27 @@ html, body {
       <nav class="footer-nav">
         <a href="../magazine/">記事一覧</a>
         <a href="../down/">ダウンについて</a>
-        <a href="../glossary/">用語集</a>
       </nav>
     </div>
     <div class="footer-col-last">
       <div>
-      <div>
-      <h4 class="footer-nav-title">CONTACT</h4>
-      <nav class="footer-nav">
-        <a href="../about/">会社概要</a>
-        <a href="../faq/">よくあるご質問</a>
-        <a href="../contact/">お問い合わせ</a>      </nav>
+        <h4 class="footer-nav-title">CONTACT</h4>
+        <nav class="footer-nav">
+          <a href="../about/">会社概要</a>
+          <a href="../faq/">よくあるご質問</a>
+          <a href="../contact/">お問い合わせ</a>
+        </nav>
       </div>
       <div>
-      <h4 class="footer-nav-title">ACCOUNT</h4>
-      <nav class="footer-nav">
-        <a href="../account/login/">ログイン</a>
-        <a href="../account/register/">新規会員登録</a>
-        <a href="../cart/">カート</a>
-      </nav>
+        <h4 class="footer-nav-title">ACCOUNT</h4>
+        <nav class="footer-nav">
+          <a href="../account/login/">ログイン</a>
+          <a href="../account/register/">新規会員登録</a>
+          <a href="../cart/">カート</a>
+        </nav>
+        <nav class="footer-nav-sub" style="margin-top:16px">
+          <a href="../glossary/">用語集</a>
+        </nav>
       </div>
     </div>
   </div>

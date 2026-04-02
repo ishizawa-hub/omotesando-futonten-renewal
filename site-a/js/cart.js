@@ -68,8 +68,10 @@
         h+='<div style="width:88px;height:88px;background:#F7F7F7;border-radius:4px;overflow:hidden">';
         if(item.image)h+='<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover">';
         h+='</div><div>';
-        h+='<p style="font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px">'+item.name+'</p>';
-        var m=[];if(item.size)m.push(item.size);if(item.color)m.push(item.color);
+        h+='<p style="font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px">'+item.name;
+        if(item.isRental)h+=' <span style="display:inline-block;background:#C9A96E;color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:2px;vertical-align:middle">レンタル</span>';
+        h+='</p>';
+        var m=[];if(item.size)m.push(item.size);if(item.color)m.push(item.color);if(item.isRental)m.push('月額制');
         if(m.length)h+='<p style="font-size:11px;color:#888;margin-bottom:8px">'+m.join(' / ')+'</p>';
         h+='<div style="display:flex;align-items:center;justify-content:space-between">';
         h+='<div style="display:flex;align-items:center;gap:0">';
