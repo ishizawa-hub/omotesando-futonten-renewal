@@ -115,7 +115,7 @@
 /* FOOTER */
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--gold:#C9A96E;--gold-hover:#B8975A;--gold-light:rgba(201,169,110,0.15);--gold-faint:rgba(201,169,110,0.06);--navy:#2D2D2D;--text:#1A1A1A;--text-light:#6B6B6B;--cream:#FAF7F2;--white:#FFFFFF;--border:#E5E5E5;--card-bg:#F7F7F7;--header-h:72px;--max-w:1320px;--section-pad:100px}
+:root{--font-display:'Syne',sans-serif;--font-body:'DM Sans','Noto Sans JP',sans-serif;--font-jp:'Noto Sans JP',sans-serif;--gold:#C9A96E;--gold-hover:#B8975A;--gold-light:rgba(201,169,110,0.15);--gold-faint:rgba(201,169,110,0.06);--navy:#2D2D2D;--text:#1A1A1A;--text-light:#6B6B6B;--cream:#FAF7F2;--white:#FFFFFF;--border:#E5E5E5;--card-bg:#F7F7F7;--header-h:72px;--max-w:1320px;--section-pad:60px}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);color:var(--text);background:var(--white);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:block}
@@ -125,7 +125,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .bc-sep{color:var(--border)}
 
 /* Product Top */
-.product-top{max-width:var(--max-w);margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:start}
+.product-top{max-width:var(--max-w);margin:0 auto;padding:0 40px 40px;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:start}
 .gallery{display:flex;gap:12px;min-width:0;overflow:hidden}
 .gallery-thumbs{display:flex;flex-direction:column;gap:8px;width:72px;flex-shrink:0;max-height:620px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
 .gallery-thumbs::-webkit-scrollbar{display:none}
@@ -184,7 +184,7 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
 .purchase-badge svg{width:14px;height:14px;color:var(--gold);flex-shrink:0}
 
 /* Description */
-.product-desc{max-width:var(--max-w);margin:0 auto;padding:0 40px 80px}
+.product-desc{max-width:var(--max-w);margin:0 auto;padding:0 40px 40px}
 .product-desc-inner{max-width:760px;margin:0 auto;padding:48px 0;border-top:1px solid var(--border)}
 .product-desc-en{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .product-desc-text{font-family:var(--font-jp);font-size:15px;line-height:2.4;color:var(--text-light)}
@@ -324,9 +324,9 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
   .related-mag-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  :root{--header-h:64px;--section-pad:80px}
+  :root{--header-h:64px;--section-pad:40px}
   .breadcrumb{padding:12px 20px}
-  .product-top{padding:0 20px 60px}
+  .product-top{padding:0 20px 24px}
   .purchase-name{font-size:18px}
   .purchase-price{font-size:26px}
   .section-title{font-size:24px}
@@ -595,7 +595,7 @@ html, body {
   .product-top {
     grid-template-columns: 1fr !important;
     gap: 0 !important;
-    padding-top: 56px !important;
+    padding-top: 0 !important;
   }
   .purchase {
     padding: 20px 16px !important;
@@ -641,7 +641,7 @@ html, body {
   .related-mag-section,
   .related-products-section,
   .compare-section {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
 
   .features-grid {
@@ -995,7 +995,7 @@ html, body {
 
   /* Brand story */
   .brand-story {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
   .brand-story-inner {
     gap: 32px !important;
@@ -1012,7 +1012,7 @@ html, body {
 
   /* Collection: compact cards */
   .collection {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
   .collection-grid {
     gap: 16px !important;
@@ -1044,7 +1044,7 @@ html, body {
 
   /* Concept */
   .concept-section {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
 
   /* Experience: 2-column grid on mobile */
@@ -1124,7 +1124,7 @@ html, body {
 
   /* News */
   .news-section {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
   .news-item {
     padding: 12px 0 !important;
@@ -1132,7 +1132,7 @@ html, body {
 
   /* Trial: 1 column on mobile */
   .trial-section {
-    padding: 40px 0 !important;
+    padding: 24px 0 !important;
   }
   .trial-inner {
     grid-template-columns: 1fr !important;
