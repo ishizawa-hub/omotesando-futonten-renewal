@@ -172,6 +172,693 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
 .mm-btn-gold{flex:1;text-align:center;padding:12px;background:#C9A96E;border-radius:6px;font-size:13px;font-weight:600;letter-spacing:0.06em;color:#fff;text-decoration:none;transition:background 0.3s}
 .mm-btn-gold:hover{background:#B8975A}
 </style>
+
+<style id="mobile-responsive">
+/* ================================================================
+   MOBILE RESPONSIVE OVERRIDES
+   共通モバイル最適化CSS - 全ページで読み込み
+   ================================================================ */
+
+/* ---- GLOBAL: 横スクロール防止 ---- */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+/* ---- HEADER: モバイル最適化 ---- */
+@media (max-width: 768px) {
+  .header {
+    height: 56px !important;
+  }
+  .header-inner {
+    padding: 0 16px !important;
+  }
+  .header-logo img {
+    height: 20px !important;
+    max-width: 160px;
+  }
+  .header-actions {
+    gap: 8px !important;
+  }
+  .header-actions > a {
+    font-size: 11px !important;
+    letter-spacing: 0.04em !important;
+  }
+  .hamburger {
+    padding: 2px !important;
+  }
+  .hamburger span {
+    width: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 52px !important;
+  }
+  .header-logo img {
+    height: 18px !important;
+    max-width: 140px;
+  }
+}
+
+/* ---- MOBILE MENU: はみ出し防止 ---- */
+.mobile-menu {
+  max-width: 85vw;
+}
+.mobile-menu-overlay {
+  overflow: hidden !important;
+}
+
+/* ---- FOOTER: レイアウト修正 ---- */
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 0 0 !important;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 20px !important;
+    padding: 0 20px !important;
+  }
+  .footer-brand {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+  }
+  /* GUIDE/ACCOUNTのfooter-col-lastをグリッドに溶け込ませる */
+  .footer-col-last {
+    display: contents !important;
+  }
+  .footer-nav-title {
+    font-size: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .footer-nav a {
+    font-size: 13px !important;
+    padding: 4px 0 !important;
+  }
+  .footer-desc {
+    font-size: 13px !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 16px 16px !important;
+    margin-top: 32px !important;
+  }
+  .footer-legal {
+    gap: 12px !important;
+  }
+  .footer-legal a {
+    white-space: nowrap !important;
+    font-size: 11px !important;
+  }
+  .footer-copy {
+    font-size: 10px !important;
+  }
+  /* NEWSLETTER フォーム最適化 */
+  .footer-newsletter {
+    margin-top: 16px !important;
+  }
+}
+
+/* ---- PAGE HERO: 縦幅削減 ---- */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 100px 0 40px !important;
+    min-height: auto !important;
+  }
+  .page-hero-title {
+    font-size: 32px !important;
+  }
+  .page-hero-en {
+    font-size: 11px !important;
+  }
+  .page-hero-jp {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 80px 0 32px !important;
+  }
+  .page-hero-title {
+    font-size: 26px !important;
+  }
+}
+
+/* ---- PRODUCTS一覧: カテゴリカード最適化 ---- */
+@media (max-width: 768px) {
+  /* Flagship (SLEEP DOWN) セクション */
+  .flagship-section {
+    padding: 32px 16px !important;
+  }
+  .flagship-card {
+    flex-direction: column !important;
+  }
+  .flagship-img {
+    height: 220px !important;
+    min-height: auto !important;
+  }
+  .flagship-body {
+    padding: 24px 20px !important;
+  }
+  .flagship-title {
+    font-size: 24px !important;
+  }
+  .flagship-desc {
+    font-size: 14px !important;
+  }
+  .flagship-stats {
+    gap: 16px !important;
+  }
+  .flagship-stat-num {
+    font-size: 18px !important;
+  }
+
+  /* カテゴリカードグリッド: 2列 */
+  .category-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    padding: 0 16px;
+  }
+  .category-card--wide {
+    grid-column: 1 / -1 !important;
+  }
+  .category-card-image {
+    height: 140px !important;
+  }
+  .category-card-image img {
+    height: 100% !important;
+    object-fit: cover;
+  }
+  .category-card-body {
+    padding: 12px !important;
+  }
+  .category-card-en {
+    font-size: 11px !important;
+  }
+  .category-card-jp {
+    font-size: 13px !important;
+  }
+  .category-card-meta {
+    font-size: 11px !important;
+  }
+  .category-card-count,
+  .category-card-price {
+    font-size: 11px !important;
+  }
+
+  /* アクセサリーセクション */
+  .accessories-section {
+    padding: 32px 0 !important;
+  }
+  .accessories-label {
+    font-size: 11px !important;
+    padding: 0 16px;
+  }
+  .accessories-title {
+    font-size: 24px !important;
+    padding: 0 16px;
+  }
+}
+
+/* ---- 商品詳細ページ: モバイル最適化 ---- */
+@media (max-width: 768px) {
+  .product-top {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding-top: 56px !important;
+  }
+  .purchase {
+    padding: 20px 16px !important;
+    position: relative !important;
+  }
+  .purchase-series {
+    font-size: 11px !important;
+  }
+  .purchase-name {
+    font-size: 22px !important;
+  }
+  .purchase-catch {
+    font-size: 14px !important;
+  }
+  .purchase-price {
+    font-size: 20px !important;
+  }
+
+  /* セクション間の余白削減 */
+  .product-desc,
+  .story-section,
+  .features-section,
+  .spec-section,
+  .price-section,
+  .reviews-section,
+  .related-mag-section,
+  .related-products-section,
+  .compare-section {
+    padding: 48px 0 !important;
+  }
+
+  /* 特徴セクション: 横並びリスト化 */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .feature-card {
+    display: grid !important;
+    grid-template-columns: 100px 1fr !important;
+    gap: 16px !important;
+    align-items: start !important;
+  }
+  .feature-card-img {
+    height: 100px !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+  }
+  .feature-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .feature-card-body {
+    padding: 0 !important;
+  }
+  .feature-card-title {
+    font-size: 14px !important;
+    margin-bottom: 4px !important;
+  }
+  .feature-card-desc {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* スペックテーブル */
+  .spec-table th {
+    width: 100px !important;
+    min-width: 80px !important;
+    font-size: 12px !important;
+  }
+  .spec-table td {
+    font-size: 13px !important;
+  }
+
+  /* 価格テーブル */
+  .price-table th,
+  .price-table td {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  /* 関連商品: 2列 */
+  .related-products-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  .related-product-card-img {
+    height: 140px !important;
+  }
+  .related-product-name {
+    font-size: 13px !important;
+  }
+  .related-product-price {
+    font-size: 13px !important;
+  }
+
+  /* 関連マガジン: 横スクロール */
+  .related-mag-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .mag-card-img {
+    height: 160px !important;
+  }
+
+  /* レビュー */
+  .review-card {
+    padding: 20px !important;
+  }
+  .review-text {
+    font-size: 14px !important;
+  }
+
+  /* 比較テーブル */
+  .compare-table {
+    font-size: 12px !important;
+  }
+  .compare-table th,
+  .compare-table td {
+    padding: 8px 6px !important;
+  }
+
+  /* Section共通 */
+  .section-title {
+    font-size: 22px !important;
+  }
+  .section-en {
+    font-size: 11px !important;
+  }
+  .section-desc {
+    font-size: 14px !important;
+  }
+}
+
+/* ---- カテゴリ一覧ページ（pillow, bedding等）---- */
+@media (max-width: 768px) {
+  .cat-hero {
+    height: 280px !important;
+    min-height: auto !important;
+  }
+  .cat-hero-title {
+    font-size: 28px !important;
+  }
+  .cat-hero-desc {
+    font-size: 14px !important;
+  }
+
+  /* 商品リスト: 2列グリッド */
+  .product-list-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+  }
+  .product-card-image {
+    height: 160px !important;
+  }
+  .product-card-name {
+    font-size: 13px !important;
+  }
+  .product-card-price {
+    font-size: 14px !important;
+  }
+  .product-card-desc {
+    display: none !important;
+  }
+
+  /* カテゴリ紹介セクション縮小 */
+  .cat-intro {
+    padding: 40px 16px !important;
+  }
+  .cat-intro-title {
+    font-size: 22px !important;
+  }
+  .cat-intro-desc {
+    font-size: 14px !important;
+  }
+}
+
+/* ---- MAGAZINE記事ページ ---- */
+@media (max-width: 768px) {
+  .article-hero {
+    height: 280px !important;
+    min-height: auto !important;
+  }
+  .article-hero-title {
+    font-size: 22px !important;
+  }
+  .article-body {
+    padding: 32px 16px !important;
+  }
+  .article-body h2 {
+    font-size: 20px !important;
+  }
+  .article-body h3 {
+    font-size: 17px !important;
+  }
+  .article-body p {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+  .article-body img {
+    border-radius: 8px !important;
+  }
+
+  /* 関連記事: 横並びリスト化 */
+  .related-articles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .related-article-card {
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important;
+    gap: 12px !important;
+  }
+  .related-article-img {
+    height: 80px !important;
+    border-radius: 6px !important;
+    overflow: hidden;
+  }
+  .related-article-title {
+    font-size: 14px !important;
+  }
+  .related-article-meta {
+    font-size: 12px !important;
+  }
+}
+
+/* ---- MAGAZINE一覧ページ ---- */
+@media (max-width: 768px) {
+  .magazine-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    padding: 0 16px !important;
+  }
+  .magazine-card-img {
+    height: 120px !important;
+  }
+  .magazine-card-title {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+  .magazine-card-meta {
+    font-size: 11px !important;
+  }
+  .magazine-card-desc {
+    display: none !important;
+  }
+}
+
+/* ---- GIFTページ ---- */
+@media (max-width: 768px) {
+  .gift-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  .gift-card-img {
+    aspect-ratio: 1 !important;
+  }
+  .gift-card-body {
+    padding: 12px !important;
+  }
+  .gift-card-body h3 {
+    font-size: 14px !important;
+  }
+  .gift-card-body p {
+    font-size: 13px !important;
+  }
+  .gift-card-price {
+    font-size: 14px !important;
+  }
+
+  .wrapping {
+    padding: 40px 16px !important;
+  }
+  .wrapping-inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .wrapping-img {
+    height: 200px !important;
+  }
+
+  .occasions-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  .occasion-card-icon {
+    font-size: 32px !important;
+  }
+  .occasion-card h4 {
+    font-size: 14px !important;
+  }
+
+  .gift-cta {
+    padding: 48px 16px !important;
+  }
+  .gift-cta-title {
+    font-size: 22px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gift-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ---- FAQページ ---- */
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 32px 16px !important;
+  }
+  .faq-category-title {
+    font-size: 18px !important;
+  }
+  .faq-question {
+    font-size: 14px !important;
+    padding: 16px 0 !important;
+  }
+  .faq-answer-inner {
+    font-size: 14px !important;
+    padding: 0 0 16px !important;
+  }
+}
+
+/* ---- TOPページ: セクション縦幅削減 ---- */
+@media (max-width: 768px) {
+  /* ヒーロー */
+  .hero {
+    min-height: 85vh !important;
+  }
+  .hero-catch {
+    font-size: 22px !important;
+  }
+  .hero-sub {
+    font-size: 14px !important;
+  }
+  .hero-en {
+    font-size: 14px !important;
+  }
+
+  /* ブランドストーリー */
+  .brand-story {
+    padding: 48px 0 !important;
+  }
+  .brand-story-quote {
+    font-size: 18px !important;
+  }
+  .brand-story-desc {
+    font-size: 14px !important;
+  }
+
+  /* コレクション */
+  .collection {
+    padding: 48px 0 !important;
+  }
+  .collection-card {
+    min-height: 300px !important;
+  }
+
+  /* コンセプト */
+  .concept-section {
+    padding: 48px 0 !important;
+  }
+
+  /* ニュース */
+  .news-section {
+    padding: 48px 0 !important;
+  }
+
+  /* TRY */
+  .trial-section {
+    padding: 48px 0 !important;
+  }
+  .trial-inner {
+    gap: 24px !important;
+  }
+
+  /* セクション共通 */
+  .section-heading {
+    font-size: 36px !important;
+  }
+  .section-watermark {
+    font-size: 48px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 75vh !important;
+  }
+  .hero-catch {
+    font-size: 20px !important;
+  }
+  .section-heading {
+    font-size: 28px !important;
+  }
+}
+
+/* ---- CONCEPTページ ---- */
+@media (max-width: 768px) {
+  .concept-hero {
+    height: 300px !important;
+    min-height: auto !important;
+  }
+  .concept-hero-title {
+    font-size: 26px !important;
+  }
+  .concept-content {
+    padding: 40px 16px !important;
+  }
+  .concept-content h2 {
+    font-size: 20px !important;
+  }
+  .concept-content p {
+    font-size: 14px !important;
+  }
+  .concept-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+/* ---- ABOUTページ ---- */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 280px !important;
+    min-height: auto !important;
+  }
+  .company-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .company-table th,
+  .company-table td {
+    display: block !important;
+    padding: 4px 0 !important;
+  }
+  .company-table th {
+    font-weight: 700 !important;
+    color: var(--color-accent, #C9A96E) !important;
+    font-size: 12px !important;
+    padding-top: 12px !important;
+  }
+}
+
+/* ---- 共通: ボタン/CTA最適化 ---- */
+@media (max-width: 768px) {
+  .btn-primary,
+  .cta-btn,
+  .cart-btn {
+    font-size: 14px !important;
+    padding: 14px 24px !important;
+  }
+}
+
+/* ---- 共通: コンテナ幅 ---- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <header class="header" id="header">
@@ -439,7 +1126,9 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
         <a href="../glossary/">用語集</a>
       </nav>
     </div>
-    <div>
+    <div class="footer-col-last">
+      <div>
+      <div>
       <h4 class="footer-nav-title">GUIDE</h4>
       <nav class="footer-nav">
         <a href="../about/">会社概要</a>
@@ -448,12 +1137,15 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:#F7F6F3;color:#2
         <a href="../contact/">お問い合わせ</a>
         <a href="../subscription/">サブスクリプション</a>
       </nav>
-      <h4 class="footer-nav-title" style="margin-top:28px">ACCOUNT</h4>
+      </div>
+      <div>
+      <h4 class="footer-nav-title">ACCOUNT</h4>
       <nav class="footer-nav">
         <a href="../account/login/">ログイン</a>
         <a href="../account/register/">新規会員登録</a>
         <a href="../cart/">カート</a>
       </nav>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
