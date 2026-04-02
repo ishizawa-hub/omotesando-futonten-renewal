@@ -371,11 +371,107 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 /* SERVICE CARD (full width) */
+.service-section-wrap {
+  background: #2D2D2D;
+  padding: 48px 40px;
+  margin: 0 -40px;
+}
+.service-section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.service-section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.service-section-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.service-section-subtitle {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+}
 .category-card--wide {
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.category-card--wide:hover {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.07);
+  transform: none;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
 }
 .category-card--wide .category-card-image {
-  aspect-ratio: 16/5;
+  aspect-ratio: 16/9;
+}
+.category-card--wide .category-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 36px;
+}
+.category-card--wide .category-card-en {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.category-card--wide .category-card-jp {
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.category-card--wide .category-card-meta {
+  padding-right: 0;
+}
+.category-card--wide .category-card-count {
+  color: var(--gold);
+  font-size: 12px;
+}
+.category-card--wide .category-card-price {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+.category-card--wide .category-card-arrow {
+  position: static;
+  width: 36px;
+  height: 36px;
+  border-color: rgba(255,255,255,0.2);
+  margin-top: 20px;
+  align-self: flex-start;
+}
+.category-card--wide .category-card-arrow svg {
+  stroke: rgba(255,255,255,0.6);
+}
+.category-card--wide:hover .category-card-arrow {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.category-card--wide:hover .category-card-arrow svg {
+  stroke: #fff;
 }
 
 /* ===========================
@@ -463,7 +559,11 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   .page-hero { padding-top: calc(var(--header-h) + 48px); padding-bottom: 40px; }
   .page-hero-title { font-size: 28px; }
   .page-hero::before { font-size: 60px; }
-  .category-card--wide .category-card-image { aspect-ratio: 3/2; }
+  .service-section-wrap { padding: 32px 16px; margin: 0 -16px; }
+  .service-section-title { font-size: 22px; }
+  .category-card--wide { grid-template-columns: 1fr; }
+  .category-card--wide .category-card-image { aspect-ratio: 16/9; }
+  .category-card--wide .category-card-body { padding: 24px 20px; }
   .acc-item{grid-template-columns:90px 1fr}
   .acc-item-img{width:90px;height:68px}
   .acc-item-en{font-size:13px}
@@ -1615,22 +1715,25 @@ html, body {
 </section>
 
 <!-- CLEAN CYCLE SERVICE -->
-<section class="accessories-section" style="padding:24px 40px 24px;">
-  <div style="max-width:1400px; margin:0 auto;">
+<section class="service-section-wrap">
+  <div class="service-section-inner">
+    <p class="service-section-label">Clean Cycle Service</p>
+    <h3 class="service-section-title">Service &amp; Subscription</h3>
+    <p class="service-section-subtitle">サービス＆サブスクリプション</p>
     <a href="service/index.html" class="category-card category-card--wide">
       <div class="category-card-image">
         <img src="../images/site/concept_wash.jpg" alt="サービス＆サブスクリプション" loading="lazy">
       </div>
       <div class="category-card-body">
-        <div class="category-card-en">Clean Cycle Service</div>
+        <div class="category-card-en">CLEAN CYCLE SERVICE</div>
         <div class="category-card-jp">サービス＆サブスクリプション</div>
         <div class="category-card-meta">
           <span class="category-card-count">4 サービス</span>
           <span class="category-card-price">&yen;3,300 &ndash; &yen;45,800</span>
         </div>
-      </div>
-      <div class="category-card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="category-card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </div>
       </div>
     </a>
   </div>
