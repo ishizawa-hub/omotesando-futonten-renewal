@@ -1,0 +1,512 @@
+/**
+ * 表参道布団店 管理画面スタイル
+ * Design tokens: Gold #C9A96E, Dark #2D2D2D, BG #F7F6F3
+ */
+
+:root {
+    --oft-gold: #C9A96E;
+    --oft-gold-light: #E8D5B0;
+    --oft-dark: #2D2D2D;
+    --oft-bg: #F7F6F3;
+    --oft-ok: #46B450;
+    --oft-warn: #FFBA00;
+    --oft-danger: #DC3232;
+    --oft-border: #E0DDD7;
+    --oft-radius: 8px;
+    --oft-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ── ダッシュボード ────────────────────── */
+
+.oft-dashboard h1,
+.oft-page-editor h1,
+.oft-inventory h1,
+.oft-members h1,
+.oft-settings h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--oft-dark);
+    margin-bottom: 24px;
+}
+
+.oft-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.oft-card {
+    background: #fff;
+    border: 1px solid var(--oft-border);
+    border-radius: var(--oft-radius);
+    box-shadow: var(--oft-shadow);
+    overflow: hidden;
+}
+
+.oft-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--oft-border);
+    background: var(--oft-bg);
+}
+
+.oft-card-header .dashicons {
+    color: var(--oft-gold);
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+}
+
+.oft-card-header h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--oft-dark);
+}
+
+.oft-card-body {
+    padding: 16px 20px;
+}
+
+.oft-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0ede8;
+}
+
+.oft-stat-row:last-child {
+    border-bottom: none;
+}
+
+.oft-stat-label {
+    font-size: 13px;
+    color: #666;
+}
+
+.oft-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--oft-dark);
+}
+
+.oft-stat-value.oft-ok { color: var(--oft-ok); }
+.oft-stat-value.oft-warn { color: var(--oft-warn); }
+.oft-stat-value.oft-danger { color: var(--oft-danger); }
+
+.oft-card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--oft-border);
+    background: var(--oft-bg);
+}
+
+.oft-card-footer a {
+    font-size: 13px;
+    color: var(--oft-gold);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.oft-card-footer a:hover {
+    color: var(--oft-dark);
+}
+
+.oft-page-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.oft-page-links li a {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--oft-bg);
+    border: 1px solid var(--oft-border);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--oft-dark);
+    text-decoration: none;
+}
+
+.oft-page-links li a:hover {
+    background: var(--oft-gold-light);
+    border-color: var(--oft-gold);
+}
+
+/* ── セクション・テーブル ────────────────── */
+
+.oft-section {
+    margin-top: 32px;
+}
+
+.oft-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--oft-dark);
+    margin-bottom: 12px;
+}
+
+/* ステータスバッジ */
+.oft-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.oft-status.oft-ok,
+.oft-status-completed {
+    background: #E7F5E9;
+    color: var(--oft-ok);
+}
+
+.oft-status.oft-warn,
+.oft-status-processing,
+.oft-status-pending {
+    background: #FFF8E1;
+    color: #E68A00;
+}
+
+.oft-status.oft-danger,
+.oft-status-cancelled,
+.oft-status-failed {
+    background: #FDEAEA;
+    color: var(--oft-danger);
+}
+
+.oft-status-on-hold {
+    background: #E8EAF6;
+    color: #5C6BC0;
+}
+
+/* バッジ */
+.oft-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--oft-gold-light);
+    color: var(--oft-dark);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+/* ── ページエディター ──────────────────── */
+
+.oft-page-editor .nav-tab-wrapper {
+    margin-bottom: 24px;
+}
+
+.oft-page-editor .nav-tab {
+    font-size: 13px;
+    padding: 8px 16px;
+}
+
+.oft-page-editor .nav-tab-active {
+    background: #fff;
+    border-bottom-color: #fff;
+    color: var(--oft-gold);
+    font-weight: 600;
+}
+
+.oft-form {
+    max-width: 800px;
+    background: #fff;
+    border: 1px solid var(--oft-border);
+    border-radius: var(--oft-radius);
+    padding: 24px;
+}
+
+.oft-field-group {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f0ede8;
+}
+
+.oft-field-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.oft-field-group > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--oft-dark);
+    margin-bottom: 6px;
+}
+
+.oft-field-note {
+    font-size: 12px;
+    color: #888;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.oft-field-note .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    color: var(--oft-gold);
+}
+
+.oft-form .regular-text {
+    width: 100%;
+    max-width: 600px;
+}
+
+.oft-form .large-text {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* メディアフィールド */
+.oft-media-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.oft-media-preview {
+    width: 200px;
+    min-height: 60px;
+    background: var(--oft-bg);
+    border: 1px dashed var(--oft-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.oft-media-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.oft-media-preview video {
+    max-width: 100%;
+    display: block;
+}
+
+.oft-media-preview:empty::after {
+    content: "未選択";
+    font-size: 12px;
+    color: #aaa;
+}
+
+.oft-form-actions {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--oft-border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.oft-form-actions .button-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--oft-gold);
+    border-color: var(--oft-gold);
+    color: #fff;
+    font-weight: 600;
+}
+
+.oft-form-actions .button-hero:hover {
+    background: #b8963f;
+    border-color: #b8963f;
+    color: #fff;
+}
+
+.oft-form-actions .button-hero .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.oft-save-status {
+    font-size: 13px;
+    color: var(--oft-ok);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.oft-save-status.show {
+    opacity: 1;
+}
+
+/* ── 在庫管理 ─────────────────────────── */
+
+.oft-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.oft-toolbar #oft-stock-search {
+    max-width: 300px;
+}
+
+.oft-toolbar select {
+    min-width: 140px;
+}
+
+.oft-toolbar .button-primary {
+    background: var(--oft-gold);
+    border-color: var(--oft-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.oft-toolbar .button-primary:hover {
+    background: #b8963f;
+    border-color: #b8963f;
+}
+
+.oft-toolbar .button-primary .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.oft-stock-table .oft-stock-input {
+    border: 1px solid var(--oft-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+.oft-stock-table .oft-stock-input:focus {
+    border-color: var(--oft-gold);
+    box-shadow: 0 0 0 1px var(--oft-gold-light);
+    outline: none;
+}
+
+.oft-stock-table .oft-stock-input.changed {
+    border-color: var(--oft-warn);
+    background: #FFFDE7;
+}
+
+.oft-stock-table tr.oft-row-hidden {
+    display: none;
+}
+
+/* ── 会員管理 ─────────────────────────── */
+
+.oft-members table a {
+    color: var(--oft-gold);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.oft-members table a:hover {
+    color: var(--oft-dark);
+}
+
+/* ── 設定ページ ────────────────────────── */
+
+.oft-settings .form-table th {
+    font-weight: 600;
+    color: var(--oft-dark);
+}
+
+.oft-settings .form-table .description {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ── 共通: テーブル改善 ────────────────── */
+
+.oft-dashboard .widefat td,
+.oft-dashboard .widefat th,
+.oft-inventory .widefat td,
+.oft-inventory .widefat th,
+.oft-members .widefat td,
+.oft-members .widefat th {
+    padding: 10px 12px;
+    vertical-align: middle;
+}
+
+.oft-dashboard .widefat thead th,
+.oft-inventory .widefat thead th,
+.oft-members .widefat thead th,
+.oft-settings .widefat thead th {
+    background: var(--oft-bg);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #666;
+}
+
+/* ── レスポンシブ ─────────────────────── */
+
+@media (max-width: 782px) {
+    .oft-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .oft-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .oft-toolbar #oft-stock-search {
+        max-width: 100%;
+    }
+
+    .oft-media-field {
+        flex-direction: column;
+    }
+
+    .oft-media-preview {
+        width: 100%;
+    }
+}
+
+/* ── ローディング ─────────────────────── */
+
+.oft-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.oft-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 3px solid var(--oft-border);
+    border-top-color: var(--oft-gold);
+    border-radius: 50%;
+    animation: oft-spin 0.6s linear infinite;
+}
+
+@keyframes oft-spin {
+    to { transform: rotate(360deg); }
+}
