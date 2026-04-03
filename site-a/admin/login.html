@@ -961,12 +961,15 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       <div style="font-size:14px; color:#888; font-weight:500; letter-spacing:0.05em;">管理画面ログイン</div>
     </div>
 
+    <!-- Error Message -->
+    <div id="login-error" style="display:none; padding:12px 14px; margin-bottom:16px; background:#FFF5F5; border:1px solid #FFCDD2; border-radius:8px; font-size:13px; color:#E53935;"></div>
+
     <!-- Form -->
-    <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+    <form id="login-form">
       <!-- Email -->
       <div style="margin-bottom:20px;">
         <label style="display:block; font-size:13px; font-weight:600; color:#555; margin-bottom:6px;">メールアドレス</label>
-        <input type="email" placeholder="admin@omotesando-futon.jp" required
+        <input id="login-email" type="email" placeholder="admin@omotesando-futon.jp" required
           style="width:100%; padding:12px 14px; border:1px solid #DDD; border-radius:8px; font-size:14px; font-family:inherit; outline:none; transition:border-color 0.2s; box-sizing:border-box; background:#FAFAFA;"
           onfocus="this.style.borderColor='#C9A96E'; this.style.background='#fff';"
           onblur="this.style.borderColor='#DDD'; this.style.background='#FAFAFA';">
@@ -975,14 +978,14 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       <!-- Password -->
       <div style="margin-bottom:28px;">
         <label style="display:block; font-size:13px; font-weight:600; color:#555; margin-bottom:6px;">パスワード</label>
-        <input type="password" placeholder="パスワードを入力" required
+        <input id="login-password" type="password" placeholder="パスワードを入力" required
           style="width:100%; padding:12px 14px; border:1px solid #DDD; border-radius:8px; font-size:14px; font-family:inherit; outline:none; transition:border-color 0.2s; box-sizing:border-box; background:#FAFAFA;"
           onfocus="this.style.borderColor='#C9A96E'; this.style.background='#fff';"
           onblur="this.style.borderColor='#DDD'; this.style.background='#FAFAFA';">
       </div>
 
       <!-- Login Button -->
-      <button type="submit"
+      <button id="login-btn" type="submit"
         style="width:100%; padding:14px; background:#C9A96E; color:#fff; border:none; border-radius:8px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:background 0.2s; letter-spacing:0.03em;"
         onmouseover="this.style.background='#B8964E';"
         onmouseout="this.style.background='#C9A96E';">
@@ -1006,8 +1009,59 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   </div>
 </div>
 
+<script src="js/admin-api.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
+<script>
+(function() {
+  'use strict';
+  var form = document.getElementById('login-form');
+  var errorEl = document.getElementById('login-error');
+  var btn = document.getElementById('login-btn');
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+  }
+  function hideError() {
+    errorEl.style.display = 'none';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideError();
+
+    var email = document.getElementById('login-email').value.trim();
+    var password = document.getElementById('login-password').value;
+
+    if (!email || !password) {
+      showError('メールアドレスとパスワードを入力してください。');
+      return;
+    }
+
+    // AdminAPI が利用可能な場合はAPI経由でログイン
+    if (typeof AdminAPI !== 'undefined' && AdminAPI.login) {
+      btn.disabled = true;
+      btn.textContent = 'ログイン中...';
+
+      AdminAPI.login(email, password)
+        .then(function() {
+          window.location.href = 'index.html';
+        })
+        .catch(function(err) {
+          showError(err.message || 'ログインに失敗しました。メールアドレスとパスワードを確認してください。');
+          btn.disabled = false;
+          btn.textContent = 'ログイン';
+        });
+    } else {
+      // フォールバック: AdminAPI が読み込めない場合はlocalStorage模擬ログイン
+      localStorage.setItem('oft_admin_token', 'mock_token_' + Date.now());
+      localStorage.setItem('oft_admin_user', JSON.stringify({ name: '管理者', email: email }));
+      window.location.href = 'index.html';
+    }
+  });
+})();
+</script>
 </body>
 </html>

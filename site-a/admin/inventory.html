@@ -1311,6 +1311,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
+<script src="js/admin-api.js"></script>
 <script>
 (function() {
   'use strict';
@@ -1361,13 +1362,17 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     }
   }
 
-  // === PERSISTENCE ===
-  function loadInventory() {
+  // === PERSISTENCE (localStorage フォールバック用) ===
+  function loadInventoryLocal() {
     try { return JSON.parse(localStorage.getItem('admin_inventory') || '{}'); } catch(e) { return {}; }
   }
-  function saveInventory(data) {
+  function saveInventoryLocal(data) {
     localStorage.setItem('admin_inventory', JSON.stringify(data));
   }
+
+  // === SKU → API商品IDマッピング ===
+  // APIから取得したデータでSKUとIDを紐付ける
+  const skuToProductId = {};
 
   // === ELEMENTS ===
   const toolbar = document.querySelector('[style*="justify-content:space-between"][style*="margin-bottom:20px"]') ||
@@ -1378,18 +1383,53 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   const tbody = document.querySelector('table tbody');
   const rows = tbody.querySelectorAll('tr');
 
-  // === APPLY SAVED DATA ===
-  (function applySaved() {
-    const data = loadInventory();
+  // === APIから在庫データを取得してUIに反映 ===
+  function applyInventoryData(source) {
     rows.forEach(row => {
       const sku = row.cells[1].textContent.trim();
-      if (data[sku] !== undefined) {
+      if (source[sku] !== undefined) {
         const input = row.querySelector('.stock-input');
-        input.value = data[sku];
-        updateInputStyle(input, data[sku]);
-        updateBadge(row, data[sku]);
+        const qty = typeof source[sku] === 'object' ? source[sku].qty : source[sku];
+        input.value = qty;
+        updateInputStyle(input, qty);
+        updateBadge(row, qty);
       }
     });
+  }
+
+  // === データ読み込み: API優先、失敗時はlocalStorageフォールバック ===
+  (async function loadData() {
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        const items = await AdminAPI.getInventory();
+        // APIデータをSKUベースのマップに変換し、ID紐付けも行う
+        const apiData = {};
+        items.forEach(item => {
+          if (item.sku) {
+            apiData[item.sku] = item.stock_quantity;
+            skuToProductId[item.sku] = item.id;
+          }
+          // バリエーションがある場合も処理
+          if (item.variations && Array.isArray(item.variations)) {
+            item.variations.forEach(v => {
+              if (v.sku) {
+                apiData[v.sku] = v.stock_quantity;
+                skuToProductId[v.sku] = v.id || item.id;
+              }
+            });
+          }
+        });
+        applyInventoryData(apiData);
+        // APIデータをlocalStorageにもキャッシュ
+        saveInventoryLocal(apiData);
+        console.log('[Inventory] APIからデータ取得成功 (' + items.length + '件)');
+      } else {
+        throw new Error('AdminAPI未定義');
+      }
+    } catch (e) {
+      console.warn('[Inventory] APIフォールバック → localStorage:', e.message);
+      applyInventoryData(loadInventoryLocal());
+    }
   })();
 
   // === SEARCH ===
@@ -1434,7 +1474,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     const input = row.querySelector('.stock-input');
     const sku = row.cells[1].textContent.trim();
 
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', async function() {
       const qty = parseInt(input.value, 10);
       updateBadge(row, qty);
       updateInputStyle(input, qty);
@@ -1442,19 +1482,33 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       input.dataset.original = input.value;
       changedInputs.delete(input);
 
-      // Persist
-      const data = loadInventory();
+      // API経由で更新、失敗時はlocalStorageに保存
+      try {
+        const productId = skuToProductId[sku];
+        if (typeof AdminAPI !== 'undefined' && productId) {
+          await AdminAPI.updateStock(productId, qty);
+          console.log('[Inventory] API更新成功: ' + sku + ' → ' + qty);
+        } else {
+          throw new Error('API未対応');
+        }
+      } catch (e) {
+        console.warn('[Inventory] APIフォールバック → localStorage:', e.message);
+      }
+      // localStorageにも常にキャッシュ
+      const data = loadInventoryLocal();
       data[sku] = qty;
-      saveInventory(data);
+      saveInventoryLocal(data);
 
       showToast('在庫を更新しました');
     });
   });
 
   // === BATCH SAVE ===
-  batchBtn.addEventListener('click', function() {
-    const data = loadInventory();
+  batchBtn.addEventListener('click', async function() {
+    const data = loadInventoryLocal();
     let count = 0;
+    const updates = [];
+
     rows.forEach(row => {
       const input = row.querySelector('.stock-input');
       if (input.dataset.original !== input.value) {
@@ -1467,9 +1521,31 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
         input.dataset.original = input.value;
         changedInputs.delete(input);
         count++;
+
+        // API更新をキューに追加
+        const productId = skuToProductId[sku];
+        if (typeof AdminAPI !== 'undefined' && productId) {
+          updates.push(
+            AdminAPI.updateStock(productId, qty)
+              .then(() => console.log('[Inventory] API一括更新: ' + sku + ' → ' + qty))
+              .catch(e => console.warn('[Inventory] API更新失敗: ' + sku, e.message))
+          );
+        }
       }
     });
-    saveInventory(data);
+
+    // localStorageに常にキャッシュ
+    saveInventoryLocal(data);
+
+    // API更新を並列実行
+    if (updates.length > 0) {
+      try {
+        await Promise.all(updates);
+      } catch (e) {
+        console.warn('[Inventory] 一部のAPI更新が失敗しました');
+      }
+    }
+
     if (count > 0) {
       showToast('一括更新を保存しました（' + count + '件）');
     } else {

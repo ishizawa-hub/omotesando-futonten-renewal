@@ -1234,6 +1234,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
+<script src="js/admin-api.js"></script>
 
 <!-- Toast Notification -->
 <div id="toast" style="position:fixed; bottom:32px; right:32px; padding:14px 24px; border-radius:10px; font-size:14px; font-weight:600; font-family:inherit; color:#fff; background:#2D2D2D; box-shadow:0 8px 24px rgba(0,0,0,0.2); z-index:10000; opacity:0; transform:translateY(20px); transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
@@ -1404,10 +1405,12 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     }, 250);
   }
 
-  // === Data ===
+  // === Data (AdminAPI with localStorage fallback) ===
+  var useAPI = (typeof AdminAPI !== 'undefined');
+
   function extractProductsFromHTML() {
     var rows = document.querySelectorAll('tbody tr');
-    var products = [];
+    var list = [];
     rows.forEach(function(tr) {
       var tds = tr.querySelectorAll('td');
       if (tds.length < 7) return;
@@ -1416,7 +1419,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       var price = parsePrice(tds[3].textContent);
       var stock = parseInt(tds[4].textContent.trim(), 10) || 0;
       var status = tds[5].textContent.trim();
-      products.push({
+      list.push({
         id: Date.now() + Math.random(),
         name: name,
         series: '',
@@ -1426,27 +1429,48 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
         status: status
       });
     });
-    return products;
+    return list;
   }
 
-  function loadProducts() {
+  function loadProductsFromLS() {
     var raw = localStorage.getItem(LS_KEY);
     if (raw) {
       try { return JSON.parse(raw); } catch(e) {}
     }
-    var products = extractProductsFromHTML();
-    saveProducts(products);
-    return products;
+    var list = extractProductsFromHTML();
+    saveProductsToLS(list);
+    return list;
   }
 
-  function saveProducts(products) {
-    localStorage.setItem(LS_KEY, JSON.stringify(products));
+  function saveProductsToLS(list) {
+    localStorage.setItem(LS_KEY, JSON.stringify(list));
   }
 
-  var products = loadProducts();
+  var products = [];
   var currentPage = 1;
   var editingId = null;
   var deletingId = null;
+
+  // API経由で商品一覧を取得（失敗時はlocalStorageフォールバック）
+  function fetchProducts(callback) {
+    if (!useAPI) {
+      products = loadProductsFromLS();
+      if (callback) callback();
+      return;
+    }
+    AdminAPI.getProducts()
+      .then(function(data) {
+        products = Array.isArray(data) ? data : (data.products || []);
+        // APIデータをlocalStorageにもキャッシュ
+        saveProductsToLS(products);
+        if (callback) callback();
+      })
+      .catch(function(err) {
+        console.warn('AdminAPI.getProducts失敗、localStorageにフォールバック:', err);
+        products = loadProductsFromLS();
+        if (callback) callback();
+      });
+  }
 
   // === DOM refs ===
   var searchInput = document.querySelector('input[placeholder="商品名で検索..."]');
@@ -1633,45 +1657,112 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     if (!data.name) return;
 
     if (editingId !== null) {
-      // Update
-      for (var i = 0; i < products.length; i++) {
-        if (products[i].id === editingId) {
-          products[i].name = data.name;
-          products[i].series = data.series;
-          products[i].category = data.category;
-          products[i].price = data.price;
-          products[i].stock = data.stock;
-          products[i].status = data.status;
-          break;
-        }
+      // === 更新 ===
+      if (useAPI) {
+        AdminAPI.updateProduct(editingId, data)
+          .then(function() {
+            closeModal();
+            showToast('商品を更新しました');
+            fetchProducts(function() { render(); });
+          })
+          .catch(function(err) {
+            console.warn('API更新失敗、ローカル更新にフォールバック:', err);
+            updateProductLocal(editingId, data);
+            closeModal();
+            render();
+            showToast('商品を更新しました（オフライン）');
+          });
+      } else {
+        updateProductLocal(editingId, data);
+        closeModal();
+        render();
+        showToast('商品を更新しました');
       }
-      saveProducts(products);
-      closeModal();
-      render();
-      showToast('商品を更新しました');
     } else {
-      // Add
-      data.id = Date.now() + Math.random();
-      products.push(data);
-      saveProducts(products);
-      closeModal();
-      currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
-      render();
-      showToast('商品を追加しました');
+      // === 新規追加 ===
+      if (useAPI) {
+        AdminAPI.createProduct(data)
+          .then(function() {
+            closeModal();
+            showToast('商品を追加しました');
+            fetchProducts(function() {
+              currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
+              render();
+            });
+          })
+          .catch(function(err) {
+            console.warn('API作成失敗、ローカル追加にフォールバック:', err);
+            addProductLocal(data);
+            closeModal();
+            currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
+            render();
+            showToast('商品を追加しました（オフライン）');
+          });
+      } else {
+        addProductLocal(data);
+        closeModal();
+        currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
+        render();
+        showToast('商品を追加しました');
+      }
     }
   });
+
+  // ローカル更新ヘルパー
+  function updateProductLocal(id, data) {
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].id === id) {
+        products[i].name = data.name;
+        products[i].series = data.series;
+        products[i].category = data.category;
+        products[i].price = data.price;
+        products[i].stock = data.stock;
+        products[i].status = data.status;
+        break;
+      }
+    }
+    saveProductsToLS(products);
+  }
+
+  function addProductLocal(data) {
+    data.id = Date.now() + Math.random();
+    products.push(data);
+    saveProductsToLS(products);
+  }
 
   // === Delete ===
   document.getElementById('confirm-delete').addEventListener('click', function() {
     if (deletingId !== null) {
-      products = products.filter(function(p) { return p.id !== deletingId; });
-      saveProducts(products);
+      var idToDelete = deletingId;
       deletingId = null;
-      closeConfirm();
-      render();
-      showToast('商品を削除しました');
+
+      if (useAPI) {
+        AdminAPI.deleteProduct(idToDelete)
+          .then(function() {
+            closeConfirm();
+            showToast('商品を削除しました');
+            fetchProducts(function() { render(); });
+          })
+          .catch(function(err) {
+            console.warn('API削除失敗、ローカル削除にフォールバック:', err);
+            deleteProductLocal(idToDelete);
+            closeConfirm();
+            render();
+            showToast('商品を削除しました（オフライン）');
+          });
+      } else {
+        deleteProductLocal(idToDelete);
+        closeConfirm();
+        render();
+        showToast('商品を削除しました');
+      }
     }
   });
+
+  function deleteProductLocal(id) {
+    products = products.filter(function(p) { return p.id !== id; });
+    saveProductsToLS(products);
+  }
 
   // === Modal close handlers ===
   document.getElementById('modal-backdrop').addEventListener('click', closeModal);
@@ -1691,8 +1782,8 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     }
   });
 
-  // === Initial render ===
-  render();
+  // === Initial render (API優先、フォールバックでlocalStorage) ===
+  fetchProducts(function() { render(); });
 
 })();
 </script>

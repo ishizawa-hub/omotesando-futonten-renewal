@@ -1130,14 +1130,16 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
+<script src="js/admin-api.js"></script>
 <script>
 (function() {
   'use strict';
 
-  // --- localStorage key ---
+  // --- localStorage key (fallback) ---
   var STORAGE_KEY = 'omotesando_magazine_articles';
+  var useAPI = typeof AdminAPI !== 'undefined';
 
-  // --- Default articles from initial HTML ---
+  // --- Default articles (fallback seed data) ---
   var defaultArticles = [
     { id: 1, title: 'プレミアム羽毛布団のお手入れ方法', category: 'お手入れ', status: '公開', date: '2026/03/15', body: '', thumbnail: '' },
     { id: 2, title: "Netflix『布団の王様』放映開始", category: 'ニュース', status: '公開', date: '2026/02/28', body: '', thumbnail: '' },
@@ -1146,16 +1148,41 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     { id: 5, title: '失敗しない布団の選び方ガイド', category: 'ガイド', status: '公開', date: '2026/01/05', body: '', thumbnail: '' }
   ];
 
-  // --- Data ---
-  function loadArticles() {
+  // --- localStorage fallback helpers ---
+  function loadArticlesFromStorage() {
     var stored = localStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : defaultArticles.slice();
   }
-  function saveArticles(articles) {
+  function saveArticlesToStorage(articles) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
   }
-  var articles = loadArticles();
-  var nextId = articles.reduce(function(m, a) { return Math.max(m, a.id); }, 0) + 1;
+
+  // --- Normalize API response to local format ---
+  function normalizeArticle(a) {
+    return {
+      id: a.id,
+      title: a.title || '',
+      category: a.category || '',
+      status: a.status === 'published' ? '公開' : (a.status === 'draft' ? '下書き' : (a.status || '公開')),
+      date: a.date || (a.created_at ? a.created_at.slice(0, 10).replace(/-/g, '/') : formatDate(new Date())),
+      body: a.content || a.body || '',
+      thumbnail: a.thumbnail_url || a.thumbnail || ''
+    };
+  }
+
+  // --- Convert local format to API payload ---
+  function toAPIPayload(article) {
+    return {
+      title: article.title,
+      content: article.body,
+      category: article.category,
+      thumbnail_url: article.thumbnail,
+      status: article.status === '公開' ? 'published' : 'draft'
+    };
+  }
+
+  // --- State ---
+  var articles = [];
   var editingId = null;
 
   // --- Refs ---
@@ -1258,6 +1285,24 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     return d.getFullYear() + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getDate()).padStart(2, '0');
   }
 
+  // --- Load articles from API with localStorage fallback ---
+  function refreshArticles() {
+    if (useAPI) {
+      return AdminAPI.getMagazines().then(function(data) {
+        articles = data.map(normalizeArticle);
+        renderTable(searchInput.value.trim().toLowerCase());
+      }).catch(function(err) {
+        console.warn('AdminAPI.getMagazines failed, falling back to localStorage:', err);
+        articles = loadArticlesFromStorage();
+        renderTable(searchInput.value.trim().toLowerCase());
+      });
+    } else {
+      articles = loadArticlesFromStorage();
+      renderTable(searchInput.value.trim().toLowerCase());
+      return Promise.resolve();
+    }
+  }
+
   // --- Events ---
   createBtn.addEventListener('click', function() { openModal(null); });
   document.getElementById('modalClose').addEventListener('click', closeModal);
@@ -1269,32 +1314,81 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     if (!title) { fieldTitle.style.borderColor = '#E74C3C'; return; }
     fieldTitle.style.borderColor = '#EAEDF3';
 
+    var articleData = {
+      title: title,
+      category: fieldCategory.value,
+      body: fieldBody.value,
+      thumbnail: fieldThumbnail.value,
+      status: fieldStatus.value
+    };
+
     if (editingId !== null) {
-      var article = articles.find(function(a) { return a.id === editingId; });
-      if (article) {
-        article.title = title;
-        article.category = fieldCategory.value;
-        article.body = fieldBody.value;
-        article.thumbnail = fieldThumbnail.value;
-        article.status = fieldStatus.value;
+      // --- 編集 ---
+      if (useAPI) {
+        AdminAPI.updateMagazine(editingId, toAPIPayload(articleData)).then(function() {
+          showToast('記事を更新しました');
+          closeModal();
+          return refreshArticles();
+        }).catch(function(err) {
+          console.warn('AdminAPI.updateMagazine failed, falling back to localStorage:', err);
+          updateLocalArticle(editingId, articleData);
+          showToast('記事を更新しました（ローカル保存）');
+          closeModal();
+        });
+      } else {
+        updateLocalArticle(editingId, articleData);
+        showToast('記事を更新しました');
+        closeModal();
       }
-      showToast('記事を更新しました');
     } else {
-      articles.unshift({
-        id: nextId++,
-        title: title,
-        category: fieldCategory.value,
-        body: fieldBody.value,
-        thumbnail: fieldThumbnail.value,
-        status: fieldStatus.value,
-        date: formatDate(new Date())
-      });
-      showToast('記事を作成しました');
+      // --- 新規作成 ---
+      if (useAPI) {
+        AdminAPI.createMagazine(toAPIPayload(articleData)).then(function() {
+          showToast('記事を作成しました');
+          closeModal();
+          return refreshArticles();
+        }).catch(function(err) {
+          console.warn('AdminAPI.createMagazine failed, falling back to localStorage:', err);
+          createLocalArticle(articleData);
+          showToast('記事を作成しました（ローカル保存）');
+          closeModal();
+        });
+      } else {
+        createLocalArticle(articleData);
+        showToast('記事を作成しました');
+        closeModal();
+      }
     }
-    saveArticles(articles);
-    renderTable(searchInput.value.trim().toLowerCase());
-    closeModal();
   });
+
+  // --- localStorage CRUD helpers ---
+  function updateLocalArticle(id, data) {
+    var article = articles.find(function(a) { return a.id === id; });
+    if (article) {
+      article.title = data.title;
+      article.category = data.category;
+      article.body = data.body;
+      article.thumbnail = data.thumbnail;
+      article.status = data.status;
+    }
+    saveArticlesToStorage(articles);
+    renderTable(searchInput.value.trim().toLowerCase());
+  }
+
+  function createLocalArticle(data) {
+    var nextId = articles.reduce(function(m, a) { return Math.max(m, a.id); }, 0) + 1;
+    articles.unshift({
+      id: nextId,
+      title: data.title,
+      category: data.category,
+      body: data.body,
+      thumbnail: data.thumbnail,
+      status: data.status,
+      date: formatDate(new Date())
+    });
+    saveArticlesToStorage(articles);
+    renderTable(searchInput.value.trim().toLowerCase());
+  }
 
   // --- Delegated events on tbody ---
   tbody.addEventListener('click', function(e) {
@@ -1311,10 +1405,23 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     if (target.classList.contains('delete-btn')) {
       var id = parseInt(target.getAttribute('data-id'));
       if (confirm('この記事を削除してもよろしいですか？')) {
-        articles = articles.filter(function(a) { return a.id !== id; });
-        saveArticles(articles);
-        renderTable(searchInput.value.trim().toLowerCase());
-        showToast('記事を削除しました');
+        if (useAPI) {
+          AdminAPI.deleteMagazine(id).then(function() {
+            showToast('記事を削除しました');
+            return refreshArticles();
+          }).catch(function(err) {
+            console.warn('AdminAPI.deleteMagazine failed, falling back to localStorage:', err);
+            articles = articles.filter(function(a) { return a.id !== id; });
+            saveArticlesToStorage(articles);
+            renderTable(searchInput.value.trim().toLowerCase());
+            showToast('記事を削除しました（ローカル保存）');
+          });
+        } else {
+          articles = articles.filter(function(a) { return a.id !== id; });
+          saveArticlesToStorage(articles);
+          renderTable(searchInput.value.trim().toLowerCase());
+          showToast('記事を削除しました');
+        }
       }
     }
 
@@ -1323,16 +1430,30 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       var id = parseInt(target.getAttribute('data-id'));
       var article = articles.find(function(a) { return a.id === id; });
       if (article) {
-        article.status = article.status === '公開' ? '下書き' : '公開';
-        saveArticles(articles);
-        renderTable(searchInput.value.trim().toLowerCase());
-        showToast('ステータスを「' + (article.status === '公開' ? '公開' : '下書き') + '」に変更しました');
+        var newStatus = article.status === '公開' ? '下書き' : '公開';
+        if (useAPI) {
+          AdminAPI.updateMagazine(id, { status: newStatus === '公開' ? 'published' : 'draft' }).then(function() {
+            showToast('ステータスを「' + newStatus + '」に変更しました');
+            return refreshArticles();
+          }).catch(function(err) {
+            console.warn('AdminAPI.updateMagazine (status) failed, falling back to localStorage:', err);
+            article.status = newStatus;
+            saveArticlesToStorage(articles);
+            renderTable(searchInput.value.trim().toLowerCase());
+            showToast('ステータスを「' + newStatus + '」に変更しました（ローカル保存）');
+          });
+        } else {
+          article.status = newStatus;
+          saveArticlesToStorage(articles);
+          renderTable(searchInput.value.trim().toLowerCase());
+          showToast('ステータスを「' + newStatus + '」に変更しました');
+        }
       }
     }
   });
 
-  // --- Initial render ---
-  renderTable();
+  // --- Initial load ---
+  refreshArticles();
 })();
 </script>
 </body>

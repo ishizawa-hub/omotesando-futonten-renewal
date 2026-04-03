@@ -1130,6 +1130,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
+<script src="js/admin-api.js"></script>
 <script>
 (function() {
   'use strict';
@@ -1144,6 +1145,34 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     '配達完了': { bg:'#D4EDDA', color:'#155724' },
     'キャンセル':{ bg:'#F8D7DA', color:'#721C24' }
   };
+
+  // WooCommerce英語ステータス → 日本語マッピング
+  const WC_STATUS_MAP = {
+    'pending':    '処理待ち',
+    'processing': '処理中',
+    'on-hold':    '処理待ち',
+    'completed':  '配達完了',
+    'cancelled':  'キャンセル',
+    'refunded':   'キャンセル',
+    'failed':     'キャンセル',
+    'shipped':    '発送済み',
+    'preparing':  '発送準備中'
+  };
+
+  // 日本語ステータス → WooCommerce英語マッピング（API送信用）
+  const JP_TO_WC_STATUS = {
+    '未処理':     'pending',
+    '処理待ち':   'on-hold',
+    '処理中':     'processing',
+    '発送準備中': 'preparing',
+    '発送済み':   'shipped',
+    '配達完了':   'completed',
+    'キャンセル': 'cancelled'
+  };
+
+  function toJpStatus(status) {
+    return WC_STATUS_MAP[status] || status;
+  }
 
   // === TOAST ===
   function showToast(msg) {
@@ -1161,17 +1190,19 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     }, 3000);
   }
 
-  // === PERSISTENCE ===
-  function loadOrderData() {
+  // === PERSISTENCE (localStorage フォールバック用) ===
+  function loadOrderDataLocal() {
     try { return JSON.parse(localStorage.getItem('admin_orders') || '{}'); } catch(e) { return {}; }
   }
-  function saveOrderData(data) {
+  function saveOrderDataLocal(data) {
     localStorage.setItem('admin_orders', JSON.stringify(data));
   }
 
-  // Apply saved data on load
-  function applySavedData() {
-    const data = loadOrderData();
+  // === 注文番号 → API注文IDマッピング ===
+  const orderNumToId = {};
+
+  // Apply saved/API data to existing rows
+  function applyStatusToRows(data) {
     const rows = document.querySelectorAll('tbody tr');
     rows.forEach(row => {
       const orderNum = row.cells[0].textContent.trim();
@@ -1179,14 +1210,44 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
         const d = data[orderNum];
         if (d.status) {
           const badge = row.cells[4].querySelector('span');
-          const s = STATUS_STYLES[d.status] || STATUS_STYLES['処理待ち'];
-          badge.textContent = d.status;
+          const jpStatus = toJpStatus(d.status);
+          const s = STATUS_STYLES[jpStatus] || STATUS_STYLES['処理待ち'];
+          badge.textContent = jpStatus;
           badge.style.background = s.bg;
           badge.style.color = s.color;
         }
       }
     });
   }
+
+  // === データ読み込み: API優先、失敗時はlocalStorageフォールバック ===
+  (async function loadData() {
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        const orders = await AdminAPI.getOrders();
+        const apiData = {};
+        orders.forEach(order => {
+          // API注文IDをフォーマットして注文番号と紐付け
+          // HTMLの注文番号は "#OFT-0412" のような形式
+          const orderNum = '#OFT-' + String(order.id).padStart(4, '0');
+          orderNumToId[orderNum] = order.id;
+          apiData[orderNum] = {
+            status: toJpStatus(order.status),
+            tracking: ''
+          };
+        });
+        applyStatusToRows(apiData);
+        // localStorageにもキャッシュ
+        saveOrderDataLocal(apiData);
+        console.log('[Orders] APIからデータ取得成功 (' + orders.length + '件)');
+      } else {
+        throw new Error('AdminAPI未定義');
+      }
+    } catch (e) {
+      console.warn('[Orders] APIフォールバック → localStorage:', e.message);
+      applyStatusToRows(loadOrderDataLocal());
+    }
+  })();
 
   // === SEARCH & FILTER ===
   const headerDiv = document.querySelector('h2').closest('div');
@@ -1222,7 +1283,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     currentRow = row;
     const cells = row.cells;
     const orderNum = cells[0].textContent.trim();
-    const data = loadOrderData();
+    const data = loadOrderDataLocal();
     const saved = data[orderNum] || {};
 
     document.getElementById('modalOrderNum').textContent = orderNum;
@@ -1247,7 +1308,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     if (e.key === 'Escape') closeModal();
   });
 
-  window.saveOrderUpdate = function() {
+  window.saveOrderUpdate = async function() {
     if (!currentRow) return;
     const orderNum = currentRow.cells[0].textContent.trim();
     const newStatus = document.getElementById('modalStatus').value;
@@ -1260,10 +1321,24 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     badge.style.background = s.bg;
     badge.style.color = s.color;
 
-    // Save to localStorage
-    const data = loadOrderData();
+    // API経由でステータス更新、失敗時はlocalStorageに保存
+    try {
+      const orderId = orderNumToId[orderNum];
+      if (typeof AdminAPI !== 'undefined' && orderId) {
+        const wcStatus = JP_TO_WC_STATUS[newStatus] || newStatus;
+        await AdminAPI.updateOrderStatus(orderId, wcStatus);
+        console.log('[Orders] APIステータス更新成功: ' + orderNum + ' → ' + newStatus);
+      } else {
+        throw new Error('API未対応');
+      }
+    } catch (e) {
+      console.warn('[Orders] APIフォールバック → localStorage:', e.message);
+    }
+
+    // localStorageにも常にキャッシュ
+    const data = loadOrderDataLocal();
     data[orderNum] = { status: newStatus, tracking: tracking };
-    saveOrderData(data);
+    saveOrderDataLocal(data);
 
     closeModal();
     showToast('注文ステータスを更新しました');
@@ -1279,7 +1354,6 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   }
 
   // === INIT ===
-  applySavedData();
   attachRowListeners();
 })();
 </script>
