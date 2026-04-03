@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ページ編集 | 管理画面 | 表参道布団店。</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+a { text-decoration:none; color:inherit; }
+
+/* Page selector tabs */
+.page-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+.page-tab { padding:10px 20px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; border:1px solid #EAEDF3; background:#fff; color:#555; transition:all 0.2s; }
+.page-tab:hover { border-color:#C9A96E; color:#C9A96E; }
+.page-tab.active { background:#C9A96E; color:#fff; border-color:#C9A96E; }
+
+/* Section card */
+.section-card { background:#fff; border-radius:10px; border:1px solid #EAEDF3; padding:24px 28px; margin-bottom:16px; }
+.section-card h3 { font-size:15px; font-weight:700; color:#1A1A1A; margin-bottom:4px; }
+.section-card .section-id { font-size:11px; color:#AAA; margin-bottom:16px; letter-spacing:0.04em; }
+
+/* Field */
+.field { margin-bottom:14px; }
+.field label { display:block; font-size:12px; font-weight:600; color:#888; margin-bottom:4px; letter-spacing:0.02em; }
+.field input, .field textarea { width:100%; padding:10px 12px; border:1px solid #EAEDF3; border-radius:6px; font-size:14px; font-family:inherit; transition:border-color 0.2s; }
+.field input:focus, .field textarea:focus { outline:none; border-color:#C9A96E; }
+.field textarea { resize:vertical; min-height:80px; line-height:1.7; }
+
+/* Grid layout for short fields */
+.field-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:768px) { .field-grid { grid-template-columns:1fr; } }
+
+/* Action bar */
+.action-bar { display:flex; justify-content:space-between; align-items:center; margin-top:24px; padding-top:20px; border-top:1px solid #EAEDF3; }
+.btn-save { padding:12px 32px; background:#C9A96E; color:#fff; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; }
+.btn-save:hover { background:#B8975A; }
+.btn-reset { padding:12px 24px; background:#F5F6FA; color:#555; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; }
+.unsaved { font-size:13px; color:#E74C3C; font-weight:500; }
+
+/* Preview link */
+.preview-link { display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#C9A96E; font-weight:600; margin-top:8px; }
+.preview-link:hover { text-decoration:underline; }
+
+/* Character counter */
+.char-counter { display:inline-block; font-size:11px; color:#AAA; margin-left:8px; }
+.char-counter.over { color:#E53935; font-weight:600; }
+.field-hint { display:block; color:#AAA; font-size:11px; margin-top:3px; line-height:1.5; }
+.field-hint .hint-icon { display:inline-block; width:14px; height:14px; background:#F0F0F0; border-radius:50%; text-align:center; font-size:9px; line-height:14px; margin-right:3px; color:#888; }
+
+/* Toast */
+#toast { display:none; position:fixed; bottom:32px; right:32px; background:#2D2D2D; color:#fff; padding:14px 28px; border-radius:8px; font-size:14px; font-weight:500; z-index:10000; box-shadow:0 4px 16px rgba(0,0,0,0.2); }
+
+/* Mobile admin */
+@media(max-width:768px) {
+  .admin-sidebar-fix { display:none !important; }
+  .admin-main-fix { margin-left:0 !important; }
+  .admin-main-fix > div[style*="padding"] { padding:12px !important; }
+  .page-tabs { gap:6px; }
+  .page-tab { padding:8px 14px; font-size:12px; }
+  .section-card { padding:16px; }
+  .field-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
+  <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
+    <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
+    <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
+  </div>
+  <nav style="flex:1; padding:16px 12px;">
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9632;</span> ダッシュボード
+    </a>
+    <a href="products.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9776;</span> 商品管理
+    </a>
+    <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 在庫管理
+    </a>
+    <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
+    <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
+    </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
+    <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 設定
+    </a>
+  </nav>
+  <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
+    <a href="login.html" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
+  </div>
+</div>
+
+<!-- Main -->
+<div class="admin-main-fix" style="margin-left:260px;min-height:100vh">
+  <div style="height:64px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50">
+    <h1 style="font-size:18px;font-weight:700;color:#1A1A1A">ページ編集</h1>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div>
+      <div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div>
+    </div>
+  </div>
+  <div style="padding:28px 32px">
+    <!-- Page tabs -->
+    <div class="page-tabs" id="pageTabs"></div>
+    <!-- Editor area -->
+    <div id="editorArea"></div>
+    <!-- Action bar -->
+    <div class="action-bar">
+      <span class="unsaved" id="unsavedMsg" style="display:none">&#9679; 未保存の変更があります</span>
+      <div style="display:flex;gap:12px;margin-left:auto;">
+        <button class="btn-reset" id="resetBtn">デフォルトに戻す</button>
+        <button class="btn-save" id="saveBtn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="js/admin-api.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/cart.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  var STORAGE_KEY = 'oft_page_content';
+
+  // ============================================================
+  // ページ定義：各ページの編集可能セクション
+  // ============================================================
+  var PAGE_DEFS = {
+    top: {
+      label: 'TOPページ',
+      path: '/',
+      sections: [
+        { id: 'hero', title: 'ヒーローセクション', hint: 'ファーストビューに表示。背景画像: 1920×1080px推奨', fields: [
+          { key: 'hero_badge', label: 'バッジテキスト', type: 'input', default: 'Omotesando Futon Ten.', maxLen: 30, hint: '英語表記推奨。ブランド名として表示' },
+          { key: 'hero_catch', label: 'キャッチコピー（h1）', type: 'input', default: '眠りの質を、人生の質へ。', maxLen: 25, hint: 'SEO上最重要。簡潔で印象的なフレーズに' },
+          { key: 'hero_sub', label: 'サブコピー', type: 'textarea', default: '白州の天然水で洗浄された最高品質のダウンを、富士吉田の職人が一枚ずつ仕立てる。', maxLen: 80, hint: 'キャッチコピーを補足する説明文' },
+          { key: 'hero_cta', label: 'CTAボタンテキスト', type: 'input', default: 'Explore Products', maxLen: 20, hint: '英語推奨。クリックを促すアクション語句' }
+        ]},
+        { id: 'brand_story', title: 'ブランドストーリー', hint: 'ブランドの世界観を伝えるセクション', fields: [
+          { key: 'story_heading', label: '見出し（英語）', type: 'input', default: 'Our Origin', maxLen: 20, hint: '英語セクション見出し' },
+          { key: 'story_heading_jp', label: '見出し（日本語）', type: 'input', default: '日本の寝室に、デザインを。', maxLen: 25, hint: 'メインの日本語見出し' },
+          { key: 'story_founder', label: '創業者テキスト', type: 'input', default: 'Founder 古賀貴之 / 2015年創業', maxLen: 40, hint: '「Founder 名前 / 創業年」の形式推奨' },
+          { key: 'story_quote', label: 'ブランド引用', type: 'input', default: '「日本の寝室に、デザインを。」', maxLen: 30, hint: '「」で囲んだ象徴的な一文' },
+          { key: 'story_desc', label: '説明文', type: 'textarea', default: '南アルプスの麓、白州の天然水で洗浄された最高品質のダウンを、富士吉田の熟練職人が一枚ずつ丁寧に仕立てる。自然の恵みと伝統の技が生み出す、かつてない眠りの体験を。', maxLen: 150, hint: 'ブランドの背景・こだわりを伝える本文。2〜3文が適切' },
+          { key: 'story_point1', label: '特長1', type: 'input', default: '白州の天然水で徹底洗浄', maxLen: 20, hint: '簡潔なキーワード' },
+          { key: 'story_point2', label: '特長2', type: 'input', default: '富士吉田の職人による手仕立て', maxLen: 20, hint: '簡潔なキーワード' },
+          { key: 'story_point3', label: '特長3', type: 'input', default: 'サステナブルなダウン循環', maxLen: 20, hint: '簡潔なキーワード' }
+        ]},
+        { id: 'products_section', title: '商品コレクション', hint: '商品一覧セクションの見出し', fields: [
+          { key: 'products_heading', label: '見出し（英語）', type: 'input', default: 'PRODUCTS', maxLen: 20, hint: '英語大文字推奨' },
+          { key: 'products_sub', label: 'サブテキスト', type: 'input', default: 'あなたの眠りにふさわしい一枚を', maxLen: 30, hint: '日本語のサブ見出し' }
+        ]},
+        { id: 'experience', title: '羽毛布団の価値', hint: '4つの価値カードセクション。アイコン画像: 各120×120px推奨', fields: [
+          { key: 'exp_heading', label: '見出し（英語）', type: 'input', default: 'Experience', maxLen: 20 },
+          { key: 'exp_sub', label: 'サブテキスト', type: 'input', default: '羽毛布団の4つの価値', maxLen: 25 },
+          { key: 'exp1_title', label: '価値1 タイトル', type: 'input', default: '保温性', maxLen: 10, hint: '短いキーワード' },
+          { key: 'exp1_desc', label: '価値1 説明', type: 'textarea', default: '', maxLen: 80, hint: '1〜2文で説明' },
+          { key: 'exp2_title', label: '価値2 タイトル', type: 'input', default: '軽さと爽やかさ', maxLen: 10 },
+          { key: 'exp2_desc', label: '価値2 説明', type: 'textarea', default: '', maxLen: 80 },
+          { key: 'exp3_title', label: '価値3 タイトル', type: 'input', default: '臭い徹底排除', maxLen: 10 },
+          { key: 'exp3_desc', label: '価値3 説明', type: 'textarea', default: '', maxLen: 80 },
+          { key: 'exp4_title', label: '価値4 タイトル', type: 'input', default: '10年以上', maxLen: 10 },
+          { key: 'exp4_desc', label: '価値4 説明', type: 'textarea', default: '', maxLen: 80 }
+        ]},
+        { id: 'craft', title: '匠の技セクション', hint: '背景画像: 1920×800px推奨（工房・職人の写真）', fields: [
+          { key: 'craft_heading', label: '見出し（英語）', type: 'input', default: 'Made by Hand', maxLen: 20 },
+          { key: 'craft_heading_jp', label: '見出し（日本語）', type: 'input', default: '白州水と職人の技', maxLen: 20 },
+          { key: 'craft_desc', label: '説明文', type: 'textarea', default: '南アルプスの伏流水「白州の天然水」で羽毛を徹底洗浄。富士吉田の工房で、一枚ずつ職人が手仕事で仕立てます。素材の選定から仕上げまで、一切の妥協なく。', maxLen: 150, hint: '製造工程のこだわりを伝える。2〜3文推奨' }
+        ]}
+      ]
+    },
+    brand_story: {
+      label: 'ブランドストーリー',
+      path: '/concept/brand-story/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', hint: 'ヒーロー画像: 1920×600px推奨（ブランドイメージ写真）', fields: [
+          { key: 'hero_label', label: 'ラベル（英語）', type: 'input', default: 'CONCEPT', maxLen: 15, hint: '英語大文字。カテゴリラベル' },
+          { key: 'hero_title', label: 'タイトル（英語）', type: 'input', default: 'Brand Story', maxLen: 25 },
+          { key: 'hero_subtitle', label: 'サブタイトル', type: 'input', default: 'ブランドストーリー', maxLen: 20 }
+        ]},
+        { id: 'philosophy', title: 'フィロソフィー', fields: [
+          { key: 'phil_label', label: 'ラベル（英語）', type: 'input', default: 'PHILOSOPHY', maxLen: 20 },
+          { key: 'phil_title', label: 'タイトル', type: 'input', default: '眠りの質を、人生の質へ。', maxLen: 25, hint: 'ブランドの核心を表すフレーズ' },
+          { key: 'phil_body', label: '本文', type: 'textarea', default: '', maxLen: 200, hint: 'フィロソフィーの詳細説明。3〜5文推奨' }
+        ]},
+        { id: 'values', title: 'バリュー', hint: '3つのバリューカード。アイコン画像: 各80×80px推奨', fields: [
+          { key: 'value1_name', label: 'バリュー1 名前', type: 'input', default: '', maxLen: 15 },
+          { key: 'value1_desc', label: 'バリュー1 説明', type: 'textarea', default: '', maxLen: 100 },
+          { key: 'value2_name', label: 'バリュー2 名前', type: 'input', default: '', maxLen: 15 },
+          { key: 'value2_desc', label: 'バリュー2 説明', type: 'textarea', default: '', maxLen: 100 },
+          { key: 'value3_name', label: 'バリュー3 名前', type: 'input', default: '', maxLen: 15 },
+          { key: 'value3_desc', label: 'バリュー3 説明', type: 'textarea', default: '', maxLen: 100 }
+        ]},
+        { id: 'team', title: 'チーム', hint: 'チーム紹介セクション。人物写真: 400×400px推奨', fields: [
+          { key: 'team_title', label: 'タイトル', type: 'input', default: '', maxLen: 25 },
+          { key: 'team_text', label: '本文', type: 'textarea', default: '', maxLen: 200 },
+          { key: 'team_founder_name', label: '創業者名', type: 'input', default: '', maxLen: 15 },
+          { key: 'team_founder_role', label: '役職', type: 'input', default: '', maxLen: 20 }
+        ]}
+      ]
+    },
+    clean_cycle_down: {
+      label: 'Clean Cycle Down',
+      path: '/concept/clean-cycle-down/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', hint: 'ヒーロー画像: 1920×600px推奨（リサイクル工程の写真）', fields: [
+          { key: 'hero_title', label: 'タイトル', type: 'input', default: 'Clean Cycle Down', maxLen: 25 },
+          { key: 'hero_subtitle', label: 'サブタイトル', type: 'textarea', default: '', maxLen: 80, hint: 'CCDの魅力を伝えるリード文' }
+        ]},
+        { id: 'intro', title: 'イントロ', fields: [
+          { key: 'intro_label', label: 'ラベル（英語）', type: 'input', default: 'WHY CLEAN CYCLE DOWN', maxLen: 30 },
+          { key: 'intro_title', label: 'タイトル', type: 'input', default: '捨てられるダウンに、新しい命を。', maxLen: 25 },
+          { key: 'intro_body', label: '本文', type: 'textarea', default: '', maxLen: 200, hint: 'CCD誕生の背景と意義。3〜5文推奨' }
+        ]},
+        { id: 'process', title: 'プロセス', hint: '4ステップの循環プロセス。各ステップにアイコン画像: 100×100px推奨', fields: [
+          { key: 'step1_title', label: 'ステップ1 タイトル', type: 'input', default: '', maxLen: 15 },
+          { key: 'step1_desc', label: 'ステップ1 説明', type: 'textarea', default: '', maxLen: 100 },
+          { key: 'step2_title', label: 'ステップ2 タイトル', type: 'input', default: '', maxLen: 15 },
+          { key: 'step2_desc', label: 'ステップ2 説明', type: 'textarea', default: '', maxLen: 100 },
+          { key: 'step3_title', label: 'ステップ3 タイトル', type: 'input', default: '', maxLen: 15 },
+          { key: 'step3_desc', label: 'ステップ3 説明', type: 'textarea', default: '', maxLen: 100 },
+          { key: 'step4_title', label: 'ステップ4 タイトル', type: 'input', default: '', maxLen: 15 },
+          { key: 'step4_desc', label: 'ステップ4 説明', type: 'textarea', default: '', maxLen: 100 }
+        ]}
+      ]
+    },
+    material: {
+      label: '素材のこだわり',
+      path: '/concept/material/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', hint: 'ヒーロー画像: 1920×600px推奨（素材のクローズアップ写真）', fields: [
+          { key: 'hero_title', label: 'タイトル（日本語）', type: 'input', default: '素材のこだわり', maxLen: 15 },
+          { key: 'hero_title_en', label: 'タイトル（英語）', type: 'input', default: 'MATERIALS', maxLen: 20 }
+        ]},
+        { id: 'lineup', title: 'ダウンラインナップ', hint: 'ダウン4種の紹介。各カード画像: 600×400px推奨', fields: [
+          { key: 'lineup_title', label: '見出し（英語）', type: 'input', default: 'Down Collection', maxLen: 25 },
+          { key: 'lineup_subtitle', label: 'サブテキスト', type: 'input', default: '用途と品質で選べる、4つのダウンライン。', maxLen: 30 }
+        ]},
+        { id: 'rds', title: 'RDS認証', hint: 'RDS認証バッジ画像: 200×200px推奨', fields: [
+          { key: 'rds_title', label: 'タイトル', type: 'input', default: 'Responsible Down Standard', maxLen: 35 },
+          { key: 'rds_desc', label: '説明文', type: 'textarea', default: '', maxLen: 150, hint: 'RDS認証の意義と品質保証について' }
+        ]},
+        { id: 'fabric', title: '生地素材', hint: '生地の比較セクション。サンプル画像: 各600×400px推奨', fields: [
+          { key: 'fabric_title', label: '見出し（英語）', type: 'input', default: 'Fabric Quality', maxLen: 25 },
+          { key: 'fabric1_title', label: '生地1 タイトル', type: 'input', default: '', maxLen: 20 },
+          { key: 'fabric1_desc', label: '生地1 説明', type: 'textarea', default: '', maxLen: 100, hint: '素材特性・メリットを簡潔に' },
+          { key: 'fabric2_title', label: '生地2 タイトル', type: 'input', default: '', maxLen: 20 },
+          { key: 'fabric2_desc', label: '生地2 説明', type: 'textarea', default: '', maxLen: 100 }
+        ]}
+      ]
+    },
+    about: {
+      label: '会社概要',
+      path: '/about/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', hint: 'ヒーロー画像: 1920×400px推奨（会社外観や店舗写真）', fields: [
+          { key: 'hero_title', label: 'タイトル（英語）', type: 'input', default: 'About Us', maxLen: 20 },
+          { key: 'hero_subtitle', label: 'サブタイトル', type: 'input', default: '', maxLen: 20 }
+        ]},
+        { id: 'company', title: '会社情報', fields: [
+          { key: 'company_name', label: '会社名', type: 'input', default: '', maxLen: 30 },
+          { key: 'company_address', label: '所在地', type: 'input', default: '', maxLen: 50 },
+          { key: 'company_tel', label: '電話番号', type: 'input', default: '', maxLen: 15, hint: 'ハイフン区切り推奨（例: 03-1234-5678）' },
+          { key: 'company_email', label: 'メール', type: 'input', default: '', maxLen: 40 },
+          { key: 'company_desc', label: '会社説明', type: 'textarea', default: '', maxLen: 300, hint: '事業内容・理念・沿革など。5〜10文推奨' }
+        ]}
+      ]
+    },
+    faq: {
+      label: 'FAQ',
+      path: '/faq/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', fields: [
+          { key: 'hero_title', label: 'タイトル', type: 'input', default: 'FAQ', maxLen: 15 },
+          { key: 'hero_subtitle', label: 'サブタイトル', type: 'input', default: '', maxLen: 25, hint: '「よくあるご質問」等の日本語補足' }
+        ]}
+      ]
+    },
+    shopping_guide: {
+      label: 'ショッピングガイド',
+      path: '/shopping-guide/',
+      sections: [
+        { id: 'hero', title: 'ヒーロー', fields: [
+          { key: 'hero_title', label: 'タイトル', type: 'input', default: 'Shopping Guide', maxLen: 20 },
+          { key: 'hero_subtitle', label: 'サブタイトル', type: 'input', default: '', maxLen: 25 }
+        ]},
+        { id: 'shipping', title: '配送・決済情報', hint: '配送・返品・決済ポリシーの詳細', fields: [
+          { key: 'shipping_text', label: '配送について', type: 'textarea', default: '', maxLen: 300, hint: '送料・配送エリア・日数などを記載' },
+          { key: 'return_text', label: '返品について', type: 'textarea', default: '', maxLen: 300, hint: '返品条件・手順・期限を記載' },
+          { key: 'payment_text', label: 'お支払いについて', type: 'textarea', default: '', maxLen: 300, hint: '対応決済方法を記載' }
+        ]}
+      ]
+    }
+  };
+
+  // ============================================================
+  // State
+  // ============================================================
+  var currentPage = 'top';
+  var data = {};
+  var dirty = false;
+
+  function loadData() {
+    try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { data = {}; }
+  }
+
+  function saveData() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    dirty = false;
+    document.getElementById('unsavedMsg').style.display = 'none';
+    showToast('保存しました');
+  }
+
+  function markDirty() {
+    dirty = true;
+    document.getElementById('unsavedMsg').style.display = '';
+  }
+
+  function getVal(pageId, key) {
+    if (data[pageId] && data[pageId][key] !== undefined) return data[pageId][key];
+    return '';
+  }
+
+  function setVal(pageId, key, val) {
+    if (!data[pageId]) data[pageId] = {};
+    data[pageId][key] = val;
+    markDirty();
+  }
+
+  // ============================================================
+  // Render
+  // ============================================================
+  function renderTabs() {
+    var html = '';
+    Object.keys(PAGE_DEFS).forEach(function(id) {
+      var cls = id === currentPage ? ' active' : '';
+      html += '<div class="page-tab' + cls + '" data-page="' + id + '">' + PAGE_DEFS[id].label + '</div>';
+    });
+    document.getElementById('pageTabs').innerHTML = html;
+
+    // Bind
+    document.querySelectorAll('.page-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        currentPage = this.getAttribute('data-page');
+        renderTabs();
+        renderEditor();
+      });
+    });
+  }
+
+  function renderEditor() {
+    var def = PAGE_DEFS[currentPage];
+    if (!def) return;
+
+    var html = '<a class="preview-link" href="..' + def.path + '" target="_blank">&#128065; プレビューを開く（' + def.path + '）</a>';
+    html += '<div style="height:16px"></div>';
+
+    def.sections.forEach(function(sec) {
+      html += '<div class="section-card">';
+      html += '<h3>' + sec.title + '</h3>';
+      html += '<div class="section-id">' + currentPage + '.' + sec.id + '</div>';
+      if (sec.hint) {
+        html += '<div class="field-hint" style="margin-bottom:14px"><span class="hint-icon">i</span>' + sec.hint + '</div>';
+      }
+
+      sec.fields.forEach(function(f) {
+        var val = getVal(currentPage, f.key) || f.default;
+        var charLen = val ? val.length : 0;
+        html += '<div class="field">';
+        html += '<label>' + f.label;
+        if (f.maxLen) {
+          var overClass = charLen > f.maxLen ? ' over' : '';
+          html += ' <span class="char-counter' + overClass + '" data-counter="' + f.key + '">' + charLen + '/' + f.maxLen + '文字</span>';
+        }
+        html += '</label>';
+        if (f.type === 'textarea') {
+          html += '<textarea data-page="' + currentPage + '" data-key="' + f.key + '"' + (f.maxLen ? ' data-maxlen="' + f.maxLen + '"' : '') + ' placeholder="' + (f.default || '') + '">' + escHtml(val) + '</textarea>';
+        } else {
+          html += '<input type="text" data-page="' + currentPage + '" data-key="' + f.key + '"' + (f.maxLen ? ' data-maxlen="' + f.maxLen + '"' : '') + ' value="' + escAttr(val) + '" placeholder="' + escAttr(f.default || '') + '">';
+        }
+        if (f.hint) {
+          html += '<span class="field-hint"><span class="hint-icon">i</span>' + f.hint + '</span>';
+        }
+        html += '</div>';
+      });
+
+      html += '</div>';
+    });
+
+    document.getElementById('editorArea').innerHTML = html;
+
+    // Bind change events with char counter update
+    document.querySelectorAll('#editorArea input, #editorArea textarea').forEach(function(el) {
+      el.addEventListener('input', function() {
+        setVal(this.getAttribute('data-page'), this.getAttribute('data-key'), this.value);
+        // Update character counter
+        var maxLen = this.getAttribute('data-maxlen');
+        if (maxLen) {
+          var counter = document.querySelector('[data-counter="' + this.getAttribute('data-key') + '"]');
+          if (counter) {
+            var len = this.value.length;
+            counter.textContent = len + '/' + maxLen + '文字';
+            if (len > parseInt(maxLen)) {
+              counter.classList.add('over');
+            } else {
+              counter.classList.remove('over');
+            }
+          }
+        }
+      });
+    });
+  }
+
+  function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    t.style.opacity = '1';
+    setTimeout(function() { t.style.opacity = '0'; setTimeout(function() { t.style.display = 'none'; t.style.opacity = '1'; }, 300); }, 2000);
+  }
+
+  // ============================================================
+  // Init
+  // ============================================================
+  loadData();
+  renderTabs();
+  renderEditor();
+
+  document.getElementById('saveBtn').addEventListener('click', saveData);
+  document.getElementById('resetBtn').addEventListener('click', function() {
+    if (confirm('「' + PAGE_DEFS[currentPage].label + '」の編集内容をリセットしますか？')) {
+      delete data[currentPage];
+      renderEditor();
+      markDirty();
+    }
+  });
+
+  // Warn on leave if dirty
+  window.addEventListener('beforeunload', function(e) {
+    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+})();
+</script>
+</body>
+</html>

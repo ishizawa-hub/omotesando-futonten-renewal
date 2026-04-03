@@ -8,1004 +8,109 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-/* === GLOBAL NAV WITH DROPDOWNS === */
-.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
-.header-logo img{height:28px;width:auto}
-.header-nav{display:flex;align-items:center;gap:32px}
-.header-nav-item{position:relative}
-.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
-.header-nav-item>a:hover{color:#C9A96E}
-/* Dropdown */
-.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
-.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
-.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
-.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
-/* Mega menu for PRODUCTS (with images) */
-.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
-.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
-.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
-.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
-.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
-/* Actions */
-.header-actions{display:flex;align-items:center;gap:16px}
-.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
-.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
-.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
-@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
-@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
-/* === END GLOBAL NAV === */
-
-/* FOOTER */
-.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
-.footer-logo{margin-bottom:16px}
-.footer-logo img{height:24px}
-.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
-.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
-.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
-.footer-nav a:hover{color:#C9A96E}
-.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
-@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
-
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
   a { text-decoration:none; color:inherit; }
   table { width:100%; border-collapse:collapse; }
-  th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
+  th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; white-space:nowrap; }
   td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
   tr:hover { background:#FAFBFD; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; border:none; font-family:inherit; transition:all 0.2s; }
+  .btn:hover { opacity:0.85; }
+  .btn-primary { background:#C9A96E; color:#fff; }
+  .btn-primary:hover { background:#B8964E; }
+  .btn-outline { background:#fff; color:#333; border:1px solid #DDD; }
+  .btn-outline:hover { border-color:#C9A96E; color:#C9A96E; }
+  .btn-danger { background:#fff; color:#DC3545; border:1px solid #DC3545; }
+  .btn-danger:hover { background:#DC3545; color:#fff; }
+  .btn-warning { background:#fff; color:#E67E22; border:1px solid #E67E22; }
+  .btn-warning:hover { background:#E67E22; color:#fff; }
+  .btn-sm { padding:5px 10px; font-size:11px; }
 
+  /* Form controls */
+  .form-label { display:block; font-size:11px; font-weight:600; color:#999; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:6px; }
+  .form-input, .form-select, .form-textarea {
+    width:100%; padding:10px 14px; border:1px solid #DDD; border-radius:8px;
+    font-size:13px; font-family:inherit; outline:none; transition:border-color 0.2s;
+    background:#fff; box-sizing:border-box;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:#C9A96E; }
+  .form-textarea { resize:vertical; min-height:80px; }
 
-</style>
-
-<style id="mobile-responsive">/* ================================================================
-   MOBILE RESPONSIVE OVERRIDES v2
-   ================================================================ */
-
-/* ---- GLOBAL ---- */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw;
-}
-
-/* ---- HEADER ---- */
-@media (max-width: 768px) {
-  .header {
-    height: 56px !important;
-  }
-  .header-inner {
-    padding: 0 16px !important;
-  }
-  .header-logo img {
-    height: 20px !important;
-    max-width: 160px;
-  }
-  .header-actions {
-    gap: 8px !important;
-  }
-  .header-actions > a {
-    font-size: 11px !important;
-    letter-spacing: 0.04em !important;
-  }
-  .hamburger {
-    padding: 10px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .hamburger span {
-    width: 24px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    height: 52px !important;
-  }
-  .header-logo img {
-    height: 18px !important;
-    max-width: 140px;
-  }
-}
-
-/* ---- MOBILE MENU ---- */
-.mobile-menu {
-  max-width: 100%;
-}
-.mobile-menu-overlay {
-  overflow: hidden !important;
-}
-
-/* ---- FOOTER ---- */
-@media (max-width: 768px) {
-  .footer {
-    padding: 48px 0 0 !important;
-  }
-  .footer-inner {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px 20px !important;
-    padding: 0 20px !important;
-  }
-  .footer-brand {
-    grid-column: 1 / -1 !important;
-    text-align: center !important;
-  }
-  .footer-col-last {
-    display: contents !important;
-  }
-  .footer-nav-title {
-    font-size: 12px !important;
-    margin-bottom: 12px !important;
-  }
-  .footer-nav a {
-    font-size: 13px !important;
-    padding: 4px 0 !important;
-  }
-  .footer-desc {
-    font-size: 13px !important;
-  }
-  .footer-bottom {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 20px 16px 16px !important;
-    margin-top: 32px !important;
-  }
-  .footer-legal {
-    gap: 12px !important;
-  }
-  .footer-legal a {
-    white-space: nowrap !important;
-    font-size: 11px !important;
-  }
-  .footer-copy {
-    font-size: 11px !important;
-  }
-  .footer-newsletter {
-    margin-top: 16px !important;
-  }
-}
-
-/* ---- PAGE HERO ---- */
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 100px 0 40px !important;
-    min-height: auto !important;
-  }
-  .page-hero-title {
-    font-size: 32px !important;
-  }
-  .page-hero-en {
-    font-size: 11px !important;
-  }
-  .page-hero-jp {
-    font-size: 13px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-hero {
-    padding: 72px 0 28px !important;
-  }
-  .page-hero-title {
-    font-size: 24px !important;
-  }
-}
-
-/* ---- PRODUCTS LISTING ---- */
-@media (max-width: 768px) {
-  .flagship-section {
-    padding: 32px 16px !important;
-  }
-  .flagship-card {
-    flex-direction: column !important;
-  }
-  .flagship-img {
-    height: 220px !important;
-    min-height: auto !important;
-  }
-  .flagship-body {
-    padding: 24px 20px !important;
-  }
-  .flagship-title {
-    font-size: 24px !important;
-  }
-  .flagship-desc {
-    font-size: 14px !important;
-  }
-  .flagship-stats {
-    gap: 16px !important;
-  }
-  .flagship-stat-num {
-    font-size: 18px !important;
+  /* Status badges */
+  .status-badge {
+    display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; white-space:nowrap;
   }
 
-  .category-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px;
+  /* Toast */
+  #toast {
+    position:fixed; bottom:32px; right:32px; z-index:100000; background:#2D2D2D; color:#fff;
+    padding:14px 24px; border-radius:10px; font-size:14px; font-weight:500;
+    box-shadow:0 8px 24px rgba(0,0,0,0.2); border-left:4px solid #C9A96E;
+    transition:opacity 0.3s,transform 0.3s; opacity:0; transform:translateY(12px);
+    pointer-events:none; display:none;
   }
-  .category-card--wide {
-    grid-column: 1 / -1 !important;
+  #toast.show { opacity:1; transform:translateY(0); pointer-events:auto; display:block; }
+
+  /* Modal overlay */
+  .modal-overlay {
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,0.5); backdrop-filter:blur(4px);
+    align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto;
   }
-  .category-card-image {
-    height: 140px !important;
+  .modal-overlay.active { display:flex; }
+
+  /* Modal box */
+  .modal-box {
+    background:#fff; border-radius:12px; width:820px; max-width:100%;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3); margin:auto;
   }
-  .category-card-image img {
-    height: 100% !important;
-    object-fit: cover;
+  .modal-header {
+    padding:20px 28px; border-bottom:1px solid #EAEDF3;
+    display:flex; justify-content:space-between; align-items:center;
   }
-  .category-card-body {
-    padding: 12px !important;
-  }
-  .category-card-en {
-    font-size: 11px !important;
-  }
-  .category-card-jp {
-    font-size: 13px !important;
-  }
-  .category-card-meta {
-    font-size: 11px !important;
-  }
-  .category-card-count,
-  .category-card-price {
-    font-size: 11px !important;
+  .modal-header h3 { font-size:18px; font-weight:700; color:#1A1A1A; }
+  .modal-close { background:none; border:none; font-size:24px; cursor:pointer; color:#999; padding:4px 8px; line-height:1; }
+  .modal-close:hover { color:#333; }
+  .modal-body { padding:28px; }
+
+  /* Modal sections */
+  .modal-section { margin-bottom:28px; }
+  .modal-section:last-child { margin-bottom:0; }
+  .modal-section-title {
+    font-size:13px; font-weight:700; color:#C9A96E; text-transform:uppercase;
+    letter-spacing:0.08em; margin-bottom:16px; padding-bottom:8px;
+    border-bottom:1px solid #F0F0F0;
   }
 
-  .accessories-section {
-    padding: 32px 0 !important;
+  /* Timeline */
+  .timeline { padding-left:20px; border-left:2px solid #EAEDF3; }
+  .timeline-item { position:relative; padding:0 0 12px 16px; font-size:12px; color:#777; }
+  .timeline-item::before {
+    content:''; position:absolute; left:-25px; top:4px;
+    width:10px; height:10px; border-radius:50%; background:#C9A96E; border:2px solid #fff;
+    box-shadow:0 0 0 2px #EAEDF3;
   }
-  .accessories-label {
-    font-size: 11px !important;
-    padding: 0 16px;
-  }
-  .accessories-title {
-    font-size: 24px !important;
-    padding: 0 16px;
-  }
-}
+  .timeline-item .timeline-date { font-weight:600; color:#555; }
 
-/* ---- PRODUCT DETAIL ---- */
-@media (max-width: 768px) {
-  .product-top {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    padding-top: 56px !important;
-  }
-  .purchase {
-    padding: 20px 16px !important;
-    position: relative !important;
-  }
-  .purchase-series {
-    font-size: 11px !important;
-  }
-  .purchase-name {
-    font-size: 22px !important;
-  }
-  .purchase-catch {
-    font-size: 14px !important;
-  }
-  .purchase-price {
-    font-size: 20px !important;
-  }
+  /* Items table inside modal */
+  .items-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .items-table th { font-size:11px; padding:8px 10px; background:#F8F9FC; border-bottom:1px solid #EAEDF3; }
+  .items-table td { padding:10px; border-bottom:1px solid #F0F0F0; }
+  .items-table .item-remove { color:#DC3545; cursor:pointer; font-size:16px; background:none; border:none; }
+  .items-table .item-remove:hover { color:#A71D2A; }
 
-  /* Gallery thumbnails horizontal on mobile */
-  .gallery {
-    flex-direction: column-reverse !important;
-  }
-  .gallery-thumbs {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 72px !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  .gallery-thumb {
-    width: 60px !important;
-    height: 60px !important;
-    flex-shrink: 0 !important;
-  }
+  /* Row status colors */
+  tr.row-pending { border-left:3px solid #FFC107; }
+  tr.row-processing { border-left:3px solid #17A2B8; }
+  tr.row-shipped { border-left:3px solid #28A745; }
+  tr.row-delivered { border-left:3px solid #155724; }
+  tr.row-cancelled { border-left:3px solid #DC3545; }
+  tr.row-return { border-left:3px solid #E67E22; }
 
-  .product-desc,
-  .story-section,
-  .features-section,
-  .spec-section,
-  .price-section,
-  .reviews-section,
-  .related-mag-section,
-  .related-products-section,
-  .compare-section {
-    padding: 40px 0 !important;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  .feature-card {
-    display: grid !important;
-    grid-template-columns: 100px 1fr !important;
-    gap: 16px !important;
-    align-items: start !important;
-  }
-  .feature-card-img {
-    height: 100px !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-  }
-  .feature-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .feature-card-body {
-    padding: 0 !important;
-  }
-  .feature-card-title {
-    font-size: 14px !important;
-    margin-bottom: 4px !important;
-  }
-  .feature-card-desc {
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-  }
-
-  .spec-table th {
-    width: 100px !important;
-    min-width: 80px !important;
-    font-size: 12px !important;
-  }
-  .spec-table td {
-    font-size: 13px !important;
-  }
-  .spec-inner {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  .price-table th,
-  .price-table td {
-    font-size: 12px !important;
-    padding: 8px !important;
-  }
-
-  .related-products-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .related-product-card-img {
-    height: 140px !important;
-  }
-  .related-product-name {
-    font-size: 13px !important;
-  }
-  .related-product-price {
-    font-size: 13px !important;
-  }
-  .related-product-series {
-    font-size: 11px !important;
-  }
-
-  .related-mag-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .mag-card-img {
-    height: 160px !important;
-  }
-
-  .review-card {
-    padding: 20px !important;
-  }
-  .review-text {
-    font-size: 14px !important;
-  }
-
-  .compare-table {
-    font-size: 12px !important;
-  }
-  .compare-table th,
-  .compare-table td {
-    padding: 8px 6px !important;
-  }
-  .compare-badge {
-    font-size: 11px !important;
-  }
-  .compare-row-label {
-    font-size: 11px !important;
-  }
-  .compare-current-label {
-    font-size: 11px !important;
-  }
-  .purchase-color-label {
-    font-size: 11px !important;
-  }
-  .concept-sibling-link {
-    font-size: 12px !important;
-  }
-
-  .section-title {
-    font-size: 22px !important;
-  }
-  .section-en {
-    font-size: 11px !important;
-  }
-  .section-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- CATEGORY LISTING (pillow, bedding) ---- */
-@media (max-width: 768px) {
-  .cat-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .cat-hero-title {
-    font-size: 28px !important;
-  }
-  .cat-hero-desc {
-    font-size: 14px !important;
-  }
-
-  .product-list-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .product-card-image {
-    height: 160px !important;
-  }
-  .product-card-name {
-    font-size: 13px !important;
-  }
-  .product-card-price {
-    font-size: 14px !important;
-  }
-  .product-card-desc {
-    display: none !important;
-  }
-
-  .cat-intro {
-    padding: 40px 16px !important;
-  }
-  .cat-intro-title {
-    font-size: 22px !important;
-  }
-  .cat-intro-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- MAGAZINE ARTICLE ---- */
-@media (max-width: 768px) {
-  .article-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .article-hero-title {
-    font-size: 22px !important;
-  }
-  .article-body {
-    padding: 32px 16px !important;
-  }
-  .article-body h2 {
-    font-size: 20px !important;
-  }
-  .article-body h3 {
-    font-size: 17px !important;
-  }
-  .article-body p {
-    font-size: 15px !important;
-    line-height: 1.8 !important;
-  }
-  .article-body img {
-    border-radius: 8px !important;
-  }
-
-  .related-articles-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .related-article-card {
-    display: grid !important;
-    grid-template-columns: 120px 1fr !important;
-    gap: 12px !important;
-  }
-  .related-article-img {
-    height: 80px !important;
-    border-radius: 6px !important;
-    overflow: hidden;
-  }
-  .related-article-title {
-    font-size: 14px !important;
-  }
-  .related-article-meta {
-    font-size: 12px !important;
-  }
-}
-
-/* ---- MAGAZINE LISTING ---- */
-@media (max-width: 768px) {
-  /* Grid view: 2 columns compact */
-  .view-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 12px !important;
-  }
-  .mg-card-img {
-    height: 110px !important;
-  }
-  .mg-card-title {
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-  .mg-card-excerpt {
-    display: none !important;
-  }
-  .mg-card-meta {
-    font-size: 10px !important;
-  }
-  .mg-card-body {
-    padding: 8px !important;
-  }
-  .mg-card-cat {
-    font-size: 11px !important;
-  }
-
-  /* List view compact */
-  .ml-card {
-    gap: 12px !important;
-  }
-  .ml-card-img {
-    width: 100px !important;
-    height: 70px !important;
-    flex-shrink: 0 !important;
-  }
-  .ml-card-title {
-    font-size: 14px !important;
-  }
-  .ml-card-excerpt {
-    display: none !important;
-  }
-
-  /* Featured card */
-  .mag-featured-card {
-    flex-direction: column !important;
-  }
-  .mag-featured-card img {
-    height: 200px !important;
-  }
-
-  /* Magazine hero */
-  .mag-hero {
-    padding: 80px 16px 32px !important;
-    min-height: auto !important;
-  }
-  .mag-hero-en,
-  .mag-hero-sub {
-    font-size: 12px !important;
-  }
-
-  .magazine-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .magazine-card-img {
-    height: 120px !important;
-  }
-  .magazine-card-title {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-  }
-  .magazine-card-meta {
-    font-size: 11px !important;
-  }
-  .magazine-card-desc {
-    display: none !important;
-  }
-}
-
-
-
-/* ---- FAQ PAGE ---- */
-@media (max-width: 768px) {
-  .faq-section {
-    padding: 32px 16px !important;
-  }
-  .faq-category-title {
-    font-size: 18px !important;
-  }
-  .faq-question {
-    font-size: 14px !important;
-    padding: 16px 0 !important;
-  }
-  .faq-answer-inner {
-    font-size: 14px !important;
-    padding: 0 0 16px !important;
-  }
-}
-
-/* ---- TOP PAGE: HERO ---- */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 85vh !important;
-  }
-  .hero-catch {
-    font-size: 22px !important;
-  }
-  .hero-sub {
-    font-size: 14px !important;
-    margin-bottom: 32px !important;
-  }
-  .hero-en {
-    font-size: 14px !important;
-  }
-  .hero-content {
-    padding: 0 24px !important;
-  }
-  .hero-cta {
-    padding: 14px 32px !important;
-    font-size: 13px !important;
-  }
-  .hero-logo {
-    width: 80px !important;
-    height: 110px !important;
-    margin-bottom: 16px !important;
-  }
-  .hero-badges {
-    gap: 16px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-  .hero-badge {
-    font-size: 11px !important;
-  }
-
-  /* Brand story */
-  .brand-story {
-    padding: 40px 0 !important;
-  }
-  .brand-story-inner {
-    gap: 32px !important;
-  }
-  .brand-story-quote {
-    font-size: 18px !important;
-  }
-  .brand-story-desc {
-    font-size: 14px !important;
-  }
-  .brand-story-image img {
-    height: 240px !important;
-  }
-
-  /* Collection: compact cards */
-  .collection {
-    padding: 40px 0 !important;
-  }
-  .collection-grid {
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 180px !important;
-  }
-  .collection-card-en {
-    font-size: 13px !important;
-  }
-  .collection-card-jp {
-    font-size: 14px !important;
-  }
-  .collection-card-body {
-    padding: 16px !important;
-  }
-  .collection-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-
-  /* Concept */
-  .concept-section {
-    padding: 40px 0 !important;
-  }
-
-  /* Experience: 2-column grid on mobile */
-  .experience-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px !important;
-  }
-  .exp-card {
-    padding: 20px 14px !important;
-    border-radius: 12px !important;
-  }
-  .exp-card-icon {
-    width: 40px !important;
-    height: 40px !important;
-    margin-bottom: 12px !important;
-  }
-  .exp-card-icon svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  .exp-card-label {
-    font-size: 12px !important;
-  }
-  .exp-card-title {
-    font-size: 15px !important;
-  }
-  .exp-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-  }
-  .experience-card {
-    padding: 20px !important;
-  }
-  .experience-card-icon {
-    font-size: 28px !important;
-  }
-  .experience-card h3 {
-    font-size: 16px !important;
-  }
-  .experience-card p {
-    font-size: 13px !important;
-  }
-
-  /* Craft */
-  .craft-inner {
-    gap: 24px !important;
-  }
-  .craft-img-main {
-    max-height: 280px !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
-  }
-  .craft-img-sub {
-    max-height: 200px !important;
-    object-fit: cover !important;
-  }
-  .craft-text {
-    padding: 0 4px !important;
-  }
-  .craft-text h3 {
-    font-size: 18px !important;
-  }
-  .craft-text p {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
-  }
-
-  /* Brand story points compact */
-  .brand-story-points {
-    gap: 12px !important;
-  }
-  .brand-story-point {
-    gap: 8px !important;
-    font-size: 13px !important;
-  }
-
-  /* News */
-  .news-section {
-    padding: 40px 0 !important;
-  }
-  .news-item {
-    padding: 12px 0 !important;
-  }
-
-  /* Trial: 1 column on mobile */
-  .trial-section {
-    padding: 40px 0 !important;
-  }
-  .trial-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .trial-image video,
-  .trial-image img {
-    height: 240px !important;
-    width: 100% !important;
-    object-fit: cover !important;
-  }
-  .trial-body {
-    padding: 0 16px !important;
-  }
-
-  .section-heading {
-    font-size: 32px !important;
-  }
-  .section-watermark {
-    font-size: 48px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 75vh !important;
-  }
-  .hero-catch {
-    font-size: 20px !important;
-    letter-spacing: 0.1em !important;
-  }
-  .hero-sub {
-    font-size: 13px !important;
-  }
-  .section-heading {
-    font-size: 26px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 160px !important;
-  }
-  .brand-story-image img {
-    height: 200px !important;
-  }
-}
-
-/* ---- CONCEPT PAGE ---- */
-@media (max-width: 768px) {
-  .concept-hero {
-    height: 300px !important;
-    min-height: auto !important;
-  }
-  .concept-hero-title {
-    font-size: 26px !important;
-  }
-  .concept-content {
-    padding: 40px 16px !important;
-  }
-  .concept-content h2 {
-    font-size: 20px !important;
-  }
-  .concept-content p {
-    font-size: 14px !important;
-  }
-  .concept-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-}
-
-/* ---- ABOUT PAGE ---- */
-@media (max-width: 768px) {
-  .about-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .company-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .company-table th,
-  .company-table td {
-    display: block !important;
-    padding: 4px 0 !important;
-  }
-  .company-table th {
-    font-weight: 700 !important;
-    color: var(--color-accent, #C9A96E) !important;
-    font-size: 12px !important;
-    padding-top: 12px !important;
-  }
-  .team-inner {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  .team-img {
-    max-height: 280px !important;
-    object-fit: cover !important;
-  }
-}
-
-/* ---- BUTTONS & CTA ---- */
-@media (max-width: 768px) {
-  .btn-primary,
-  .cta-btn,
-  .cart-btn {
-    font-size: 14px !important;
-    padding: 14px 24px !important;
-  }
-  .concept-cta-section {
-    padding: 48px 16px !important;
-  }
-}
-
-/* ---- CONTAINER ---- */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 16px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 12px !important;
-  }
-}
-
-/* ---- SERVICE PAGE ---- */
-@media (max-width: 768px) {
-  .service-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .service-card {
-    padding: 24px !important;
-  }
-  .service-steps {
-    gap: 16px !important;
-  }
-  .service-step {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 8px !important;
-  }
-  .price-card {
-    padding: 20px !important;
-  }
-}
-
-/* ---- CONTACT PAGE ---- */
-@media (max-width: 768px) {
-  .contact-form {
-    padding: 32px 16px !important;
-  }
-  .form-group label {
-    font-size: 13px !important;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    font-size: 16px !important; /* prevent zoom on iOS */
-    padding: 12px !important;
-  }
-}
-
-/* ---- GENERAL: Reduce vertical space ---- */
-@media (max-width: 480px) {
-  section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-  /* Override specific sections that need different padding */
-  .hero, .page-hero, .cat-hero, .article-hero,
-  .concept-hero, .about-hero, .mag-hero,
-  .header, .footer, .footer-bottom {
-    padding-top: revert !important;
-    padding-bottom: revert !important;
-  }
-}
-
-/* Watermark overflow fix */
-*:has(> .section-watermark){overflow-x:clip}
-section:has(.section-watermark){overflow-x:clip}
-/* Orphan/Widow prevention */
-h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
-p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
-
+  /* Orphan/Widow prevention */
+  h1,h2,h3,h4,h5,h6{text-wrap:balance}
+  p,li,dd,td,th,blockquote{text-wrap:pretty}
 </style>
 <style id="admin-mobile-fix">
 @media (max-width: 768px) {
@@ -1014,347 +119,893 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
   .admin-main-fix div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
   .admin-main-fix div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
-  .admin-main-fix div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
   .admin-main-fix table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
   .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
   .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
-  .nav-mega { width: 100vw !important; grid-template-columns: 1fr !important; left: 0 !important; transform: none !important; }
+  .modal-box { width:100% !important; }
+  .modal-overlay { padding:16px !important; }
 }
 </style>
 </head>
 <body>
+
 <!-- Sidebar -->
 <div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
-  <!-- Logo -->
   <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
     <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
     <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
   </div>
-  <!-- Menu -->
   <nav style="flex:1; padding:16px 12px;">
-    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9632;</span> ダッシュボード
     </a>
     <a href="products.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9776;</span> 商品管理
     </a>
+    <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+      <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
     <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 在庫管理
     </a>
-    <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
-      <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
     </a>
     <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
+    </a>
+    <a href="reviews.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9733;</span> レビュー管理
+    </a>
+    <a href="custom-fields.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9998;</span> カスタムフィールド
+    </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
     </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
     </a>
   </nav>
-  <!-- Sidebar footer -->
   <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
     <a href="login.html" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
   </div>
 </div>
-<div class="admin-main-fix" style="margin-left:260px;min-height:100vh">
-  <div style="height:64px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50">
-    <h1 style="font-size:18px;font-weight:700;color:#1A1A1A">注文管理</h1>
-    <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div><div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div></div>
+
+<!-- Main Content -->
+<div class="admin-main-fix" style="margin-left:260px; min-height:100vh;">
+  <!-- Top Bar -->
+  <div style="height:64px; background:#fff; border-bottom:1px solid #EAEDF3; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:50;">
+    <h1 style="font-size:18px; font-weight:700; color:#1A1A1A;">注文管理</h1>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:36px; height:36px; border-radius:50%; background:#C9A96E; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; font-weight:600;">田</div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#333;">田中 管理者</div>
+        <div style="font-size:11px; color:#999;">admin@omotesando-futon.jp</div>
+      </div>
+    </div>
   </div>
-  <div style="padding:28px 32px">
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px">
-<div style="background:#fff;border-radius:10px;padding:22px 24px;border:1px solid #EAEDF3"><div style="font-size:12px;font-weight:600;color:#999;margin-bottom:8px">本日の注文</div><div style="font-size:26px;font-weight:700">12</div></div>
-<div style="background:#fff;border-radius:10px;padding:22px 24px;border:1px solid #EAEDF3"><div style="font-size:12px;font-weight:600;color:#999;margin-bottom:8px">処理待ち</div><div style="font-size:26px;font-weight:700;color:#C9A96E">3</div></div>
-<div style="background:#fff;border-radius:10px;padding:22px 24px;border:1px solid #EAEDF3"><div style="font-size:12px;font-weight:600;color:#999;margin-bottom:8px">本日の売上</div><div style="font-size:26px;font-weight:700">&yen;458,600</div></div></div>
-<div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
-<div style="padding:20px 24px;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:16px;font-weight:700">注文一覧</h2><div style="display:flex;gap:8px"><select style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff"><option>すべて</option><option>処理待ち</option><option>発送準備中</option><option>発送済み</option></select><input placeholder="注文番号で検索..." style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;width:200px"></div></div>
-<table><thead><tr><th style="padding-left:24px">注文番号</th><th>お客様名</th><th>商品</th><th style="text-align:right">金額</th><th style="text-align:center">ステータス</th><th>日時</th></tr></thead>
-<tbody>
-<tr><td style="padding-left:24px;font-weight:600">#OFT-0412</td><td>田中 優子</td><td>Premium RDS Down 冬用本掛け S</td><td style="text-align:right;font-weight:600">&yen;198,000</td><td style="text-align:center"><span style="padding:4px 12px;background:#FFF3CD;color:#856404;border-radius:20px;font-size:12px;font-weight:600">処理待ち</span></td><td style="color:#888;font-size:13px">03/31 10:24</td></tr>
-<tr><td style="padding-left:24px;font-weight:600">#OFT-0411</td><td>佐藤 健太</td><td>RDS グースダウンピロー M</td><td style="text-align:right;font-weight:600">&yen;27,800</td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">発送済み</span></td><td style="color:#888;font-size:13px">03/31 09:15</td></tr>
-<tr><td style="padding-left:24px;font-weight:600">#OFT-0410</td><td>鈴木 美咲</td><td>CCD Sleep Down-春秋用- D</td><td style="text-align:right;font-weight:600">&yen;62,800</td><td style="text-align:center"><span style="padding:4px 12px;background:#FFF3CD;color:#856404;border-radius:20px;font-size:12px;font-weight:600">処理待ち</span></td><td style="color:#888;font-size:13px">03/31 08:42</td></tr>
-<tr><td style="padding-left:24px;font-weight:600">#OFT-0409</td><td>山田 大輔</td><td>Flower Down 冬用本掛け Q</td><td style="text-align:right;font-weight:600">&yen;94,600</td><td style="text-align:center"><span style="padding:4px 12px;background:#CCE5FF;color:#004085;border-radius:20px;font-size:12px;font-weight:600">発送準備中</span></td><td style="color:#888;font-size:13px">03/30 18:33</td></tr>
-</tbody></table></div>
+
+  <!-- Content area -->
+  <div style="padding:28px 32px;">
+
+    <!-- Stats Cards -->
+    <div id="statsCards" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:28px;">
+      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">総注文数</div>
+        <div id="statTotal" style="font-size:26px; font-weight:700;">0</div>
+      </div>
+      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">未処理/処理待ち</div>
+        <div id="statPending" style="font-size:26px; font-weight:700; color:#E67E22;">0</div>
+      </div>
+      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">発送済み</div>
+        <div id="statShipped" style="font-size:26px; font-weight:700; color:#28A745;">0</div>
+      </div>
+      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">売上合計</div>
+        <div id="statRevenue" style="font-size:26px; font-weight:700;">&yen;0</div>
+      </div>
+    </div>
+
+    <!-- Order List Card -->
+    <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden;">
+      <!-- Filters bar -->
+      <div style="padding:20px 24px; border-bottom:1px solid #EAEDF3;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <h2 style="font-size:16px; font-weight:700;">注文一覧</h2>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <!-- Status filter -->
+            <select id="filterStatus" class="form-select" style="width:auto; padding:8px 14px;">
+              <option value="all">すべてのステータス</option>
+              <option value="未処理">未処理</option>
+              <option value="処理待ち">処理待ち</option>
+              <option value="決済確認中">決済確認中</option>
+              <option value="発送準備中">発送準備中</option>
+              <option value="発送済み">発送済み</option>
+              <option value="配達完了">配達完了</option>
+              <option value="返品申請中">返品申請中</option>
+              <option value="返品完了">返品完了</option>
+              <option value="キャンセル申請">キャンセル申請</option>
+              <option value="キャンセル完了">キャンセル完了</option>
+            </select>
+            <!-- Payment filter -->
+            <select id="filterPayment" class="form-select" style="width:auto; padding:8px 14px;">
+              <option value="all">すべての決済</option>
+              <option value="Stripe">Stripe</option>
+              <option value="銀行振込">銀行振込</option>
+              <option value="代引き">代引き</option>
+            </select>
+            <!-- Date filter -->
+            <select id="filterDateRange" class="form-select" style="width:auto; padding:8px 14px;">
+              <option value="all">全期間</option>
+              <option value="today">今日</option>
+              <option value="week">今週</option>
+              <option value="month">今月</option>
+              <option value="custom">カスタム</option>
+            </select>
+            <!-- Custom date range (hidden by default) -->
+            <div id="customDateRange" style="display:none; align-items:center; gap:4px;">
+              <input type="date" id="dateFrom" class="form-input" style="width:140px; padding:8px 10px;">
+              <span style="color:#999;">~</span>
+              <input type="date" id="dateTo" class="form-input" style="width:140px; padding:8px 10px;">
+            </div>
+            <!-- Search -->
+            <input id="searchInput" type="text" placeholder="注文番号/顧客名で検索..." class="form-input" style="width:200px; padding:8px 14px;">
+            <!-- CSV Export -->
+            <button id="csvExportBtn" class="btn btn-outline" style="white-space:nowrap;">CSVエクスポート</button>
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-left:24px;">注文番号</th>
+            <th>お客様名</th>
+            <th>商品</th>
+            <th style="text-align:right;">金額</th>
+            <th style="text-align:center;">ステータス</th>
+            <th>決済方法</th>
+            <th>配送業者</th>
+            <th>追跡番号</th>
+            <th>日時</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
-<!-- Order Detail Modal -->
-<div id="orderModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:12px;width:560px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <div style="padding:24px 28px;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center;">
-      <h3 id="modalTitle" style="font-size:18px;font-weight:700;color:#1A1A1A;">注文詳細</h3>
-      <button onclick="closeModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#999;padding:4px 8px;line-height:1;">&times;</button>
+
+<!-- ===== ORDER DETAIL MODAL ===== -->
+<div id="orderModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalTitle">注文詳細</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
     </div>
-    <div style="padding:28px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
-        <div><div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:4px;">注文番号</div><div id="modalOrderNum" style="font-size:15px;font-weight:700;"></div></div>
-        <div><div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:4px;">日時</div><div id="modalDate" style="font-size:15px;"></div></div>
-        <div><div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:4px;">顧客名</div><div id="modalCustomer" style="font-size:15px;font-weight:600;"></div></div>
-        <div><div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:4px;">合計金額</div><div id="modalAmount" style="font-size:15px;font-weight:700;color:#C9A96E;"></div></div>
+    <div class="modal-body" id="modalBody">
+      <!-- Dynamically populated -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== CANCEL MODAL ===== -->
+<div id="cancelModal" class="modal-overlay">
+  <div class="modal-box" style="width:560px;">
+    <div class="modal-header">
+      <h3>注文をキャンセル</h3>
+      <button class="modal-close" onclick="closeCancelModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:16px;">
+        <label class="form-label">キャンセル理由</label>
+        <select id="cancelReason" class="form-select">
+          <option value="">選択してください</option>
+          <option value="お客様都合">お客様都合</option>
+          <option value="在庫切れ">在庫切れ</option>
+          <option value="配送不可">配送不可</option>
+          <option value="その他">その他</option>
+        </select>
       </div>
-      <div style="margin-bottom:24px;">
-        <div style="font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:8px;">商品</div>
-        <div id="modalProducts" style="background:#F8F9FC;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.8;"></div>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">詳細理由</label>
+        <textarea id="cancelDetail" class="form-textarea" placeholder="詳細を入力..."></textarea>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:6px;">ステータス変更</label>
-          <select id="modalStatus" style="width:100%;padding:10px 14px;border:1px solid #DDD;border-radius:8px;font-size:13px;font-family:inherit;outline:none;cursor:pointer;">
-            <option value="未処理">未処理</option>
-            <option value="処理待ち">処理待ち</option>
-            <option value="処理中">処理中</option>
-            <option value="発送準備中">発送準備中</option>
-            <option value="発送済み">発送済み</option>
-            <option value="配達完了">配達完了</option>
-            <option value="キャンセル">キャンセル</option>
-          </select>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">返金処理</label>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; cursor:pointer;">
+            <input type="radio" name="refundType" value="full" checked> 全額返金
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; cursor:pointer;">
+            <input type="radio" name="refundType" value="partial"> 一部返金
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; cursor:pointer;">
+            <input type="radio" name="refundType" value="none"> 返金なし
+          </label>
         </div>
-        <div>
-          <label style="display:block;font-size:11px;font-weight:600;color:#999;text-transform:uppercase;margin-bottom:6px;">配送追跡番号</label>
-          <input id="modalTracking" type="text" placeholder="追跡番号を入力..." style="width:100%;padding:10px 14px;border:1px solid #DDD;border-radius:8px;font-size:13px;font-family:inherit;outline:none;box-sizing:border-box;">
-        </div>
       </div>
-      <button id="modalSaveBtn" onclick="saveOrderUpdate()" style="width:100%;padding:12px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='#B8964E'" onmouseout="this.style.background='#C9A96E'">更新</button>
+      <div id="partialRefundRow" style="display:none; margin-bottom:16px;">
+        <label class="form-label">一部返金額</label>
+        <input type="number" id="partialRefundAmount" class="form-input" placeholder="0" min="0">
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn btn-outline" onclick="closeCancelModal()">戻る</button>
+        <button class="btn btn-danger" onclick="confirmCancel()">キャンセルを確定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RETURN MODAL ===== -->
+<div id="returnModal" class="modal-overlay">
+  <div class="modal-box" style="width:560px;">
+    <div class="modal-header">
+      <h3>返品処理</h3>
+      <button class="modal-close" onclick="closeReturnModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:16px;">
+        <label class="form-label">返品理由</label>
+        <select id="returnReason" class="form-select">
+          <option value="">選択してください</option>
+          <option value="商品不良">商品不良</option>
+          <option value="サイズ違い">サイズ違い</option>
+          <option value="イメージ違い">イメージ違い</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">返品商品</label>
+        <div id="returnItemsCheckboxes" style="display:flex; flex-direction:column; gap:8px;"></div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">返品状態</label>
+        <select id="returnCondition" class="form-select">
+          <option value="未開封">未開封</option>
+          <option value="使用済み">使用済み</option>
+        </select>
+      </div>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">返金方法</label>
+        <select id="returnRefundMethod" class="form-select">
+          <option value="元の決済方法">元の決済方法</option>
+          <option value="銀行振込">銀行振込</option>
+        </select>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn btn-outline" onclick="closeReturnModal()">戻る</button>
+        <button class="btn btn-warning" onclick="confirmReturn()">返品を確定</button>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Toast -->
-<div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;z-index:10000;background:#2D2D2D;color:#fff;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-left:4px solid #C9A96E;transition:opacity 0.3s,transform 0.3s;opacity:0;transform:translateY(12px);"></div>
+<div id="toast"></div>
 
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/cart.js"></script>
-<script src="js/admin-api.js"></script>
 <script>
 (function() {
   'use strict';
 
-  // === STATUS CONFIG ===
-  const STATUS_STYLES = {
-    '未処理':   { bg:'#FFF3CD', color:'#856404' },
-    '処理待ち': { bg:'#FFF3CD', color:'#856404' },
-    '処理中':   { bg:'#CCE5FF', color:'#004085' },
-    '発送準備中':{ bg:'#CCE5FF', color:'#004085' },
-    '発送済み': { bg:'#D4EDDA', color:'#155724' },
-    '配達完了': { bg:'#D4EDDA', color:'#155724' },
-    'キャンセル':{ bg:'#F8D7DA', color:'#721C24' }
+  // ========== STATUS CONFIG ==========
+  var ALL_STATUSES = [
+    '未処理','処理待ち','決済確認中','発送準備中','発送済み',
+    '配達完了','返品申請中','返品完了','キャンセル申請','キャンセル完了'
+  ];
+
+  var STATUS_STYLES = {
+    '未処理':      { bg:'#FFF3CD', color:'#856404' },
+    '処理待ち':    { bg:'#FFF3CD', color:'#856404' },
+    '決済確認中':  { bg:'#E8DAEF', color:'#6C3483' },
+    '発送準備中':  { bg:'#CCE5FF', color:'#004085' },
+    '発送済み':    { bg:'#D4EDDA', color:'#155724' },
+    '配達完了':    { bg:'#C3E6CB', color:'#155724' },
+    '返品申請中':  { bg:'#FDEBD0', color:'#935116' },
+    '返品完了':    { bg:'#F5B7B1', color:'#78281F' },
+    'キャンセル申請':{ bg:'#FADBD8', color:'#922B21' },
+    'キャンセル完了':{ bg:'#F8D7DA', color:'#721C24' }
   };
 
-  // WooCommerce英語ステータス → 日本語マッピング
-  const WC_STATUS_MAP = {
-    'pending':    '処理待ち',
-    'processing': '処理中',
-    'on-hold':    '処理待ち',
-    'completed':  '配達完了',
-    'cancelled':  'キャンセル',
-    'refunded':   'キャンセル',
-    'failed':     'キャンセル',
-    'shipped':    '発送済み',
-    'preparing':  '発送準備中'
+  var STATUS_ROW_CLASS = {
+    '未処理':'row-pending','処理待ち':'row-pending','決済確認中':'row-processing',
+    '発送準備中':'row-processing','発送済み':'row-shipped','配達完了':'row-delivered',
+    '返品申請中':'row-return','返品完了':'row-return',
+    'キャンセル申請':'row-cancelled','キャンセル完了':'row-cancelled'
   };
 
-  // 日本語ステータス → WooCommerce英語マッピング（API送信用）
-  const JP_TO_WC_STATUS = {
-    '未処理':     'pending',
-    '処理待ち':   'on-hold',
-    '処理中':     'processing',
-    '発送準備中': 'preparing',
-    '発送済み':   'shipped',
-    '配達完了':   'completed',
-    'キャンセル': 'cancelled'
-  };
+  var CARRIERS = ['ヤマト運輸','佐川急便','日本郵便','その他'];
+  var TIME_SLOTS = ['指定なし','午前中','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','20:00-21:00'];
 
-  function toJpStatus(status) {
-    return WC_STATUS_MAP[status] || status;
+  // ========== SAMPLE DATA ==========
+  function generateSampleOrders() {
+    return [
+      {
+        id:'OFT-0501', date:'2026-04-04 10:24', customer:'田中 優子', email:'tanaka.yuko@example.com', phone:'090-1234-5678',
+        address:'\u3012150-0001 東京都渋谷区神宮前4-12-10 表参道ヒルズ202',
+        items:[{name:'Premium RDS Down 冬用本掛け',size:'シングル',color:'ホワイト',qty:1,price:198000}],
+        status:'処理待ち', payment:'Stripe', carrier:'', tracking:'', deliveryDate:'', deliveryTime:'指定なし',
+        shipping:0, discount:0, notes:'', statusHistory:[{date:'2026-04-04 10:24',from:'',to:'未処理'},{date:'2026-04-04 10:30',from:'未処理',to:'処理待ち'}]
+      },
+      {
+        id:'OFT-0500', date:'2026-04-04 09:15', customer:'佐藤 健太', email:'sato.kenta@example.com', phone:'080-9876-5432',
+        address:'\u3012106-0032 東京都港区六本木3-2-1 六本木グランドタワー1501',
+        items:[{name:'RDS グースダウンピロー',size:'M',color:'アイボリー',qty:2,price:27800}],
+        status:'発送済み', payment:'Stripe', carrier:'ヤマト運輸', tracking:'1234-5678-9012', deliveryDate:'2026-04-06', deliveryTime:'午前中',
+        shipping:0, discount:0, notes:'', statusHistory:[{date:'2026-04-04 09:15',from:'',to:'未処理'},{date:'2026-04-04 09:20',from:'未処理',to:'処理待ち'},{date:'2026-04-04 11:00',from:'処理待ち',to:'発送準備中'},{date:'2026-04-04 14:30',from:'発送準備中',to:'発送済み'}]
+      },
+      {
+        id:'OFT-0499', date:'2026-04-03 18:42', customer:'鈴木 美咲', email:'suzuki.misaki@example.com', phone:'070-5555-1234',
+        address:'\u3012160-0022 東京都新宿区新宿5-17-6 アルテシモ新宿801',
+        items:[{name:'CCD Sleep Down 春秋用',size:'ダブル',color:'ベージュ',qty:1,price:62800},{name:'オーガニックコットンカバー',size:'ダブル',color:'ベージュ',qty:1,price:12800}],
+        status:'決済確認中', payment:'銀行振込', carrier:'', tracking:'', deliveryDate:'', deliveryTime:'指定なし',
+        shipping:0, discount:5000, notes:'振込確認待ち。入金期限: 4/6', statusHistory:[{date:'2026-04-03 18:42',from:'',to:'未処理'},{date:'2026-04-03 19:00',from:'未処理',to:'決済確認中'}]
+      },
+      {
+        id:'OFT-0498', date:'2026-04-03 14:33', customer:'山田 大輔', email:'yamada.daisuke@example.com', phone:'090-8888-3333',
+        address:'\u3012153-0064 東京都目黒区下目黒2-20-28 パシフィックマークス目黒602',
+        items:[{name:'Flower Down 冬用本掛け',size:'クイーン',color:'ピンク',qty:1,price:94600}],
+        status:'発送準備中', payment:'Stripe', carrier:'佐川急便', tracking:'', deliveryDate:'2026-04-05', deliveryTime:'18:00-20:00',
+        shipping:0, discount:0, notes:'ギフト包装希望', statusHistory:[{date:'2026-04-03 14:33',from:'',to:'未処理'},{date:'2026-04-03 15:00',from:'未処理',to:'処理待ち'},{date:'2026-04-03 16:20',from:'処理待ち',to:'発送準備中'}]
+      },
+      {
+        id:'OFT-0497', date:'2026-04-03 11:05', customer:'高橋 真理子', email:'takahashi.mariko@example.com', phone:'080-1111-2222',
+        address:'\u3012107-0062 東京都港区南青山5-4-30 南青山パークハウス1203',
+        items:[{name:'Premium RDS Down 夏用肌掛け',size:'シングル',color:'ライトブルー',qty:1,price:89000},{name:'RDS グースダウンピロー',size:'S',color:'ホワイト',qty:1,price:24800}],
+        status:'配達完了', payment:'Stripe', carrier:'ヤマト運輸', tracking:'9876-5432-1098', deliveryDate:'2026-04-04', deliveryTime:'14:00-16:00',
+        shipping:0, discount:10000, notes:'リピーター割引適用', statusHistory:[{date:'2026-04-03 11:05',from:'',to:'未処理'},{date:'2026-04-03 11:10',from:'未処理',to:'処理待ち'},{date:'2026-04-03 13:00',from:'処理待ち',to:'発送準備中'},{date:'2026-04-03 15:00',from:'発送準備中',to:'発送済み'},{date:'2026-04-04 14:20',from:'発送済み',to:'配達完了'}]
+      },
+      {
+        id:'OFT-0496', date:'2026-04-02 20:18', customer:'伊藤 洋平', email:'ito.yohei@example.com', phone:'090-3333-4444',
+        address:'\u3012150-0043 東京都渋谷区道玄坂1-12-1 渋谷マークシティ908',
+        items:[{name:'マザーグースダウン 冬用本掛け',size:'セミダブル',color:'ホワイト',qty:1,price:248000}],
+        status:'未処理', payment:'代引き', carrier:'', tracking:'', deliveryDate:'', deliveryTime:'指定なし',
+        shipping:0, discount:0, notes:'', statusHistory:[{date:'2026-04-02 20:18',from:'',to:'未処理'}]
+      },
+      {
+        id:'OFT-0495', date:'2026-04-02 15:30', customer:'渡辺 花子', email:'watanabe.hanako@example.com', phone:'070-7777-8888',
+        address:'\u3012158-0083 東京都世田谷区奥沢7-10-3 ラ・トゥール奥沢401',
+        items:[{name:'CCD Sleep Down 春秋用',size:'シングル',color:'グレー',qty:1,price:49800},{name:'ダウンケット 夏用',size:'シングル',color:'ホワイト',qty:1,price:32800}],
+        status:'キャンセル完了', payment:'Stripe', carrier:'', tracking:'', deliveryDate:'', deliveryTime:'指定なし',
+        shipping:0, discount:0, notes:'お客様都合によるキャンセル。全額返金済み。', statusHistory:[{date:'2026-04-02 15:30',from:'',to:'未処理'},{date:'2026-04-02 15:35',from:'未処理',to:'処理待ち'},{date:'2026-04-02 18:00',from:'処理待ち',to:'キャンセル申請'},{date:'2026-04-03 10:00',from:'キャンセル申請',to:'キャンセル完了'}]
+      },
+      {
+        id:'OFT-0494', date:'2026-04-01 09:45', customer:'中村 隆', email:'nakamura.takashi@example.com', phone:'080-6666-9999',
+        address:'\u3012152-0035 東京都目黒区自由が丘2-9-6 リッツ自由が丘303',
+        items:[{name:'Flower Down 春秋用',size:'ダブル',color:'ラベンダー',qty:1,price:72800}],
+        status:'返品申請中', payment:'Stripe', carrier:'ヤマト運輸', tracking:'5555-6666-7777', deliveryDate:'2026-04-03', deliveryTime:'午前中',
+        shipping:0, discount:0, notes:'サイズが合わないとの返品申請', statusHistory:[{date:'2026-04-01 09:45',from:'',to:'未処理'},{date:'2026-04-01 10:00',from:'未処理',to:'処理待ち'},{date:'2026-04-01 12:00',from:'処理待ち',to:'発送準備中'},{date:'2026-04-01 14:00',from:'発送準備中',to:'発送済み'},{date:'2026-04-03 10:30',from:'発送済み',to:'配達完了'},{date:'2026-04-04 08:00',from:'配達完了',to:'返品申請中'}]
+      },
+      {
+        id:'OFT-0493', date:'2026-03-31 16:22', customer:'小林 さくら', email:'kobayashi.sakura@example.com', phone:'090-2222-1111',
+        address:'\u3012154-0024 東京都世田谷区三軒茶屋1-36-8 三軒茶屋グランドヒルズ707',
+        items:[{name:'RDS グースダウンピロー',size:'L',color:'ホワイト',qty:3,price:32800}],
+        status:'発送済み', payment:'Stripe', carrier:'日本郵便', tracking:'JP-8888-9999-0000', deliveryDate:'2026-04-05', deliveryTime:'16:00-18:00',
+        shipping:0, discount:0, notes:'3個まとめ買い', statusHistory:[{date:'2026-03-31 16:22',from:'',to:'未処理'},{date:'2026-03-31 16:30',from:'未処理',to:'処理待ち'},{date:'2026-04-01 09:00',from:'処理待ち',to:'発送準備中'},{date:'2026-04-02 11:00',from:'発送準備中',to:'発送済み'}]
+      },
+      {
+        id:'OFT-0492', date:'2026-03-31 10:08', customer:'松本 健一', email:'matsumoto.kenichi@example.com', phone:'080-4444-5555',
+        address:'\u3012141-0021 東京都品川区上大崎3-1-1 アトレ目黒2F',
+        items:[{name:'Premium RDS Down 冬用本掛け',size:'キング',color:'ホワイト',qty:1,price:298000},{name:'オーガニックコットンカバー',size:'キング',color:'ホワイト',qty:2,price:18800}],
+        status:'配達完了', payment:'銀行振込', carrier:'ヤマト運輸', tracking:'3333-2222-1111', deliveryDate:'2026-04-02', deliveryTime:'20:00-21:00',
+        shipping:0, discount:20000, notes:'VIP顧客。特別割引適用。', statusHistory:[{date:'2026-03-31 10:08',from:'',to:'未処理'},{date:'2026-03-31 10:15',from:'未処理',to:'決済確認中'},{date:'2026-03-31 14:00',from:'決済確認中',to:'処理待ち'},{date:'2026-03-31 15:00',from:'処理待ち',to:'発送準備中'},{date:'2026-04-01 09:00',from:'発送準備中',to:'発送済み'},{date:'2026-04-02 20:10',from:'発送済み',to:'配達完了'}]
+      },
+      {
+        id:'OFT-0491', date:'2026-03-30 22:55', customer:'加藤 美穂', email:'kato.miho@example.com', phone:'070-9999-0000',
+        address:'\u3012157-0066 東京都世田谷区成城6-5-34 成城パークサイド502',
+        items:[{name:'ダウンケット 夏用',size:'ダブル',color:'ライトグリーン',qty:1,price:45800}],
+        status:'処理待ち', payment:'代引き', carrier:'', tracking:'', deliveryDate:'', deliveryTime:'指定なし',
+        shipping:500, discount:0, notes:'', statusHistory:[{date:'2026-03-30 22:55',from:'',to:'未処理'},{date:'2026-03-31 09:00',from:'未処理',to:'処理待ち'}]
+      },
+      {
+        id:'OFT-0490', date:'2026-03-30 14:10', customer:'吉田 太郎', email:'yoshida.taro@example.com', phone:'090-5555-6666',
+        address:'\u3012155-0031 東京都世田谷区北沢3-19-20 下北沢レジデンス201',
+        items:[{name:'Flower Down 冬用本掛け',size:'シングル',color:'ピンク',qty:1,price:68800},{name:'Flower Down 枕',size:'M',color:'ピンク',qty:2,price:19800}],
+        status:'返品完了', payment:'Stripe', carrier:'佐川急便', tracking:'SG-1111-2222', deliveryDate:'2026-04-01', deliveryTime:'12:00-14:00',
+        shipping:0, discount:0, notes:'商品不良（縫製不良）により返品。全額返金処理済み。', statusHistory:[{date:'2026-03-30 14:10',from:'',to:'未処理'},{date:'2026-03-30 14:15',from:'未処理',to:'処理待ち'},{date:'2026-03-30 16:00',from:'処理待ち',to:'発送準備中'},{date:'2026-03-31 10:00',from:'発送準備中',to:'発送済み'},{date:'2026-04-01 13:00',from:'発送済み',to:'配達完了'},{date:'2026-04-02 09:00',from:'配達完了',to:'返品申請中'},{date:'2026-04-03 15:00',from:'返品申請中',to:'返品完了'}]
+      }
+    ];
   }
 
-  // === TOAST ===
+  // ========== PERSISTENCE ==========
+  var STORAGE_KEY = 'oft_orders';
+
+  function loadOrders() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    var sample = generateSampleOrders();
+    saveOrders(sample);
+    return sample;
+  }
+
+  function saveOrders(o) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(o));
+  }
+
+  var orders = loadOrders();
+  var currentOrderId = null;
+
+  // ========== TOAST ==========
   function showToast(msg) {
-    const t = document.getElementById('toast');
+    var t = document.getElementById('toast');
     t.textContent = msg;
     t.style.display = 'block';
-    requestAnimationFrame(() => {
-      t.style.opacity = '1';
-      t.style.transform = 'translateY(0)';
-    });
-    setTimeout(() => {
-      t.style.opacity = '0';
-      t.style.transform = 'translateY(12px)';
-      setTimeout(() => { t.style.display = 'none'; }, 300);
+    // Force reflow
+    t.offsetHeight;
+    t.classList.add('show');
+    setTimeout(function() {
+      t.classList.remove('show');
+      setTimeout(function() { t.style.display = 'none'; }, 300);
     }, 3000);
   }
 
-  // === PERSISTENCE (localStorage フォールバック用) ===
-  function loadOrderDataLocal() {
-    try { return JSON.parse(localStorage.getItem('admin_orders') || '{}'); } catch(e) { return {}; }
+  // ========== HELPERS ==========
+  function calcOrderSubtotal(order) {
+    return order.items.reduce(function(sum, item) { return sum + (item.price * item.qty); }, 0);
   }
-  function saveOrderDataLocal(data) {
-    localStorage.setItem('admin_orders', JSON.stringify(data));
+  function calcOrderTotal(order) {
+    return calcOrderSubtotal(order) + (order.shipping || 0) - (order.discount || 0);
+  }
+  function formatYen(n) {
+    return '\u00A5' + n.toLocaleString();
+  }
+  function statusBadgeHTML(status) {
+    var s = STATUS_STYLES[status] || { bg:'#EEE', color:'#555' };
+    return '<span class="status-badge" style="background:'+s.bg+';color:'+s.color+';">'+status+'</span>';
+  }
+  function getOrder(id) {
+    for (var i = 0; i < orders.length; i++) { if (orders[i].id === id) return orders[i]; }
+    return null;
+  }
+  function getNow() {
+    var d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  }
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
   }
 
-  // === 注文番号 → API注文IDマッピング ===
-  const orderNumToId = {};
+  // ========== STATS ==========
+  function updateStats() {
+    document.getElementById('statTotal').textContent = orders.length;
+    var pending = orders.filter(function(o) { return o.status === '未処理' || o.status === '処理待ち'; }).length;
+    document.getElementById('statPending').textContent = pending;
+    var shipped = orders.filter(function(o) { return o.status === '発送済み'; }).length;
+    document.getElementById('statShipped').textContent = shipped;
+    var revenue = orders.filter(function(o) { return o.status.indexOf('キャンセル') === -1; }).reduce(function(s, o) { return s + calcOrderTotal(o); }, 0);
+    document.getElementById('statRevenue').textContent = formatYen(revenue);
+  }
 
-  // Apply saved/API data to existing rows
-  function applyStatusToRows(data) {
-    const rows = document.querySelectorAll('tbody tr');
-    rows.forEach(row => {
-      const orderNum = row.cells[0].textContent.trim();
-      if (data[orderNum]) {
-        const d = data[orderNum];
-        if (d.status) {
-          const badge = row.cells[4].querySelector('span');
-          const jpStatus = toJpStatus(d.status);
-          const s = STATUS_STYLES[jpStatus] || STATUS_STYLES['処理待ち'];
-          badge.textContent = jpStatus;
-          badge.style.background = s.bg;
-          badge.style.color = s.color;
-        }
+  // ========== RENDER TABLE ==========
+  function renderTable() {
+    var tbody = document.getElementById('orderTableBody');
+    var statusFilter = document.getElementById('filterStatus').value;
+    var paymentFilter = document.getElementById('filterPayment').value;
+    var dateRangeFilter = document.getElementById('filterDateRange').value;
+    var search = document.getElementById('searchInput').value.trim().toLowerCase();
+    var dateFrom = document.getElementById('dateFrom').value;
+    var dateTo = document.getElementById('dateTo').value;
+
+    var today = new Date(); today.setHours(0,0,0,0);
+    var weekStart = new Date(today); weekStart.setDate(weekStart.getDate() - weekStart.getDay());
+    var monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    var filtered = orders.filter(function(o) {
+      if (statusFilter !== 'all' && o.status !== statusFilter) return false;
+      if (paymentFilter !== 'all' && o.payment !== paymentFilter) return false;
+      if (search && ('#'+o.id).toLowerCase().indexOf(search) === -1 && o.customer.toLowerCase().indexOf(search) === -1) return false;
+      var oDate = new Date(o.date.replace(' ','T'));
+      if (dateRangeFilter === 'today' && oDate < today) return false;
+      if (dateRangeFilter === 'week' && oDate < weekStart) return false;
+      if (dateRangeFilter === 'month' && oDate < monthStart) return false;
+      if (dateRangeFilter === 'custom') {
+        if (dateFrom && oDate < new Date(dateFrom)) return false;
+        if (dateTo && oDate > new Date(dateTo + 'T23:59:59')) return false;
       }
+      return true;
+    });
+
+    var html = '';
+    filtered.forEach(function(o) {
+      var total = calcOrderTotal(o);
+      var rowClass = STATUS_ROW_CLASS[o.status] || '';
+      var itemNames = o.items.map(function(i) { return i.name; }).join(', ');
+      var dateShort = o.date.replace(/^\d{4}-/, '').replace(' ', ' ');
+      html += '<tr class="'+rowClass+'" data-id="'+o.id+'" style="cursor:pointer;" onclick="openOrderDetail(\''+o.id+'\')">';
+      html += '<td style="padding-left:24px;font-weight:600;">#'+escapeHtml(o.id)+'</td>';
+      html += '<td>'+escapeHtml(o.customer)+'</td>';
+      html += '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+escapeHtml(itemNames)+'</td>';
+      html += '<td style="text-align:right;font-weight:600;">'+formatYen(total)+'</td>';
+      html += '<td style="text-align:center;">'+statusBadgeHTML(o.status)+'</td>';
+      html += '<td style="font-size:12px;">'+escapeHtml(o.payment)+'</td>';
+      html += '<td style="font-size:12px;">'+(o.carrier ? escapeHtml(o.carrier) : '-')+'</td>';
+      html += '<td style="font-size:12px;font-family:monospace;">'+(o.tracking ? escapeHtml(o.tracking) : '-')+'</td>';
+      html += '<td style="color:#888;font-size:13px;white-space:nowrap;">'+escapeHtml(dateShort)+'</td>';
+      html += '</tr>';
+    });
+    if (!filtered.length) {
+      html = '<tr><td colspan="9" style="text-align:center;padding:40px;color:#999;">該当する注文がありません</td></tr>';
+    }
+    tbody.innerHTML = html;
+    updateStats();
+  }
+
+  // ========== FILTER EVENTS ==========
+  var filterIds = ['filterStatus','filterPayment','filterDateRange','searchInput','dateFrom','dateTo'];
+  filterIds.forEach(function(id) {
+    var el = document.getElementById(id);
+    el.addEventListener('change', renderTable);
+    el.addEventListener('input', renderTable);
+  });
+  document.getElementById('filterDateRange').addEventListener('change', function() {
+    document.getElementById('customDateRange').style.display = this.value === 'custom' ? 'flex' : 'none';
+  });
+
+  // ========== CSV EXPORT ==========
+  document.getElementById('csvExportBtn').addEventListener('click', function() {
+    var headers = ['注文番号','お客様名','メール','電話番号','商品','金額','ステータス','決済方法','配送業者','追跡番号','注文日時'];
+    var rows = orders.map(function(o) {
+      return [
+        '#'+o.id, o.customer, o.email, o.phone,
+        o.items.map(function(i){ return i.name+'('+i.size+'/'+i.color+') x'+i.qty; }).join(' | '),
+        calcOrderTotal(o), o.status, o.payment, o.carrier||'', o.tracking||'', o.date
+      ];
+    });
+    var csv = '\uFEFF' + headers.join(',') + '\n';
+    rows.forEach(function(r) {
+      csv += r.map(function(v) { return '"' + String(v).replace(/"/g,'""') + '"'; }).join(',') + '\n';
+    });
+    var blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'orders_' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click(); URL.revokeObjectURL(url);
+    showToast('CSVファイルをエクスポートしました');
+  });
+
+  // ========== REFUND RADIO TOGGLE ==========
+  var refundRadios = document.querySelectorAll('input[name="refundType"]');
+  for (var i = 0; i < refundRadios.length; i++) {
+    refundRadios[i].addEventListener('change', function() {
+      document.getElementById('partialRefundRow').style.display = this.value === 'partial' ? 'block' : 'none';
     });
   }
 
-  // === データ読み込み: API優先、失敗時はlocalStorageフォールバック ===
-  (async function loadData() {
-    try {
-      if (typeof AdminAPI !== 'undefined') {
-        const orders = await AdminAPI.getOrders();
-        const apiData = {};
-        orders.forEach(order => {
-          // API注文IDをフォーマットして注文番号と紐付け
-          // HTMLの注文番号は "#OFT-0412" のような形式
-          const orderNum = '#OFT-' + String(order.id).padStart(4, '0');
-          orderNumToId[orderNum] = order.id;
-          apiData[orderNum] = {
-            status: toJpStatus(order.status),
-            tracking: ''
-          };
-        });
-        applyStatusToRows(apiData);
-        // localStorageにもキャッシュ
-        saveOrderDataLocal(apiData);
-        console.log('[Orders] APIからデータ取得成功 (' + orders.length + '件)');
-      } else {
-        throw new Error('AdminAPI未定義');
-      }
-    } catch (e) {
-      console.warn('[Orders] APIフォールバック → localStorage:', e.message);
-      applyStatusToRows(loadOrderDataLocal());
-    }
-  })();
-
-  // === SEARCH & FILTER ===
-  const headerDiv = document.querySelector('h2').closest('div');
-  const searchInput = headerDiv.querySelector('input');
-  const statusSelect = headerDiv.querySelector('select');
-  const tbody = document.querySelector('tbody');
-
-  function filterRows() {
-    const query = searchInput.value.trim().toLowerCase();
-    const statusFilter = statusSelect.value;
-    const rows = tbody.querySelectorAll('tr');
-    rows.forEach(row => {
-      const orderNum = row.cells[0].textContent.toLowerCase();
-      const customer = row.cells[1].textContent.toLowerCase();
-      const status = row.cells[4].textContent.trim();
-      const matchSearch = !query || orderNum.includes(query) || customer.includes(query);
-      const matchStatus = statusFilter === 'すべて' || status === statusFilter;
-      row.style.display = (matchSearch && matchStatus) ? '' : 'none';
-    });
+  // ========== ITEM ROW RENDERING ==========
+  function renderItemRow(item, idx) {
+    return '<tr data-idx="'+idx+'">'
+      + '<td><input class="form-input item-name" value="'+escapeHtml(item.name)+'" style="min-width:140px;"></td>'
+      + '<td><input class="form-input item-size" value="'+escapeHtml(item.size)+'" style="width:80px;"></td>'
+      + '<td><input class="form-input item-color" value="'+escapeHtml(item.color)+'" style="width:80px;"></td>'
+      + '<td style="text-align:center;"><input type="number" class="form-input item-qty" value="'+item.qty+'" min="1" style="width:56px;text-align:center;" onchange="recalcItems()"></td>'
+      + '<td style="text-align:right;"><input type="number" class="form-input item-price" value="'+item.price+'" min="0" style="width:100px;text-align:right;" onchange="recalcItems()"></td>'
+      + '<td style="text-align:right;font-weight:600;" class="item-subtotal">'+formatYen(item.price * item.qty)+'</td>'
+      + '<td><button class="item-remove" onclick="removeItemRow(this)" title="削除">&times;</button></td>'
+      + '</tr>';
   }
 
-  searchInput.addEventListener('input', filterRows);
-  statusSelect.addEventListener('change', filterRows);
+  // ========== OPEN ORDER DETAIL MODAL ==========
+  window.openOrderDetail = function(id) {
+    currentOrderId = id;
+    var order = getOrder(id);
+    if (!order) return;
 
-  // === MODAL ===
-  let currentRow = null;
+    var subtotal = calcOrderSubtotal(order);
+    var total = calcOrderTotal(order);
 
-  window.closeModal = function() {
-    document.getElementById('orderModal').style.display = 'none';
+    var html = '';
+
+    // Section A: 注文概要
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">A. 注文概要</div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">';
+    html += '<div><div class="form-label">注文番号</div><div style="font-size:20px;font-weight:700;color:#1A1A1A;">#'+escapeHtml(order.id)+'</div></div>';
+    html += '<div><div class="form-label">注文日時</div><div style="font-size:15px;">'+escapeHtml(order.date)+'</div></div>';
+    html += '<div><div class="form-label">ステータス</div>';
+    html += '<select id="detailStatus" class="form-select">';
+    ALL_STATUSES.forEach(function(s) {
+      html += '<option value="'+s+'"'+(s===order.status?' selected':'')+'>'+s+'</option>';
+    });
+    html += '</select></div>';
+    html += '<div><div class="form-label">決済方法</div><div style="font-size:14px;">'+escapeHtml(order.payment)+'</div></div>';
+    html += '</div>';
+    // Status history timeline
+    if (order.statusHistory && order.statusHistory.length) {
+      html += '<div style="margin-top:16px;"><div class="form-label">ステータス変更履歴</div>';
+      html += '<div class="timeline">';
+      order.statusHistory.slice().reverse().forEach(function(h) {
+        html += '<div class="timeline-item"><span class="timeline-date">'+escapeHtml(h.date)+'</span> ';
+        html += h.from ? (escapeHtml(h.from) + ' &rarr; ' + escapeHtml(h.to)) : ('初期: ' + escapeHtml(h.to));
+        html += '</div>';
+      });
+      html += '</div></div>';
+    }
+    html += '</div>';
+
+    // Section B: 顧客情報
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">B. 顧客情報</div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
+    html += '<div><div class="form-label">お名前</div><div style="font-size:14px;font-weight:600;"><a href="customers.html" style="color:#C9A96E;text-decoration:underline;">'+escapeHtml(order.customer)+'</a></div></div>';
+    html += '<div><div class="form-label">メール</div><div style="font-size:13px;">'+escapeHtml(order.email)+'</div></div>';
+    html += '<div><div class="form-label">電話番号</div><div style="font-size:13px;">'+escapeHtml(order.phone)+'</div></div>';
+    html += '</div></div>';
+
+    // Section C: 配送先情報
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">C. 配送先情報</div>';
+    html += '<div style="margin-bottom:12px;"><div class="form-label">住所</div><div style="font-size:14px;line-height:1.6;">'+escapeHtml(order.address)+'</div></div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">';
+    html += '<div><div class="form-label">配送業者</div><select id="detailCarrier" class="form-select"><option value="">未選択</option>';
+    CARRIERS.forEach(function(c) { html += '<option value="'+c+'"'+(c===order.carrier?' selected':'')+'>'+c+'</option>'; });
+    html += '</select></div>';
+    html += '<div><div class="form-label">配送追跡番号</div><input id="detailTracking" class="form-input" value="'+escapeHtml(order.tracking||'')+'" placeholder="追跡番号を入力..."></div>';
+    html += '<div><div class="form-label">配達希望日</div><input type="date" id="detailDeliveryDate" class="form-input" value="'+(order.deliveryDate||'')+'"></div>';
+    html += '<div><div class="form-label">配達時間帯</div><select id="detailDeliveryTime" class="form-select">';
+    TIME_SLOTS.forEach(function(t) { html += '<option value="'+t+'"'+(t===order.deliveryTime?' selected':'')+'>'+t+'</option>'; });
+    html += '</select></div>';
+    html += '</div></div>';
+
+    // Section D: 注文商品
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">D. 注文商品</div>';
+    html += '<div style="overflow-x:auto;"><table class="items-table"><thead><tr><th>商品名</th><th>サイズ</th><th>カラー</th><th style="text-align:center;width:60px;">数量</th><th style="text-align:right;">単価</th><th style="text-align:right;">小計</th><th style="width:32px;"></th></tr></thead>';
+    html += '<tbody id="detailItemsBody">';
+    order.items.forEach(function(item, idx) {
+      html += renderItemRow(item, idx);
+    });
+    html += '</tbody></table></div>';
+    html += '<button class="btn btn-outline btn-sm" style="margin-top:10px;" onclick="addItemRow()">+ 商品を追加</button>';
+    html += '</div>';
+
+    // Section E: 金額
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">E. 金額</div>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:12px;">';
+    html += '<div><div class="form-label">小計</div><div id="detailSubtotal" style="font-size:15px;font-weight:600;">'+formatYen(subtotal)+'</div></div>';
+    html += '<div><div class="form-label">送料</div><input type="number" id="detailShipping" class="form-input" value="'+(order.shipping||0)+'" min="0" onchange="recalcTotal()"></div>';
+    html += '<div><div class="form-label">割引/クーポン</div><input type="number" id="detailDiscount" class="form-input" value="'+(order.discount||0)+'" min="0" onchange="recalcTotal()"></div>';
+    html += '</div>';
+    html += '<div style="display:flex;align-items:baseline;gap:12px;">';
+    html += '<div class="form-label" style="margin-bottom:0;">合計</div>';
+    html += '<div id="detailTotal" style="font-size:24px;font-weight:700;color:#C9A96E;">'+formatYen(total)+'</div>';
+    html += (order.shipping === 0 ? '<span style="font-size:11px;color:#28A745;font-weight:600;">送料無料</span>' : '');
+    html += '</div></div>';
+
+    // Section F: アクション
+    html += '<div class="modal-section">';
+    html += '<div class="modal-section-title">F. アクション</div>';
+    html += '<div style="margin-bottom:16px;"><div class="form-label">注文メモ（内部用）</div>';
+    html += '<textarea id="detailNotes" class="form-textarea" placeholder="メモを入力...">'+escapeHtml(order.notes||'')+'</textarea></div>';
+    html += '<div style="display:flex;gap:10px;flex-wrap:wrap;">';
+    html += '<button class="btn btn-primary" onclick="saveOrderDetail()" style="flex:1;min-width:160px;">注文を更新</button>';
+    html += '<button class="btn btn-outline" onclick="issueReceipt()" style="white-space:nowrap;">領収書を発行</button>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">';
+    html += '<button class="btn btn-danger" onclick="openCancelModal()">注文をキャンセル</button>';
+    html += '<button class="btn btn-warning" onclick="openReturnModal()">返品処理</button>';
+    html += '</div>';
+    html += '</div>';
+
+    document.getElementById('modalBody').innerHTML = html;
+    document.getElementById('orderModal').classList.add('active');
   };
 
-  window.openModal = function(row) {
-    currentRow = row;
-    const cells = row.cells;
-    const orderNum = cells[0].textContent.trim();
-    const data = loadOrderDataLocal();
-    const saved = data[orderNum] || {};
-
-    document.getElementById('modalOrderNum').textContent = orderNum;
-    document.getElementById('modalCustomer').textContent = cells[1].textContent.trim();
-    document.getElementById('modalProducts').textContent = cells[2].textContent.trim();
-    document.getElementById('modalAmount').textContent = cells[3].textContent.trim();
-    document.getElementById('modalDate').textContent = cells[5].textContent.trim();
-    document.getElementById('modalStatus').value = saved.status || cells[4].textContent.trim();
-    document.getElementById('modalTracking').value = saved.tracking || '';
-
-    const modal = document.getElementById('orderModal');
-    modal.style.display = 'flex';
+  window.addItemRow = function() {
+    var tbody = document.getElementById('detailItemsBody');
+    var idx = tbody.querySelectorAll('tr').length;
+    var newItem = {name:'',size:'',color:'',qty:1,price:0};
+    tbody.insertAdjacentHTML('beforeend', renderItemRow(newItem, idx));
   };
 
-  // Close on backdrop click
-  document.getElementById('orderModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
+  window.removeItemRow = function(btn) {
+    var row = btn.closest('tr');
+    row.remove();
+    window.recalcItems();
+  };
 
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
+  window.recalcItems = function() {
+    var subtotal = 0;
+    var rows = document.querySelectorAll('#detailItemsBody tr');
+    for (var i = 0; i < rows.length; i++) {
+      var tr = rows[i];
+      var qty = parseInt(tr.querySelector('.item-qty').value) || 0;
+      var price = parseInt(tr.querySelector('.item-price').value) || 0;
+      var st = qty * price;
+      subtotal += st;
+      tr.querySelector('.item-subtotal').textContent = formatYen(st);
+    }
+    document.getElementById('detailSubtotal').textContent = formatYen(subtotal);
+    window.recalcTotal();
+  };
 
-  window.saveOrderUpdate = async function() {
-    if (!currentRow) return;
-    const orderNum = currentRow.cells[0].textContent.trim();
-    const newStatus = document.getElementById('modalStatus').value;
-    const tracking = document.getElementById('modalTracking').value.trim();
+  window.recalcTotal = function() {
+    var subtotalText = document.getElementById('detailSubtotal').textContent;
+    var subtotal = parseInt(subtotalText.replace(/[^\d]/g, '')) || 0;
+    var shipping = parseInt(document.getElementById('detailShipping').value) || 0;
+    var discount = parseInt(document.getElementById('detailDiscount').value) || 0;
+    var total = subtotal + shipping - discount;
+    document.getElementById('detailTotal').textContent = formatYen(total);
+  };
 
-    // Update badge in table
-    const badge = currentRow.cells[4].querySelector('span');
-    const s = STATUS_STYLES[newStatus] || STATUS_STYLES['処理待ち'];
-    badge.textContent = newStatus;
-    badge.style.background = s.bg;
-    badge.style.color = s.color;
+  // ========== SAVE ORDER DETAIL ==========
+  window.saveOrderDetail = function() {
+    var order = getOrder(currentOrderId);
+    if (!order) return;
+    var newStatus = document.getElementById('detailStatus').value;
 
-    // API経由でステータス更新、失敗時はlocalStorageに保存
-    try {
-      const orderId = orderNumToId[orderNum];
-      if (typeof AdminAPI !== 'undefined' && orderId) {
-        const wcStatus = JP_TO_WC_STATUS[newStatus] || newStatus;
-        await AdminAPI.updateOrderStatus(orderId, wcStatus);
-        console.log('[Orders] APIステータス更新成功: ' + orderNum + ' → ' + newStatus);
-      } else {
-        throw new Error('API未対応');
-      }
-    } catch (e) {
-      console.warn('[Orders] APIフォールバック → localStorage:', e.message);
+    // Track status change
+    if (newStatus !== order.status) {
+      if (!order.statusHistory) order.statusHistory = [];
+      order.statusHistory.push({ date: getNow(), from: order.status, to: newStatus });
+      order.status = newStatus;
     }
 
-    // localStorageにも常にキャッシュ
-    const data = loadOrderDataLocal();
-    data[orderNum] = { status: newStatus, tracking: tracking };
-    saveOrderDataLocal(data);
+    // Update shipping info
+    order.carrier = document.getElementById('detailCarrier').value;
+    order.tracking = document.getElementById('detailTracking').value.trim();
+    order.deliveryDate = document.getElementById('detailDeliveryDate').value;
+    order.deliveryTime = document.getElementById('detailDeliveryTime').value;
+    order.shipping = parseInt(document.getElementById('detailShipping').value) || 0;
+    order.discount = parseInt(document.getElementById('detailDiscount').value) || 0;
+    order.notes = document.getElementById('detailNotes').value.trim();
 
+    // Update items from table
+    var newItems = [];
+    var itemRows = document.querySelectorAll('#detailItemsBody tr');
+    for (var i = 0; i < itemRows.length; i++) {
+      var tr = itemRows[i];
+      newItems.push({
+        name: tr.querySelector('.item-name').value,
+        size: tr.querySelector('.item-size').value,
+        color: tr.querySelector('.item-color').value,
+        qty: parseInt(tr.querySelector('.item-qty').value) || 1,
+        price: parseInt(tr.querySelector('.item-price').value) || 0
+      });
+    }
+    order.items = newItems;
+
+    saveOrders(orders);
+    renderTable();
     closeModal();
-    showToast('注文ステータスを更新しました');
+    showToast('注文 #'+order.id+' を更新しました');
   };
 
-  // === ATTACH ROW CLICK ===
-  function attachRowListeners() {
-    const rows = tbody.querySelectorAll('tr');
-    rows.forEach(row => {
-      row.style.cursor = 'pointer';
-      row.addEventListener('click', function() { openModal(this); });
-    });
-  }
+  // ========== RECEIPT ==========
+  window.issueReceipt = function() {
+    showToast('領収書を発行しました（#'+currentOrderId+'）');
+  };
 
-  // === INIT ===
-  attachRowListeners();
+  // ========== CLOSE MODALS ==========
+  window.closeModal = function() {
+    document.getElementById('orderModal').classList.remove('active');
+    currentOrderId = null;
+  };
+  window.closeCancelModal = function() {
+    document.getElementById('cancelModal').classList.remove('active');
+  };
+  window.closeReturnModal = function() {
+    document.getElementById('returnModal').classList.remove('active');
+  };
+
+  // Backdrop click close
+  ['orderModal','cancelModal','returnModal'].forEach(function(id) {
+    document.getElementById(id).addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+        if (id === 'orderModal') currentOrderId = null;
+      }
+    });
+  });
+  // Escape key close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var modals = document.querySelectorAll('.modal-overlay.active');
+      for (var i = 0; i < modals.length; i++) { modals[i].classList.remove('active'); }
+    }
+  });
+
+  // ========== CANCEL FLOW ==========
+  window.openCancelModal = function() {
+    if (!currentOrderId) return;
+    document.getElementById('cancelReason').value = '';
+    document.getElementById('cancelDetail').value = '';
+    document.querySelector('input[name="refundType"][value="full"]').checked = true;
+    document.getElementById('partialRefundRow').style.display = 'none';
+    document.getElementById('partialRefundAmount').value = '';
+    document.getElementById('cancelModal').classList.add('active');
+  };
+
+  window.confirmCancel = function() {
+    var reason = document.getElementById('cancelReason').value;
+    if (!reason) { showToast('キャンセル理由を選択してください'); return; }
+    var detail = document.getElementById('cancelDetail').value.trim();
+    var refundType = document.querySelector('input[name="refundType"]:checked').value;
+    var refundNote = '';
+    if (refundType === 'full') refundNote = '全額返金';
+    else if (refundType === 'partial') refundNote = '一部返金: ' + formatYen(parseInt(document.getElementById('partialRefundAmount').value)||0);
+    else refundNote = '返金なし';
+
+    var order = getOrder(currentOrderId);
+    if (!order) return;
+    if (!order.statusHistory) order.statusHistory = [];
+    order.statusHistory.push({ date: getNow(), from: order.status, to: 'キャンセル申請' });
+    order.status = 'キャンセル完了';
+    order.statusHistory.push({ date: getNow(), from: 'キャンセル申請', to: 'キャンセル完了' });
+    order.notes = (order.notes ? order.notes + '\n' : '') + '[キャンセル] 理由: ' + reason + (detail ? ' / ' + detail : '') + ' / ' + refundNote;
+
+    saveOrders(orders);
+    closeCancelModal();
+    closeModal();
+    renderTable();
+    showToast('注文 #'+order.id+' をキャンセルしました');
+  };
+
+  // ========== RETURN FLOW ==========
+  window.openReturnModal = function() {
+    if (!currentOrderId) return;
+    var order = getOrder(currentOrderId);
+    if (!order) return;
+    document.getElementById('returnReason').value = '';
+    document.getElementById('returnCondition').value = '未開封';
+    document.getElementById('returnRefundMethod').value = '元の決済方法';
+    // Populate checkboxes
+    var cbHtml = '';
+    order.items.forEach(function(item, idx) {
+      cbHtml += '<label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">';
+      cbHtml += '<input type="checkbox" class="return-item-cb" value="'+idx+'" checked>';
+      cbHtml += escapeHtml(item.name) + ' ('+escapeHtml(item.size)+'/'+escapeHtml(item.color)+') x'+item.qty;
+      cbHtml += '</label>';
+    });
+    document.getElementById('returnItemsCheckboxes').innerHTML = cbHtml;
+    document.getElementById('returnModal').classList.add('active');
+  };
+
+  window.confirmReturn = function() {
+    var reason = document.getElementById('returnReason').value;
+    if (!reason) { showToast('返品理由を選択してください'); return; }
+    var condition = document.getElementById('returnCondition').value;
+    var refundMethod = document.getElementById('returnRefundMethod').value;
+    var checkedItems = [];
+    var cbs = document.querySelectorAll('.return-item-cb:checked');
+    for (var i = 0; i < cbs.length; i++) { checkedItems.push(cbs[i].value); }
+    if (!checkedItems.length) { showToast('返品商品を選択してください'); return; }
+
+    var order = getOrder(currentOrderId);
+    if (!order) return;
+    if (!order.statusHistory) order.statusHistory = [];
+    order.statusHistory.push({ date: getNow(), from: order.status, to: '返品申請中' });
+    order.status = '返品申請中';
+    var itemNames = checkedItems.map(function(i) { return order.items[i] ? order.items[i].name : ''; }).join(', ');
+    order.notes = (order.notes ? order.notes + '\n' : '') + '[返品] 理由: ' + reason + ' / 商品: ' + itemNames + ' / 状態: ' + condition + ' / 返金: ' + refundMethod;
+
+    saveOrders(orders);
+    closeReturnModal();
+    closeModal();
+    renderTable();
+    showToast('返品処理を開始しました（#'+order.id+'）');
+  };
+
+  // ========== INIT ==========
+  renderTable();
+
 })();
 </script>
 </body>

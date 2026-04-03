@@ -1064,6 +1064,14 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
     </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
@@ -1344,107 +1352,149 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     });
   }
 
-  // --- ダッシュボードデータ取得 ---
-  if (typeof AdminAPI !== 'undefined' && AdminAPI.getDashboard) {
-    AdminAPI.getDashboard()
-      .then(function(data) {
-        updateStats(data);
-        updateOrdersTable(data.orders);
-      })
-      .catch(function(err) {
-        console.warn('ダッシュボードAPI取得失敗、静的データを維持:', err.message);
-        // フォールバック: 既存の静的データをそのまま表示
-      });
+  // --- localStorageからデータ取得 ---
+  function getLS(key) {
+    try { return JSON.parse(localStorage.getItem(key)) || []; } catch(e) { return []; }
   }
 
-  // --- 統計カード更新 ---
-  function updateStats(data) {
-    if (!data || !data.orders) return;
-    var orders = data.orders;
-    if (!Array.isArray(orders) || orders.length === 0) return;
+  function loadLocalDashboard() {
+    var orders = getLS('oft_orders');
+    var customers = getLS('oft_customers');
+    var products = getLS('oft_products');
 
-    // 本日の日付
-    var today = new Date().toISOString().slice(0, 10);
-    var todayOrders = orders.filter(function(o) {
-      return o.date && o.date.slice(0, 10) === today;
-    });
+    // --- 統計カード更新 ---
+    // 注文データがあれば統計を計算
+    if (orders.length > 0) {
+      var totalSales = 0;
+      var pendingCount = 0;
+      var shippedCount = 0;
+      orders.forEach(function(o) {
+        // items配列から合計を計算
+        var orderTotal = 0;
+        if (o.items && Array.isArray(o.items)) {
+          o.items.forEach(function(it) { orderTotal += (Number(it.price) || 0) * (Number(it.qty) || 1); });
+        }
+        orderTotal += Number(o.shipping) || 0;
+        orderTotal -= Number(o.discount) || 0;
+        totalSales += orderTotal;
+        if (o.status === '未処理' || o.status === '処理待ち') pendingCount++;
+        if (o.status === '発送済み') shippedCount++;
+      });
 
-    // 本日の売上
-    var dailySales = todayOrders.reduce(function(sum, o) {
-      return sum + (Number(o.total) || 0);
-    }, 0);
+      var el1 = document.getElementById('stat-daily-sales');
+      if (el1) el1.innerHTML = '&yen;' + totalSales.toLocaleString();
+      var diff1 = document.getElementById('stat-daily-sales-diff');
+      if (diff1) diff1.textContent = '全' + orders.length + '件の注文合計';
 
-    // 本日の注文数
-    var dailyCount = todayOrders.length;
-
-    // 月間売上
-    var thisMonth = today.slice(0, 7);
-    var monthlySales = orders.filter(function(o) {
-      return o.date && o.date.slice(0, 7) === thisMonth;
-    }).reduce(function(sum, o) {
-      return sum + (Number(o.total) || 0);
-    }, 0);
-
-    // 会員数（products配列の長さを商品数として表示、またはordersから顧客をユニークカウント）
-    var uniqueCustomers = {};
-    orders.forEach(function(o) {
-      if (o.customer_name) uniqueCustomers[o.customer_name] = true;
-    });
-    var memberCount = Object.keys(uniqueCustomers).length;
-
-    // DOM更新（値が0の場合は静的データを維持）
-    if (dailySales > 0) {
-      var el = document.getElementById('stat-daily-sales');
-      if (el) el.innerHTML = '&yen;' + dailySales.toLocaleString();
-    }
-    if (dailyCount > 0) {
       var el2 = document.getElementById('stat-daily-orders');
-      if (el2) el2.textContent = dailyCount + '件';
-    }
-    if (monthlySales > 0) {
+      if (el2) el2.textContent = orders.length + '件';
+      var diff2 = document.getElementById('stat-daily-orders-diff');
+      if (diff2) diff2.textContent = '未処理: ' + pendingCount + '件 / 発送済: ' + shippedCount + '件';
+
+      // 月間売上（直近30日）
+      var now = Date.now();
+      var monthAgo = now - 30 * 24 * 60 * 60 * 1000;
+      var monthlySales = 0;
+      orders.forEach(function(o) {
+        var d = o.date ? new Date(o.date.replace(/\//g, '-')).getTime() : 0;
+        if (d > monthAgo) {
+          var ot = 0;
+          if (o.items && Array.isArray(o.items)) {
+            o.items.forEach(function(it) { ot += (Number(it.price) || 0) * (Number(it.qty) || 1); });
+          }
+          ot += Number(o.shipping) || 0;
+          ot -= Number(o.discount) || 0;
+          monthlySales += ot;
+        }
+      });
       var el3 = document.getElementById('stat-monthly-sales');
       if (el3) el3.innerHTML = '&yen;' + monthlySales.toLocaleString();
+      var diff3 = document.getElementById('stat-monthly-sales-diff');
+      if (diff3) diff3.textContent = '直近30日間';
     }
-    if (memberCount > 0) {
+
+    // 会員数
+    if (customers.length > 0) {
+      var activeCount = customers.filter(function(c) { return c.status === 'アクティブ'; }).length;
       var el4 = document.getElementById('stat-members');
-      if (el4) el4.textContent = memberCount.toLocaleString() + '人';
+      if (el4) el4.textContent = customers.length + '人';
+      var diff4 = document.getElementById('stat-members-diff');
+      if (diff4) diff4.textContent = 'アクティブ: ' + activeCount + '人';
+    }
+
+    // --- 最新注文テーブル更新 ---
+    if (orders.length > 0) {
+      updateOrdersFromLocal(orders);
+    }
+
+    // --- 統計カードラベル更新 ---
+    if (orders.length > 0) {
+      // 1枚目のラベルを変更
+      var labels = document.querySelectorAll('#stats-cards > div > div:first-child');
+      if (labels.length >= 1) labels[0].textContent = '売上合計';
     }
   }
 
-  // --- 注文テーブル更新 ---
-  function updateOrdersTable(orders) {
-    if (!Array.isArray(orders) || orders.length === 0) return;
+  function updateOrdersFromLocal(orders) {
     var tbody = document.getElementById('orders-tbody');
     if (!tbody) return;
 
-    // ステータスの色マッピング
     var statusColors = {
-      'shipped':   { bg: '#E8F5E9', color: '#4CAF50', label: '発送済み' },
-      'preparing': { bg: '#FFF9C4', color: '#F9A825', label: '準備中' },
-      'pending':   { bg: '#E3F2FD', color: '#1976D2', label: '入金確認中' },
-      'cancelled': { bg: '#FFEBEE', color: '#E53935', label: 'キャンセル' },
-      '発送済み':   { bg: '#E8F5E9', color: '#4CAF50', label: '発送済み' },
-      '準備中':     { bg: '#FFF9C4', color: '#F9A825', label: '準備中' },
-      '入金確認中': { bg: '#E3F2FD', color: '#1976D2', label: '入金確認中' }
+      '未処理':     { bg: '#FFEBEE', color: '#E53935' },
+      '処理待ち':   { bg: '#FFF3E0', color: '#E65100' },
+      '決済確認中': { bg: '#E3F2FD', color: '#1976D2' },
+      '発送準備中': { bg: '#FFF9C4', color: '#F9A825' },
+      '発送済み':   { bg: '#E8F5E9', color: '#4CAF50' },
+      '配達完了':   { bg: '#E0F2F1', color: '#00897B' },
+      '返品申請中': { bg: '#F3E5F5', color: '#7B1FA2' },
+      '返品完了':   { bg: '#EDE7F6', color: '#512DA8' },
+      'キャンセル申請': { bg: '#FCE4EC', color: '#C62828' },
+      'キャンセル完了': { bg: '#ECEFF1', color: '#546E7A' }
     };
-    var defaultStatus = { bg: '#F5F5F5', color: '#999', label: '不明' };
+    var defaultS = { bg: '#F5F5F5', color: '#999' };
 
-    // 最新5件を表示
     var recent = orders.slice(0, 5);
     tbody.innerHTML = '';
 
     recent.forEach(function(order) {
-      var s = statusColors[order.status] || defaultStatus;
+      var s = statusColors[order.status] || defaultS;
+      var items = '';
+      var orderTotal = 0;
+      if (order.items && Array.isArray(order.items)) {
+        items = order.items.map(function(it) { return it.name; }).join(', ');
+        order.items.forEach(function(it) { orderTotal += (Number(it.price) || 0) * (Number(it.qty) || 1); });
+      } else {
+        items = order.product || '-';
+        orderTotal = Number(order.total) || 0;
+      }
+      orderTotal += Number(order.shipping) || 0;
+      orderTotal -= Number(order.discount) || 0;
       var tr = document.createElement('tr');
       tr.innerHTML =
-        '<td style="font-weight:600; color:#C9A96E;">' + (order.order_number || order.id || '-') + '</td>' +
-        '<td>' + (order.product_name || order.items || '-') + '</td>' +
-        '<td>' + (order.customer_name || '-') + '</td>' +
-        '<td style="font-weight:600;">&yen;' + (Number(order.total) || 0).toLocaleString() + '</td>' +
-        '<td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:' + s.bg + '; color:' + s.color + ';">' + s.label + '</span></td>' +
+        '<td style="font-weight:600; color:#C9A96E;">' + (order.number || order.id || '-') + '</td>' +
+        '<td>' + items + '</td>' +
+        '<td>' + (order.customer || '-') + '</td>' +
+        '<td style="font-weight:600;">&yen;' + orderTotal.toLocaleString() + '</td>' +
+        '<td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:' + s.bg + '; color:' + s.color + ';">' + (order.status || '-') + '</span></td>' +
         '<td style="color:#999; font-size:13px;">' + (order.date || '-') + '</td>';
       tbody.appendChild(tr);
     });
+  }
+
+  // まずlocalStorageからデータをロード
+  loadLocalDashboard();
+
+  // WP APIからも試みる（上書き）
+  if (typeof AdminAPI !== 'undefined' && AdminAPI.getDashboard) {
+    AdminAPI.getDashboard()
+      .then(function(data) {
+        if (data && data.orders && data.orders.length > 0) {
+          updateOrdersFromLocal(data.orders);
+        }
+      })
+      .catch(function(err) {
+        console.warn('ダッシュボードAPI取得失敗、localStorageデータを維持:', err.message);
+      });
   }
 
 })();

@@ -7,1025 +7,98 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* === GLOBAL NAV WITH DROPDOWNS === */
-.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
-.header-logo img{height:28px;width:auto}
-.header-nav{display:flex;align-items:center;gap:32px}
-.header-nav-item{position:relative}
-.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
-.header-nav-item>a:hover{color:#C9A96E}
-/* Dropdown */
-.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
-.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
-.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
-.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
-/* Mega menu for PRODUCTS (with images) */
-.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
-.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
-.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
-.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
-.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
-/* Actions */
-.header-actions{display:flex;align-items:center;gap:16px}
-.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
-.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
-.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
-@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
-@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
-/* === END GLOBAL NAV === */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+a { text-decoration:none; color:inherit; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
+td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
+tr:hover { background:#FAFBFD; }
+.btn { display:inline-block; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; font-family:inherit; transition:opacity 0.2s; }
+.btn:hover { opacity:0.85; }
 
-/* FOOTER */
-.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
-.footer-logo{margin-bottom:16px}
-.footer-logo img{height:24px}
-.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
-.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
-.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
-.footer-nav a:hover{color:#C9A96E}
-.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
-@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+/* Admin Layout */
+.admin-sidebar-fix { position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100; }
+.admin-main-fix { margin-left:260px; min-height:100vh; }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
-  a { text-decoration:none; color:inherit; }
-  table { width:100%; border-collapse:collapse; }
-  th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
-  td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
-  tr:hover { background:#FAFBFD; }
-  .btn { display:inline-block; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; font-family:inherit; transition:opacity 0.2s; }
-  .btn:hover { opacity:0.85; }
+/* Tabs */
+.tab-bar { display:flex; gap:0; border-bottom:2px solid #EAEDF3; background:#fff; padding:0 24px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.tab-bar::-webkit-scrollbar { height:0; }
+.tab-btn { padding:14px 18px; font-size:13px; font-weight:600; color:#888; background:none; border:none; cursor:pointer; white-space:nowrap; position:relative; font-family:inherit; transition:color 0.2s; }
+.tab-btn:hover { color:#555; }
+.tab-btn.active { color:#C9A96E; }
+.tab-btn.active::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px; background:#C9A96E; }
+.tab-panel { display:none; padding:24px; }
+.tab-panel.active { display:block; }
 
-</style>
-
-<style id="mobile-responsive">/* ================================================================
-   MOBILE RESPONSIVE OVERRIDES v2
-   ================================================================ */
-
-/* ---- GLOBAL ---- */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw;
+/* Form Fields */
+.field { margin-bottom:18px; }
+.field label { display:block; font-size:12px; font-weight:600; color:#555; margin-bottom:6px; letter-spacing:0.04em; }
+.field label .req { color:#E53935; margin-left:2px; }
+.field input[type="text"], .field input[type="number"], .field input[type="url"],
+.field input[type="color"], .field textarea, .field select {
+  width:100%; padding:10px 14px; border:1px solid #DDD; border-radius:8px; font-size:14px;
+  font-family:inherit; background:#fff; color:#333; outline:none; transition:border-color 0.2s;
 }
+.field input:focus, .field textarea:focus, .field select:focus { border-color:#C9A96E; }
+.field textarea { resize:vertical; min-height:80px; }
+.field small { display:block; color:#AAA; font-size:11px; margin-top:3px; }
+.field input[type="color"] { padding:4px; height:40px; cursor:pointer; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
 
-/* ---- HEADER ---- */
+/* Dynamic Table */
+.dyn-table { width:100%; border-collapse:collapse; margin-bottom:12px; }
+.dyn-table th { font-size:11px; font-weight:600; color:#888; text-transform:uppercase; padding:8px 10px; border-bottom:2px solid #EAEDF3; text-align:left; }
+.dyn-table td { padding:8px 10px; border-bottom:1px solid #F0F0F0; vertical-align:middle; }
+.dyn-table input, .dyn-table select { width:100%; padding:8px 10px; border:1px solid #DDD; border-radius:6px; font-size:13px; font-family:inherit; outline:none; }
+.dyn-table input:focus, .dyn-table select:focus { border-color:#C9A96E; }
+.dyn-table .rm-btn { background:#FFF0F0; color:#E53935; border:none; border-radius:6px; padding:6px 10px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; }
+.dyn-table .rm-btn:hover { background:#FFDDDD; }
+.add-row-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; color:#C9A96E; background:#FDF8F0; border:1px dashed #C9A96E; cursor:pointer; transition:background 0.2s; }
+.add-row-btn:hover { background:#F5EDE0; }
+
+/* Section Card */
+.section-card { background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden; margin-bottom:20px; }
+.section-card-header { padding:16px 20px; border-bottom:1px solid #EAEDF3; font-size:14px; font-weight:700; color:#333; }
+
+/* Character counter */
+.char-counter { display:inline-block; font-size:11px; color:#AAA; margin-left:8px; }
+.char-counter.over { color:#E53935; font-weight:600; }
+
+/* Badges */
+.badge-published { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50; }
+.badge-draft { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FFF3E0; color:#E65100; }
+
+/* Toast */
+#toast { position:fixed; bottom:32px; right:32px; padding:14px 24px; border-radius:10px; font-size:14px; font-weight:600; font-family:inherit; color:#fff; background:#2D2D2D; box-shadow:0 8px 24px rgba(0,0,0,0.2); z-index:10000; opacity:0; transform:translateY(20px); transition:opacity 0.3s, transform 0.3s; pointer-events:none; border-left:4px solid #C9A96E; }
+
+/* Confirm Dialog */
+.confirm-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9500; display:none; opacity:0; transition:opacity 0.25s; }
+.confirm-box { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.95); z-index:9501; display:none; opacity:0; transition:opacity 0.25s, transform 0.25s; width:380px; max-width:90vw; background:#fff; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,0.15); padding:28px; text-align:center; }
+
+/* Mobile */
 @media (max-width: 768px) {
-  .header {
-    height: 56px !important;
-  }
-  .header-inner {
-    padding: 0 16px !important;
-  }
-  .header-logo img {
-    height: 20px !important;
-    max-width: 160px;
-  }
-  .header-actions {
-    gap: 8px !important;
-  }
-  .header-actions > a {
-    font-size: 11px !important;
-    letter-spacing: 0.04em !important;
-  }
-  .hamburger {
-    padding: 10px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .hamburger span {
-    width: 24px !important;
-  }
+  .admin-sidebar-fix { display:none !important; }
+  .admin-main-fix { margin-left:0 !important; }
+  .field-row, .field-row-3 { grid-template-columns:1fr !important; }
+  .tab-btn { padding:12px 14px; font-size:12px; }
+  .dyn-table { display:block; overflow-x:auto; }
+  .list-toolbar { flex-direction:column !important; align-items:stretch !important; }
+  .list-toolbar .filters { flex-wrap:wrap; }
+  .list-toolbar .filters input, .list-toolbar .filters select { width:100% !important; }
+  table.product-list { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
 }
-
 @media (max-width: 480px) {
-  .header {
-    height: 52px !important;
-  }
-  .header-logo img {
-    height: 18px !important;
-    max-width: 140px;
-  }
-}
-
-/* ---- MOBILE MENU ---- */
-.mobile-menu {
-  max-width: 100%;
-}
-.mobile-menu-overlay {
-  overflow: hidden !important;
-}
-
-/* ---- FOOTER ---- */
-@media (max-width: 768px) {
-  .footer {
-    padding: 48px 0 0 !important;
-  }
-  .footer-inner {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px 20px !important;
-    padding: 0 20px !important;
-  }
-  .footer-brand {
-    grid-column: 1 / -1 !important;
-    text-align: center !important;
-  }
-  .footer-col-last {
-    display: contents !important;
-  }
-  .footer-nav-title {
-    font-size: 12px !important;
-    margin-bottom: 12px !important;
-  }
-  .footer-nav a {
-    font-size: 13px !important;
-    padding: 4px 0 !important;
-  }
-  .footer-desc {
-    font-size: 13px !important;
-  }
-  .footer-bottom {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 20px 16px 16px !important;
-    margin-top: 32px !important;
-  }
-  .footer-legal {
-    gap: 12px !important;
-  }
-  .footer-legal a {
-    white-space: nowrap !important;
-    font-size: 11px !important;
-  }
-  .footer-copy {
-    font-size: 11px !important;
-  }
-  .footer-newsletter {
-    margin-top: 16px !important;
-  }
-}
-
-/* ---- PAGE HERO ---- */
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 100px 0 40px !important;
-    min-height: auto !important;
-  }
-  .page-hero-title {
-    font-size: 32px !important;
-  }
-  .page-hero-en {
-    font-size: 11px !important;
-  }
-  .page-hero-jp {
-    font-size: 13px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-hero {
-    padding: 72px 0 28px !important;
-  }
-  .page-hero-title {
-    font-size: 24px !important;
-  }
-}
-
-/* ---- PRODUCTS LISTING ---- */
-@media (max-width: 768px) {
-  .flagship-section {
-    padding: 32px 16px !important;
-  }
-  .flagship-card {
-    flex-direction: column !important;
-  }
-  .flagship-img {
-    height: 220px !important;
-    min-height: auto !important;
-  }
-  .flagship-body {
-    padding: 24px 20px !important;
-  }
-  .flagship-title {
-    font-size: 24px !important;
-  }
-  .flagship-desc {
-    font-size: 14px !important;
-  }
-  .flagship-stats {
-    gap: 16px !important;
-  }
-  .flagship-stat-num {
-    font-size: 18px !important;
-  }
-
-  .category-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px;
-  }
-  .category-card--wide {
-    grid-column: 1 / -1 !important;
-  }
-  .category-card-image {
-    height: 140px !important;
-  }
-  .category-card-image img {
-    height: 100% !important;
-    object-fit: cover;
-  }
-  .category-card-body {
-    padding: 12px !important;
-  }
-  .category-card-en {
-    font-size: 11px !important;
-  }
-  .category-card-jp {
-    font-size: 13px !important;
-  }
-  .category-card-meta {
-    font-size: 11px !important;
-  }
-  .category-card-count,
-  .category-card-price {
-    font-size: 11px !important;
-  }
-
-  .accessories-section {
-    padding: 32px 0 !important;
-  }
-  .accessories-label {
-    font-size: 11px !important;
-    padding: 0 16px;
-  }
-  .accessories-title {
-    font-size: 24px !important;
-    padding: 0 16px;
-  }
-}
-
-/* ---- PRODUCT DETAIL ---- */
-@media (max-width: 768px) {
-  .product-top {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    padding-top: 56px !important;
-  }
-  .purchase {
-    padding: 20px 16px !important;
-    position: relative !important;
-  }
-  .purchase-series {
-    font-size: 11px !important;
-  }
-  .purchase-name {
-    font-size: 22px !important;
-  }
-  .purchase-catch {
-    font-size: 14px !important;
-  }
-  .purchase-price {
-    font-size: 20px !important;
-  }
-
-  /* Gallery thumbnails horizontal on mobile */
-  .gallery {
-    flex-direction: column-reverse !important;
-  }
-  .gallery-thumbs {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 72px !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  .gallery-thumb {
-    width: 60px !important;
-    height: 60px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .product-desc,
-  .story-section,
-  .features-section,
-  .spec-section,
-  .price-section,
-  .reviews-section,
-  .related-mag-section,
-  .related-products-section,
-  .compare-section {
-    padding: 40px 0 !important;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  .feature-card {
-    display: grid !important;
-    grid-template-columns: 100px 1fr !important;
-    gap: 16px !important;
-    align-items: start !important;
-  }
-  .feature-card-img {
-    height: 100px !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-  }
-  .feature-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .feature-card-body {
-    padding: 0 !important;
-  }
-  .feature-card-title {
-    font-size: 14px !important;
-    margin-bottom: 4px !important;
-  }
-  .feature-card-desc {
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-  }
-
-  .spec-table th {
-    width: 100px !important;
-    min-width: 80px !important;
-    font-size: 12px !important;
-  }
-  .spec-table td {
-    font-size: 13px !important;
-  }
-  .spec-inner {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  .price-table th,
-  .price-table td {
-    font-size: 12px !important;
-    padding: 8px !important;
-  }
-
-  .related-products-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .related-product-card-img {
-    height: 140px !important;
-  }
-  .related-product-name {
-    font-size: 13px !important;
-  }
-  .related-product-price {
-    font-size: 13px !important;
-  }
-  .related-product-series {
-    font-size: 11px !important;
-  }
-
-  .related-mag-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .mag-card-img {
-    height: 160px !important;
-  }
-
-  .review-card {
-    padding: 20px !important;
-  }
-  .review-text {
-    font-size: 14px !important;
-  }
-
-  .compare-table {
-    font-size: 12px !important;
-  }
-  .compare-table th,
-  .compare-table td {
-    padding: 8px 6px !important;
-  }
-  .compare-badge {
-    font-size: 11px !important;
-  }
-  .compare-row-label {
-    font-size: 11px !important;
-  }
-  .compare-current-label {
-    font-size: 11px !important;
-  }
-  .purchase-color-label {
-    font-size: 11px !important;
-  }
-  .concept-sibling-link {
-    font-size: 12px !important;
-  }
-
-  .section-title {
-    font-size: 22px !important;
-  }
-  .section-en {
-    font-size: 11px !important;
-  }
-  .section-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- CATEGORY LISTING (pillow, bedding) ---- */
-@media (max-width: 768px) {
-  .cat-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .cat-hero-title {
-    font-size: 28px !important;
-  }
-  .cat-hero-desc {
-    font-size: 14px !important;
-  }
-
-  .product-list-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .product-card-image {
-    height: 160px !important;
-  }
-  .product-card-name {
-    font-size: 13px !important;
-  }
-  .product-card-price {
-    font-size: 14px !important;
-  }
-  .product-card-desc {
-    display: none !important;
-  }
-
-  .cat-intro {
-    padding: 40px 16px !important;
-  }
-  .cat-intro-title {
-    font-size: 22px !important;
-  }
-  .cat-intro-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- MAGAZINE ARTICLE ---- */
-@media (max-width: 768px) {
-  .article-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .article-hero-title {
-    font-size: 22px !important;
-  }
-  .article-body {
-    padding: 32px 16px !important;
-  }
-  .article-body h2 {
-    font-size: 20px !important;
-  }
-  .article-body h3 {
-    font-size: 17px !important;
-  }
-  .article-body p {
-    font-size: 15px !important;
-    line-height: 1.8 !important;
-  }
-  .article-body img {
-    border-radius: 8px !important;
-  }
-
-  .related-articles-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .related-article-card {
-    display: grid !important;
-    grid-template-columns: 120px 1fr !important;
-    gap: 12px !important;
-  }
-  .related-article-img {
-    height: 80px !important;
-    border-radius: 6px !important;
-    overflow: hidden;
-  }
-  .related-article-title {
-    font-size: 14px !important;
-  }
-  .related-article-meta {
-    font-size: 12px !important;
-  }
-}
-
-/* ---- MAGAZINE LISTING ---- */
-@media (max-width: 768px) {
-  /* Grid view: 2 columns compact */
-  .view-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 12px !important;
-  }
-  .mg-card-img {
-    height: 110px !important;
-  }
-  .mg-card-title {
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-  .mg-card-excerpt {
-    display: none !important;
-  }
-  .mg-card-meta {
-    font-size: 10px !important;
-  }
-  .mg-card-body {
-    padding: 8px !important;
-  }
-  .mg-card-cat {
-    font-size: 11px !important;
-  }
-
-  /* List view compact */
-  .ml-card {
-    gap: 12px !important;
-  }
-  .ml-card-img {
-    width: 100px !important;
-    height: 70px !important;
-    flex-shrink: 0 !important;
-  }
-  .ml-card-title {
-    font-size: 14px !important;
-  }
-  .ml-card-excerpt {
-    display: none !important;
-  }
-
-  /* Featured card */
-  .mag-featured-card {
-    flex-direction: column !important;
-  }
-  .mag-featured-card img {
-    height: 200px !important;
-  }
-
-  /* Magazine hero */
-  .mag-hero {
-    padding: 80px 16px 32px !important;
-    min-height: auto !important;
-  }
-  .mag-hero-en,
-  .mag-hero-sub {
-    font-size: 12px !important;
-  }
-
-  .magazine-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .magazine-card-img {
-    height: 120px !important;
-  }
-  .magazine-card-title {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-  }
-  .magazine-card-meta {
-    font-size: 11px !important;
-  }
-  .magazine-card-desc {
-    display: none !important;
-  }
-}
-
-
-
-/* ---- FAQ PAGE ---- */
-@media (max-width: 768px) {
-  .faq-section {
-    padding: 32px 16px !important;
-  }
-  .faq-category-title {
-    font-size: 18px !important;
-  }
-  .faq-question {
-    font-size: 14px !important;
-    padding: 16px 0 !important;
-  }
-  .faq-answer-inner {
-    font-size: 14px !important;
-    padding: 0 0 16px !important;
-  }
-}
-
-/* ---- TOP PAGE: HERO ---- */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 85vh !important;
-  }
-  .hero-catch {
-    font-size: 22px !important;
-  }
-  .hero-sub {
-    font-size: 14px !important;
-    margin-bottom: 32px !important;
-  }
-  .hero-en {
-    font-size: 14px !important;
-  }
-  .hero-content {
-    padding: 0 24px !important;
-  }
-  .hero-cta {
-    padding: 14px 32px !important;
-    font-size: 13px !important;
-  }
-  .hero-logo {
-    width: 80px !important;
-    height: 110px !important;
-    margin-bottom: 16px !important;
-  }
-  .hero-badges {
-    gap: 16px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-  .hero-badge {
-    font-size: 11px !important;
-  }
-
-  /* Brand story */
-  .brand-story {
-    padding: 40px 0 !important;
-  }
-  .brand-story-inner {
-    gap: 32px !important;
-  }
-  .brand-story-quote {
-    font-size: 18px !important;
-  }
-  .brand-story-desc {
-    font-size: 14px !important;
-  }
-  .brand-story-image img {
-    height: 240px !important;
-  }
-
-  /* Collection: compact cards */
-  .collection {
-    padding: 40px 0 !important;
-  }
-  .collection-grid {
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 180px !important;
-  }
-  .collection-card-en {
-    font-size: 13px !important;
-  }
-  .collection-card-jp {
-    font-size: 14px !important;
-  }
-  .collection-card-body {
-    padding: 16px !important;
-  }
-  .collection-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-
-  /* Concept */
-  .concept-section {
-    padding: 40px 0 !important;
-  }
-
-  /* Experience: 2-column grid on mobile */
-  .experience-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px !important;
-  }
-  .exp-card {
-    padding: 20px 14px !important;
-    border-radius: 12px !important;
-  }
-  .exp-card-icon {
-    width: 40px !important;
-    height: 40px !important;
-    margin-bottom: 12px !important;
-  }
-  .exp-card-icon svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  .exp-card-label {
-    font-size: 12px !important;
-  }
-  .exp-card-title {
-    font-size: 15px !important;
-  }
-  .exp-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-  }
-  .experience-card {
-    padding: 20px !important;
-  }
-  .experience-card-icon {
-    font-size: 28px !important;
-  }
-  .experience-card h3 {
-    font-size: 16px !important;
-  }
-  .experience-card p {
-    font-size: 13px !important;
-  }
-
-  /* Craft */
-  .craft-inner {
-    gap: 24px !important;
-  }
-  .craft-img-main {
-    max-height: 280px !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
-  }
-  .craft-img-sub {
-    max-height: 200px !important;
-    object-fit: cover !important;
-  }
-  .craft-text {
-    padding: 0 4px !important;
-  }
-  .craft-text h3 {
-    font-size: 18px !important;
-  }
-  .craft-text p {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
-  }
-
-  /* Brand story points compact */
-  .brand-story-points {
-    gap: 12px !important;
-  }
-  .brand-story-point {
-    gap: 8px !important;
-    font-size: 13px !important;
-  }
-
-  /* News */
-  .news-section {
-    padding: 40px 0 !important;
-  }
-  .news-item {
-    padding: 12px 0 !important;
-  }
-
-  /* Trial: 1 column on mobile */
-  .trial-section {
-    padding: 40px 0 !important;
-  }
-  .trial-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .trial-image video,
-  .trial-image img {
-    height: 240px !important;
-    width: 100% !important;
-    object-fit: cover !important;
-  }
-  .trial-body {
-    padding: 0 16px !important;
-  }
-
-  .section-heading {
-    font-size: 32px !important;
-  }
-  .section-watermark {
-    font-size: 48px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 75vh !important;
-  }
-  .hero-catch {
-    font-size: 20px !important;
-    letter-spacing: 0.1em !important;
-  }
-  .hero-sub {
-    font-size: 13px !important;
-  }
-  .section-heading {
-    font-size: 26px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 160px !important;
-  }
-  .brand-story-image img {
-    height: 200px !important;
-  }
-}
-
-/* ---- CONCEPT PAGE ---- */
-@media (max-width: 768px) {
-  .concept-hero {
-    height: 300px !important;
-    min-height: auto !important;
-  }
-  .concept-hero-title {
-    font-size: 26px !important;
-  }
-  .concept-content {
-    padding: 40px 16px !important;
-  }
-  .concept-content h2 {
-    font-size: 20px !important;
-  }
-  .concept-content p {
-    font-size: 14px !important;
-  }
-  .concept-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-}
-
-/* ---- ABOUT PAGE ---- */
-@media (max-width: 768px) {
-  .about-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .company-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .company-table th,
-  .company-table td {
-    display: block !important;
-    padding: 4px 0 !important;
-  }
-  .company-table th {
-    font-weight: 700 !important;
-    color: var(--color-accent, #C9A96E) !important;
-    font-size: 12px !important;
-    padding-top: 12px !important;
-  }
-  .team-inner {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  .team-img {
-    max-height: 280px !important;
-    object-fit: cover !important;
-  }
-}
-
-/* ---- BUTTONS & CTA ---- */
-@media (max-width: 768px) {
-  .btn-primary,
-  .cta-btn,
-  .cart-btn {
-    font-size: 14px !important;
-    padding: 14px 24px !important;
-  }
-  .concept-cta-section {
-    padding: 48px 16px !important;
-  }
-}
-
-/* ---- CONTAINER ---- */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 16px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 12px !important;
-  }
-}
-
-/* ---- SERVICE PAGE ---- */
-@media (max-width: 768px) {
-  .service-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .service-card {
-    padding: 24px !important;
-  }
-  .service-steps {
-    gap: 16px !important;
-  }
-  .service-step {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 8px !important;
-  }
-  .price-card {
-    padding: 20px !important;
-  }
-}
-
-/* ---- CONTACT PAGE ---- */
-@media (max-width: 768px) {
-  .contact-form {
-    padding: 32px 16px !important;
-  }
-  .form-group label {
-    font-size: 13px !important;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    font-size: 16px !important; /* prevent zoom on iOS */
-    padding: 12px !important;
-  }
-}
-
-/* ---- GENERAL: Reduce vertical space ---- */
-@media (max-width: 480px) {
-  section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-  /* Override specific sections that need different padding */
-  .hero, .page-hero, .cat-hero, .article-hero,
-  .concept-hero, .about-hero, .mag-hero,
-  .header, .footer, .footer-bottom {
-    padding-top: revert !important;
-    padding-bottom: revert !important;
-  }
-}
-
-/* Watermark overflow fix */
-*:has(> .section-watermark){overflow-x:clip}
-section:has(.section-watermark){overflow-x:clip}
-/* Orphan/Widow prevention */
-h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
-p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
-
-</style>
-<style id="admin-mobile-fix">
-@media (max-width: 768px) {
-  .admin-sidebar-fix { display: none !important; }
-  .admin-main-fix { margin-left: 0 !important; }
-  .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
-  .admin-main-fix div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-  .admin-main-fix div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
-  .admin-main-fix div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-  .admin-main-fix table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
-  .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
-  .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
-  .nav-mega { width: 100vw !important; grid-template-columns: 1fr !important; left: 0 !important; transform: none !important; }
+  .tab-bar { padding:0 8px; }
+  .tab-btn { padding:10px 10px; font-size:11px; }
 }
 </style>
 </head>
 <body>
 
 <!-- Sidebar -->
-<div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
+<div class="admin-sidebar-fix">
   <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
     <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
     <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
@@ -1050,6 +123,14 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
     </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
@@ -1061,7 +142,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 </div>
 
 <!-- Main -->
-<div class="admin-main-fix" style="margin-left:260px; min-height:100vh;">
+<div class="admin-main-fix">
   <!-- Top Bar -->
   <div style="height:64px; background:#fff; border-bottom:1px solid #EAEDF3; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:50;">
     <h1 style="font-size:18px; font-weight:700; color:#1A1A1A;">商品管理</h1>
@@ -1074,238 +155,434 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
     </div>
   </div>
 
-  <!-- Content -->
+  <!-- Content Area -->
   <div style="padding:28px 32px;">
 
-    <!-- Toolbar -->
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-      <div style="display:flex; gap:12px; align-items:center;">
-        <input type="text" placeholder="商品名で検索..."
-          style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; width:280px; outline:none; background:#fff;"
-          onfocus="this.style.borderColor='#C9A96E';" onblur="this.style.borderColor='#DDD';">
-        <select style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; outline:none; background:#fff; color:#555; cursor:pointer;">
-          <option>すべてのカテゴリ</option>
-          <option>掛け布団</option>
-          <option>枕</option>
-          <option>寝具</option>
-          <option>アパレル</option>
-          <option>ベビー</option>
-        </select>
-      </div>
-      <button class="btn" style="background:#C9A96E; color:#fff; padding:10px 20px; font-size:13px;"
-        onmouseover="this.style.background='#B8964E';" onmouseout="this.style.background='#C9A96E';">
-        + 新規商品を追加
-      </button>
-    </div>
-
-    <!-- Product Table -->
-    <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden;">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:60px;">画像</th>
-            <th>商品名</th>
-            <th>カテゴリ</th>
-            <th>価格</th>
-            <th>在庫</th>
-            <th>ステータス</th>
-            <th style="width:140px;">操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Product 1 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
-            <td style="font-weight:600;">Premium RDS Down 冬用本掛け</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
-            <td style="font-weight:600;">&yen;198,000</td>
-            <td>12</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 2 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
-            <td style="font-weight:600;">RDS Down 冬用本掛け</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
-            <td style="font-weight:600;">&yen;88,000</td>
-            <td>18</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 3 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
-            <td style="font-weight:600;">Clean Cycle Down 冬用本掛け</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
-            <td style="font-weight:600;">&yen;53,800</td>
-            <td>25</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 4 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128716;</div></td>
-            <td style="font-weight:600;">Flower Down 冬用本掛け</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F0EBE1; color:#8B7355;">掛け布団</span></td>
-            <td style="font-weight:600;">&yen;35,800</td>
-            <td style="color:#E53935; font-weight:600;">3</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 5 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#EBF0F5; display:flex; align-items:center; justify-content:center; font-size:18px;">&#129412;</div></td>
-            <td style="font-weight:600;">ホワイトグースダウン枕</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E3F2FD; color:#1976D2;">枕</span></td>
-            <td style="font-weight:600;">&yen;27,800</td>
-            <td style="color:#E53935; font-weight:600;">2</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 6 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F0F5F0; display:flex; align-items:center; justify-content:center; font-size:18px;">&#127744;</div></td>
-            <td style="font-weight:600;">掛け布団カバー</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#F3E5F5; color:#7B1FA2;">寝具</span></td>
-            <td style="font-weight:600;">&yen;13,800</td>
-            <td>34</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 7 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#F5F0E8; display:flex; align-items:center; justify-content:center; font-size:18px;">&#129509;</div></td>
-            <td style="font-weight:600;">ダウンジャケット</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FFF3E0; color:#E65100;">アパレル</span></td>
-            <td style="font-weight:600;">&yen;146,300</td>
-            <td>8</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-          <!-- Product 8 -->
-          <tr>
-            <td><div style="width:44px; height:44px; border-radius:6px; background:#FFF5F5; display:flex; align-items:center; justify-content:center; font-size:18px;">&#128118;</div></td>
-            <td style="font-weight:600;">ベビー用布団はじめてセット</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FCE4EC; color:#C2185B;">ベビー</span></td>
-            <td style="font-weight:600;">&yen;39,000</td>
-            <td>15</td>
-            <td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50;">公開中</span></td>
-            <td>
-              <button class="btn" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>
-              <button class="btn" style="background:#FFF0F0; color:#E53935;">削除</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Pagination -->
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-top:1px solid #EAEDF3;">
-        <div style="font-size:13px; color:#999;">全8件中 1-8件を表示</div>
-        <div style="display:flex; gap:4px;">
-          <button class="btn" style="background:#C9A96E; color:#fff; min-width:36px; text-align:center;">1</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/cart.js"></script>
-<script src="js/admin-api.js"></script>
-
-<!-- Toast Notification -->
-<div id="toast" style="position:fixed; bottom:32px; right:32px; padding:14px 24px; border-radius:10px; font-size:14px; font-weight:600; font-family:inherit; color:#fff; background:#2D2D2D; box-shadow:0 8px 24px rgba(0,0,0,0.2); z-index:10000; opacity:0; transform:translateY(20px); transition:opacity 0.3s, transform 0.3s; pointer-events:none;">
-  <span id="toast-msg"></span>
-</div>
-
-<!-- Product Modal -->
-<div id="modal-backdrop" style="position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9000; display:none; opacity:0; transition:opacity 0.25s;">
-</div>
-<div id="product-modal" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.95); z-index:9001; display:none; opacity:0; transition:opacity 0.25s, transform 0.25s; width:520px; max-width:90vw; max-height:90vh; overflow-y:auto; background:#2D2D2D; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,0.4); font-family:'Inter','Noto Sans JP',sans-serif;">
-  <div style="padding:24px 28px 0;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
-      <h2 id="modal-title" style="font-size:18px; font-weight:700; color:#fff; margin:0;">新規商品を追加</h2>
-      <button id="modal-close-x" style="background:none; border:none; color:#888; font-size:22px; cursor:pointer; padding:4px 8px; line-height:1;" title="閉じる">&times;</button>
-    </div>
-    <form id="product-form" autocomplete="off">
-      <div style="margin-bottom:16px;">
-        <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">商品名</label>
-        <input id="f-name" type="text" required style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#555'">
-      </div>
-      <div style="margin-bottom:16px;">
-        <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">シリーズ</label>
-        <input id="f-series" type="text" style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#555'">
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
-        <div>
-          <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">カテゴリ</label>
-          <select id="f-category" required style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none; cursor:pointer;">
-            <option value="掛け布団">掛け布団</option>
-            <option value="枕">枕</option>
-            <option value="寝具">寝具</option>
-            <option value="アパレル">アパレル</option>
-            <option value="ベビー">ベビー</option>
+    <!-- ==================== PRODUCT LIST VIEW ==================== -->
+    <div id="view-list">
+      <!-- Toolbar -->
+      <div class="list-toolbar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; gap:12px;">
+        <div class="filters" style="display:flex; gap:12px; align-items:center;">
+          <input id="search-input" type="text" placeholder="商品名で検索..."
+            style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; width:280px; outline:none; background:#fff;"
+            onfocus="this.style.borderColor='#C9A96E';" onblur="this.style.borderColor='#DDD';">
+          <select id="filter-category" style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; outline:none; background:#fff; color:#555; cursor:pointer;">
+            <option value="">すべてのカテゴリ</option>
+            <option>掛け布団</option><option>枕</option><option>寝具</option>
+            <option>アパレル</option><option>コラボ</option><option>ベビー</option><option>サービス</option>
+          </select>
+          <select id="filter-status" style="padding:10px 16px; border:1px solid #DDD; border-radius:8px; font-size:13px; font-family:inherit; outline:none; background:#fff; color:#555; cursor:pointer;">
+            <option value="">すべてのステータス</option>
+            <option>公開</option><option>下書き</option>
           </select>
         </div>
-        <div>
-          <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">ステータス</label>
-          <select id="f-status" style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none; cursor:pointer;">
-            <option value="公開中">公開</option>
-            <option value="下書き">下書き</option>
-          </select>
+        <button class="btn" style="background:#C9A96E; color:#fff; padding:10px 20px; font-size:13px; white-space:nowrap;"
+          onclick="openEditor(null)"
+          onmouseover="this.style.background='#B8964E';" onmouseout="this.style.background='#C9A96E';">
+          + 新規商品を追加
+        </button>
+      </div>
+
+      <!-- Product Table -->
+      <div class="section-card">
+        <table class="product-list">
+          <thead>
+            <tr>
+              <th style="width:60px;">画像</th>
+              <th>商品名</th>
+              <th>シリーズ</th>
+              <th>カテゴリ</th>
+              <th>基本価格</th>
+              <th>サイズ数</th>
+              <th>在庫</th>
+              <th>ステータス</th>
+              <th style="width:180px;">操作</th>
+            </tr>
+          </thead>
+          <tbody id="product-tbody"></tbody>
+        </table>
+        <div id="pagination-bar" style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-top:1px solid #EAEDF3;">
+          <div id="page-info" style="font-size:13px; color:#999;"></div>
+          <div id="page-btns" style="display:flex; gap:4px;"></div>
         </div>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
-        <div>
-          <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">価格 (円)</label>
-          <input id="f-price" type="number" min="0" required style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#555'">
+    </div>
+
+    <!-- ==================== PRODUCT EDITOR VIEW ==================== -->
+    <div id="view-editor" style="display:none;">
+      <!-- Editor Header -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <button class="btn" style="background:#F0F0F0; color:#555; padding:8px 16px; font-size:13px;" onclick="closeEditor()">
+            &#8592; 商品一覧に戻る
+          </button>
+          <h2 id="editor-title" style="font-size:18px; font-weight:700; color:#1A1A1A;">新規商品を追加</h2>
         </div>
-        <div>
-          <label style="display:block; font-size:12px; font-weight:600; color:#C9A96E; margin-bottom:6px; letter-spacing:0.04em;">在庫数</label>
-          <input id="f-stock" type="number" min="0" required style="width:100%; padding:10px 14px; border:1px solid #555; border-radius:8px; font-size:14px; font-family:inherit; background:#3A3A3A; color:#fff; outline:none;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#555'">
+        <div style="display:flex; gap:10px;">
+          <button class="btn" style="background:#F0F0F0; color:#555; padding:10px 20px; font-size:13px;" onclick="closeEditor()">キャンセル</button>
+          <button class="btn" style="background:#C9A96E; color:#fff; padding:10px 20px; font-size:13px;" onclick="saveProduct()"
+            onmouseover="this.style.background='#B8964E';" onmouseout="this.style.background='#C9A96E';">保存する</button>
         </div>
       </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; padding-bottom:24px;">
-        <button type="button" id="modal-cancel" class="btn" style="background:#555; color:#fff; padding:10px 22px; font-size:13px;">キャンセル</button>
-        <button type="submit" class="btn" style="background:#C9A96E; color:#fff; padding:10px 22px; font-size:13px;">保存</button>
+
+      <!-- Tab Bar -->
+      <div class="section-card" style="margin-bottom:0;">
+        <div class="tab-bar" id="editor-tabs">
+          <button class="tab-btn active" data-tab="tab-basic">基本情報</button>
+          <button class="tab-btn" data-tab="tab-pricing">価格・サイズ</button>
+          <button class="tab-btn" data-tab="tab-gallery">画像ギャラリー</button>
+          <button class="tab-btn" data-tab="tab-colors">カラー・オプション</button>
+          <button class="tab-btn" data-tab="tab-specs">スペック</button>
+          <button class="tab-btn" data-tab="tab-features">特徴</button>
+          <button class="tab-btn" data-tab="tab-related">関連コンテンツ</button>
+          <button class="tab-btn" data-tab="tab-seo">SEO</button>
+        </div>
+
+        <!-- ===== Tab 1: 基本情報 ===== -->
+        <div class="tab-panel active" id="tab-basic">
+          <div class="field">
+            <label>商品名<span class="req">*</span></label>
+            <input type="text" id="ed-name" placeholder="例: Clean Cycle Sleep Down-冬用-" required>
+            <small>推奨: 30文字以内 | 商品ページのメインタイトルに使用されます</small>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>シリーズ名</label>
+              <input type="text" id="ed-series" placeholder="例: Clean Cycle Down Series">
+              <small>英語表記 | 商品ページ上部のシリーズラベルに使用</small>
+            </div>
+            <div class="field">
+              <label>サブタイトル</label>
+              <input type="text" id="ed-subtitle" placeholder="例: リサイクルダウン">
+              <small>推奨: 15文字以内 | 商品名の下に表示</small>
+            </div>
+          </div>
+          <div class="field">
+            <label>キャッチコピー</label>
+            <textarea id="ed-catchcopy" rows="2" placeholder="商品の魅力を一言で..."></textarea>
+            <small>推奨: 60〜100文字 | 商品ページのリード文として表示</small>
+          </div>
+          <div class="field">
+            <label>商品説明（長文）</label>
+            <textarea id="ed-description" rows="4" placeholder="商品の詳細な説明を記載してください..."></textarea>
+            <small>推奨: 100〜200文字 | 商品詳細セクションに表示</small>
+          </div>
+          <div class="field-row-3">
+            <div class="field">
+              <label>カテゴリ<span class="req">*</span></label>
+              <select id="ed-category">
+                <option value="掛け布団">掛け布団</option>
+                <option value="枕">枕</option>
+                <option value="寝具">寝具</option>
+                <option value="アパレル">アパレル</option>
+                <option value="コラボ">コラボ</option>
+                <option value="ベビー">ベビー</option>
+                <option value="サービス">サービス</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>シーズン</label>
+              <select id="ed-season">
+                <option value="冬用">冬用</option>
+                <option value="春秋用">春秋用</option>
+                <option value="夏用">夏用</option>
+                <option value="通年">通年</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>ステータス</label>
+              <select id="ed-status">
+                <option value="公開">公開</option>
+                <option value="下書き">下書き</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 2: 価格・サイズ ===== -->
+        <div class="tab-panel" id="tab-pricing">
+          <div class="section-card-header" style="margin:-24px -24px 20px; padding:16px 24px;">サイズ別価格テーブル</div>
+          <div style="overflow-x:auto;">
+            <table class="dyn-table" id="sizes-table">
+              <thead>
+                <tr>
+                  <th>サイズ名</th>
+                  <th>寸法</th>
+                  <th>充填量</th>
+                  <th>本体価格（税込）</th>
+                  <th>カバー付き価格（税込）</th>
+                  <th style="width:60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="sizes-tbody"></tbody>
+            </table>
+          </div>
+          <button class="add-row-btn" onclick="addSizeRow()">+ サイズを追加</button>
+
+          <div style="margin-top:24px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <div class="field-row">
+              <div class="field">
+                <label style="display:flex; align-items:center; gap:8px;">
+                  <input type="checkbox" id="ed-cover-option" style="width:auto;">
+                  カバーオプション有無
+                </label>
+                <small>チェックすると商品ページにカバー付き価格が表示されます</small>
+              </div>
+              <div class="field">
+                <label>カバー追加料金</label>
+                <input type="number" id="ed-cover-surcharge" placeholder="例: 5000" min="0">
+                <small>円（税込）| カバー付き価格の差額計算に使用</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 3: 画像ギャラリー ===== -->
+        <div class="tab-panel" id="tab-gallery">
+          <div style="background:#FDF8F0; border:1px solid #E8DCC8; border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:13px; color:#8B7355;">
+            &#9888; 1商品あたり5〜13枚推奨。メイン画像は1枚目に設定してください。
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dyn-table" id="images-table">
+              <thead>
+                <tr>
+                  <th style="width:40px;">#</th>
+                  <th>画像URL</th>
+                  <th>alt テキスト</th>
+                  <th style="width:140px;">カラー</th>
+                  <th style="width:60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="images-tbody"></tbody>
+            </table>
+          </div>
+          <button class="add-row-btn" onclick="addImageRow()">+ 画像を追加</button>
+          <small style="display:block; margin-top:8px; color:#AAA; font-size:11px;">推奨サイズ: 720x610px | JPG/WebPを推奨</small>
+        </div>
+
+        <!-- ===== Tab 4: カラー・オプション ===== -->
+        <div class="tab-panel" id="tab-colors">
+          <div class="section-card-header" style="margin:-24px -24px 20px; padding:16px 24px;">カラーバリエーション</div>
+          <div style="overflow-x:auto;">
+            <table class="dyn-table" id="colors-table">
+              <thead>
+                <tr>
+                  <th>カラー名</th>
+                  <th style="width:100px;">カラーコード</th>
+                  <th style="width:100px;">ボーダー有無</th>
+                  <th style="width:60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="colors-tbody"></tbody>
+            </table>
+          </div>
+          <button class="add-row-btn" onclick="addColorRow()">+ カラーを追加</button>
+
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">シーズンリンク</h4>
+            <small style="display:block; margin-bottom:12px; color:#AAA; font-size:11px;">同シリーズの別シーズン商品へのリンク（相対パス）</small>
+            <div class="field-row-3">
+              <div class="field">
+                <label>冬用URL</label>
+                <input type="text" id="ed-link-winter" placeholder="例: /products/clean-cycle-winter.html">
+              </div>
+              <div class="field">
+                <label>春秋用URL</label>
+                <input type="text" id="ed-link-spring" placeholder="例: /products/clean-cycle-spring.html">
+              </div>
+              <div class="field">
+                <label>夏用URL</label>
+                <input type="text" id="ed-link-summer" placeholder="例: /products/clean-cycle-summer.html">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 5: スペック ===== -->
+        <div class="tab-panel" id="tab-specs">
+          <div class="section-card-header" style="margin:-24px -24px 20px; padding:16px 24px;">商品スペック（仕様表）</div>
+          <div style="overflow-x:auto;">
+            <table class="dyn-table" id="specs-table">
+              <thead>
+                <tr>
+                  <th>項目名</th>
+                  <th>値</th>
+                  <th style="width:60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="specs-tbody"></tbody>
+            </table>
+          </div>
+          <button class="add-row-btn" onclick="addSpecRow('','')">+ スペック項目を追加</button>
+        </div>
+
+        <!-- ===== Tab 6: 特徴 ===== -->
+        <div class="tab-panel" id="tab-features">
+          <div class="section-card-header" style="margin:-24px -24px 20px; padding:16px 24px;">商品の特徴（6つ）</div>
+          <div class="field-row" style="margin-bottom:8px;">
+            <div class="field">
+              <label>特徴1</label>
+              <input type="text" id="ed-feat-1" placeholder="例: マイナス10度でも暖かい保温力">
+              <small>推奨: 20〜30文字</small>
+            </div>
+            <div class="field">
+              <label>特徴2</label>
+              <input type="text" id="ed-feat-2" placeholder="例: 軽やかなのにしっかり暖かい">
+              <small>推奨: 20〜30文字</small>
+            </div>
+          </div>
+          <div class="field-row" style="margin-bottom:8px;">
+            <div class="field">
+              <label>特徴3</label>
+              <input type="text" id="ed-feat-3" placeholder="例: 家庭で丸洗いOK">
+              <small>推奨: 20〜30文字</small>
+            </div>
+            <div class="field">
+              <label>特徴4</label>
+              <input type="text" id="ed-feat-4" placeholder="例: アレルギー対応の高品質ダウン">
+              <small>推奨: 20〜30文字</small>
+            </div>
+          </div>
+          <div class="field-row" style="margin-bottom:8px;">
+            <div class="field">
+              <label>特徴5</label>
+              <input type="text" id="ed-feat-5" placeholder="例: 日本製・富士吉田工場で製造">
+              <small>推奨: 20〜30文字</small>
+            </div>
+            <div class="field">
+              <label>特徴6</label>
+              <input type="text" id="ed-feat-6" placeholder="例: 環境に配慮したリサイクル素材">
+              <small>推奨: 20〜30文字</small>
+            </div>
+          </div>
+
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">ストーリーセクション</h4>
+            <div class="field-row">
+              <div class="field">
+                <label>ストーリーラベル（English）</label>
+                <input type="text" id="ed-story-label" placeholder="CLEAN CYCLE DOWN">
+                <small>英語・大文字推奨 | セクション上部のラベル</small>
+              </div>
+              <div class="field">
+                <label>ストーリー見出し</label>
+                <input type="text" id="ed-story-heading" placeholder="新品羽毛を超える美しさ、リサイクルダウン">
+                <small>推奨: 25文字以内</small>
+              </div>
+            </div>
+            <div class="field">
+              <label>ストーリー本文</label>
+              <textarea id="ed-story-body" rows="4" placeholder="このシリーズのストーリーや背景を記載..."></textarea>
+              <small>推奨: 100〜200文字</small>
+            </div>
+            <div class="field">
+              <label>ストーリー画像URL</label>
+              <input type="text" id="ed-story-image" placeholder="例: /images/products/story-clean-cycle.jpg">
+              <small>推奨サイズ: 800x500px</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 7: 関連コンテンツ ===== -->
+        <div class="tab-panel" id="tab-related">
+          <!-- Reviews -->
+          <div class="section-card-header" style="margin:-24px -24px 20px; padding:16px 24px;">レビュー</div>
+          <div style="overflow-x:auto;">
+            <table class="dyn-table" id="reviews-table">
+              <thead>
+                <tr>
+                  <th style="width:100px;">星評価</th>
+                  <th>レビューテキスト</th>
+                  <th style="width:140px;">投稿者名</th>
+                  <th style="width:60px;"></th>
+                </tr>
+              </thead>
+              <tbody id="reviews-tbody"></tbody>
+            </table>
+          </div>
+          <button class="add-row-btn" onclick="addReviewRow()">+ レビューを追加</button>
+
+          <!-- Related Products -->
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">関連商品（3件）</h4>
+            <div id="related-products-container"></div>
+          </div>
+
+          <!-- Related Magazine -->
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">関連マガジン記事（3件）</h4>
+            <div id="related-magazines-container"></div>
+          </div>
+
+          <!-- Badges -->
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid #EAEDF3;">
+            <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">バッジ（3件）</h4>
+            <div class="field-row-3">
+              <div class="field">
+                <label>バッジ1</label>
+                <input type="text" id="ed-badge-1" placeholder="例: 品質保証">
+              </div>
+              <div class="field">
+                <label>バッジ2</label>
+                <input type="text" id="ed-badge-2" placeholder="例: 日本製">
+              </div>
+              <div class="field">
+                <label>バッジ3</label>
+                <input type="text" id="ed-badge-3" placeholder="例: 富士吉田">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 8: SEO ===== -->
+        <div class="tab-panel" id="tab-seo">
+          <div class="field">
+            <label>メタタイトル <span class="char-counter" id="cc-meta-title">0 / 60</span></label>
+            <input type="text" id="ed-meta-title" placeholder="例: Clean Cycle Sleep Down 冬用本掛け | 表参道布団店。" oninput="updateCharCount('ed-meta-title','cc-meta-title',60)">
+            <small>推奨: 60文字以内 | 検索結果に表示されるタイトル</small>
+          </div>
+          <div class="field">
+            <label>メタディスクリプション <span class="char-counter" id="cc-meta-desc">0 / 160</span></label>
+            <textarea id="ed-meta-desc" rows="3" placeholder="検索結果に表示される説明文..." oninput="updateCharCount('ed-meta-desc','cc-meta-desc',160)"></textarea>
+            <small>推奨: 120〜160文字 | Google検索結果のスニペットに表示</small>
+          </div>
+          <div class="field">
+            <label>OG画像URL</label>
+            <input type="text" id="ed-og-image" placeholder="例: /images/og/clean-cycle-winter.jpg">
+            <small>推奨サイズ: 1200x630px | SNSシェア時に表示される画像</small>
+          </div>
+          <div class="field">
+            <label>canonical URL</label>
+            <input type="text" id="ed-canonical" placeholder="例: https://omotesando-futon.jp/products/clean-cycle-winter.html">
+            <small>重複コンテンツを防ぐための正規URL</small>
+          </div>
+        </div>
+
+      </div><!-- /.section-card (editor card) -->
+
+      <!-- Bottom Save Bar -->
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn" style="background:#F0F0F0; color:#555; padding:10px 20px; font-size:13px;" onclick="closeEditor()">キャンセル</button>
+        <button class="btn" style="background:#C9A96E; color:#fff; padding:10px 20px; font-size:13px;" onclick="saveProduct()"
+          onmouseover="this.style.background='#B8964E';" onmouseout="this.style.background='#C9A96E';">保存する</button>
       </div>
-    </form>
-  </div>
-</div>
+    </div><!-- /#view-editor -->
+
+  </div><!-- /padding wrapper -->
+</div><!-- /.admin-main-fix -->
+
+<!-- Toast -->
+<div id="toast"><span id="toast-msg"></span></div>
 
 <!-- Confirm Delete Dialog -->
-<div id="confirm-backdrop" style="position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9500; display:none; opacity:0; transition:opacity 0.25s;">
-</div>
-<div id="confirm-dialog" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.95); z-index:9501; display:none; opacity:0; transition:opacity 0.25s, transform 0.25s; width:380px; max-width:90vw; background:#2D2D2D; border-radius:14px; box-shadow:0 20px 60px rgba(0,0,0,0.4); padding:28px; text-align:center; font-family:'Inter','Noto Sans JP',sans-serif;">
+<div class="confirm-overlay" id="confirm-backdrop"></div>
+<div class="confirm-box" id="confirm-dialog">
   <div style="font-size:36px; margin-bottom:12px;">&#9888;</div>
-  <h3 style="font-size:16px; font-weight:700; color:#fff; margin-bottom:8px;">この商品を削除しますか？</h3>
+  <h3 style="font-size:16px; font-weight:700; color:#333; margin-bottom:8px;">この商品を削除しますか？</h3>
   <p style="font-size:13px; color:#999; margin-bottom:24px;">この操作は取り消せません。</p>
   <div style="display:flex; justify-content:center; gap:10px;">
-    <button id="confirm-cancel" class="btn" style="background:#555; color:#fff; padding:10px 22px; font-size:13px;">キャンセル</button>
-    <button id="confirm-delete" class="btn" style="background:#E53935; color:#fff; padding:10px 22px; font-size:13px;">削除する</button>
+    <button class="btn" style="background:#F0F0F0; color:#555; padding:10px 22px; font-size:13px;" onclick="closeConfirm()">キャンセル</button>
+    <button id="confirm-delete-btn" class="btn" style="background:#E53935; color:#fff; padding:10px 22px; font-size:13px;">削除する</button>
   </div>
 </div>
 
@@ -1313,38 +590,43 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 (function() {
   'use strict';
 
-  // === Helpers ===
-  var LS_KEY = 'omotesando_admin_products';
+  // ===================== CONFIG =====================
+  var LS_KEY = 'oft_products';
   var ITEMS_PER_PAGE = 10;
+  var currentPage = 1;
+  var editingId = null; // null = new product
 
   var categoryStyles = {
-    '掛け布団': { bg: '#F0EBE1', color: '#8B7355', iconBg: '#F5F0E8', icon: '&#128716;' },
-    '枕':       { bg: '#E3F2FD', color: '#1976D2', iconBg: '#EBF0F5', icon: '&#129412;' },
-    '寝具':     { bg: '#F3E5F5', color: '#7B1FA2', iconBg: '#F0F5F0', icon: '&#127744;' },
-    'アパレル': { bg: '#FFF3E0', color: '#E65100', iconBg: '#F5F0E8', icon: '&#129509;' },
-    'ベビー':   { bg: '#FCE4EC', color: '#C2185B', iconBg: '#FFF5F5', icon: '&#128118;' }
+    '掛け布団': { bg:'#F0EBE1', color:'#8B7355', iconBg:'#F5F0E8', icon:'&#128716;' },
+    '枕':       { bg:'#E3F2FD', color:'#1976D2', iconBg:'#EBF0F5', icon:'&#129412;' },
+    '寝具':     { bg:'#F3E5F5', color:'#7B1FA2', iconBg:'#F0F5F0', icon:'&#127744;' },
+    'アパレル': { bg:'#FFF3E0', color:'#E65100', iconBg:'#F5F0E8', icon:'&#129509;' },
+    'コラボ':   { bg:'#E8EAF6', color:'#283593', iconBg:'#ECEEF5', icon:'&#129309;' },
+    'ベビー':   { bg:'#FCE4EC', color:'#C2185B', iconBg:'#FFF5F5', icon:'&#128118;' },
+    'サービス': { bg:'#E0F2F1', color:'#00695C', iconBg:'#E8F5F0', icon:'&#128736;' }
   };
 
-  function getDefaultStyle() {
-    return { bg: '#F0F0F0', color: '#555', iconBg: '#F5F0E8', icon: '&#128716;' };
+  var defaultSpecs = ['羽毛種','ダウンパワー','充填量','側生地','洗浄','製造','カラー','用途','産地'];
+
+  // ===================== STORAGE =====================
+  function loadProducts() {
+    try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch(e) { return []; }
+  }
+  function saveProducts(arr) {
+    localStorage.setItem(LS_KEY, JSON.stringify(arr));
+  }
+  function genId() {
+    return 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
   }
 
-  function formatPrice(n) {
-    return '¥' + Number(n).toLocaleString('ja-JP');
-  }
-
-  function parsePrice(s) {
-    return parseInt(String(s).replace(/[^\d]/g, ''), 10) || 0;
-  }
-
-  // === Toast ===
+  // ===================== TOAST =====================
   var toastTimer = null;
-  function showToast(msg, isError) {
+  window.showToast = function(msg, isError) {
     var t = document.getElementById('toast');
     var m = document.getElementById('toast-msg');
     m.textContent = msg;
     t.style.background = isError ? '#E53935' : '#2D2D2D';
-    t.style.borderLeft = '4px solid ' + (isError ? '#ff6659' : '#C9A96E');
+    t.style.borderLeftColor = isError ? '#ff6659' : '#C9A96E';
     t.style.opacity = '1';
     t.style.transform = 'translateY(0)';
     t.style.pointerEvents = 'auto';
@@ -1354,436 +636,618 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       t.style.transform = 'translateY(20px)';
       t.style.pointerEvents = 'none';
     }, 3000);
-  }
+  };
 
-  // === Modal open/close ===
-  function openModal() {
-    var bd = document.getElementById('modal-backdrop');
-    var md = document.getElementById('product-modal');
-    bd.style.display = 'block';
-    md.style.display = 'block';
-    requestAnimationFrame(function() {
-      bd.style.opacity = '1';
-      md.style.opacity = '1';
-      md.style.transform = 'translate(-50%,-50%) scale(1)';
-    });
-  }
-
-  function closeModal() {
-    var bd = document.getElementById('modal-backdrop');
-    var md = document.getElementById('product-modal');
-    bd.style.opacity = '0';
-    md.style.opacity = '0';
-    md.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      bd.style.display = 'none';
-      md.style.display = 'none';
-    }, 250);
-  }
-
-  function openConfirm() {
+  // ===================== CONFIRM DIALOG =====================
+  var pendingDeleteId = null;
+  window.openConfirm = function(id) {
+    pendingDeleteId = id;
     var bd = document.getElementById('confirm-backdrop');
     var dg = document.getElementById('confirm-dialog');
-    bd.style.display = 'block';
-    dg.style.display = 'block';
+    bd.style.display = 'block'; dg.style.display = 'block';
     requestAnimationFrame(function() {
-      bd.style.opacity = '1';
-      dg.style.opacity = '1';
+      bd.style.opacity = '1'; dg.style.opacity = '1';
       dg.style.transform = 'translate(-50%,-50%) scale(1)';
     });
-  }
-
-  function closeConfirm() {
+  };
+  window.closeConfirm = function() {
     var bd = document.getElementById('confirm-backdrop');
     var dg = document.getElementById('confirm-dialog');
-    bd.style.opacity = '0';
-    dg.style.opacity = '0';
+    bd.style.opacity = '0'; dg.style.opacity = '0';
     dg.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      bd.style.display = 'none';
-      dg.style.display = 'none';
-    }, 250);
-  }
+    setTimeout(function() { bd.style.display = 'none'; dg.style.display = 'none'; }, 250);
+    pendingDeleteId = null;
+  };
+  document.getElementById('confirm-delete-btn').addEventListener('click', function() {
+    if (!pendingDeleteId) return;
+    var products = loadProducts();
+    products = products.filter(function(p) { return p.id !== pendingDeleteId; });
+    saveProducts(products);
+    closeConfirm();
+    renderList();
+    showToast('商品を削除しました');
+  });
+  document.getElementById('confirm-backdrop').addEventListener('click', function() { closeConfirm(); });
 
-  // === Data (AdminAPI with localStorage fallback) ===
-  var useAPI = (typeof AdminAPI !== 'undefined');
+  // ===================== CHARACTER COUNTER =====================
+  window.updateCharCount = function(inputId, counterId, max) {
+    var input = document.getElementById(inputId);
+    var counter = document.getElementById(counterId);
+    var len = (input.value || '').length;
+    counter.textContent = len + ' / ' + max;
+    if (len > max) { counter.classList.add('over'); } else { counter.classList.remove('over'); }
+  };
 
-  function extractProductsFromHTML() {
-    var rows = document.querySelectorAll('tbody tr');
-    var list = [];
-    rows.forEach(function(tr) {
-      var tds = tr.querySelectorAll('td');
-      if (tds.length < 7) return;
-      var name = tds[1].textContent.trim();
-      var category = tds[2].textContent.trim();
-      var price = parsePrice(tds[3].textContent);
-      var stock = parseInt(tds[4].textContent.trim(), 10) || 0;
-      var status = tds[5].textContent.trim();
-      list.push({
-        id: Date.now() + Math.random(),
-        name: name,
-        series: '',
-        category: category,
-        price: price,
-        stock: stock,
-        status: status
-      });
-    });
-    return list;
-  }
+  // ===================== TAB SWITCHING =====================
+  document.getElementById('editor-tabs').addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    var tabId = btn.getAttribute('data-tab');
+    // Deactivate all
+    var allBtns = this.querySelectorAll('.tab-btn');
+    var allPanels = document.querySelectorAll('.tab-panel');
+    for (var i = 0; i < allBtns.length; i++) allBtns[i].classList.remove('active');
+    for (var i = 0; i < allPanels.length; i++) allPanels[i].classList.remove('active');
+    // Activate
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  });
 
-  function loadProductsFromLS() {
-    var raw = localStorage.getItem(LS_KEY);
-    if (raw) {
-      try { return JSON.parse(raw); } catch(e) {}
-    }
-    var list = extractProductsFromHTML();
-    saveProductsToLS(list);
-    return list;
-  }
+  // ===================== FORMAT =====================
+  function formatPrice(n) { return '\u00a5' + Number(n || 0).toLocaleString('ja-JP'); }
+  function getCatStyle(cat) { return categoryStyles[cat] || { bg:'#F0F0F0', color:'#555', iconBg:'#F5F0E8', icon:'&#128716;' }; }
 
-  function saveProductsToLS(list) {
-    localStorage.setItem(LS_KEY, JSON.stringify(list));
-  }
+  // ===================== DYNAMIC ROWS =====================
 
-  var products = [];
-  var currentPage = 1;
-  var editingId = null;
-  var deletingId = null;
-
-  // API経由で商品一覧を取得（失敗時はlocalStorageフォールバック）
-  function fetchProducts(callback) {
-    if (!useAPI) {
-      products = loadProductsFromLS();
-      if (callback) callback();
-      return;
-    }
-    AdminAPI.getProducts()
-      .then(function(data) {
-        products = Array.isArray(data) ? data : (data.products || []);
-        // APIデータをlocalStorageにもキャッシュ
-        saveProductsToLS(products);
-        if (callback) callback();
-      })
-      .catch(function(err) {
-        console.warn('AdminAPI.getProducts失敗、localStorageにフォールバック:', err);
-        products = loadProductsFromLS();
-        if (callback) callback();
-      });
-  }
-
-  // === DOM refs ===
-  var searchInput = document.querySelector('input[placeholder="商品名で検索..."]');
-  var categorySelect = document.querySelector('select');
-  var addBtn = document.querySelector('button.btn[style*="C9A96E"][style*="新規"]') ||
-               (function() {
-                 var btns = document.querySelectorAll('button.btn');
-                 for (var i = 0; i < btns.length; i++) {
-                   if (btns[i].textContent.indexOf('新規商品を追加') !== -1) return btns[i];
-                 }
-                 return null;
-               })();
-  var tbody = document.querySelector('tbody');
-  var paginationInfo = document.querySelector('div[style*="border-top"] div[style*="color:#999"]');
-  var paginationBtns = document.querySelector('div[style*="border-top"] div[style*="gap:4px"]');
-
-  // === Render ===
-  function getFilteredProducts() {
-    var searchVal = (searchInput ? searchInput.value : '').toLowerCase();
-    var catVal = categorySelect ? categorySelect.value : '';
-    return products.filter(function(p) {
-      var matchSearch = !searchVal || p.name.toLowerCase().indexOf(searchVal) !== -1 || (p.series && p.series.toLowerCase().indexOf(searchVal) !== -1);
-      var matchCat = !catVal || catVal === 'すべてのカテゴリ' || p.category === catVal;
-      return matchSearch && matchCat;
-    });
-  }
-
-  function buildRow(p) {
-    var cs = categoryStyles[p.category] || getDefaultStyle();
-    var isLowStock = p.stock <= 5;
-    var isPublished = p.status === '公開中';
-    var statusStyle = isPublished
-      ? 'background:#E8F5E9; color:#4CAF50;'
-      : 'background:#FFF8E1; color:#F9A825;';
-    var statusLabel = isPublished ? '公開中' : '下書き';
-
+  // --- Sizes ---
+  window.addSizeRow = function(data) {
+    data = data || {};
+    var tbody = document.getElementById('sizes-tbody');
     var tr = document.createElement('tr');
-    tr.setAttribute('data-id', p.id);
     tr.innerHTML =
-      '<td><div style="width:44px; height:44px; border-radius:6px; background:' + cs.iconBg + '; display:flex; align-items:center; justify-content:center; font-size:18px;">' + cs.icon + '</div></td>' +
-      '<td style="font-weight:600;">' + escapeHTML(p.name) + (p.series ? '<div style="font-size:11px; color:#999; font-weight:400; margin-top:2px;">' + escapeHTML(p.series) + '</div>' : '') + '</td>' +
-      '<td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:' + cs.bg + '; color:' + cs.color + ';">' + escapeHTML(p.category) + '</span></td>' +
-      '<td style="font-weight:600;">' + formatPrice(p.price) + '</td>' +
-      '<td' + (isLowStock ? ' style="color:#E53935; font-weight:600;"' : '') + '>' + p.stock + '</td>' +
-      '<td><span style="display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; ' + statusStyle + '">' + statusLabel + '</span></td>' +
-      '<td>' +
-        '<button class="btn btn-edit" style="background:#F0F0F0; color:#555; margin-right:4px;">編集</button>' +
-        '<button class="btn btn-delete" style="background:#FFF0F0; color:#E53935;">削除</button>' +
-      '</td>';
-    return tr;
+      '<td><input type="text" placeholder="例: S / SD / D / Q / K" value="' + (data.name||'') + '"></td>' +
+      '<td><input type="text" placeholder="例: 150×210cm" value="' + (data.dimensions||'') + '"></td>' +
+      '<td><input type="text" placeholder="例: 1.3kg" value="' + (data.fill||'') + '"></td>' +
+      '<td><input type="number" placeholder="例: 53800" min="0" value="' + (data.price||'') + '"></td>' +
+      '<td><input type="number" placeholder="例: 58800" min="0" value="' + (data.coverPrice||'') + '"></td>' +
+      '<td><button class="rm-btn" onclick="this.closest(\'tr\').remove()">削除</button></td>';
+    tbody.appendChild(tr);
+  };
+
+  // --- Images ---
+  window.addImageRow = function(data) {
+    data = data || {};
+    var tbody = document.getElementById('images-tbody');
+    var idx = tbody.children.length + 1;
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td style="text-align:center;color:#999;font-weight:600;">' + idx + '</td>' +
+      '<td><input type="text" placeholder="例: /images/products/xxx.jpg" value="' + (data.url||'') + '"></td>' +
+      '<td><input type="text" placeholder="画像の説明" value="' + (data.alt||'') + '"></td>' +
+      '<td><select>' +
+        '<option value="共通"' + (data.color==='共通'||!data.color?' selected':'') + '>共通</option>' +
+        '<option value="White"' + (data.color==='White'?' selected':'') + '>White</option>' +
+        '<option value="Black"' + (data.color==='Black'?' selected':'') + '>Black</option>' +
+        '<option value="その他"' + (data.color==='その他'?' selected':'') + '>その他</option>' +
+      '</select></td>' +
+      '<td><button class="rm-btn" onclick="removeImageRow(this)">削除</button></td>';
+    tbody.appendChild(tr);
+  };
+  window.removeImageRow = function(btn) {
+    btn.closest('tr').remove();
+    renumberImages();
+  };
+  function renumberImages() {
+    var rows = document.getElementById('images-tbody').children;
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].children[0].textContent = i + 1;
+    }
   }
 
-  function escapeHTML(s) {
-    var d = document.createElement('div');
-    d.textContent = s;
-    return d.innerHTML;
+  // --- Colors ---
+  window.addColorRow = function(data) {
+    data = data || {};
+    var tbody = document.getElementById('colors-tbody');
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><input type="text" placeholder="例: White" value="' + (data.name||'') + '"></td>' +
+      '<td><input type="color" value="' + (data.code||'#FFFFFF') + '" style="width:100%;height:36px;padding:2px;cursor:pointer;"></td>' +
+      '<td style="text-align:center;"><input type="checkbox"' + (data.border?' checked':'') + ' style="width:auto;"></td>' +
+      '<td><button class="rm-btn" onclick="this.closest(\'tr\').remove()">削除</button></td>';
+    tbody.appendChild(tr);
+  };
+
+  // --- Specs ---
+  window.addSpecRow = function(key, val) {
+    var tbody = document.getElementById('specs-tbody');
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><input type="text" placeholder="例: 羽毛種" value="' + (key||'') + '"></td>' +
+      '<td><input type="text" placeholder="例: ホワイトグースダウン93%" value="' + (val||'') + '"></td>' +
+      '<td><button class="rm-btn" onclick="this.closest(\'tr\').remove()">削除</button></td>';
+    tbody.appendChild(tr);
+  };
+
+  // --- Reviews ---
+  window.addReviewRow = function(data) {
+    data = data || {};
+    var tbody = document.getElementById('reviews-tbody');
+    var tr = document.createElement('tr');
+    var starOpts = '';
+    for (var s = 5; s >= 1; s--) {
+      starOpts += '<option value="' + s + '"' + (parseInt(data.stars)===s?' selected':'') + '>' + s + '</option>';
+    }
+    tr.innerHTML =
+      '<td><select>' + starOpts + '</select></td>' +
+      '<td><textarea rows="2" placeholder="レビュー内容..." style="width:100%;padding:8px 10px;border:1px solid #DDD;border-radius:6px;font-size:13px;font-family:inherit;outline:none;resize:vertical;">' + (data.text||'') + '</textarea></td>' +
+      '<td><input type="text" placeholder="— KA様" value="' + (data.author||'') + '"></td>' +
+      '<td><button class="rm-btn" onclick="this.closest(\'tr\').remove()">削除</button></td>';
+    tbody.appendChild(tr);
+  };
+
+  // --- Related Products / Magazines slots ---
+  function renderRelatedProducts(data) {
+    data = data || [{},{},{}];
+    var container = document.getElementById('related-products-container');
+    container.innerHTML = '';
+    for (var i = 0; i < 3; i++) {
+      var d = data[i] || {};
+      var html =
+        '<div style="background:#FAFBFD; border:1px solid #EAEDF3; border-radius:8px; padding:16px; margin-bottom:12px;">' +
+        '<div style="font-size:12px; font-weight:600; color:#888; margin-bottom:10px;">関連商品 ' + (i+1) + '</div>' +
+        '<div class="field-row">' +
+          '<div class="field"><label>商品名</label><input type="text" class="rp-name" placeholder="例: Premium RDS Down" value="' + (d.name||'') + '"></div>' +
+          '<div class="field"><label>価格</label><input type="text" class="rp-price" placeholder="例: ¥198,000" value="' + (d.price||'') + '"></div>' +
+        '</div>' +
+        '<div class="field-row">' +
+          '<div class="field"><label>URL</label><input type="text" class="rp-url" placeholder="例: /products/premium-rds.html" value="' + (d.url||'') + '"></div>' +
+          '<div class="field"><label>画像URL</label><input type="text" class="rp-image" placeholder="例: /images/products/xxx.jpg" value="' + (d.image||'') + '"></div>' +
+        '</div></div>';
+      container.innerHTML += html;
+    }
   }
 
-  function render() {
+  function renderRelatedMagazines(data) {
+    data = data || [{},{},{}];
+    var container = document.getElementById('related-magazines-container');
+    container.innerHTML = '';
+    for (var i = 0; i < 3; i++) {
+      var d = data[i] || {};
+      var html =
+        '<div style="background:#FAFBFD; border:1px solid #EAEDF3; border-radius:8px; padding:16px; margin-bottom:12px;">' +
+        '<div style="font-size:12px; font-weight:600; color:#888; margin-bottom:10px;">マガジン記事 ' + (i+1) + '</div>' +
+        '<div class="field-row-3">' +
+          '<div class="field"><label>タイトル</label><input type="text" class="rm-title" placeholder="記事タイトル" value="' + (d.title||'') + '"></div>' +
+          '<div class="field"><label>URL</label><input type="text" class="rm-url" placeholder="/magazine/xxx.html" value="' + (d.url||'') + '"></div>' +
+          '<div class="field"><label>画像URL</label><input type="text" class="rm-image" placeholder="/images/magazine/xxx.jpg" value="' + (d.image||'') + '"></div>' +
+        '</div></div>';
+      container.innerHTML += html;
+    }
+  }
+
+  // ===================== PRODUCT LIST =====================
+  function getFilteredProducts() {
+    var products = loadProducts();
+    var search = document.getElementById('search-input').value.toLowerCase().trim();
+    var cat = document.getElementById('filter-category').value;
+    var status = document.getElementById('filter-status').value;
+    return products.filter(function(p) {
+      if (search && (p.name||'').toLowerCase().indexOf(search) === -1) return false;
+      if (cat && p.category !== cat) return false;
+      if (status && p.status !== status) return false;
+      return true;
+    });
+  }
+
+  function renderList() {
     var filtered = getFilteredProducts();
-    var totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+    var total = filtered.length;
+    var totalPages = Math.max(1, Math.ceil(total / ITEMS_PER_PAGE));
     if (currentPage > totalPages) currentPage = totalPages;
     var start = (currentPage - 1) * ITEMS_PER_PAGE;
     var pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
 
+    var tbody = document.getElementById('product-tbody');
     tbody.innerHTML = '';
-    if (pageItems.length === 0) {
-      var emptyTr = document.createElement('tr');
-      emptyTr.innerHTML = '<td colspan="7" style="text-align:center; padding:40px; color:#999; font-size:14px;">商品が見つかりません</td>';
-      tbody.appendChild(emptyTr);
+
+    if (total === 0) {
+      tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:40px; color:#999;">商品がありません。「新規商品を追加」ボタンから追加してください。</td></tr>';
     } else {
-      pageItems.forEach(function(p) {
-        tbody.appendChild(buildRow(p));
-      });
-    }
+      for (var i = 0; i < pageItems.length; i++) {
+        var p = pageItems[i];
+        var cs = getCatStyle(p.category);
+        var sizeCount = (p.sizes || []).length;
+        var basePrice = (p.sizes && p.sizes.length > 0 && p.sizes[0].price) ? formatPrice(p.sizes[0].price) : '-';
+        var stock = typeof p.stock === 'number' ? p.stock : '-';
+        var stockStyle = (stock !== '-' && stock <= 5) ? 'color:#E53935;font-weight:600;' : '';
+        var statusBadge = p.status === '下書き'
+          ? '<span class="badge-draft">下書き</span>'
+          : '<span class="badge-published">公開中</span>';
+        var imgCell = (p.images && p.images.length > 0 && p.images[0].url)
+          ? '<img src="' + p.images[0].url + '" style="width:44px;height:44px;border-radius:6px;object-fit:cover;">'
+          : '<div style="width:44px;height:44px;border-radius:6px;background:' + cs.iconBg + ';display:flex;align-items:center;justify-content:center;font-size:18px;">' + cs.icon + '</div>';
 
-    // Pagination info
-    if (paginationInfo) {
-      if (filtered.length === 0) {
-        paginationInfo.textContent = '0件';
-      } else {
-        paginationInfo.textContent = '全' + filtered.length + '件中 ' + (start + 1) + '-' + Math.min(start + ITEMS_PER_PAGE, filtered.length) + '件を表示';
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + imgCell + '</td>' +
+          '<td style="font-weight:600;">' + (p.name||'(未設定)') + '</td>' +
+          '<td style="font-size:12px;color:#888;">' + (p.series||'-') + '</td>' +
+          '<td><span style="display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:' + cs.bg + ';color:' + cs.color + ';">' + (p.category||'-') + '</span></td>' +
+          '<td style="font-weight:600;">' + basePrice + '</td>' +
+          '<td>' + sizeCount + '</td>' +
+          '<td style="' + stockStyle + '">' + stock + '</td>' +
+          '<td>' + statusBadge + '</td>' +
+          '<td>' +
+            '<button class="btn" style="background:#F0F0F0;color:#555;margin-right:4px;" data-edit="' + p.id + '">編集</button>' +
+            '<button class="btn" style="background:#EBF0F5;color:#1976D2;margin-right:4px;" data-dup="' + p.id + '">複製</button>' +
+            '<button class="btn" style="background:#FFF0F0;color:#E53935;" data-del="' + p.id + '">削除</button>' +
+          '</td>';
+        tbody.appendChild(tr);
       }
     }
 
-    // Pagination buttons
-    if (paginationBtns) {
-      paginationBtns.innerHTML = '';
-      for (var i = 1; i <= totalPages; i++) {
-        var btn = document.createElement('button');
-        btn.className = 'btn';
-        btn.textContent = i;
-        btn.style.minWidth = '36px';
-        btn.style.textAlign = 'center';
-        if (i === currentPage) {
-          btn.style.background = '#C9A96E';
-          btn.style.color = '#fff';
-        } else {
-          btn.style.background = '#F0F0F0';
-          btn.style.color = '#555';
-        }
-        btn.setAttribute('data-page', i);
-        paginationBtns.appendChild(btn);
-      }
+    // Pagination
+    document.getElementById('page-info').textContent = total === 0
+      ? '0件'
+      : '全' + total + '件中 ' + (start+1) + '-' + Math.min(start+ITEMS_PER_PAGE, total) + '件を表示';
+    var pageBtns = document.getElementById('page-btns');
+    pageBtns.innerHTML = '';
+    for (var pg = 1; pg <= totalPages; pg++) {
+      var b = document.createElement('button');
+      b.className = 'btn';
+      b.textContent = pg;
+      b.style.minWidth = '36px';
+      b.style.textAlign = 'center';
+      if (pg === currentPage) { b.style.background = '#C9A96E'; b.style.color = '#fff'; }
+      else { b.style.background = '#F0F0F0'; b.style.color = '#555'; }
+      b.setAttribute('data-page', pg);
+      pageBtns.appendChild(b);
     }
-
-    // Attach row button events
-    tbody.querySelectorAll('.btn-edit').forEach(function(b) {
-      b.addEventListener('click', function() {
-        var id = Number(this.closest('tr').getAttribute('data-id'));
-        openEditModal(id);
-      });
-    });
-    tbody.querySelectorAll('.btn-delete').forEach(function(b) {
-      b.addEventListener('click', function() {
-        deletingId = Number(this.closest('tr').getAttribute('data-id'));
-        openConfirm();
-      });
-    });
   }
 
-  // === Search & Filter ===
-  if (searchInput) {
-    searchInput.addEventListener('input', function() {
-      currentPage = 1;
-      render();
-    });
-  }
-  if (categorySelect) {
-    categorySelect.addEventListener('change', function() {
-      currentPage = 1;
-      render();
-    });
+  // Table actions delegation
+  document.getElementById('product-tbody').addEventListener('click', function(e) {
+    var btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.dataset.edit) openEditor(btn.dataset.edit);
+    if (btn.dataset.del) openConfirm(btn.dataset.del);
+    if (btn.dataset.dup) duplicateProduct(btn.dataset.dup);
+  });
+  document.getElementById('page-btns').addEventListener('click', function(e) {
+    var btn = e.target.closest('button');
+    if (!btn || !btn.dataset.page) return;
+    currentPage = parseInt(btn.dataset.page);
+    renderList();
+  });
+
+  // Search and filters
+  document.getElementById('search-input').addEventListener('input', function() { currentPage = 1; renderList(); });
+  document.getElementById('filter-category').addEventListener('change', function() { currentPage = 1; renderList(); });
+  document.getElementById('filter-status').addEventListener('change', function() { currentPage = 1; renderList(); });
+
+  // Duplicate
+  function duplicateProduct(id) {
+    var products = loadProducts();
+    var src = null;
+    for (var i = 0; i < products.length; i++) { if (products[i].id === id) { src = products[i]; break; } }
+    if (!src) return;
+    var dup = JSON.parse(JSON.stringify(src));
+    dup.id = genId();
+    dup.name = (dup.name || '') + '（コピー）';
+    dup.status = '下書き';
+    products.unshift(dup);
+    saveProducts(products);
+    renderList();
+    showToast('商品を複製しました');
   }
 
-  // === Pagination click ===
-  if (paginationBtns) {
-    paginationBtns.addEventListener('click', function(e) {
-      var p = e.target.getAttribute('data-page');
-      if (p) {
-        currentPage = Number(p);
-        render();
-      }
-    });
-  }
-
-  // === Add New Product ===
-  if (addBtn) {
-    addBtn.addEventListener('click', function() {
-      editingId = null;
-      document.getElementById('modal-title').textContent = '新規商品を追加';
-      document.getElementById('product-form').reset();
-      openModal();
-    });
-  }
-
-  // === Edit Product ===
-  function openEditModal(id) {
-    var p = products.find(function(x) { return x.id === id; });
-    if (!p) return;
+  // ===================== EDITOR =====================
+  window.openEditor = function(id) {
     editingId = id;
-    document.getElementById('modal-title').textContent = '商品を編集';
-    document.getElementById('f-name').value = p.name;
-    document.getElementById('f-series').value = p.series || '';
-    document.getElementById('f-category').value = p.category;
-    document.getElementById('f-price').value = p.price;
-    document.getElementById('f-stock').value = p.stock;
-    document.getElementById('f-status').value = p.status;
-    openModal();
+    document.getElementById('view-list').style.display = 'none';
+    document.getElementById('view-editor').style.display = 'block';
+
+    // Reset tabs to first
+    var allBtns = document.querySelectorAll('#editor-tabs .tab-btn');
+    var allPanels = document.querySelectorAll('.tab-panel');
+    for (var i = 0; i < allBtns.length; i++) allBtns[i].classList.remove('active');
+    for (var i = 0; i < allPanels.length; i++) allPanels[i].classList.remove('active');
+    allBtns[0].classList.add('active');
+    allPanels[0].classList.add('active');
+
+    if (id) {
+      document.getElementById('editor-title').textContent = '商品を編集';
+      var products = loadProducts();
+      var p = null;
+      for (var i = 0; i < products.length; i++) { if (products[i].id === id) { p = products[i]; break; } }
+      if (!p) { closeEditor(); return; }
+      populateEditor(p);
+    } else {
+      document.getElementById('editor-title').textContent = '新規商品を追加';
+      populateEditor(null);
+    }
+    window.scrollTo(0, 0);
+  };
+
+  window.closeEditor = function() {
+    editingId = null;
+    document.getElementById('view-editor').style.display = 'none';
+    document.getElementById('view-list').style.display = 'block';
+    renderList();
+  };
+
+  function populateEditor(p) {
+    p = p || {};
+
+    // Tab 1: Basic
+    document.getElementById('ed-name').value = p.name || '';
+    document.getElementById('ed-series').value = p.series || '';
+    document.getElementById('ed-subtitle').value = p.subtitle || '';
+    document.getElementById('ed-catchcopy').value = p.catchcopy || '';
+    document.getElementById('ed-description').value = p.description || '';
+    document.getElementById('ed-category').value = p.category || '掛け布団';
+    document.getElementById('ed-season').value = p.season || '冬用';
+    document.getElementById('ed-status').value = p.status || '公開';
+
+    // Tab 2: Sizes
+    document.getElementById('sizes-tbody').innerHTML = '';
+    var sizes = p.sizes || [];
+    if (sizes.length === 0) { addSizeRow(); } else { for (var i=0;i<sizes.length;i++) addSizeRow(sizes[i]); }
+    document.getElementById('ed-cover-option').checked = !!p.coverOption;
+    document.getElementById('ed-cover-surcharge').value = p.coverSurcharge || '';
+
+    // Tab 3: Images
+    document.getElementById('images-tbody').innerHTML = '';
+    var imgs = p.images || [];
+    if (imgs.length === 0) { addImageRow(); } else { for (var i=0;i<imgs.length;i++) addImageRow(imgs[i]); }
+
+    // Tab 4: Colors
+    document.getElementById('colors-tbody').innerHTML = '';
+    var cols = p.colors || [];
+    if (cols.length === 0) { addColorRow(); } else { for (var i=0;i<cols.length;i++) addColorRow(cols[i]); }
+    document.getElementById('ed-link-winter').value = (p.seasonLinks||{}).winter || '';
+    document.getElementById('ed-link-spring').value = (p.seasonLinks||{}).spring || '';
+    document.getElementById('ed-link-summer').value = (p.seasonLinks||{}).summer || '';
+
+    // Tab 5: Specs
+    document.getElementById('specs-tbody').innerHTML = '';
+    var specs = p.specs || [];
+    if (specs.length === 0) {
+      for (var i=0;i<defaultSpecs.length;i++) addSpecRow(defaultSpecs[i], '');
+    } else {
+      for (var i=0;i<specs.length;i++) addSpecRow(specs[i].key, specs[i].value);
+    }
+
+    // Tab 6: Features
+    for (var f=1;f<=6;f++) document.getElementById('ed-feat-'+f).value = (p.features||{})[f] || '';
+    document.getElementById('ed-story-label').value = (p.story||{}).label || '';
+    document.getElementById('ed-story-heading').value = (p.story||{}).heading || '';
+    document.getElementById('ed-story-body').value = (p.story||{}).body || '';
+    document.getElementById('ed-story-image').value = (p.story||{}).image || '';
+
+    // Tab 7: Related
+    document.getElementById('reviews-tbody').innerHTML = '';
+    var revs = p.reviews || [];
+    if (revs.length === 0) { addReviewRow(); } else { for (var i=0;i<revs.length;i++) addReviewRow(revs[i]); }
+    renderRelatedProducts(p.relatedProducts || [{},{},{}]);
+    renderRelatedMagazines(p.relatedMagazines || [{},{},{}]);
+    document.getElementById('ed-badge-1').value = (p.badges||[])[0] || '';
+    document.getElementById('ed-badge-2').value = (p.badges||[])[1] || '';
+    document.getElementById('ed-badge-3').value = (p.badges||[])[2] || '';
+
+    // Tab 8: SEO
+    document.getElementById('ed-meta-title').value = p.metaTitle || '';
+    document.getElementById('ed-meta-desc').value = p.metaDesc || '';
+    document.getElementById('ed-og-image').value = p.ogImage || '';
+    document.getElementById('ed-canonical').value = p.canonical || '';
+    updateCharCount('ed-meta-title','cc-meta-title',60);
+    updateCharCount('ed-meta-desc','cc-meta-desc',160);
   }
 
-  // === Form Submit ===
-  document.getElementById('product-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var data = {
-      name: document.getElementById('f-name').value.trim(),
-      series: document.getElementById('f-series').value.trim(),
-      category: document.getElementById('f-category').value,
-      price: parseInt(document.getElementById('f-price').value, 10) || 0,
-      stock: parseInt(document.getElementById('f-stock').value, 10) || 0,
-      status: document.getElementById('f-status').value
+  // ===================== COLLECT & SAVE =====================
+  function collectTableRows(tbodyId, fieldDefs) {
+    var rows = document.getElementById(tbodyId).children;
+    var result = [];
+    for (var r = 0; r < rows.length; r++) {
+      var obj = {};
+      var inputs = rows[r].querySelectorAll('input, select, textarea');
+      var idx = 0;
+      for (var f = 0; f < fieldDefs.length; f++) {
+        var fd = fieldDefs[f];
+        var el = inputs[idx];
+        if (!el) { idx++; continue; }
+        if (fd.type === 'checkbox') {
+          obj[fd.key] = el.checked;
+        } else {
+          obj[fd.key] = el.value;
+        }
+        idx++;
+      }
+      result.push(obj);
+    }
+    return result;
+  }
+
+  window.saveProduct = function() {
+    var name = document.getElementById('ed-name').value.trim();
+    if (!name) {
+      showToast('商品名は必須です', true);
+      // Switch to basic tab
+      var allBtns = document.querySelectorAll('#editor-tabs .tab-btn');
+      var allPanels = document.querySelectorAll('.tab-panel');
+      for (var i=0;i<allBtns.length;i++) allBtns[i].classList.remove('active');
+      for (var i=0;i<allPanels.length;i++) allPanels[i].classList.remove('active');
+      allBtns[0].classList.add('active');
+      allPanels[0].classList.add('active');
+      document.getElementById('ed-name').focus();
+      return;
+    }
+
+    // Collect sizes
+    var sizes = [];
+    var sizeRows = document.getElementById('sizes-tbody').children;
+    for (var r=0;r<sizeRows.length;r++) {
+      var inputs = sizeRows[r].querySelectorAll('input');
+      sizes.push({
+        name: inputs[0].value,
+        dimensions: inputs[1].value,
+        fill: inputs[2].value,
+        price: inputs[3].value ? parseInt(inputs[3].value) : 0,
+        coverPrice: inputs[4].value ? parseInt(inputs[4].value) : 0
+      });
+    }
+
+    // Collect images
+    var images = [];
+    var imgRows = document.getElementById('images-tbody').children;
+    for (var r=0;r<imgRows.length;r++) {
+      var inputs = imgRows[r].querySelectorAll('input');
+      var sel = imgRows[r].querySelector('select');
+      images.push({ url: inputs[0].value, alt: inputs[1].value, color: sel.value });
+    }
+
+    // Collect colors
+    var colors = [];
+    var colRows = document.getElementById('colors-tbody').children;
+    for (var r=0;r<colRows.length;r++) {
+      var inputs = colRows[r].querySelectorAll('input');
+      colors.push({ name: inputs[0].value, code: inputs[1].value, border: inputs[2].checked });
+    }
+
+    // Collect specs
+    var specs = [];
+    var specRows = document.getElementById('specs-tbody').children;
+    for (var r=0;r<specRows.length;r++) {
+      var inputs = specRows[r].querySelectorAll('input');
+      if (inputs[0].value || inputs[1].value) {
+        specs.push({ key: inputs[0].value, value: inputs[1].value });
+      }
+    }
+
+    // Collect reviews
+    var reviews = [];
+    var revRows = document.getElementById('reviews-tbody').children;
+    for (var r=0;r<revRows.length;r++) {
+      var sel = revRows[r].querySelector('select');
+      var ta = revRows[r].querySelector('textarea');
+      var inp = revRows[r].querySelector('input');
+      reviews.push({ stars: parseInt(sel.value), text: ta.value, author: inp.value });
+    }
+
+    // Collect related products
+    var rpSlots = document.querySelectorAll('#related-products-container > div');
+    var relProds = [];
+    for (var i=0;i<rpSlots.length;i++) {
+      relProds.push({
+        name: rpSlots[i].querySelector('.rp-name').value,
+        price: rpSlots[i].querySelector('.rp-price').value,
+        url: rpSlots[i].querySelector('.rp-url').value,
+        image: rpSlots[i].querySelector('.rp-image').value
+      });
+    }
+
+    // Collect related magazines
+    var rmSlots = document.querySelectorAll('#related-magazines-container > div');
+    var relMags = [];
+    for (var i=0;i<rmSlots.length;i++) {
+      relMags.push({
+        title: rmSlots[i].querySelector('.rm-title').value,
+        url: rmSlots[i].querySelector('.rm-url').value,
+        image: rmSlots[i].querySelector('.rm-image').value
+      });
+    }
+
+    var product = {
+      id: editingId || genId(),
+      name: name,
+      series: document.getElementById('ed-series').value,
+      subtitle: document.getElementById('ed-subtitle').value,
+      catchcopy: document.getElementById('ed-catchcopy').value,
+      description: document.getElementById('ed-description').value,
+      category: document.getElementById('ed-category').value,
+      season: document.getElementById('ed-season').value,
+      status: document.getElementById('ed-status').value,
+      sizes: sizes,
+      coverOption: document.getElementById('ed-cover-option').checked,
+      coverSurcharge: parseInt(document.getElementById('ed-cover-surcharge').value) || 0,
+      images: images,
+      colors: colors,
+      seasonLinks: {
+        winter: document.getElementById('ed-link-winter').value,
+        spring: document.getElementById('ed-link-spring').value,
+        summer: document.getElementById('ed-link-summer').value
+      },
+      specs: specs,
+      features: {
+        1: document.getElementById('ed-feat-1').value,
+        2: document.getElementById('ed-feat-2').value,
+        3: document.getElementById('ed-feat-3').value,
+        4: document.getElementById('ed-feat-4').value,
+        5: document.getElementById('ed-feat-5').value,
+        6: document.getElementById('ed-feat-6').value
+      },
+      story: {
+        label: document.getElementById('ed-story-label').value,
+        heading: document.getElementById('ed-story-heading').value,
+        body: document.getElementById('ed-story-body').value,
+        image: document.getElementById('ed-story-image').value
+      },
+      reviews: reviews,
+      relatedProducts: relProds,
+      relatedMagazines: relMags,
+      badges: [
+        document.getElementById('ed-badge-1').value,
+        document.getElementById('ed-badge-2').value,
+        document.getElementById('ed-badge-3').value
+      ],
+      metaTitle: document.getElementById('ed-meta-title').value,
+      metaDesc: document.getElementById('ed-meta-desc').value,
+      ogImage: document.getElementById('ed-og-image').value,
+      canonical: document.getElementById('ed-canonical').value,
+      stock: 0, // default, managed in inventory
+      updatedAt: new Date().toISOString()
     };
 
-    if (!data.name) return;
-
-    if (editingId !== null) {
-      // === 更新 ===
-      if (useAPI) {
-        AdminAPI.updateProduct(editingId, data)
-          .then(function() {
-            closeModal();
-            showToast('商品を更新しました');
-            fetchProducts(function() { render(); });
-          })
-          .catch(function(err) {
-            console.warn('API更新失敗、ローカル更新にフォールバック:', err);
-            updateProductLocal(editingId, data);
-            closeModal();
-            render();
-            showToast('商品を更新しました（オフライン）');
-          });
-      } else {
-        updateProductLocal(editingId, data);
-        closeModal();
-        render();
-        showToast('商品を更新しました');
+    var products = loadProducts();
+    if (editingId) {
+      // Find existing and preserve stock
+      for (var i=0;i<products.length;i++) {
+        if (products[i].id === editingId) {
+          product.stock = products[i].stock || 0;
+          product.createdAt = products[i].createdAt;
+          products[i] = product;
+          break;
+        }
       }
     } else {
-      // === 新規追加 ===
-      if (useAPI) {
-        AdminAPI.createProduct(data)
-          .then(function() {
-            closeModal();
-            showToast('商品を追加しました');
-            fetchProducts(function() {
-              currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
-              render();
-            });
-          })
-          .catch(function(err) {
-            console.warn('API作成失敗、ローカル追加にフォールバック:', err);
-            addProductLocal(data);
-            closeModal();
-            currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
-            render();
-            showToast('商品を追加しました（オフライン）');
-          });
-      } else {
-        addProductLocal(data);
-        closeModal();
-        currentPage = Math.ceil(products.length / ITEMS_PER_PAGE);
-        render();
-        showToast('商品を追加しました');
-      }
+      product.createdAt = new Date().toISOString();
+      products.unshift(product);
     }
-  });
+    saveProducts(products);
+    showToast(editingId ? '商品を更新しました' : '商品を追加しました');
+    closeEditor();
+  };
 
-  // ローカル更新ヘルパー
-  function updateProductLocal(id, data) {
-    for (var i = 0; i < products.length; i++) {
-      if (products[i].id === id) {
-        products[i].name = data.name;
-        products[i].series = data.series;
-        products[i].category = data.category;
-        products[i].price = data.price;
-        products[i].stock = data.stock;
-        products[i].status = data.status;
-        break;
-      }
-    }
-    saveProductsToLS(products);
+  // ===================== SEED DATA =====================
+  function seedIfEmpty() {
+    var products = loadProducts();
+    if (products.length > 0) return;
+    var seed = [
+      { id:genId(), name:'Premium RDS Down 冬用本掛け', series:'Premium RDS Down Series', subtitle:'最高級ダウン', category:'掛け布団', season:'冬用', status:'公開', sizes:[{name:'S',dimensions:'150×210cm',fill:'1.3kg',price:198000,coverPrice:208000},{name:'D',dimensions:'190×210cm',fill:'1.7kg',price:258000,coverPrice:268000}], stock:12, images:[], colors:[{name:'White',code:'#FFFFFF',border:true}], specs:[{key:'羽毛種',value:'ポーランド産ホワイトグースダウン95%'},{key:'ダウンパワー',value:'440dp'}], features:{1:'極上の暖かさ',2:'超軽量設計'}, badges:['品質保証','日本製','富士吉田'], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'RDS Down 冬用本掛け', series:'RDS Down Series', subtitle:'高品質ダウン', category:'掛け布団', season:'冬用', status:'公開', sizes:[{name:'S',dimensions:'150×210cm',fill:'1.2kg',price:88000,coverPrice:93000}], stock:18, images:[], colors:[{name:'White',code:'#FFFFFF',border:true}], specs:[], features:{}, badges:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'Clean Cycle Down 冬用本掛け', series:'Clean Cycle Down Series', subtitle:'リサイクルダウン', category:'掛け布団', season:'冬用', status:'公開', sizes:[{name:'S',dimensions:'150×210cm',fill:'1.3kg',price:53800,coverPrice:58800},{name:'SD',dimensions:'170×210cm',fill:'1.5kg',price:63800,coverPrice:68800},{name:'D',dimensions:'190×210cm',fill:'1.7kg',price:73800,coverPrice:78800}], stock:25, images:[], colors:[{name:'White',code:'#FFFFFF',border:true},{name:'Black',code:'#000000',border:false}], specs:[{key:'羽毛種',value:'リサイクルホワイトダックダウン93%'},{key:'ダウンパワー',value:'400dp'}], features:{1:'新品羽毛を超える清潔さ',2:'環境にやさしい'}, badges:['品質保証','日本製','富士吉田'], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'Flower Down 冬用本掛け', series:'Flower Down Series', subtitle:'花柄デザイン', category:'掛け布団', season:'冬用', status:'公開', sizes:[{name:'S',dimensions:'150×210cm',fill:'1.0kg',price:35800,coverPrice:40800}], stock:3, images:[], colors:[], specs:[], features:{}, badges:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'ホワイトグースダウン枕', series:'Pillow Series', subtitle:'高級枕', category:'枕', season:'通年', status:'公開', sizes:[{name:'M',dimensions:'43×63cm',fill:'0.5kg',price:27800,coverPrice:0}], stock:2, images:[], colors:[{name:'White',code:'#FFFFFF',border:true}], specs:[], features:{}, badges:['日本製'], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'掛け布団カバー', series:'Cover Series', subtitle:'カバー', category:'寝具', season:'通年', status:'公開', sizes:[{name:'S',dimensions:'150×210cm',fill:'',price:13800,coverPrice:0}], stock:34, images:[], colors:[], specs:[], features:{}, badges:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'ダウンジャケット', series:'Apparel', subtitle:'アパレル', category:'アパレル', season:'冬用', status:'公開', sizes:[{name:'M',dimensions:'',fill:'',price:146300,coverPrice:0}], stock:8, images:[], colors:[], specs:[], features:{}, badges:[], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() },
+      { id:genId(), name:'ベビー用布団はじめてセット', series:'Baby Series', subtitle:'ベビー', category:'ベビー', season:'通年', status:'公開', sizes:[{name:'ベビー',dimensions:'70×120cm',fill:'0.3kg',price:39000,coverPrice:0}], stock:15, images:[], colors:[], specs:[], features:{}, badges:['日本製'], createdAt:new Date().toISOString(), updatedAt:new Date().toISOString() }
+    ];
+    saveProducts(seed);
   }
 
-  function addProductLocal(data) {
-    data.id = Date.now() + Math.random();
-    products.push(data);
-    saveProductsToLS(products);
-  }
-
-  // === Delete ===
-  document.getElementById('confirm-delete').addEventListener('click', function() {
-    if (deletingId !== null) {
-      var idToDelete = deletingId;
-      deletingId = null;
-
-      if (useAPI) {
-        AdminAPI.deleteProduct(idToDelete)
-          .then(function() {
-            closeConfirm();
-            showToast('商品を削除しました');
-            fetchProducts(function() { render(); });
-          })
-          .catch(function(err) {
-            console.warn('API削除失敗、ローカル削除にフォールバック:', err);
-            deleteProductLocal(idToDelete);
-            closeConfirm();
-            render();
-            showToast('商品を削除しました（オフライン）');
-          });
-      } else {
-        deleteProductLocal(idToDelete);
-        closeConfirm();
-        render();
-        showToast('商品を削除しました');
-      }
-    }
-  });
-
-  function deleteProductLocal(id) {
-    products = products.filter(function(p) { return p.id !== id; });
-    saveProductsToLS(products);
-  }
-
-  // === Modal close handlers ===
-  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
-  document.getElementById('modal-close-x').addEventListener('click', closeModal);
-  document.getElementById('modal-cancel').addEventListener('click', closeModal);
-  document.getElementById('confirm-backdrop').addEventListener('click', closeConfirm);
-  document.getElementById('confirm-cancel').addEventListener('click', closeConfirm);
-
-  // Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      if (document.getElementById('confirm-dialog').style.display === 'block') {
-        closeConfirm();
-      } else if (document.getElementById('product-modal').style.display === 'block') {
-        closeModal();
-      }
-    }
-  });
-
-  // === Initial render (API優先、フォールバックでlocalStorage) ===
-  fetchProducts(function() { render(); });
+  // ===================== INIT =====================
+  seedIfEmpty();
+  renderList();
 
 })();
 </script>

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>顧客管理 | 管理画面 | 表参道布団店。</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+a { text-decoration:none; color:inherit; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
+td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
+tr:hover { background:#FAFBFD; }
+html, body { overflow-x:hidden !important; max-width:100vw; }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; font-family:inherit; cursor:pointer; transition:all 0.2s; border:none; }
+.btn-primary { background:#C9A96E; color:#fff; }
+.btn-primary:hover { background:#B8964E; }
+.btn-outline { background:#fff; color:#555; border:1px solid #DDD; }
+.btn-outline:hover { border-color:#C9A96E; color:#C9A96E; }
+.btn-sm { padding:5px 10px; font-size:12px; }
+.btn-danger { background:#fff; color:#DC3545; border:1px solid #F5C6CB; }
+.btn-danger:hover { background:#DC3545; color:#fff; }
+
+/* Badge */
+.badge { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; white-space:nowrap; }
+.badge-green { background:#D4EDDA; color:#155724; }
+.badge-yellow { background:#FFF3CD; color:#856404; }
+.badge-gray { background:#E9ECEF; color:#6C757D; }
+.badge-blue { background:#CCE5FF; color:#004085; }
+
+/* Modal overlay */
+.modal-overlay { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:flex-start; justify-content:center; overflow-y:auto; padding:40px 16px; }
+.modal-overlay.active { display:flex; }
+.modal-box { background:#fff; border-radius:12px; width:720px; max-width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+.modal-header { padding:24px 28px; border-bottom:1px solid #EAEDF3; display:flex; justify-content:space-between; align-items:center; }
+.modal-header h3 { font-size:18px; font-weight:700; color:#1A1A1A; }
+.modal-close { background:none; border:none; font-size:22px; cursor:pointer; color:#999; padding:4px 8px; line-height:1; }
+.modal-close:hover { color:#333; }
+.modal-body { padding:28px; }
+.modal-section { margin-bottom:28px; }
+.modal-section-title { font-size:14px; font-weight:700; color:#1A1A1A; margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid #F0F0F0; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px; }
+.form-group { margin-bottom:14px; }
+.form-group label { display:block; font-size:12px; font-weight:600; color:#777; margin-bottom:6px; }
+.form-group label .required { color:#DC3545; margin-left:2px; }
+.form-group input, .form-group select, .form-group textarea {
+  width:100%; padding:10px 14px; border:1px solid #DDD; border-radius:8px; font-size:13px;
+  font-family:inherit; outline:none; transition:border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:#C9A96E; }
+.form-group textarea { resize:vertical; min-height:80px; }
+.form-group .hint { font-size:11px; color:#AAA; margin-top:4px; }
+
+/* Stat cards */
+.stat-card { background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3; }
+.stat-card-label { font-size:12px; font-weight:600; color:#999; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.stat-card-value { font-size:26px; font-weight:700; }
+
+/* Address truncation */
+.addr-truncate { max-width:160px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:help; }
+
+/* Upload area */
+.upload-area {
+  border:2px dashed #DDD; border-radius:12px; padding:40px; text-align:center;
+  cursor:pointer; transition:border-color 0.2s, background 0.2s;
+}
+.upload-area:hover, .upload-area.dragover { border-color:#C9A96E; background:#FDF8F0; }
+.upload-area-icon { font-size:36px; margin-bottom:12px; color:#CCC; }
+.upload-area-text { font-size:14px; color:#777; }
+.upload-area-hint { font-size:12px; color:#AAA; margin-top:8px; }
+
+/* Progress bar */
+.progress-bar { width:100%; height:8px; background:#EAEDF3; border-radius:4px; overflow:hidden; margin-top:12px; }
+.progress-bar-fill { height:100%; background:#C9A96E; border-radius:4px; transition:width 0.3s; width:0%; }
+
+/* Pagination */
+.pagination { display:flex; align-items:center; justify-content:center; gap:4px; margin-top:20px; }
+.pagination button { min-width:36px; height:36px; border:1px solid #EAEDF3; background:#fff; border-radius:6px; font-size:13px; cursor:pointer; font-family:inherit; transition:all 0.2s; }
+.pagination button:hover { border-color:#C9A96E; color:#C9A96E; }
+.pagination button.active { background:#C9A96E; color:#fff; border-color:#C9A96E; }
+.pagination button:disabled { opacity:0.4; cursor:default; }
+</style>
+<style id="admin-mobile-fix">
+@media (max-width: 768px) {
+  .admin-sidebar-fix { display: none !important; }
+  .admin-main-fix { margin-left: 0 !important; }
+  .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .filter-bar { flex-wrap: wrap !important; }
+  .filter-bar input, .filter-bar select { width: 100% !important; }
+  .filter-bar .btn { width: 100% !important; justify-content: center; }
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .modal-box { width: 100% !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+  .modal-body { padding: 16px !important; }
+}
+</style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
+  <!-- Logo -->
+  <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
+    <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
+    <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
+  </div>
+  <!-- Menu -->
+  <nav style="flex:1; padding:16px 12px;">
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9632;</span> ダッシュボード
+    </a>
+    <a href="products.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9776;</span> 商品管理
+    </a>
+    <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 在庫管理
+    </a>
+    <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
+    <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
+    </a>
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9881;</span> 設定
+    </a>
+  </nav>
+  <!-- Sidebar footer -->
+  <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
+    <a href="login.html" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="admin-main-fix" style="margin-left:260px;min-height:100vh">
+  <!-- Header bar -->
+  <div style="height:64px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50">
+    <h1 style="font-size:18px;font-weight:700;color:#1A1A1A">顧客管理</h1>
+    <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div><div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div></div>
+  </div>
+
+  <div style="padding:28px 32px">
+    <!-- Stats Cards -->
+    <div class="stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px">
+      <div class="stat-card">
+        <div class="stat-card-label">&#128101; 総会員数</div>
+        <div class="stat-card-value" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">&#127381; 今月の新規会員</div>
+        <div class="stat-card-value" id="statNewMonth" style="color:#C9A96E">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">&#9889; アクティブ会員</div>
+        <div class="stat-card-value" id="statActive" style="color:#155724">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">&#128176; 累計売上</div>
+        <div class="stat-card-value" id="statRevenue">&#165;0</div>
+      </div>
+    </div>
+
+    <!-- Customer List Card -->
+    <div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
+      <!-- Filter Bar -->
+      <div class="filter-bar" style="padding:20px 24px;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <input id="searchInput" type="text" placeholder="お名前・メール・電話番号で検索..." style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;width:320px;font-family:inherit">
+          <select id="statusFilter" style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff;font-family:inherit">
+            <option value="">すべて</option>
+            <option value="アクティブ">アクティブ</option>
+            <option value="休眠">休眠</option>
+            <option value="退会">退会</option>
+          </select>
+          <select id="sortSelect" style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff;font-family:inherit">
+            <option value="registered_desc">登録日順（新しい順）</option>
+            <option value="registered_asc">登録日順（古い順）</option>
+            <option value="total_spent_desc">購入金額順</option>
+            <option value="order_count_desc">注文回数順</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-outline" onclick="openImportModal()">&#128229; CSVインポート</button>
+          <button class="btn btn-outline" onclick="exportCSV()">&#128228; CSVエクスポート</button>
+          <button class="btn btn-primary" onclick="openCustomerModal()">&#10010; 新規会員追加</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left:24px">会員ID</th>
+              <th>お名前</th>
+              <th>メール</th>
+              <th>電話番号</th>
+              <th>住所</th>
+              <th style="text-align:center">注文回数</th>
+              <th style="text-align:right">累計購入金額</th>
+              <th>登録日</th>
+              <th style="text-align:center">ステータス</th>
+              <th style="text-align:center">操作</th>
+            </tr>
+          </thead>
+          <tbody id="customerTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div style="padding:16px 24px;border-top:1px solid #EAEDF3">
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Customer Detail/Edit Modal -->
+<div class="modal-overlay" id="customerModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="customerModalTitle">新規会員追加</h3>
+      <button class="modal-close" onclick="closeCustomerModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editCustomerId">
+
+      <!-- Section 1: 基本情報 -->
+      <div class="modal-section">
+        <div class="modal-section-title">基本情報</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓 <span class="required">*</span></label>
+            <input type="text" id="formLastName" required>
+          </div>
+          <div class="form-group">
+            <label>名 <span class="required">*</span></label>
+            <input type="text" id="formFirstName" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>姓（よみがな）</label>
+            <input type="text" id="formLastNameKana" placeholder="やまだ">
+          </div>
+          <div class="form-group">
+            <label>名（よみがな）</label>
+            <input type="text" id="formFirstNameKana" placeholder="たろう">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>メールアドレス <span class="required">*</span></label>
+            <input type="email" id="formEmail" required>
+          </div>
+          <div class="form-group">
+            <label>電話番号</label>
+            <input type="tel" id="formPhone" placeholder="03-1234-5678">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>生年月日</label>
+            <input type="date" id="formBirthday">
+          </div>
+          <div class="form-group">
+            <label>会員ステータス</label>
+            <select id="formStatus">
+              <option value="アクティブ">アクティブ</option>
+              <option value="休眠">休眠</option>
+              <option value="退会">退会</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: 住所情報（請求先） -->
+      <div class="modal-section">
+        <div class="modal-section-title">住所情報（請求先）</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>郵便番号</label>
+            <input type="text" id="formPostcode" placeholder="1500001" maxlength="7">
+            <div class="hint">ハイフンなし7桁</div>
+          </div>
+          <div class="form-group">
+            <label>都道府県</label>
+            <select id="formPrefecture">
+              <option value="">選択してください</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>市区町村</label>
+          <input type="text" id="formCity" placeholder="渋谷区神宮前">
+        </div>
+        <div class="form-group">
+          <label>番地</label>
+          <input type="text" id="formAddress1" placeholder="4-5-6">
+        </div>
+        <div class="form-group">
+          <label>建物名・部屋番号</label>
+          <input type="text" id="formAddress2" placeholder="表参道ビル 3F">
+        </div>
+      </div>
+
+      <!-- Section 3: 配送先住所 -->
+      <div class="modal-section">
+        <div class="modal-section-title">配送先住所</div>
+        <div class="form-group">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+            <input type="checkbox" id="formSameAddress" checked onchange="toggleShippingAddress()">
+            請求先と同じ
+          </label>
+        </div>
+        <div id="shippingAddressFields" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label>郵便番号</label>
+              <input type="text" id="formShipPostcode" placeholder="1500001" maxlength="7">
+              <div class="hint">ハイフンなし7桁</div>
+            </div>
+            <div class="form-group">
+              <label>都道府県</label>
+              <select id="formShipPrefecture">
+                <option value="">選択してください</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>市区町村</label>
+            <input type="text" id="formShipCity">
+          </div>
+          <div class="form-group">
+            <label>番地</label>
+            <input type="text" id="formShipAddress1">
+          </div>
+          <div class="form-group">
+            <label>建物名・部屋番号</label>
+            <input type="text" id="formShipAddress2">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: 購入履歴 (read-only) -->
+      <div class="modal-section" id="orderHistorySection" style="display:none">
+        <div class="modal-section-title">購入履歴</div>
+        <div style="overflow-x:auto">
+          <table style="font-size:13px">
+            <thead>
+              <tr>
+                <th>注文番号</th>
+                <th>日付</th>
+                <th>商品</th>
+                <th style="text-align:right">金額</th>
+                <th style="text-align:center">ステータス</th>
+              </tr>
+            </thead>
+            <tbody id="orderHistoryBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section 5: メモ・備考 -->
+      <div class="modal-section">
+        <div class="modal-section-title">メモ・備考</div>
+        <div class="form-group">
+          <textarea id="formNotes" placeholder="社内メモ、特記事項など..."></textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button class="btn btn-outline" onclick="closeCustomerModal()">キャンセル</button>
+        <button class="btn btn-primary" onclick="saveCustomer()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CSV Import Modal -->
+<div class="modal-overlay" id="importModal">
+  <div class="modal-box" style="width:640px">
+    <div class="modal-header">
+      <h3>CSVインポート</h3>
+      <button class="modal-close" onclick="closeImportModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="upload-area" id="uploadArea" onclick="document.getElementById('csvFileInput').click()">
+        <div class="upload-area-icon">&#128193;</div>
+        <div class="upload-area-text">CSVファイルをドラッグ＆ドロップ または クリックして選択</div>
+        <div class="upload-area-hint">.csv形式のみ対応</div>
+        <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="handleFileSelect(event)">
+      </div>
+
+      <div style="margin-top:20px;padding:16px;background:#FDF8F0;border-radius:8px;border-left:4px solid #C9A96E">
+        <div style="font-size:13px;font-weight:600;color:#856404;margin-bottom:8px">&#9888;&#65039; CSVフォーマット（WooCommerce互換）:</div>
+        <code style="font-size:11px;color:#666;line-height:1.8;display:block;white-space:pre-wrap">email, first_name, last_name, first_name_kana, last_name_kana,
+phone, postcode, state, city, address1, address2,
+total_spent, order_count, registered_date</code>
+      </div>
+
+      <div id="csvPreview" style="display:none;margin-top:20px">
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px">プレビュー（先頭5件）</div>
+        <div style="overflow-x:auto;border:1px solid #EAEDF3;border-radius:8px">
+          <table style="font-size:12px" id="csvPreviewTable">
+            <thead><tr id="csvPreviewHead"></tr></thead>
+            <tbody id="csvPreviewBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="importProgress" style="display:none;margin-top:16px">
+        <div style="font-size:13px;color:#555" id="importProgressText">インポート中...</div>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="importProgressBar"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:24px">
+        <button class="btn btn-outline" onclick="previewCSV()">プレビュー</button>
+        <button class="btn btn-primary" onclick="executeImport()" id="importExecBtn" disabled>インポート実行</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-box" style="width:420px">
+    <div class="modal-header">
+      <h3>会員削除の確認</h3>
+      <button class="modal-close" onclick="closeDeleteModal()">&times;</button>
+    </div>
+    <div class="modal-body" style="text-align:center;padding:32px">
+      <div style="font-size:40px;margin-bottom:16px">&#9888;&#65039;</div>
+      <div style="font-size:15px;font-weight:600;margin-bottom:8px" id="deleteConfirmName"></div>
+      <div style="font-size:13px;color:#888;margin-bottom:24px">この会員を削除しますか？この操作は取り消せません。</div>
+      <div style="display:flex;gap:12px;justify-content:center">
+        <button class="btn btn-outline" onclick="closeDeleteModal()">キャンセル</button>
+        <button class="btn btn-danger" onclick="confirmDelete()">削除する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;z-index:10000;background:#2D2D2D;color:#fff;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-left:4px solid #C9A96E;transition:opacity 0.3s,transform 0.3s;opacity:0;transform:translateY(12px);"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  // === CONSTANTS ===
+  const STORAGE_KEY = 'oft_customers';
+  const PER_PAGE = 10;
+  let currentPage = 1;
+  let deleteTargetId = null;
+  let csvData = null;
+
+  // 47 prefectures
+  const PREFECTURES = [
+    '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
+    '茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県',
+    '新潟県','富山県','石川県','福井県','山梨県','長野県',
+    '岐阜県','静岡県','愛知県','三重県',
+    '滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県',
+    '鳥取県','島根県','岡山県','広島県','山口県',
+    '徳島県','香川県','愛媛県','高知県',
+    '福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'
+  ];
+
+  // === SAMPLE DATA ===
+  const SAMPLE_CUSTOMERS = [
+    { id:'M-0001', lastName:'田中', firstName:'優子', lastNameKana:'たなか', firstNameKana:'ゆうこ', email:'tanaka.yuko@example.com', phone:'03-1234-5678', birthday:'1985-06-15', status:'アクティブ', postcode:'1500001', prefecture:'東京都', city:'渋谷区神宮前', address1:'4-5-6', address2:'表参道ヒルズ 201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:458600, orderCount:5, registeredDate:'2024/08/12', notes:'VIP顧客。高級羽毛布団のリピーター。', orders:[{num:'#OFT-0412',date:'2026/03/31',product:'Premium RDS Down 冬用本掛け S',amount:198000,status:'処理待ち'},{num:'#OFT-0380',date:'2026/01/15',product:'RDS グースダウンピロー M',amount:27800,status:'配達完了'}] },
+    { id:'M-0002', lastName:'佐藤', firstName:'健太', lastNameKana:'さとう', firstNameKana:'けんた', email:'sato.kenta@example.com', phone:'090-9876-5432', birthday:'1990-03-22', status:'アクティブ', postcode:'1060032', prefecture:'東京都', city:'港区六本木', address1:'7-8-9', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:289400, orderCount:3, registeredDate:'2024/10/05', notes:'', orders:[{num:'#OFT-0411',date:'2026/03/31',product:'RDS グースダウンピロー M',amount:27800,status:'発送済み'}] },
+    { id:'M-0003', lastName:'鈴木', firstName:'美咲', lastNameKana:'すずき', firstNameKana:'みさき', email:'suzuki.misaki@gmail.com', phone:'080-1111-2222', birthday:'1978-11-08', status:'アクティブ', postcode:'2310023', prefecture:'神奈川県', city:'横浜市中区山下町', address1:'12-3', address2:'マリンタワー横 405', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:362800, orderCount:4, registeredDate:'2024/09/18', notes:'季節ごとに買い替え。', orders:[{num:'#OFT-0410',date:'2026/03/31',product:'CCD Sleep Down-春秋用- D',amount:62800,status:'処理待ち'}] },
+    { id:'M-0004', lastName:'山田', firstName:'大輔', lastNameKana:'やまだ', firstNameKana:'だいすけ', email:'yamada.d@company.co.jp', phone:'03-3333-4444', birthday:'1982-01-30', status:'アクティブ', postcode:'1040061', prefecture:'東京都', city:'中央区銀座', address1:'1-2-3', address2:'銀座ビル 8F', shipSame:false, shipPostcode:'2500011', shipPrefecture:'神奈川県', shipCity:'小田原市栄町', shipAddress1:'2-14-5', shipAddress2:'', totalSpent:194600, orderCount:2, registeredDate:'2025/01/22', notes:'配送先は実家。', orders:[{num:'#OFT-0409',date:'2026/03/30',product:'Flower Down 冬用本掛け Q',amount:94600,status:'発送準備中'}] },
+    { id:'M-0005', lastName:'伊藤', firstName:'麻衣', lastNameKana:'いとう', firstNameKana:'まい', email:'ito.mai@outlook.jp', phone:'06-5555-6666', birthday:'1995-09-03', status:'アクティブ', postcode:'5300001', prefecture:'大阪府', city:'大阪市北区梅田', address1:'3-1-1', address2:'グランフロント 2201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:127800, orderCount:2, registeredDate:'2025/06/10', notes:'', orders:[] },
+    { id:'M-0006', lastName:'高橋', firstName:'翔太', lastNameKana:'たかはし', firstNameKana:'しょうた', email:'takahashi.s@example.net', phone:'052-7777-8888', birthday:'1988-12-25', status:'休眠', postcode:'4600008', prefecture:'愛知県', city:'名古屋市中区栄', address1:'5-4-3', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:54800, orderCount:1, registeredDate:'2024/05/03', notes:'6ヶ月以上注文なし。フォロー要。', orders:[] },
+    { id:'M-0007', lastName:'渡辺', firstName:'花子', lastNameKana:'わたなべ', firstNameKana:'はなこ', email:'watanabe.h@yahoo.co.jp', phone:'011-9999-0000', birthday:'1972-04-17', status:'休眠', postcode:'0600061', prefecture:'北海道', city:'札幌市中央区南一条西', address1:'10-1', address2:'グランドホテル前 302', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:89600, orderCount:1, registeredDate:'2024/03/28', notes:'', orders:[] },
+    { id:'M-0008', lastName:'中村', firstName:'陽介', lastNameKana:'なかむら', firstNameKana:'ようすけ', email:'nakamura.y@icloud.com', phone:'092-1234-5678', birthday:'1999-07-11', status:'アクティブ', postcode:'8100001', prefecture:'福岡県', city:'福岡市中央区天神', address1:'2-6-8', address2:'天神ビル 505', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:165400, orderCount:3, registeredDate:'2025/11/20', notes:'学生。ギフト購入が多い。', orders:[] },
+    { id:'M-0009', lastName:'小林', firstName:'さくら', lastNameKana:'こばやし', firstNameKana:'さくら', email:'kobayashi.sakura@gmail.com', phone:'075-2222-3333', birthday:'1991-02-14', status:'退会', postcode:'6040846', prefecture:'京都府', city:'京都市中京区両替町通', address1:'245', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:32800, orderCount:1, registeredDate:'2024/07/15', notes:'退会理由: 引っ越しのため。', orders:[] },
+    { id:'M-0010', lastName:'加藤', firstName:'真理子', lastNameKana:'かとう', firstNameKana:'まりこ', email:'kato.mariko@example.com', phone:'03-4444-5555', birthday:'1980-10-20', status:'アクティブ', postcode:'1530064', prefecture:'東京都', city:'目黒区下目黒', address1:'3-7-2', address2:'パークサイド目黒 101', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:523200, orderCount:7, registeredDate:'2024/02/01', notes:'最優良顧客。年間購入額トップ。特別対応要。', orders:[{num:'#OFT-0405',date:'2026/03/20',product:'Premium RDS Down 冬用本掛け D',amount:258000,status:'配達完了'},{num:'#OFT-0390',date:'2026/02/10',product:'CCD Sleep Down-春秋用- S',amount:48800,status:'配達完了'}] }
+  ];
+
+  // === PERSISTENCE ===
+  function loadCustomers() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+    // Initialize with sample data
+    saveCustomers(SAMPLE_CUSTOMERS);
+    return SAMPLE_CUSTOMERS;
+  }
+
+  function saveCustomers(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function getNextId(customers) {
+    let maxNum = 0;
+    customers.forEach(c => {
+      const num = parseInt(c.id.replace('M-', ''), 10);
+      if (num > maxNum) maxNum = num;
+    });
+    return 'M-' + String(maxNum + 1).padStart(4, '0');
+  }
+
+  // === TOAST ===
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    requestAnimationFrame(() => {
+      t.style.opacity = '1';
+      t.style.transform = 'translateY(0)';
+    });
+    setTimeout(() => {
+      t.style.opacity = '0';
+      t.style.transform = 'translateY(12px)';
+      setTimeout(() => { t.style.display = 'none'; }, 300);
+    }, 3000);
+  }
+
+  // === INIT PREFECTURES SELECT ===
+  function initPrefectureSelects() {
+    ['formPrefecture', 'formShipPrefecture'].forEach(id => {
+      const sel = document.getElementById(id);
+      PREFECTURES.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        sel.appendChild(opt);
+      });
+    });
+  }
+
+  // === STATS ===
+  function updateStats(customers) {
+    const total = customers.length;
+    const now = new Date();
+    const thisMonth = now.getFullYear() + '/' + String(now.getMonth() + 1).padStart(2, '0');
+    const newThisMonth = customers.filter(c => c.registeredDate && c.registeredDate.startsWith(thisMonth)).length;
+    const active = customers.filter(c => c.status === 'アクティブ').length;
+    const revenue = customers.reduce((sum, c) => sum + (c.totalSpent || 0), 0);
+
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statNewMonth').textContent = newThisMonth;
+    document.getElementById('statActive').textContent = active;
+    document.getElementById('statRevenue').textContent = '\u00A5' + revenue.toLocaleString();
+  }
+
+  // === RENDER TABLE ===
+  function getFilteredCustomers() {
+    let customers = loadCustomers();
+    const search = document.getElementById('searchInput').value.trim().toLowerCase();
+    const statusFilter = document.getElementById('statusFilter').value;
+    const sort = document.getElementById('sortSelect').value;
+
+    if (search) {
+      customers = customers.filter(c =>
+        (c.lastName + c.firstName).toLowerCase().includes(search) ||
+        (c.lastNameKana + c.firstNameKana).toLowerCase().includes(search) ||
+        c.email.toLowerCase().includes(search) ||
+        (c.phone || '').includes(search)
+      );
+    }
+    if (statusFilter) {
+      customers = customers.filter(c => c.status === statusFilter);
+    }
+
+    // Sort
+    switch(sort) {
+      case 'registered_desc':
+        customers.sort((a, b) => (b.registeredDate || '').localeCompare(a.registeredDate || ''));
+        break;
+      case 'registered_asc':
+        customers.sort((a, b) => (a.registeredDate || '').localeCompare(b.registeredDate || ''));
+        break;
+      case 'total_spent_desc':
+        customers.sort((a, b) => (b.totalSpent || 0) - (a.totalSpent || 0));
+        break;
+      case 'order_count_desc':
+        customers.sort((a, b) => (b.orderCount || 0) - (a.orderCount || 0));
+        break;
+    }
+    return customers;
+  }
+
+  function renderTable() {
+    const customers = getFilteredCustomers();
+    updateStats(loadCustomers());
+
+    const totalPages = Math.max(1, Math.ceil(customers.length / PER_PAGE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    const start = (currentPage - 1) * PER_PAGE;
+    const pageItems = customers.slice(start, start + PER_PAGE);
+
+    const tbody = document.getElementById('customerTableBody');
+    if (pageItems.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:40px;color:#AAA">該当する会員が見つかりません</td></tr>';
+    } else {
+      tbody.innerHTML = pageItems.map(c => {
+        const statusClass = c.status === 'アクティブ' ? 'badge-green' : c.status === '休眠' ? 'badge-yellow' : 'badge-gray';
+        const fullAddr = (c.prefecture || '') + (c.city || '') + (c.address1 || '') + (c.address2 ? ' ' + c.address2 : '');
+        return `<tr>
+          <td style="padding-left:24px;font-weight:600">#${c.id}</td>
+          <td><div style="font-weight:600">${c.lastName} ${c.firstName}</div><div style="font-size:11px;color:#AAA">${c.lastNameKana || ''} ${c.firstNameKana || ''}</div></td>
+          <td><a href="mailto:${c.email}" style="color:#C9A96E;font-weight:500">${c.email}</a></td>
+          <td>${c.phone || '-'}</td>
+          <td><div class="addr-truncate" title="${fullAddr}">${fullAddr || '-'}</div></td>
+          <td style="text-align:center"><span class="badge badge-blue">${c.orderCount || 0}</span></td>
+          <td style="text-align:right;font-weight:700">&yen;${(c.totalSpent || 0).toLocaleString()}</td>
+          <td style="color:#888;font-size:13px">${c.registeredDate || '-'}</td>
+          <td style="text-align:center"><span class="badge ${statusClass}">${c.status}</span></td>
+          <td style="text-align:center;white-space:nowrap">
+            <button class="btn btn-sm btn-outline" onclick="viewCustomer('${c.id}')">詳細</button>
+            <button class="btn btn-sm btn-outline" onclick="editCustomer('${c.id}')" style="margin-left:4px">編集</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteCustomer('${c.id}')" style="margin-left:4px">削除</button>
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    // Pagination
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    const pag = document.getElementById('pagination');
+    if (totalPages <= 1) { pag.innerHTML = ''; return; }
+    let html = `<button ${currentPage === 1 ? 'disabled' : ''} onclick="goPage(${currentPage - 1})">&laquo;</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button class="${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+    }
+    html += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="goPage(${currentPage + 1})">&raquo;</button>`;
+    pag.innerHTML = html;
+  }
+
+  // === MODAL: Customer Detail/Edit ===
+  window.openCustomerModal = function(mode, customerId) {
+    const modal = document.getElementById('customerModal');
+    const title = document.getElementById('customerModalTitle');
+    document.getElementById('editCustomerId').value = '';
+    clearForm();
+
+    if (mode === 'edit' && customerId) {
+      title.textContent = '会員情報の編集';
+      populateForm(customerId);
+      document.getElementById('orderHistorySection').style.display = 'none';
+    } else if (mode === 'view' && customerId) {
+      title.textContent = '会員詳細';
+      populateForm(customerId);
+      showOrderHistory(customerId);
+    } else {
+      title.textContent = '新規会員追加';
+      document.getElementById('orderHistorySection').style.display = 'none';
+    }
+    modal.classList.add('active');
+  };
+
+  window.closeCustomerModal = function() {
+    document.getElementById('customerModal').classList.remove('active');
+  };
+
+  window.viewCustomer = function(id) { openCustomerModal('view', id); };
+  window.editCustomer = function(id) { openCustomerModal('edit', id); };
+
+  function clearForm() {
+    ['formLastName','formFirstName','formLastNameKana','formFirstNameKana',
+     'formEmail','formPhone','formBirthday','formPostcode','formCity','formAddress1','formAddress2',
+     'formShipPostcode','formShipCity','formShipAddress1','formShipAddress2','formNotes'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('formStatus').value = 'アクティブ';
+    document.getElementById('formPrefecture').value = '';
+    document.getElementById('formShipPrefecture').value = '';
+    document.getElementById('formSameAddress').checked = true;
+    document.getElementById('shippingAddressFields').style.display = 'none';
+  }
+
+  function populateForm(customerId) {
+    const customers = loadCustomers();
+    const c = customers.find(x => x.id === customerId);
+    if (!c) return;
+
+    document.getElementById('editCustomerId').value = c.id;
+    document.getElementById('formLastName').value = c.lastName || '';
+    document.getElementById('formFirstName').value = c.firstName || '';
+    document.getElementById('formLastNameKana').value = c.lastNameKana || '';
+    document.getElementById('formFirstNameKana').value = c.firstNameKana || '';
+    document.getElementById('formEmail').value = c.email || '';
+    document.getElementById('formPhone').value = c.phone || '';
+    document.getElementById('formBirthday').value = c.birthday || '';
+    document.getElementById('formStatus').value = c.status || 'アクティブ';
+    document.getElementById('formPostcode').value = c.postcode || '';
+    document.getElementById('formPrefecture').value = c.prefecture || '';
+    document.getElementById('formCity').value = c.city || '';
+    document.getElementById('formAddress1').value = c.address1 || '';
+    document.getElementById('formAddress2').value = c.address2 || '';
+    document.getElementById('formNotes').value = c.notes || '';
+
+    if (c.shipSame === false) {
+      document.getElementById('formSameAddress').checked = false;
+      document.getElementById('shippingAddressFields').style.display = 'block';
+      document.getElementById('formShipPostcode').value = c.shipPostcode || '';
+      document.getElementById('formShipPrefecture').value = c.shipPrefecture || '';
+      document.getElementById('formShipCity').value = c.shipCity || '';
+      document.getElementById('formShipAddress1').value = c.shipAddress1 || '';
+      document.getElementById('formShipAddress2').value = c.shipAddress2 || '';
+    } else {
+      document.getElementById('formSameAddress').checked = true;
+      document.getElementById('shippingAddressFields').style.display = 'none';
+    }
+  }
+
+  function showOrderHistory(customerId) {
+    const customers = loadCustomers();
+    const c = customers.find(x => x.id === customerId);
+    const section = document.getElementById('orderHistorySection');
+    const tbody = document.getElementById('orderHistoryBody');
+
+    if (!c || !c.orders || c.orders.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+
+    const statusStyle = (s) => {
+      const map = {
+        '処理待ち': 'badge-yellow', '処理中': 'badge-blue', '発送準備中': 'badge-blue',
+        '発送済み': 'badge-green', '配達完了': 'badge-green', 'キャンセル': 'badge-gray'
+      };
+      return map[s] || 'badge-gray';
+    };
+
+    tbody.innerHTML = c.orders.map(o => `<tr>
+      <td style="font-weight:600"><a href="orders.html" style="color:#C9A96E">${o.num}</a></td>
+      <td style="color:#888">${o.date}</td>
+      <td>${o.product}</td>
+      <td style="text-align:right;font-weight:600">&yen;${(o.amount || 0).toLocaleString()}</td>
+      <td style="text-align:center"><span class="badge ${statusStyle(o.status)}">${o.status}</span></td>
+    </tr>`).join('');
+  }
+
+  window.toggleShippingAddress = function() {
+    const checked = document.getElementById('formSameAddress').checked;
+    document.getElementById('shippingAddressFields').style.display = checked ? 'none' : 'block';
+  };
+
+  window.saveCustomer = function() {
+    const lastName = document.getElementById('formLastName').value.trim();
+    const firstName = document.getElementById('formFirstName').value.trim();
+    const email = document.getElementById('formEmail').value.trim();
+
+    if (!lastName || !firstName) { showToast('姓と名は必須です'); return; }
+    if (!email) { showToast('メールアドレスは必須です'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('有効なメールアドレスを入力してください'); return; }
+
+    const customers = loadCustomers();
+    const editId = document.getElementById('editCustomerId').value;
+    const sameAddress = document.getElementById('formSameAddress').checked;
+
+    const customerData = {
+      lastName, firstName,
+      lastNameKana: document.getElementById('formLastNameKana').value.trim(),
+      firstNameKana: document.getElementById('formFirstNameKana').value.trim(),
+      email,
+      phone: document.getElementById('formPhone').value.trim(),
+      birthday: document.getElementById('formBirthday').value,
+      status: document.getElementById('formStatus').value,
+      postcode: document.getElementById('formPostcode').value.trim(),
+      prefecture: document.getElementById('formPrefecture').value,
+      city: document.getElementById('formCity').value.trim(),
+      address1: document.getElementById('formAddress1').value.trim(),
+      address2: document.getElementById('formAddress2').value.trim(),
+      shipSame: sameAddress,
+      shipPostcode: sameAddress ? '' : document.getElementById('formShipPostcode').value.trim(),
+      shipPrefecture: sameAddress ? '' : document.getElementById('formShipPrefecture').value,
+      shipCity: sameAddress ? '' : document.getElementById('formShipCity').value.trim(),
+      shipAddress1: sameAddress ? '' : document.getElementById('formShipAddress1').value.trim(),
+      shipAddress2: sameAddress ? '' : document.getElementById('formShipAddress2').value.trim(),
+      notes: document.getElementById('formNotes').value.trim()
+    };
+
+    if (editId) {
+      // Update existing
+      const idx = customers.findIndex(c => c.id === editId);
+      if (idx !== -1) {
+        Object.assign(customers[idx], customerData);
+        saveCustomers(customers);
+        showToast('会員情報を更新しました');
+      }
+    } else {
+      // New customer
+      const now = new Date();
+      const dateStr = now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
+      customerData.id = getNextId(customers);
+      customerData.totalSpent = 0;
+      customerData.orderCount = 0;
+      customerData.registeredDate = dateStr;
+      customerData.orders = [];
+      customers.push(customerData);
+      saveCustomers(customers);
+      showToast('新規会員を追加しました');
+    }
+
+    closeCustomerModal();
+    renderTable();
+  };
+
+  // === DELETE ===
+  window.deleteCustomer = function(id) {
+    const customers = loadCustomers();
+    const c = customers.find(x => x.id === id);
+    if (!c) return;
+    deleteTargetId = id;
+    document.getElementById('deleteConfirmName').textContent = `#${c.id} ${c.lastName} ${c.firstName}`;
+    document.getElementById('deleteModal').classList.add('active');
+  };
+
+  window.closeDeleteModal = function() {
+    document.getElementById('deleteModal').classList.remove('active');
+    deleteTargetId = null;
+  };
+
+  window.confirmDelete = function() {
+    if (!deleteTargetId) return;
+    let customers = loadCustomers();
+    customers = customers.filter(c => c.id !== deleteTargetId);
+    saveCustomers(customers);
+    closeDeleteModal();
+    renderTable();
+    showToast('会員を削除しました');
+  };
+
+  // === CSV IMPORT ===
+  window.openImportModal = function() {
+    csvData = null;
+    document.getElementById('csvFileInput').value = '';
+    document.getElementById('csvPreview').style.display = 'none';
+    document.getElementById('importProgress').style.display = 'none';
+    document.getElementById('importExecBtn').disabled = true;
+    document.getElementById('uploadArea').querySelector('.upload-area-text').textContent = 'CSVファイルをドラッグ＆ドロップ または クリックして選択';
+    document.getElementById('importModal').classList.add('active');
+  };
+
+  window.closeImportModal = function() {
+    document.getElementById('importModal').classList.remove('active');
+  };
+
+  // Drag & Drop
+  const uploadArea = document.getElementById('uploadArea');
+  uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+  uploadArea.addEventListener('dragleave', () => { uploadArea.classList.remove('dragover'); });
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && file.name.endsWith('.csv')) {
+      processCSVFile(file);
+    } else {
+      showToast('CSVファイルのみ対応しています');
+    }
+  });
+
+  window.handleFileSelect = function(e) {
+    const file = e.target.files[0];
+    if (file) processCSVFile(file);
+  };
+
+  function processCSVFile(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = e.target.result;
+      const lines = text.split(/\r?\n/).filter(l => l.trim());
+      if (lines.length < 2) { showToast('データが不足しています'); return; }
+
+      const headers = lines[0].split(',').map(h => h.trim());
+      csvData = [];
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(',').map(c => c.trim());
+        if (cols.length >= headers.length) {
+          const row = {};
+          headers.forEach((h, idx) => { row[h] = cols[idx] || ''; });
+          csvData.push(row);
+        }
+      }
+      document.getElementById('uploadArea').querySelector('.upload-area-text').textContent = `${file.name} (${csvData.length}件)`;
+      document.getElementById('importExecBtn').disabled = false;
+      showToast(`${csvData.length}件のデータを読み込みました`);
+    };
+    reader.readAsText(file, 'UTF-8');
+  }
+
+  window.previewCSV = function() {
+    if (!csvData || csvData.length === 0) { showToast('CSVファイルを選択してください'); return; }
+
+    const previewDiv = document.getElementById('csvPreview');
+    const headRow = document.getElementById('csvPreviewHead');
+    const body = document.getElementById('csvPreviewBody');
+
+    const keys = Object.keys(csvData[0]);
+    headRow.innerHTML = keys.map(k => `<th style="white-space:nowrap">${k}</th>`).join('');
+
+    const preview = csvData.slice(0, 5);
+    body.innerHTML = preview.map(row =>
+      '<tr>' + keys.map(k => `<td style="white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis">${row[k]}</td>`).join('') + '</tr>'
+    ).join('');
+
+    previewDiv.style.display = 'block';
+  };
+
+  window.executeImport = function() {
+    if (!csvData || csvData.length === 0) { showToast('データがありません'); return; }
+
+    const progressDiv = document.getElementById('importProgress');
+    const progressBar = document.getElementById('importProgressBar');
+    const progressText = document.getElementById('importProgressText');
+    progressDiv.style.display = 'block';
+    document.getElementById('importExecBtn').disabled = true;
+
+    const customers = loadCustomers();
+    let imported = 0;
+    const total = csvData.length;
+
+    function importNext() {
+      if (imported >= total) {
+        saveCustomers(customers);
+        progressText.textContent = `${total}件のインポートが完了しました`;
+        progressBar.style.width = '100%';
+        renderTable();
+        showToast(`${total}件の会員データをインポートしました`);
+        setTimeout(() => { closeImportModal(); }, 1500);
+        return;
+      }
+
+      const row = csvData[imported];
+      const now = new Date();
+      const dateStr = row.registered_date || (now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0'));
+
+      customers.push({
+        id: getNextId(customers),
+        lastName: row.last_name || '',
+        firstName: row.first_name || '',
+        lastNameKana: row.last_name_kana || '',
+        firstNameKana: row.first_name_kana || '',
+        email: row.email || '',
+        phone: row.phone || '',
+        birthday: '',
+        status: 'アクティブ',
+        postcode: row.postcode || '',
+        prefecture: row.state || '',
+        city: row.city || '',
+        address1: row.address1 || '',
+        address2: row.address2 || '',
+        shipSame: true,
+        shipPostcode: '', shipPrefecture: '', shipCity: '', shipAddress1: '', shipAddress2: '',
+        totalSpent: parseFloat(row.total_spent) || 0,
+        orderCount: parseInt(row.order_count) || 0,
+        registeredDate: dateStr,
+        notes: '',
+        orders: []
+      });
+
+      imported++;
+      const pct = Math.round((imported / total) * 100);
+      progressBar.style.width = pct + '%';
+      progressText.textContent = `インポート中... ${imported}/${total}`;
+
+      setTimeout(importNext, 50); // Simulate progressive import
+    }
+
+    importNext();
+  };
+
+  // === CSV EXPORT ===
+  window.exportCSV = function() {
+    const customers = loadCustomers();
+    const headers = 'email,first_name,last_name,first_name_kana,last_name_kana,phone,postcode,state,city,address1,address2,total_spent,order_count,registered_date';
+    const rows = customers.map(c =>
+      [c.email, c.firstName, c.lastName, c.firstNameKana, c.lastNameKana,
+       c.phone, c.postcode, c.prefecture, c.city, c.address1, c.address2,
+       c.totalSpent, c.orderCount, c.registeredDate
+      ].map(v => '"' + String(v || '').replace(/"/g, '""') + '"').join(',')
+    );
+
+    const csv = '\uFEFF' + headers + '\n' + rows.join('\n');
+    const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'customers_export_' + new Date().toISOString().slice(0,10) + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('CSVエクスポートが完了しました');
+  };
+
+  // === PAGINATION ===
+  window.goPage = function(page) {
+    currentPage = page;
+    renderTable();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // === EVENT LISTENERS ===
+  document.getElementById('searchInput').addEventListener('input', () => { currentPage = 1; renderTable(); });
+  document.getElementById('statusFilter').addEventListener('change', () => { currentPage = 1; renderTable(); });
+  document.getElementById('sortSelect').addEventListener('change', () => { currentPage = 1; renderTable(); });
+
+  // Close modals on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+      }
+    });
+  });
+
+  // === INIT ===
+  initPrefectureSelects();
+  renderTable();
+
+})();
+</script>
+</body>
+</html>

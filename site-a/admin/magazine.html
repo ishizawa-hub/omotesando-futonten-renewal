@@ -8,1032 +8,145 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
+a { text-decoration:none; color:inherit; }
+table { width:100%; border-collapse:collapse; }
+th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
+td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
+tr:hover { background:#FAFBFD; }
+html, body { overflow-x:hidden !important; max-width:100vw; }
 
-/* === GLOBAL NAV WITH DROPDOWNS === */
-.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
-.header-logo img{height:28px;width:auto}
-.header-nav{display:flex;align-items:center;gap:32px}
-.header-nav-item{position:relative}
-.header-nav-item>a{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;transition:color 0.3s;text-decoration:none;padding:24px 0;display:block}
-.header-nav-item>a:hover{color:#C9A96E}
-/* Dropdown */
-.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:220px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,0.12);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:16px 0;z-index:100}
-.header-nav-item:hover .nav-dropdown{opacity:1;visibility:visible}
-.nav-dropdown a{display:block;padding:10px 28px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:13px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em;transition:color 0.2s,background 0.2s;text-decoration:none;white-space:nowrap}
-.nav-dropdown a:hover{color:#C9A96E;background:rgba(201,169,110,0.06)}
-/* Mega menu for PRODUCTS (with images) */
-.nav-mega{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:1100px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,0.15);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:20px;z-index:100;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.header-nav-item:hover .nav-mega{opacity:1;visibility:visible}
-.nav-mega-card{display:block;text-decoration:none;border-radius:6px;overflow:hidden;transition:transform 0.25s,box-shadow 0.25s}
-.nav-mega-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.1)}
-.nav-mega-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.nav-mega-card-label{display:block;padding:8px 4px 6px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C9A96E;text-align:center}
-.nav-mega-card-name{display:block;padding:0 4px 10px;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:#1A1A1A;text-align:center;letter-spacing:0.02em}
-.nav-mega-card:hover .nav-mega-card-name{color:#C9A96E}
-/* Actions */
-.header-actions{display:flex;align-items:center;gap:16px}
-.header-actions a,.header-actions button{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
-.header-actions a:hover,.header-actions button:hover{color:#C9A96E}
-.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px}
-.hamburger span{display:block;width:28px;height:2px;background:#fff;transition:0.3s}
-@media(max-width:1024px){.header-nav{display:none}.hamburger{display:flex}}
-@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
-/* === END GLOBAL NAV === */
+/* Sidebar */
+.admin-sidebar-fix { position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100; }
+.admin-main-fix { margin-left:260px; min-height:100vh; }
 
-/* FOOTER */
-.footer{padding:80px 0 40px;background:#2D2D2D;color:#fff}
-.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px}
-.footer-logo{margin-bottom:16px}
-.footer-logo img{height:24px}
-.footer-desc{font-size:15px;line-height:2;color:rgba(255,255,255,0.4)}
-.footer-nav-title{font-size:13px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px}
-.footer-nav a{display:block;font-size:15px;color:rgba(255,255,255,0.5);padding:5px 0;letter-spacing:0.03em;transition:color 0.3s;text-decoration:none}
-.footer-nav a:hover{color:#C9A96E}
-.footer-copy{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);font-size:14px;color:rgba(255,255,255,0.25);letter-spacing:0.06em}
-@media(max-width:1024px){.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left}.footer-brand{grid-column:1/-1;text-align:center}.footer-copy{font-size:10px}}
+/* Tabs */
+.tab-bar { display:flex; gap:0; border-bottom:2px solid #EAEDF3; background:#fff; padding:0 24px; }
+.tab-btn { padding:14px 20px; font-size:14px; font-weight:600; color:#999; background:none; border:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:all 0.2s; white-space:nowrap; }
+.tab-btn:hover { color:#666; }
+.tab-btn.active { color:#C9A96E; border-bottom-color:#C9A96E; }
+.tab-content { display:none; padding:24px; }
+.tab-content.active { display:block; }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F5F6FA; color:#333; }
-  a { text-decoration:none; color:inherit; }
-  table { width:100%; border-collapse:collapse; }
-  th { text-align:left; font-size:12px; font-weight:600; color:#888; text-transform:uppercase; letter-spacing:0.04em; padding:12px 16px; border-bottom:2px solid #EAEDF3; }
-  td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
-  tr:hover { background:#FAFBFD; }
-
-
-</style>
-
-<style id="mobile-responsive">/* ================================================================
-   MOBILE RESPONSIVE OVERRIDES v2
-   ================================================================ */
-
-/* ---- GLOBAL ---- */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw;
+/* Form elements */
+.field-group { margin-bottom:20px; }
+.field-label { display:block; font-size:13px; font-weight:600; color:#555; margin-bottom:6px; }
+.field-label .req { color:#E74C3C; margin-left:2px; }
+.field-note { font-size:11px; color:#AAA; margin-top:4px; line-height:1.5; }
+.field-input, .field-select, .field-textarea {
+  width:100%; padding:10px 12px; border:1px solid #EAEDF3; border-radius:6px; font-size:14px;
+  font-family:'Inter','Noto Sans JP',sans-serif; background:#fff; transition:border-color 0.2s;
 }
+.field-input:focus, .field-select:focus, .field-textarea:focus { outline:none; border-color:#C9A96E; }
+.field-textarea { resize:vertical; }
 
-/* ---- HEADER ---- */
-@media (max-width: 768px) {
-  .header {
-    height: 56px !important;
-  }
-  .header-inner {
-    padding: 0 16px !important;
-  }
-  .header-logo img {
-    height: 20px !important;
-    max-width: 160px;
-  }
-  .header-actions {
-    gap: 8px !important;
-  }
-  .header-actions > a {
-    font-size: 11px !important;
-    letter-spacing: 0.04em !important;
-  }
-  .hamburger {
-    padding: 10px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .hamburger span {
-    width: 24px !important;
-  }
+/* Buttons */
+.btn { padding:10px 20px; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:6px; }
+.btn-primary { background:#C9A96E; color:#fff; }
+.btn-primary:hover { background:#B8944D; }
+.btn-secondary { background:#F5F6FA; color:#555; }
+.btn-secondary:hover { background:#EAEDF3; }
+.btn-danger { background:#fff; color:#E74C3C; border:1px solid #E74C3C; }
+.btn-danger:hover { background:#FDF0EF; }
+.btn-sm { padding:6px 14px; font-size:12px; }
+.btn-outline { background:#fff; color:#C9A96E; border:1px solid #C9A96E; }
+.btn-outline:hover { background:#FDF8F0; }
+
+/* Tags */
+.tag-container { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.tag-item { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; background:#FDF8F0; border-radius:4px; font-size:12px; color:#8B6914; }
+.tag-item button { background:none; border:none; cursor:pointer; color:#C9A96E; font-size:14px; line-height:1; padding:0 2px; }
+
+/* Status badges */
+.status-badge { padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600; }
+.status-published { background:#D4EDDA; color:#155724; }
+.status-draft { background:#FFF3CD; color:#856404; }
+.status-scheduled { background:#D1ECF1; color:#0C5460; }
+
+/* Category badge */
+.cat-badge { padding:3px 10px; background:#FDF8F0; border-radius:4px; font-size:12px; color:#8B6914; }
+
+/* Dynamic row cards */
+.dynamic-card { background:#FAFBFD; border:1px solid #EAEDF3; border-radius:8px; padding:16px; margin-bottom:12px; position:relative; }
+.dynamic-card .remove-btn { position:absolute; top:8px; right:8px; background:none; border:none; color:#CCC; font-size:18px; cursor:pointer; }
+.dynamic-card .remove-btn:hover { color:#E74C3C; }
+.dynamic-card .field-group { margin-bottom:12px; }
+.dynamic-card .field-group:last-child { margin-bottom:0; }
+.dynamic-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+/* Filter bar */
+.filter-bar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:20px; }
+.filter-bar select, .filter-bar input { padding:8px 12px; border:1px solid #EAEDF3; border-radius:6px; font-size:13px; background:#fff; }
+.filter-bar input { width:240px; }
+
+/* Actions cell */
+.actions-cell { display:flex; gap:8px; justify-content:center; }
+.actions-cell button { background:none; border:none; cursor:pointer; font-size:13px; font-weight:600; padding:4px 8px; border-radius:4px; }
+.actions-cell .act-edit { color:#C9A96E; }
+.actions-cell .act-edit:hover { background:#FDF8F0; }
+.actions-cell .act-dup { color:#6C9BD1; }
+.actions-cell .act-dup:hover { background:#EBF2FA; }
+.actions-cell .act-del { color:#E74C3C; }
+.actions-cell .act-del:hover { background:#FDF0EF; }
+
+/* Preview area */
+.hero-preview { width:100%; max-width:600px; background:#F5F6FA; border:1px dashed #EAEDF3; border-radius:8px; min-height:200px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-top:12px; }
+.hero-preview img { width:100%; height:auto; display:block; }
+.hero-preview .placeholder-text { color:#CCC; font-size:13px; }
+
+/* HTML preview */
+.html-preview-area { background:#fff; border:1px solid #EAEDF3; border-radius:8px; padding:24px; min-height:200px; margin-top:12px; line-height:1.8; font-size:15px; }
+.html-preview-area h2 { font-size:22px; font-weight:700; margin:24px 0 12px; color:#1A1A1A; }
+.html-preview-area h3 { font-size:18px; font-weight:600; margin:20px 0 8px; color:#333; }
+.html-preview-area p { margin:8px 0; }
+.html-preview-area ul, .html-preview-area ol { margin:8px 0 8px 24px; }
+.html-preview-area blockquote { border-left:3px solid #C9A96E; padding:12px 16px; margin:12px 0; background:#FDF8F0; color:#555; }
+.html-preview-area figure { margin:16px 0; }
+.html-preview-area figure img { max-width:100%; border-radius:6px; }
+.html-preview-area figcaption { font-size:12px; color:#888; margin-top:6px; text-align:center; }
+
+/* Image guide */
+.image-guide { background:#FFFDF5; border:1px solid #F0E6C8; border-radius:8px; padding:14px 16px; font-size:12px; color:#8B6914; line-height:1.8; margin-top:16px; }
+.image-guide code { background:#FDF8F0; padding:1px 4px; border-radius:3px; font-size:11px; }
+
+/* Char counter */
+.char-counter { font-size:11px; color:#AAA; text-align:right; margin-top:2px; }
+.char-counter.over { color:#E74C3C; }
+
+/* Section divider */
+.section-divider { font-size:15px; font-weight:700; color:#1A1A1A; margin:28px 0 16px; padding-bottom:8px; border-bottom:1px solid #EAEDF3; }
+.section-divider:first-child { margin-top:0; }
+
+/* Toast */
+#toast { display:none; position:fixed; bottom:32px; right:32px; background:#2D2D2D; color:#fff; padding:14px 28px; border-radius:8px; font-size:14px; font-weight:500; z-index:10000; box-shadow:0 4px 16px rgba(0,0,0,0.2); transition:opacity 0.3s; }
+
+/* Responsive */
+@media (max-width:1024px) {
+  .admin-sidebar-fix { display:none !important; }
+  .admin-main-fix { margin-left:0 !important; }
+  .tab-bar { overflow-x:auto; }
+  .dynamic-grid { grid-template-columns:1fr; }
 }
-
-@media (max-width: 480px) {
-  .header {
-    height: 52px !important;
-  }
-  .header-logo img {
-    height: 18px !important;
-    max-width: 140px;
-  }
-}
-
-/* ---- MOBILE MENU ---- */
-.mobile-menu {
-  max-width: 100%;
-}
-.mobile-menu-overlay {
-  overflow: hidden !important;
-}
-
-/* ---- FOOTER ---- */
-@media (max-width: 768px) {
-  .footer {
-    padding: 48px 0 0 !important;
-  }
-  .footer-inner {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px 20px !important;
-    padding: 0 20px !important;
-  }
-  .footer-brand {
-    grid-column: 1 / -1 !important;
-    text-align: center !important;
-  }
-  .footer-col-last {
-    display: contents !important;
-  }
-  .footer-nav-title {
-    font-size: 12px !important;
-    margin-bottom: 12px !important;
-  }
-  .footer-nav a {
-    font-size: 13px !important;
-    padding: 4px 0 !important;
-  }
-  .footer-desc {
-    font-size: 13px !important;
-  }
-  .footer-bottom {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 20px 16px 16px !important;
-    margin-top: 32px !important;
-  }
-  .footer-legal {
-    gap: 12px !important;
-  }
-  .footer-legal a {
-    white-space: nowrap !important;
-    font-size: 11px !important;
-  }
-  .footer-copy {
-    font-size: 11px !important;
-  }
-  .footer-newsletter {
-    margin-top: 16px !important;
-  }
-}
-
-/* ---- PAGE HERO ---- */
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 100px 0 40px !important;
-    min-height: auto !important;
-  }
-  .page-hero-title {
-    font-size: 32px !important;
-  }
-  .page-hero-en {
-    font-size: 11px !important;
-  }
-  .page-hero-jp {
-    font-size: 13px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-hero {
-    padding: 72px 0 28px !important;
-  }
-  .page-hero-title {
-    font-size: 24px !important;
-  }
-}
-
-/* ---- PRODUCTS LISTING ---- */
-@media (max-width: 768px) {
-  .flagship-section {
-    padding: 32px 16px !important;
-  }
-  .flagship-card {
-    flex-direction: column !important;
-  }
-  .flagship-img {
-    height: 220px !important;
-    min-height: auto !important;
-  }
-  .flagship-body {
-    padding: 24px 20px !important;
-  }
-  .flagship-title {
-    font-size: 24px !important;
-  }
-  .flagship-desc {
-    font-size: 14px !important;
-  }
-  .flagship-stats {
-    gap: 16px !important;
-  }
-  .flagship-stat-num {
-    font-size: 18px !important;
-  }
-
-  .category-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px;
-  }
-  .category-card--wide {
-    grid-column: 1 / -1 !important;
-  }
-  .category-card-image {
-    height: 140px !important;
-  }
-  .category-card-image img {
-    height: 100% !important;
-    object-fit: cover;
-  }
-  .category-card-body {
-    padding: 12px !important;
-  }
-  .category-card-en {
-    font-size: 11px !important;
-  }
-  .category-card-jp {
-    font-size: 13px !important;
-  }
-  .category-card-meta {
-    font-size: 11px !important;
-  }
-  .category-card-count,
-  .category-card-price {
-    font-size: 11px !important;
-  }
-
-  .accessories-section {
-    padding: 32px 0 !important;
-  }
-  .accessories-label {
-    font-size: 11px !important;
-    padding: 0 16px;
-  }
-  .accessories-title {
-    font-size: 24px !important;
-    padding: 0 16px;
-  }
-}
-
-/* ---- PRODUCT DETAIL ---- */
-@media (max-width: 768px) {
-  .product-top {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    padding-top: 56px !important;
-  }
-  .purchase {
-    padding: 20px 16px !important;
-    position: relative !important;
-  }
-  .purchase-series {
-    font-size: 11px !important;
-  }
-  .purchase-name {
-    font-size: 22px !important;
-  }
-  .purchase-catch {
-    font-size: 14px !important;
-  }
-  .purchase-price {
-    font-size: 20px !important;
-  }
-
-  /* Gallery thumbnails horizontal on mobile */
-  .gallery {
-    flex-direction: column-reverse !important;
-  }
-  .gallery-thumbs {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 72px !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  .gallery-thumb {
-    width: 60px !important;
-    height: 60px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .product-desc,
-  .story-section,
-  .features-section,
-  .spec-section,
-  .price-section,
-  .reviews-section,
-  .related-mag-section,
-  .related-products-section,
-  .compare-section {
-    padding: 40px 0 !important;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  .feature-card {
-    display: grid !important;
-    grid-template-columns: 100px 1fr !important;
-    gap: 16px !important;
-    align-items: start !important;
-  }
-  .feature-card-img {
-    height: 100px !important;
-    border-radius: 8px !important;
-    overflow: hidden;
-  }
-  .feature-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .feature-card-body {
-    padding: 0 !important;
-  }
-  .feature-card-title {
-    font-size: 14px !important;
-    margin-bottom: 4px !important;
-  }
-  .feature-card-desc {
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-  }
-
-  .spec-table th {
-    width: 100px !important;
-    min-width: 80px !important;
-    font-size: 12px !important;
-  }
-  .spec-table td {
-    font-size: 13px !important;
-  }
-  .spec-inner {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  .price-table th,
-  .price-table td {
-    font-size: 12px !important;
-    padding: 8px !important;
-  }
-
-  .related-products-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
-  .related-product-card-img {
-    height: 140px !important;
-  }
-  .related-product-name {
-    font-size: 13px !important;
-  }
-  .related-product-price {
-    font-size: 13px !important;
-  }
-  .related-product-series {
-    font-size: 11px !important;
-  }
-
-  .related-mag-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .mag-card-img {
-    height: 160px !important;
-  }
-
-  .review-card {
-    padding: 20px !important;
-  }
-  .review-text {
-    font-size: 14px !important;
-  }
-
-  .compare-table {
-    font-size: 12px !important;
-  }
-  .compare-table th,
-  .compare-table td {
-    padding: 8px 6px !important;
-  }
-  .compare-badge {
-    font-size: 11px !important;
-  }
-  .compare-row-label {
-    font-size: 11px !important;
-  }
-  .compare-current-label {
-    font-size: 11px !important;
-  }
-  .purchase-color-label {
-    font-size: 11px !important;
-  }
-  .concept-sibling-link {
-    font-size: 12px !important;
-  }
-
-  .section-title {
-    font-size: 22px !important;
-  }
-  .section-en {
-    font-size: 11px !important;
-  }
-  .section-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- CATEGORY LISTING (pillow, bedding) ---- */
-@media (max-width: 768px) {
-  .cat-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .cat-hero-title {
-    font-size: 28px !important;
-  }
-  .cat-hero-desc {
-    font-size: 14px !important;
-  }
-
-  .product-list-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .product-card-image {
-    height: 160px !important;
-  }
-  .product-card-name {
-    font-size: 13px !important;
-  }
-  .product-card-price {
-    font-size: 14px !important;
-  }
-  .product-card-desc {
-    display: none !important;
-  }
-
-  .cat-intro {
-    padding: 40px 16px !important;
-  }
-  .cat-intro-title {
-    font-size: 22px !important;
-  }
-  .cat-intro-desc {
-    font-size: 14px !important;
-  }
-}
-
-/* ---- MAGAZINE ARTICLE ---- */
-@media (max-width: 768px) {
-  .article-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .article-hero-title {
-    font-size: 22px !important;
-  }
-  .article-body {
-    padding: 32px 16px !important;
-  }
-  .article-body h2 {
-    font-size: 20px !important;
-  }
-  .article-body h3 {
-    font-size: 17px !important;
-  }
-  .article-body p {
-    font-size: 15px !important;
-    line-height: 1.8 !important;
-  }
-  .article-body img {
-    border-radius: 8px !important;
-  }
-
-  .related-articles-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .related-article-card {
-    display: grid !important;
-    grid-template-columns: 120px 1fr !important;
-    gap: 12px !important;
-  }
-  .related-article-img {
-    height: 80px !important;
-    border-radius: 6px !important;
-    overflow: hidden;
-  }
-  .related-article-title {
-    font-size: 14px !important;
-  }
-  .related-article-meta {
-    font-size: 12px !important;
-  }
-}
-
-/* ---- MAGAZINE LISTING ---- */
-@media (max-width: 768px) {
-  /* Grid view: 2 columns compact */
-  .view-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 12px !important;
-  }
-  .mg-card-img {
-    height: 110px !important;
-  }
-  .mg-card-title {
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-  .mg-card-excerpt {
-    display: none !important;
-  }
-  .mg-card-meta {
-    font-size: 10px !important;
-  }
-  .mg-card-body {
-    padding: 8px !important;
-  }
-  .mg-card-cat {
-    font-size: 11px !important;
-  }
-
-  /* List view compact */
-  .ml-card {
-    gap: 12px !important;
-  }
-  .ml-card-img {
-    width: 100px !important;
-    height: 70px !important;
-    flex-shrink: 0 !important;
-  }
-  .ml-card-title {
-    font-size: 14px !important;
-  }
-  .ml-card-excerpt {
-    display: none !important;
-  }
-
-  /* Featured card */
-  .mag-featured-card {
-    flex-direction: column !important;
-  }
-  .mag-featured-card img {
-    height: 200px !important;
-  }
-
-  /* Magazine hero */
-  .mag-hero {
-    padding: 80px 16px 32px !important;
-    min-height: auto !important;
-  }
-  .mag-hero-en,
-  .mag-hero-sub {
-    font-size: 12px !important;
-  }
-
-  .magazine-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .magazine-card-img {
-    height: 120px !important;
-  }
-  .magazine-card-title {
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-  }
-  .magazine-card-meta {
-    font-size: 11px !important;
-  }
-  .magazine-card-desc {
-    display: none !important;
-  }
-}
-
-
-
-/* ---- FAQ PAGE ---- */
-@media (max-width: 768px) {
-  .faq-section {
-    padding: 32px 16px !important;
-  }
-  .faq-category-title {
-    font-size: 18px !important;
-  }
-  .faq-question {
-    font-size: 14px !important;
-    padding: 16px 0 !important;
-  }
-  .faq-answer-inner {
-    font-size: 14px !important;
-    padding: 0 0 16px !important;
-  }
-}
-
-/* ---- TOP PAGE: HERO ---- */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 85vh !important;
-  }
-  .hero-catch {
-    font-size: 22px !important;
-  }
-  .hero-sub {
-    font-size: 14px !important;
-    margin-bottom: 32px !important;
-  }
-  .hero-en {
-    font-size: 14px !important;
-  }
-  .hero-content {
-    padding: 0 24px !important;
-  }
-  .hero-cta {
-    padding: 14px 32px !important;
-    font-size: 13px !important;
-  }
-  .hero-logo {
-    width: 80px !important;
-    height: 110px !important;
-    margin-bottom: 16px !important;
-  }
-  .hero-badges {
-    gap: 16px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-  }
-  .hero-badge {
-    font-size: 11px !important;
-  }
-
-  /* Brand story */
-  .brand-story {
-    padding: 40px 0 !important;
-  }
-  .brand-story-inner {
-    gap: 32px !important;
-  }
-  .brand-story-quote {
-    font-size: 18px !important;
-  }
-  .brand-story-desc {
-    font-size: 14px !important;
-  }
-  .brand-story-image img {
-    height: 240px !important;
-  }
-
-  /* Collection: compact cards */
-  .collection {
-    padding: 40px 0 !important;
-  }
-  .collection-grid {
-    gap: 16px !important;
-    padding: 0 16px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 180px !important;
-  }
-  .collection-card-en {
-    font-size: 13px !important;
-  }
-  .collection-card-jp {
-    font-size: 14px !important;
-  }
-  .collection-card-body {
-    padding: 16px !important;
-  }
-  .collection-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-  }
-
-  /* Concept */
-  .concept-section {
-    padding: 40px 0 !important;
-  }
-
-  /* Experience: 2-column grid on mobile */
-  .experience-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    padding: 0 16px !important;
-  }
-  .exp-card {
-    padding: 20px 14px !important;
-    border-radius: 12px !important;
-  }
-  .exp-card-icon {
-    width: 40px !important;
-    height: 40px !important;
-    margin-bottom: 12px !important;
-  }
-  .exp-card-icon svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  .exp-card-label {
-    font-size: 12px !important;
-  }
-  .exp-card-title {
-    font-size: 15px !important;
-  }
-  .exp-card-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-  }
-  .experience-card {
-    padding: 20px !important;
-  }
-  .experience-card-icon {
-    font-size: 28px !important;
-  }
-  .experience-card h3 {
-    font-size: 16px !important;
-  }
-  .experience-card p {
-    font-size: 13px !important;
-  }
-
-  /* Craft */
-  .craft-inner {
-    gap: 24px !important;
-  }
-  .craft-img-main {
-    max-height: 280px !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
-  }
-  .craft-img-sub {
-    max-height: 200px !important;
-    object-fit: cover !important;
-  }
-  .craft-text {
-    padding: 0 4px !important;
-  }
-  .craft-text h3 {
-    font-size: 18px !important;
-  }
-  .craft-text p {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
-  }
-
-  /* Brand story points compact */
-  .brand-story-points {
-    gap: 12px !important;
-  }
-  .brand-story-point {
-    gap: 8px !important;
-    font-size: 13px !important;
-  }
-
-  /* News */
-  .news-section {
-    padding: 40px 0 !important;
-  }
-  .news-item {
-    padding: 12px 0 !important;
-  }
-
-  /* Trial: 1 column on mobile */
-  .trial-section {
-    padding: 40px 0 !important;
-  }
-  .trial-inner {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .trial-image video,
-  .trial-image img {
-    height: 240px !important;
-    width: 100% !important;
-    object-fit: cover !important;
-  }
-  .trial-body {
-    padding: 0 16px !important;
-  }
-
-  .section-heading {
-    font-size: 32px !important;
-  }
-  .section-watermark {
-    font-size: 48px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 75vh !important;
-  }
-  .hero-catch {
-    font-size: 20px !important;
-    letter-spacing: 0.1em !important;
-  }
-  .hero-sub {
-    font-size: 13px !important;
-  }
-  .section-heading {
-    font-size: 26px !important;
-  }
-  .collection-card {
-    min-height: auto !important;
-  }
-  .collection-card-img {
-    height: 160px !important;
-  }
-  .brand-story-image img {
-    height: 200px !important;
-  }
-}
-
-/* ---- CONCEPT PAGE ---- */
-@media (max-width: 768px) {
-  .concept-hero {
-    height: 300px !important;
-    min-height: auto !important;
-  }
-  .concept-hero-title {
-    font-size: 26px !important;
-  }
-  .concept-content {
-    padding: 40px 16px !important;
-  }
-  .concept-content h2 {
-    font-size: 20px !important;
-  }
-  .concept-content p {
-    font-size: 14px !important;
-  }
-  .concept-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-}
-
-/* ---- ABOUT PAGE ---- */
-@media (max-width: 768px) {
-  .about-hero {
-    height: 280px !important;
-    min-height: auto !important;
-  }
-  .company-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .company-table th,
-  .company-table td {
-    display: block !important;
-    padding: 4px 0 !important;
-  }
-  .company-table th {
-    font-weight: 700 !important;
-    color: var(--color-accent, #C9A96E) !important;
-    font-size: 12px !important;
-    padding-top: 12px !important;
-  }
-  .team-inner {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  .team-img {
-    max-height: 280px !important;
-    object-fit: cover !important;
-  }
-}
-
-/* ---- BUTTONS & CTA ---- */
-@media (max-width: 768px) {
-  .btn-primary,
-  .cta-btn,
-  .cart-btn {
-    font-size: 14px !important;
-    padding: 14px 24px !important;
-  }
-  .concept-cta-section {
-    padding: 48px 16px !important;
-  }
-}
-
-/* ---- CONTAINER ---- */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 16px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 12px !important;
-  }
-}
-
-/* ---- SERVICE PAGE ---- */
-@media (max-width: 768px) {
-  .service-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .service-card {
-    padding: 24px !important;
-  }
-  .service-steps {
-    gap: 16px !important;
-  }
-  .service-step {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 8px !important;
-  }
-  .price-card {
-    padding: 20px !important;
-  }
-}
-
-/* ---- CONTACT PAGE ---- */
-@media (max-width: 768px) {
-  .contact-form {
-    padding: 32px 16px !important;
-  }
-  .form-group label {
-    font-size: 13px !important;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    font-size: 16px !important; /* prevent zoom on iOS */
-    padding: 12px !important;
-  }
-}
-
-/* ---- GENERAL: Reduce vertical space ---- */
-@media (max-width: 480px) {
-  section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-  /* Override specific sections that need different padding */
-  .hero, .page-hero, .cat-hero, .article-hero,
-  .concept-hero, .about-hero, .mag-hero,
-  .header, .footer, .footer-bottom {
-    padding-top: revert !important;
-    padding-bottom: revert !important;
-  }
-}
-
-/* Watermark overflow fix */
-*:has(> .section-watermark){overflow-x:clip}
-section:has(.section-watermark){overflow-x:clip}
-/* Orphan/Widow prevention */
-h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
-p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
-
-</style>
-<style id="admin-mobile-fix">
-@media (max-width: 768px) {
-  .admin-sidebar-fix { display: none !important; }
-  .admin-main-fix { margin-left: 0 !important; }
-  .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
-  .admin-main-fix div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-  .admin-main-fix div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
-  .admin-main-fix div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-  .admin-main-fix table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
-  .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
-  .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
-  .nav-mega { width: 100vw !important; grid-template-columns: 1fr !important; left: 0 !important; transform: none !important; }
+@media (max-width:768px) {
+  .filter-bar { flex-direction:column; }
+  .filter-bar input, .filter-bar select { width:100%; }
+  .tab-btn { padding:12px 14px; font-size:13px; }
+  td, th { padding:10px 8px; font-size:12px; }
 }
 </style>
 </head>
 <body>
+
 <!-- Sidebar -->
-<div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
-  <!-- Logo -->
+<div class="admin-sidebar-fix">
   <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
     <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
     <div style="font-size:11px; color:#999; margin-top:2px; letter-spacing:0.04em;">管理画面</div>
   </div>
-  <!-- Menu -->
   <nav style="flex:1; padding:16px 12px;">
-    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
+    <a href="index.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9632;</span> ダッシュボード
     </a>
     <a href="products.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
@@ -1048,412 +161,756 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
     </a>
-    <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
-      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+    <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
+    </a>
+    <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
     </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
     </a>
   </nav>
-  <!-- Sidebar footer -->
   <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
     <a href="login.html" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
   </div>
 </div>
-<div class="admin-main-fix" style="margin-left:260px;min-height:100vh">
+
+<!-- Main -->
+<div class="admin-main-fix">
+  <!-- Header bar -->
   <div style="height:64px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50">
-    <h1 style="font-size:18px;font-weight:700;color:#1A1A1A">マガジン管理</h1>
-    <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div><div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div></div>
-  </div>
-  <div style="padding:28px 32px">
-<div style="display:flex;justify-content:flex-end;margin-bottom:20px"><button style="padding:10px 20px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">+ 新規記事を作成</button></div>
-<div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
-<table><thead><tr><th style="padding-left:24px">タイトル</th><th>カテゴリー</th><th style="text-align:center">ステータス</th><th>公開日</th><th style="text-align:center">操作</th></tr></thead>
-<tbody>
-<tr><td style="padding-left:24px;font-weight:600">プレミアム羽毛布団のお手入れ方法</td><td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">お手入れ</span></td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">公開中</span></td><td style="color:#888;font-size:13px">2026/03/15</td><td style="text-align:center"><a href="../magazine/care-guide/" style="color:#C9A96E;font-weight:600;font-size:13px">編集</a></td></tr>
-<tr><td style="padding-left:24px;font-weight:600">Netflix『布団の王様』放映開始</td><td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">ニュース</span></td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">公開中</span></td><td style="color:#888;font-size:13px">2026/02/28</td><td style="text-align:center"><a href="../magazine/netflix/" style="color:#C9A96E;font-weight:600;font-size:13px">編集</a></td></tr>
-<tr><td style="padding-left:24px;font-weight:600">Clean Cycle Downの物語</td><td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">ブランド</span></td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">公開中</span></td><td style="color:#888;font-size:13px">2026/02/10</td><td style="text-align:center"><a href="../magazine/ccd-story/" style="color:#C9A96E;font-weight:600;font-size:13px">編集</a></td></tr>
-<tr><td style="padding-left:24px;font-weight:600">マザーグースダウンの魅力</td><td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">素材</span></td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">公開中</span></td><td style="color:#888;font-size:13px">2026/01/20</td><td style="text-align:center"><a href="../magazine/mother-goose/" style="color:#C9A96E;font-weight:600;font-size:13px">編集</a></td></tr>
-<tr><td style="padding-left:24px;font-weight:600">失敗しない布団の選び方ガイド</td><td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">ガイド</span></td><td style="text-align:center"><span style="padding:4px 12px;background:#D4EDDA;color:#155724;border-radius:20px;font-size:12px;font-weight:600">公開中</span></td><td style="color:#888;font-size:13px">2026/01/05</td><td style="text-align:center"><a href="../magazine/futon-guide/" style="color:#C9A96E;font-weight:600;font-size:13px">編集</a></td></tr>
-</tbody></table></div>
-  </div>
-</div>
-<!-- Modal -->
-<div id="articleModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:12px;width:560px;max-width:90vw;max-height:85vh;overflow-y:auto;padding:32px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-      <h2 id="modalTitle" style="font-size:18px;font-weight:700;color:#1A1A1A;">新規記事を作成</h2>
-      <button id="modalClose" style="background:none;border:none;font-size:24px;cursor:pointer;color:#999;line-height:1;">&times;</button>
+    <h1 id="pageTitle" style="font-size:18px;font-weight:700;color:#1A1A1A">マガジン管理</h1>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div>
+      <div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#888;margin-bottom:4px;">タイトル</label>
-        <input id="modalFieldTitle" style="width:100%;padding:10px 12px;border:1px solid #EAEDF3;border-radius:6px;font-size:14px;" placeholder="記事タイトルを入力">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#888;margin-bottom:4px;">カテゴリ</label>
-        <select id="modalFieldCategory" style="width:100%;padding:10px 12px;border:1px solid #EAEDF3;border-radius:6px;font-size:14px;background:#fff;">
-          <option value="お知らせ">お知らせ</option>
+  </div>
+
+  <!-- ===== LIST VIEW ===== -->
+  <div id="listView" style="padding:28px 32px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+      <div class="filter-bar" style="margin-bottom:0;">
+        <select id="filterCategory">
+          <option value="">全カテゴリ</option>
           <option value="素材のこだわり">素材のこだわり</option>
           <option value="睡眠知識">睡眠知識</option>
+          <option value="メンテナンス">メンテナンス</option>
+          <option value="お知らせ">お知らせ</option>
           <option value="コラボレーション">コラボレーション</option>
+          <option value="ガイド">ガイド</option>
+          <option value="ニュース">ニュース</option>
         </select>
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#888;margin-bottom:4px;">本文</label>
-        <textarea id="modalFieldBody" rows="5" style="width:100%;padding:10px 12px;border:1px solid #EAEDF3;border-radius:6px;font-size:14px;resize:vertical;" placeholder="記事の本文を入力"></textarea>
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#888;margin-bottom:4px;">サムネイル URL</label>
-        <input id="modalFieldThumbnail" style="width:100%;padding:10px 12px;border:1px solid #EAEDF3;border-radius:6px;font-size:14px;" placeholder="https://example.com/image.jpg">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;color:#888;margin-bottom:4px;">ステータス</label>
-        <select id="modalFieldStatus" style="width:100%;padding:10px 12px;border:1px solid #EAEDF3;border-radius:6px;font-size:14px;background:#fff;">
+        <select id="filterStatus">
+          <option value="">全ステータス</option>
           <option value="公開">公開</option>
           <option value="下書き">下書き</option>
+          <option value="予約">予約</option>
         </select>
+        <input type="text" id="filterSearch" placeholder="タイトル・タグで検索..." class="field-input" style="width:240px;">
+      </div>
+      <button class="btn btn-primary" onclick="createNewArticle()">+ 新規記事を作成</button>
+    </div>
+    <div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
+      <table>
+        <thead>
+          <tr>
+            <th style="padding-left:24px">タイトル</th>
+            <th>カテゴリ</th>
+            <th>タグ</th>
+            <th>公開日</th>
+            <th style="text-align:center">ステータス</th>
+            <th style="text-align:center">操作</th>
+          </tr>
+        </thead>
+        <tbody id="articleTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== EDITOR VIEW ===== -->
+  <div id="editorView" style="display:none;">
+    <!-- Editor header -->
+    <div style="padding:16px 32px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <button class="btn btn-secondary" onclick="backToList()">&#8592; 記事一覧に戻る</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" onclick="saveArticle(true)">下書き保存</button>
+        <button class="btn btn-primary" onclick="saveArticle(false)">保存する</button>
       </div>
     </div>
-    <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:24px;">
-      <button id="modalCancel" style="padding:10px 24px;background:#F5F6FA;color:#555;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">キャンセル</button>
-      <button id="modalSave" style="padding:10px 24px;background:#C9A96E;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">保存</button>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="tab-basic">基本情報</button>
+      <button class="tab-btn" data-tab="tab-hero">ヒーロー画像</button>
+      <button class="tab-btn" data-tab="tab-body">記事本文</button>
+      <button class="tab-btn" data-tab="tab-related">CTA・関連コンテンツ</button>
+      <button class="tab-btn" data-tab="tab-seo">SEO</button>
+    </div>
+
+    <div style="padding:0 32px 32px;">
+
+      <!-- Tab 1: 基本情報 -->
+      <div id="tab-basic" class="tab-content active">
+        <div class="field-group">
+          <label class="field-label">タイトル <span class="req">*</span></label>
+          <input type="text" id="ed-title" class="field-input" placeholder="例: プレミアム羽毛布団で実現する最高の睡眠体験">
+          <div class="field-note">推奨: 30〜50文字 | サイトではh1として表示</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">カテゴリ <span class="req">*</span></label>
+          <select id="ed-category" class="field-select">
+            <option value="">選択してください</option>
+            <option value="素材のこだわり">素材のこだわり</option>
+            <option value="睡眠知識">睡眠知識</option>
+            <option value="メンテナンス">メンテナンス</option>
+            <option value="お知らせ">お知らせ</option>
+            <option value="コラボレーション">コラボレーション</option>
+            <option value="ガイド">ガイド</option>
+            <option value="ニュース">ニュース</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">タグ</label>
+          <div id="tagsContainer" class="tag-container"></div>
+          <div style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+            <input type="text" id="tagInput" class="field-input" style="width:200px;" placeholder="タグ名を入力">
+            <button class="btn btn-outline btn-sm" onclick="addTag()">＋タグ追加</button>
+          </div>
+          <div class="field-note">3〜5個推奨</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+          <div class="field-group">
+            <label class="field-label">公開日</label>
+            <input type="date" id="ed-date" class="field-input">
+          </div>
+          <div class="field-group">
+            <label class="field-label">ステータス</label>
+            <select id="ed-status" class="field-select">
+              <option value="公開">公開</option>
+              <option value="下書き">下書き</option>
+              <option value="予約">予約</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label">スラッグ</label>
+            <input type="text" id="ed-slug" class="field-input" placeholder="例: premium-duvet-care">
+            <div class="field-note">URLに使用: /magazine/{slug}/ | 半角英数とハイフンのみ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: ヒーロー画像 -->
+      <div id="tab-hero" class="tab-content">
+        <div class="field-group">
+          <label class="field-label">ヒーロー画像URL</label>
+          <input type="text" id="ed-heroImage" class="field-input" placeholder="例: /images/magazine/hero-duvet-care.webp" oninput="updateHeroPreview()">
+          <div class="field-note">推奨サイズ: 1600x900px (16:9) | JPG/WebP推奨 | デスクトップで480px高、モバイルで280px高にクロップ表示</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">alt テキスト</label>
+          <input type="text" id="ed-heroAlt" class="field-input" placeholder="例: 表参道布団店のプレミアム羽毛布団">
+        </div>
+        <div class="field-group">
+          <label class="field-label">プレビュー</label>
+          <div class="hero-preview" id="heroPreview">
+            <span class="placeholder-text">画像URLを入力するとプレビューが表示されます</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: 記事本文 -->
+      <div id="tab-body" class="tab-content">
+        <div class="field-group">
+          <label class="field-label">記事本文 (HTML)</label>
+          <div class="field-note" style="margin-bottom:8px;">HTMLで記述。使用可能なタグ: h2, h3, p, ul/li, blockquote, figure/img/figcaption</div>
+          <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('h2')" title="見出し2">&lt;h2&gt;</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('h3')" title="見出し3">&lt;h3&gt;</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('p')" title="段落">&lt;p&gt;</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('ul')" title="リスト">&lt;ul&gt;</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('blockquote')" title="引用">&lt;blockquote&gt;</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('figure')" title="画像">&lt;figure&gt;</button>
+            <span style="flex:1;"></span>
+            <button class="btn btn-sm btn-outline" id="previewToggle" onclick="togglePreview()">プレビュー表示</button>
+          </div>
+          <textarea id="ed-body" class="field-textarea" style="min-height:400px;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.6;" placeholder="<h2>羽毛布団のお手入れ方法</h2>
+<p>最高品質のマザーグースダウンを長くお使いいただくために、正しいお手入れ方法をご紹介します。</p>
+
+<h3>日常のケア</h3>
+<ul>
+  <li>起床後は布団を広げて湿気を逃がす</li>
+  <li>月に1〜2回は天日干しを行う</li>
+</ul>
+
+<figure>
+  <img src=&quot;/images/magazine/care-step1.webp&quot; alt=&quot;布団の干し方&quot; loading=&quot;lazy&quot;>
+  <figcaption>直射日光を避け、風通しの良い日陰で干すのがポイント</figcaption>
+</figure>"></textarea>
+        </div>
+
+        <div id="bodyPreview" style="display:none;">
+          <label class="field-label">プレビュー</label>
+          <div class="html-preview-area" id="bodyPreviewContent"></div>
+        </div>
+
+        <div class="image-guide">
+          <strong>記事内画像ガイド:</strong><br>
+          - 推奨サイズ: 幅800px以上、JPG/WebP<br>
+          - 2カラム配置: <code>&lt;div class="article-video-images" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:16px;"&gt;</code><br>
+          - キャプション付き: <code>&lt;figure&gt;&lt;img src="..." alt="..." loading="lazy"&gt;&lt;figcaption&gt;説明&lt;/figcaption&gt;&lt;/figure&gt;</code>
+        </div>
+      </div>
+
+      <!-- Tab 4: CTA・関連コンテンツ -->
+      <div id="tab-related" class="tab-content">
+        <!-- CTA Section -->
+        <div class="section-divider">CTA セクション</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="field-group">
+            <label class="field-label">CTAラベル (English)</label>
+            <input type="text" id="ed-ctaLabel" class="field-input" placeholder="Material">
+            <div class="field-note">セクション上部の英語ラベル</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">CTAタイトル</label>
+            <input type="text" id="ed-ctaTitle" class="field-input" placeholder="素材へのこだわりを知る">
+          </div>
+          <div class="field-group">
+            <label class="field-label">CTAリンク先URL</label>
+            <input type="text" id="ed-ctaUrl" class="field-input" placeholder="/concept/material/">
+          </div>
+          <div class="field-group">
+            <label class="field-label">CTAボタンテキスト</label>
+            <input type="text" id="ed-ctaButton" class="field-input" placeholder="View More" value="View More">
+          </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="section-divider" style="display:flex;justify-content:space-between;align-items:center;">
+          <span>関連商品</span>
+          <button class="btn btn-outline btn-sm" onclick="addRelatedProduct()">＋関連商品を追加</button>
+        </div>
+        <div id="relatedProductsList"></div>
+
+        <!-- Related Articles -->
+        <div class="section-divider" style="display:flex;justify-content:space-between;align-items:center;">
+          <span>関連記事</span>
+          <button class="btn btn-outline btn-sm" onclick="addRelatedArticle()">＋関連記事を追加</button>
+        </div>
+        <div id="relatedArticlesList"></div>
+
+        <!-- Prev/Next -->
+        <div class="section-divider">前後の記事</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="field-group">
+            <label class="field-label">前の記事タイトル</label>
+            <input type="text" id="ed-prevTitle" class="field-input" placeholder="例: マザーグースダウンの魅力">
+          </div>
+          <div class="field-group">
+            <label class="field-label">前の記事URL</label>
+            <input type="text" id="ed-prevUrl" class="field-input" placeholder="/magazine/mother-goose/">
+          </div>
+          <div class="field-group">
+            <label class="field-label">次の記事タイトル</label>
+            <input type="text" id="ed-nextTitle" class="field-input" placeholder="例: 失敗しない布団の選び方ガイド">
+          </div>
+          <div class="field-group">
+            <label class="field-label">次の記事URL</label>
+            <input type="text" id="ed-nextUrl" class="field-input" placeholder="/magazine/futon-guide/">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: SEO -->
+      <div id="tab-seo" class="tab-content">
+        <div class="field-group">
+          <label class="field-label">メタタイトル</label>
+          <input type="text" id="ed-metaTitle" class="field-input" placeholder="例: プレミアム羽毛布団のお手入れ方法 | マガジン | 表参道布団店。" oninput="updateCharCount('ed-metaTitle','metaTitleCount',60)">
+          <div class="char-counter" id="metaTitleCount">0 / 60文字</div>
+          <div class="field-note">推奨: 60文字以内 | デフォルト: {タイトル} | マガジン | 表参道布団店。</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">メタディスクリプション</label>
+          <textarea id="ed-metaDesc" class="field-textarea" rows="3" placeholder="例: 表参道布団店のプレミアム羽毛布団を長くお使いいただくためのお手入れ方法を、素材の専門家が詳しく解説。日常のケアから季節ごとのメンテナンスまで、最高の睡眠品質を保つコツをお伝えします。" oninput="updateCharCount('ed-metaDesc','metaDescCount',160)"></textarea>
+          <div class="char-counter" id="metaDescCount">0 / 160文字</div>
+          <div class="field-note">推奨: 120〜160文字</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">OG画像URL</label>
+          <input type="text" id="ed-ogImage" class="field-input" placeholder="例: /images/magazine/og-duvet-care.jpg">
+          <div class="field-note">推奨: 1200x630px | デフォルトはヒーロー画像を使用</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">canonical URL</label>
+          <input type="text" id="ed-canonical" class="field-input" placeholder="例: https://omotesando-futon.jp/magazine/duvet-care/">
+        </div>
+        <div class="field-group">
+          <label class="field-label">JSON-LD 公開日</label>
+          <input type="text" id="ed-jsonldDate" class="field-input" readonly style="background:#F5F6FA;color:#888;">
+          <div class="field-note">基本情報の公開日から自動設定されます</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <!-- Toast -->
-<div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;background:#2D2D2D;color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:500;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:opacity 0.3s;"></div>
+<div id="toast"></div>
 
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/cart.js"></script>
-<script src="js/admin-api.js"></script>
 <script>
 (function() {
   'use strict';
 
-  // --- localStorage key (fallback) ---
-  var STORAGE_KEY = 'omotesando_magazine_articles';
-  var useAPI = typeof AdminAPI !== 'undefined';
+  var STORAGE_KEY = 'oft_magazine_articles';
+  var articles = [];
+  var editingId = null;
+  var currentTags = [];
 
-  // --- Default articles (fallback seed data) ---
+  // ===== Default seed data =====
   var defaultArticles = [
-    { id: 1, title: 'プレミアム羽毛布団のお手入れ方法', category: 'お手入れ', status: '公開', date: '2026/03/15', body: '', thumbnail: '' },
-    { id: 2, title: "Netflix『布団の王様』放映開始", category: 'ニュース', status: '公開', date: '2026/02/28', body: '', thumbnail: '' },
-    { id: 3, title: 'Clean Cycle Downの物語', category: 'ブランド', status: '公開', date: '2026/02/10', body: '', thumbnail: '' },
-    { id: 4, title: 'マザーグースダウンの魅力', category: '素材', status: '公開', date: '2026/01/20', body: '', thumbnail: '' },
-    { id: 5, title: '失敗しない布団の選び方ガイド', category: 'ガイド', status: '公開', date: '2026/01/05', body: '', thumbnail: '' }
+    { id:1, title:'プレミアム羽毛布団のお手入れ方法', category:'メンテナンス', status:'公開', date:'2026-03-15', slug:'care-guide', tags:['お手入れ','羽毛布団','メンテナンス'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' },
+    { id:2, title:"Netflix『布団の王様』放映開始", category:'ニュース', status:'公開', date:'2026-02-28', slug:'netflix', tags:['Netflix','コラボ'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' },
+    { id:3, title:'Clean Cycle Downの物語', category:'素材のこだわり', status:'公開', date:'2026-02-10', slug:'ccd-story', tags:['CCD','素材','サステナブル'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' },
+    { id:4, title:'マザーグースダウンの魅力', category:'素材のこだわり', status:'公開', date:'2026-01-20', slug:'mother-goose', tags:['マザーグース','羽毛','素材'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' },
+    { id:5, title:'失敗しない布団の選び方ガイド', category:'ガイド', status:'公開', date:'2026-01-05', slug:'futon-guide', tags:['選び方','ガイド','初心者'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' }
   ];
 
-  // --- localStorage fallback helpers ---
-  function loadArticlesFromStorage() {
-    var stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : defaultArticles.slice();
+  // ===== Load / Save =====
+  function loadArticles() {
+    try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      articles = stored ? JSON.parse(stored) : defaultArticles.slice();
+    } catch(e) {
+      articles = defaultArticles.slice();
+    }
   }
-  function saveArticlesToStorage(articles) {
+  function saveArticles() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
   }
 
-  // --- Normalize API response to local format ---
-  function normalizeArticle(a) {
-    return {
-      id: a.id,
-      title: a.title || '',
-      category: a.category || '',
-      status: a.status === 'published' ? '公開' : (a.status === 'draft' ? '下書き' : (a.status || '公開')),
-      date: a.date || (a.created_at ? a.created_at.slice(0, 10).replace(/-/g, '/') : formatDate(new Date())),
-      body: a.content || a.body || '',
-      thumbnail: a.thumbnail_url || a.thumbnail || ''
-    };
-  }
-
-  // --- Convert local format to API payload ---
-  function toAPIPayload(article) {
-    return {
-      title: article.title,
-      content: article.body,
-      category: article.category,
-      thumbnail_url: article.thumbnail,
-      status: article.status === '公開' ? 'published' : 'draft'
-    };
-  }
-
-  // --- State ---
-  var articles = [];
-  var editingId = null;
-
-  // --- Refs ---
-  var tbody = document.querySelector('tbody');
-  var modal = document.getElementById('articleModal');
-  var modalTitleEl = document.getElementById('modalTitle');
-  var fieldTitle = document.getElementById('modalFieldTitle');
-  var fieldCategory = document.getElementById('modalFieldCategory');
-  var fieldBody = document.getElementById('modalFieldBody');
-  var fieldThumbnail = document.getElementById('modalFieldThumbnail');
-  var fieldStatus = document.getElementById('modalFieldStatus');
-  var createBtn = document.querySelector('button');
-  var toastEl = document.getElementById('toast');
-
-  // --- Search bar ---
-  var toolbar = createBtn.parentElement;
-  var searchInput = document.createElement('input');
-  searchInput.type = 'text';
-  searchInput.placeholder = '記事を検索...';
-  searchInput.style.cssText = 'padding:10px 14px;border:1px solid #EAEDF3;border-radius:8px;font-size:14px;width:260px;';
-  toolbar.style.justifyContent = 'space-between';
-  toolbar.insertBefore(searchInput, createBtn);
-
-  searchInput.addEventListener('input', function() {
-    renderTable(searchInput.value.trim().toLowerCase());
-  });
-
-  // --- Toast ---
-  var toastTimer = null;
+  // ===== Toast =====
   function showToast(msg) {
-    toastEl.textContent = msg;
-    toastEl.style.display = 'block';
-    toastEl.style.opacity = '1';
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function() {
-      toastEl.style.opacity = '0';
-      setTimeout(function() { toastEl.style.display = 'none'; }, 300);
-    }, 2500);
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    t.style.opacity = '1';
+    setTimeout(function() { t.style.opacity = '0'; setTimeout(function() { t.style.display = 'none'; t.style.opacity = '1'; }, 300); }, 2500);
   }
 
-  // --- Render table ---
-  function renderTable(filter) {
-    filter = filter || '';
-    tbody.innerHTML = '';
+  // ===== List Rendering =====
+  function renderList() {
+    var tbody = document.getElementById('articleTableBody');
+    var catFilter = document.getElementById('filterCategory').value;
+    var statusFilter = document.getElementById('filterStatus').value;
+    var search = document.getElementById('filterSearch').value.toLowerCase();
+
     var filtered = articles.filter(function(a) {
-      return !filter || a.title.toLowerCase().indexOf(filter) !== -1;
+      if (catFilter && a.category !== catFilter) return false;
+      if (statusFilter && a.status !== statusFilter) return false;
+      if (search) {
+        var haystack = (a.title + ' ' + (a.tags || []).join(' ')).toLowerCase();
+        if (haystack.indexOf(search) === -1) return false;
+      }
+      return true;
     });
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:#999;">記事が見つかりません</td></tr>';
+      return;
+    }
+
+    var html = '';
     filtered.forEach(function(a) {
-      var isPublished = a.status === '公開';
-      var statusBg = isPublished ? '#D4EDDA' : '#FFF3CD';
-      var statusColor = isPublished ? '#155724' : '#856404';
-      var statusText = isPublished ? '公開中' : '下書き';
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td style="padding-left:24px;font-weight:600">' + escapeHtml(a.title) + '</td>' +
-        '<td><span style="padding:3px 10px;background:#FDF8F0;border-radius:4px;font-size:12px">' + escapeHtml(a.category) + '</span></td>' +
-        '<td style="text-align:center"><span class="status-badge" data-id="' + a.id + '" style="padding:4px 12px;background:' + statusBg + ';color:' + statusColor + ';border-radius:20px;font-size:12px;font-weight:600;cursor:pointer">' + statusText + '</span></td>' +
-        '<td style="color:#888;font-size:13px">' + escapeHtml(a.date) + '</td>' +
-        '<td style="text-align:center">' +
-          '<button class="edit-btn" data-id="' + a.id + '" style="color:#C9A96E;font-weight:600;font-size:13px;background:none;border:none;cursor:pointer;margin-right:8px;">編集</button>' +
-          '<button class="delete-btn" data-id="' + a.id + '" style="color:#E74C3C;font-weight:600;font-size:13px;background:none;border:none;cursor:pointer;">削除</button>' +
-        '</td>';
-      tbody.appendChild(tr);
+      var statusClass = a.status === '公開' ? 'status-published' : (a.status === '下書き' ? 'status-draft' : 'status-scheduled');
+      var statusLabel = a.status === '公開' ? '公開中' : a.status;
+      var tagsHtml = (a.tags || []).map(function(t) { return '<span class="cat-badge" style="font-size:11px;padding:2px 6px;margin-right:4px;">' + escHtml(t) + '</span>'; }).join('');
+      var dateDisplay = a.date ? a.date.replace(/-/g, '/') : '';
+
+      html += '<tr>' +
+        '<td style="padding-left:24px;font-weight:600;">' + escHtml(a.title) + '</td>' +
+        '<td><span class="cat-badge">' + escHtml(a.category) + '</span></td>' +
+        '<td>' + tagsHtml + '</td>' +
+        '<td style="color:#888;font-size:13px;">' + dateDisplay + '</td>' +
+        '<td style="text-align:center;"><span class="status-badge ' + statusClass + '">' + statusLabel + '</span></td>' +
+        '<td><div class="actions-cell">' +
+          '<button class="act-edit" onclick="editArticle(' + a.id + ')">編集</button>' +
+          '<button class="act-dup" onclick="duplicateArticle(' + a.id + ')">複製</button>' +
+          '<button class="act-del" onclick="deleteArticle(' + a.id + ')">削除</button>' +
+        '</div></td>' +
+      '</tr>';
     });
+    tbody.innerHTML = html;
   }
 
-  function escapeHtml(str) {
-    var div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  // --- Modal ---
-  function openModal(article) {
-    if (article) {
-      editingId = article.id;
-      modalTitleEl.textContent = '記事を編集';
-      fieldTitle.value = article.title;
-      fieldCategory.value = article.category;
-      fieldBody.value = article.body || '';
-      fieldThumbnail.value = article.thumbnail || '';
-      fieldStatus.value = article.status;
-    } else {
-      editingId = null;
-      modalTitleEl.textContent = '新規記事を作成';
-      fieldTitle.value = '';
-      fieldCategory.value = 'お知らせ';
-      fieldBody.value = '';
-      fieldThumbnail.value = '';
-      fieldStatus.value = '公開';
-    }
-    modal.style.display = 'flex';
-  }
-  function closeModal() {
-    modal.style.display = 'none';
+  // ===== Show List / Editor =====
+  function showList() {
+    document.getElementById('listView').style.display = 'block';
+    document.getElementById('editorView').style.display = 'none';
+    document.getElementById('pageTitle').textContent = 'マガジン管理';
     editingId = null;
+    renderList();
   }
 
-  function formatDate(d) {
-    return d.getFullYear() + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getDate()).padStart(2, '0');
+  function showEditor(article) {
+    document.getElementById('listView').style.display = 'none';
+    document.getElementById('editorView').style.display = 'block';
+    document.getElementById('pageTitle').textContent = article.id ? '記事を編集' : '新規記事を作成';
+
+    // Reset to first tab
+    switchTab('tab-basic');
+
+    // Populate fields
+    document.getElementById('ed-title').value = article.title || '';
+    document.getElementById('ed-category').value = article.category || '';
+    document.getElementById('ed-date').value = article.date || '';
+    document.getElementById('ed-status').value = article.status || '下書き';
+    document.getElementById('ed-slug').value = article.slug || '';
+    document.getElementById('ed-heroImage').value = article.heroImage || '';
+    document.getElementById('ed-heroAlt').value = article.heroAlt || '';
+    document.getElementById('ed-body').value = article.body || '';
+    document.getElementById('ed-ctaLabel').value = article.ctaLabel || '';
+    document.getElementById('ed-ctaTitle').value = article.ctaTitle || '';
+    document.getElementById('ed-ctaUrl').value = article.ctaUrl || '';
+    document.getElementById('ed-ctaButton').value = article.ctaButton || 'View More';
+    document.getElementById('ed-prevTitle').value = article.prevTitle || '';
+    document.getElementById('ed-prevUrl').value = article.prevUrl || '';
+    document.getElementById('ed-nextTitle').value = article.nextTitle || '';
+    document.getElementById('ed-nextUrl').value = article.nextUrl || '';
+    document.getElementById('ed-metaTitle').value = article.metaTitle || '';
+    document.getElementById('ed-metaDesc').value = article.metaDesc || '';
+    document.getElementById('ed-ogImage').value = article.ogImage || '';
+    document.getElementById('ed-canonical').value = article.canonical || '';
+
+    // Tags
+    currentTags = (article.tags || []).slice();
+    renderTags();
+
+    // Related products
+    var rpList = document.getElementById('relatedProductsList');
+    rpList.innerHTML = '';
+    (article.relatedProducts || []).forEach(function(p) { addRelatedProductCard(p); });
+
+    // Related articles
+    var raList = document.getElementById('relatedArticlesList');
+    raList.innerHTML = '';
+    (article.relatedArticles || []).forEach(function(a) { addRelatedArticleCard(a); });
+
+    // Hero preview
+    updateHeroPreview();
+
+    // SEO counters
+    updateCharCount('ed-metaTitle', 'metaTitleCount', 60);
+    updateCharCount('ed-metaDesc', 'metaDescCount', 160);
+
+    // JSON-LD date
+    updateJsonLdDate();
+
+    // Hide body preview
+    document.getElementById('bodyPreview').style.display = 'none';
+    document.getElementById('previewToggle').textContent = 'プレビュー表示';
+
+    editingId = article.id || null;
   }
 
-  // --- Load articles from API with localStorage fallback ---
-  function refreshArticles() {
-    if (useAPI) {
-      return AdminAPI.getMagazines().then(function(data) {
-        articles = data.map(normalizeArticle);
-        renderTable(searchInput.value.trim().toLowerCase());
-      }).catch(function(err) {
-        console.warn('AdminAPI.getMagazines failed, falling back to localStorage:', err);
-        articles = loadArticlesFromStorage();
-        renderTable(searchInput.value.trim().toLowerCase());
-      });
-    } else {
-      articles = loadArticlesFromStorage();
-      renderTable(searchInput.value.trim().toLowerCase());
-      return Promise.resolve();
+  // ===== Tab Switching =====
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+    document.querySelector('[data-tab="' + tabId + '"]').classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchTab(this.getAttribute('data-tab')); });
+  });
+
+  // ===== Tags =====
+  function renderTags() {
+    var container = document.getElementById('tagsContainer');
+    container.innerHTML = currentTags.map(function(tag, i) {
+      return '<span class="tag-item">' + escHtml(tag) + '<button onclick="removeTag(' + i + ')">&times;</button></span>';
+    }).join('');
+  }
+
+  window.addTag = function() {
+    var inp = document.getElementById('tagInput');
+    var val = inp.value.trim();
+    if (val && currentTags.indexOf(val) === -1) {
+      currentTags.push(val);
+      renderTags();
+      inp.value = '';
     }
-  }
+  };
 
-  // --- Events ---
-  createBtn.addEventListener('click', function() { openModal(null); });
-  document.getElementById('modalClose').addEventListener('click', closeModal);
-  document.getElementById('modalCancel').addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  window.removeTag = function(i) {
+    currentTags.splice(i, 1);
+    renderTags();
+  };
 
-  document.getElementById('modalSave').addEventListener('click', function() {
-    var title = fieldTitle.value.trim();
-    if (!title) { fieldTitle.style.borderColor = '#E74C3C'; return; }
-    fieldTitle.style.borderColor = '#EAEDF3';
+  // Enter key to add tag
+  document.getElementById('tagInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); window.addTag(); }
+  });
 
-    var articleData = {
-      title: title,
-      category: fieldCategory.value,
-      body: fieldBody.value,
-      thumbnail: fieldThumbnail.value,
-      status: fieldStatus.value
+  // ===== Hero Preview =====
+  window.updateHeroPreview = function() {
+    var url = document.getElementById('ed-heroImage').value.trim();
+    var preview = document.getElementById('heroPreview');
+    if (url) {
+      preview.innerHTML = '<img src="' + escHtml(url) + '" alt="プレビュー" onerror="this.parentElement.innerHTML=\'<span class=placeholder-text>画像を読み込めません</span>\'">';
+    } else {
+      preview.innerHTML = '<span class="placeholder-text">画像URLを入力するとプレビューが表示されます</span>';
+    }
+  };
+
+  // ===== Body Preview =====
+  window.togglePreview = function() {
+    var previewArea = document.getElementById('bodyPreview');
+    var btn = document.getElementById('previewToggle');
+    if (previewArea.style.display === 'none') {
+      previewArea.style.display = 'block';
+      btn.textContent = 'プレビューを隠す';
+      document.getElementById('bodyPreviewContent').innerHTML = document.getElementById('ed-body').value;
+    } else {
+      previewArea.style.display = 'none';
+      btn.textContent = 'プレビュー表示';
+    }
+  };
+
+  // ===== Snippet insertion =====
+  window.insertSnippet = function(tag) {
+    var ta = document.getElementById('ed-body');
+    var start = ta.selectionStart;
+    var end = ta.selectionEnd;
+    var text = ta.value;
+    var snippets = {
+      'h2': '<h2>見出し</h2>\n',
+      'h3': '<h3>小見出し</h3>\n',
+      'p': '<p>本文テキスト</p>\n',
+      'ul': '<ul>\n  <li>項目1</li>\n  <li>項目2</li>\n</ul>\n',
+      'blockquote': '<blockquote>\n  <p>引用テキスト</p>\n</blockquote>\n',
+      'figure': '<figure>\n  <img src="" alt="" loading="lazy">\n  <figcaption>キャプション</figcaption>\n</figure>\n'
     };
+    var snippet = snippets[tag] || '';
+    ta.value = text.substring(0, start) + snippet + text.substring(end);
+    ta.selectionStart = ta.selectionEnd = start + snippet.length;
+    ta.focus();
+  };
 
-    if (editingId !== null) {
-      // --- 編集 ---
-      if (useAPI) {
-        AdminAPI.updateMagazine(editingId, toAPIPayload(articleData)).then(function() {
-          showToast('記事を更新しました');
-          closeModal();
-          return refreshArticles();
-        }).catch(function(err) {
-          console.warn('AdminAPI.updateMagazine failed, falling back to localStorage:', err);
-          updateLocalArticle(editingId, articleData);
-          showToast('記事を更新しました（ローカル保存）');
-          closeModal();
-        });
-      } else {
-        updateLocalArticle(editingId, articleData);
-        showToast('記事を更新しました');
-        closeModal();
-      }
-    } else {
-      // --- 新規作成 ---
-      if (useAPI) {
-        AdminAPI.createMagazine(toAPIPayload(articleData)).then(function() {
-          showToast('記事を作成しました');
-          closeModal();
-          return refreshArticles();
-        }).catch(function(err) {
-          console.warn('AdminAPI.createMagazine failed, falling back to localStorage:', err);
-          createLocalArticle(articleData);
-          showToast('記事を作成しました（ローカル保存）');
-          closeModal();
-        });
-      } else {
-        createLocalArticle(articleData);
-        showToast('記事を作成しました');
-        closeModal();
-      }
-    }
-  });
+  // ===== Related Products =====
+  window.addRelatedProduct = function(data) { addRelatedProductCard(data || {}); };
 
-  // --- localStorage CRUD helpers ---
-  function updateLocalArticle(id, data) {
-    var article = articles.find(function(a) { return a.id === id; });
-    if (article) {
-      article.title = data.title;
-      article.category = data.category;
-      article.body = data.body;
-      article.thumbnail = data.thumbnail;
-      article.status = data.status;
-    }
-    saveArticlesToStorage(articles);
-    renderTable(searchInput.value.trim().toLowerCase());
+  function addRelatedProductCard(data) {
+    var list = document.getElementById('relatedProductsList');
+    var card = document.createElement('div');
+    card.className = 'dynamic-card';
+    card.innerHTML =
+      '<button class="remove-btn" onclick="this.parentElement.remove()">&times;</button>' +
+      '<div class="dynamic-grid">' +
+        '<div class="field-group"><label class="field-label">商品名</label><input type="text" class="field-input rp-name" placeholder="例: マザーグース プレミアムダウン" value="' + escAttr(data.name || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">価格</label><input type="text" class="field-input rp-price" placeholder="例: 198,000" value="' + escAttr(data.price || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">画像URL</label><input type="text" class="field-input rp-image" placeholder="/images/products/..." value="' + escAttr(data.image || '') + '"><div class="field-note">推奨: 400x300px</div></div>' +
+        '<div class="field-group"><label class="field-label">リンクURL</label><input type="text" class="field-input rp-link" placeholder="/products/mother-goose/" value="' + escAttr(data.link || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">サブカテゴリ</label><input type="text" class="field-input rp-subcat" placeholder="例: ホワイトグース" value="' + escAttr(data.subcategory || '') + '"></div>' +
+      '</div>';
+    list.appendChild(card);
   }
 
-  function createLocalArticle(data) {
-    var nextId = articles.reduce(function(m, a) { return Math.max(m, a.id); }, 0) + 1;
-    articles.unshift({
-      id: nextId,
-      title: data.title,
-      category: data.category,
-      body: data.body,
-      thumbnail: data.thumbnail,
-      status: data.status,
-      date: formatDate(new Date())
+  // ===== Related Articles =====
+  window.addRelatedArticle = function(data) { addRelatedArticleCard(data || {}); };
+
+  function addRelatedArticleCard(data) {
+    var list = document.getElementById('relatedArticlesList');
+    var card = document.createElement('div');
+    card.className = 'dynamic-card';
+    card.innerHTML =
+      '<button class="remove-btn" onclick="this.parentElement.remove()">&times;</button>' +
+      '<div class="dynamic-grid">' +
+        '<div class="field-group"><label class="field-label">タイトル</label><input type="text" class="field-input ra-title" placeholder="例: 羽毛布団のお手入れ方法" value="' + escAttr(data.title || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">カテゴリ</label><input type="text" class="field-input ra-category" placeholder="例: メンテナンス" value="' + escAttr(data.category || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">日付</label><input type="date" class="field-input ra-date" value="' + escAttr(data.date || '') + '"></div>' +
+        '<div class="field-group"><label class="field-label">画像URL</label><input type="text" class="field-input ra-image" placeholder="/images/magazine/..." value="' + escAttr(data.image || '') + '"><div class="field-note">推奨: 400x260px</div></div>' +
+        '<div class="field-group"><label class="field-label">リンクURL</label><input type="text" class="field-input ra-link" placeholder="/magazine/care-guide/" value="' + escAttr(data.link || '') + '"></div>' +
+      '</div>';
+    list.appendChild(card);
+  }
+
+  // ===== Char Counter =====
+  window.updateCharCount = function(inputId, counterId, limit) {
+    var len = document.getElementById(inputId).value.length;
+    var el = document.getElementById(counterId);
+    el.textContent = len + ' / ' + limit + '文字';
+    el.className = 'char-counter' + (len > limit ? ' over' : '');
+  };
+
+  // ===== JSON-LD Date =====
+  function updateJsonLdDate() {
+    var dateVal = document.getElementById('ed-date').value;
+    document.getElementById('ed-jsonldDate').value = dateVal ? dateVal + 'T00:00:00+09:00' : '';
+  }
+  document.getElementById('ed-date').addEventListener('change', updateJsonLdDate);
+
+  // ===== Collect editor data =====
+  function collectEditorData() {
+    // Related products
+    var rps = [];
+    document.querySelectorAll('#relatedProductsList .dynamic-card').forEach(function(card) {
+      rps.push({
+        name: card.querySelector('.rp-name').value,
+        price: card.querySelector('.rp-price').value,
+        image: card.querySelector('.rp-image').value,
+        link: card.querySelector('.rp-link').value,
+        subcategory: card.querySelector('.rp-subcat').value
+      });
     });
-    saveArticlesToStorage(articles);
-    renderTable(searchInput.value.trim().toLowerCase());
+
+    // Related articles
+    var ras = [];
+    document.querySelectorAll('#relatedArticlesList .dynamic-card').forEach(function(card) {
+      ras.push({
+        title: card.querySelector('.ra-title').value,
+        category: card.querySelector('.ra-category').value,
+        date: card.querySelector('.ra-date').value,
+        image: card.querySelector('.ra-image').value,
+        link: card.querySelector('.ra-link').value
+      });
+    });
+
+    return {
+      title: document.getElementById('ed-title').value.trim(),
+      category: document.getElementById('ed-category').value,
+      date: document.getElementById('ed-date').value,
+      status: document.getElementById('ed-status').value,
+      slug: document.getElementById('ed-slug').value.trim(),
+      tags: currentTags.slice(),
+      heroImage: document.getElementById('ed-heroImage').value.trim(),
+      heroAlt: document.getElementById('ed-heroAlt').value.trim(),
+      body: document.getElementById('ed-body').value,
+      ctaLabel: document.getElementById('ed-ctaLabel').value.trim(),
+      ctaTitle: document.getElementById('ed-ctaTitle').value.trim(),
+      ctaUrl: document.getElementById('ed-ctaUrl').value.trim(),
+      ctaButton: document.getElementById('ed-ctaButton').value.trim(),
+      relatedProducts: rps,
+      relatedArticles: ras,
+      prevTitle: document.getElementById('ed-prevTitle').value.trim(),
+      prevUrl: document.getElementById('ed-prevUrl').value.trim(),
+      nextTitle: document.getElementById('ed-nextTitle').value.trim(),
+      nextUrl: document.getElementById('ed-nextUrl').value.trim(),
+      metaTitle: document.getElementById('ed-metaTitle').value.trim(),
+      metaDesc: document.getElementById('ed-metaDesc').value.trim(),
+      ogImage: document.getElementById('ed-ogImage').value.trim(),
+      canonical: document.getElementById('ed-canonical').value.trim()
+    };
   }
 
-  // --- Delegated events on tbody ---
-  tbody.addEventListener('click', function(e) {
-    var target = e.target;
+  // ===== Save =====
+  window.saveArticle = function(asDraft) {
+    var data = collectEditorData();
 
-    // Edit
-    if (target.classList.contains('edit-btn')) {
-      var id = parseInt(target.getAttribute('data-id'));
-      var article = articles.find(function(a) { return a.id === id; });
-      if (article) openModal(article);
+    if (!data.title) {
+      showToast('タイトルは必須です');
+      switchTab('tab-basic');
+      document.getElementById('ed-title').focus();
+      return;
+    }
+    if (!data.category) {
+      showToast('カテゴリを選択してください');
+      switchTab('tab-basic');
+      return;
     }
 
-    // Delete
-    if (target.classList.contains('delete-btn')) {
-      var id = parseInt(target.getAttribute('data-id'));
-      if (confirm('この記事を削除してもよろしいですか？')) {
-        if (useAPI) {
-          AdminAPI.deleteMagazine(id).then(function() {
-            showToast('記事を削除しました');
-            return refreshArticles();
-          }).catch(function(err) {
-            console.warn('AdminAPI.deleteMagazine failed, falling back to localStorage:', err);
-            articles = articles.filter(function(a) { return a.id !== id; });
-            saveArticlesToStorage(articles);
-            renderTable(searchInput.value.trim().toLowerCase());
-            showToast('記事を削除しました（ローカル保存）');
-          });
-        } else {
-          articles = articles.filter(function(a) { return a.id !== id; });
-          saveArticlesToStorage(articles);
-          renderTable(searchInput.value.trim().toLowerCase());
-          showToast('記事を削除しました');
+    if (asDraft) data.status = '下書き';
+
+    if (editingId) {
+      // Update existing
+      for (var i = 0; i < articles.length; i++) {
+        if (articles[i].id === editingId) {
+          data.id = editingId;
+          articles[i] = data;
+          break;
         }
       }
+      showToast('記事を更新しました');
+    } else {
+      // Create new
+      var maxId = 0;
+      articles.forEach(function(a) { if (a.id > maxId) maxId = a.id; });
+      data.id = maxId + 1;
+      articles.unshift(data);
+      editingId = data.id;
+      showToast('記事を作成しました');
     }
 
-    // Status toggle
-    if (target.classList.contains('status-badge')) {
-      var id = parseInt(target.getAttribute('data-id'));
-      var article = articles.find(function(a) { return a.id === id; });
-      if (article) {
-        var newStatus = article.status === '公開' ? '下書き' : '公開';
-        if (useAPI) {
-          AdminAPI.updateMagazine(id, { status: newStatus === '公開' ? 'published' : 'draft' }).then(function() {
-            showToast('ステータスを「' + newStatus + '」に変更しました');
-            return refreshArticles();
-          }).catch(function(err) {
-            console.warn('AdminAPI.updateMagazine (status) failed, falling back to localStorage:', err);
-            article.status = newStatus;
-            saveArticlesToStorage(articles);
-            renderTable(searchInput.value.trim().toLowerCase());
-            showToast('ステータスを「' + newStatus + '」に変更しました（ローカル保存）');
-          });
-        } else {
-          article.status = newStatus;
-          saveArticlesToStorage(articles);
-          renderTable(searchInput.value.trim().toLowerCase());
-          showToast('ステータスを「' + newStatus + '」に変更しました');
-        }
-      }
-    }
-  });
+    saveArticles();
+    renderList();
+  };
 
-  // --- Initial load ---
-  refreshArticles();
+  // ===== CRUD Actions =====
+  window.createNewArticle = function() {
+    var today = new Date().toISOString().slice(0, 10);
+    showEditor({ title:'', category:'', date:today, status:'下書き', slug:'', tags:[], heroImage:'', heroAlt:'', body:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' });
+  };
+
+  window.editArticle = function(id) {
+    var article = articles.find(function(a) { return a.id === id; });
+    if (article) showEditor(article);
+  };
+
+  window.duplicateArticle = function(id) {
+    var original = articles.find(function(a) { return a.id === id; });
+    if (!original) return;
+    var maxId = 0;
+    articles.forEach(function(a) { if (a.id > maxId) maxId = a.id; });
+    var dup = JSON.parse(JSON.stringify(original));
+    dup.id = maxId + 1;
+    dup.title = dup.title + ' (コピー)';
+    dup.status = '下書き';
+    dup.slug = dup.slug ? dup.slug + '-copy' : '';
+    articles.unshift(dup);
+    saveArticles();
+    renderList();
+    showToast('記事を複製しました');
+  };
+
+  window.deleteArticle = function(id) {
+    if (!confirm('この記事を削除しますか？')) return;
+    articles = articles.filter(function(a) { return a.id !== id; });
+    saveArticles();
+    renderList();
+    showToast('記事を削除しました');
+  };
+
+  window.backToList = function() {
+    showList();
+  };
+
+  // ===== Filters =====
+  document.getElementById('filterCategory').addEventListener('change', renderList);
+  document.getElementById('filterStatus').addEventListener('change', renderList);
+  document.getElementById('filterSearch').addEventListener('input', renderList);
+
+  // ===== Utility =====
+  function escHtml(str) {
+    var d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+  }
+  function escAttr(str) {
+    return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ===== Init =====
+  loadArticles();
+  renderList();
+
 })();
 </script>
 </body>
