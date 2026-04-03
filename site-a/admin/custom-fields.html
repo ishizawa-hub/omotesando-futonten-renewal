@@ -240,6 +240,7 @@ a { text-decoration:none; color:inherit; }
   .field-grid { grid-template-columns:1fr; }
   .stats-bar { flex-direction:column; }
 }
+
 </style>
 
 <style id="mobile-responsive">/* ================================================================
@@ -1175,6 +1176,29 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
+
+</style>
+<style id="admin-mobile-fix">
+@media (max-width: 768px) {
+  .admin-sidebar-fix { display: none !important; }
+  .admin-main-fix { margin-left: 0 !important; }
+  .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
+  .admin-main-fix div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .admin-main-fix div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+  .admin-main-fix div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .admin-main-fix table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
+  .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
+  .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
+  .nav-mega { width: 100vw !important; grid-template-columns: 1fr !important; left: 0 !important; transform: none !important; }
+}
 </style>
 </head>
 <body>
@@ -1200,7 +1224,7 @@ html, body {
     </a>
   </nav>
   <div class="sidebar-footer">
-    <a href="login/">ログアウト</a>
+    <a href="login.html">ログアウト</a>
   </div>
 </div>
 
@@ -1630,6 +1654,8 @@ html, body {
   loadProducts();
 })();
 </script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 </body>
 </html>

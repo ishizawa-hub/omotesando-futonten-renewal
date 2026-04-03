@@ -1284,6 +1284,15 @@ html, body {
 .gift-dest-group{border:1px solid var(--border,#E5E5E5);padding:14px;margin-bottom:12px;position:relative}
 .gift-dest-group-title{font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C9A96E;margin-bottom:10px;font-family:'DM Sans',sans-serif}
 @media(max-width:640px){.gift-dest-mode{flex-direction:column;gap:8px}}
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1384,7 +1393,7 @@ html, body {
 <section class="product-top">
   <div class="gallery">
     <div class="gallery-thumbs">
-      <div class="gallery-thumb active" data-index="0"><img src="../https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="Clean Cycle Down Pillow 1"></div>
+      <div class="gallery-thumb active" data-index="0"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="Clean Cycle Down Pillow 1"></div>
       <div class="gallery-thumb" data-index="1"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/419d3d1422776119912880dd88fefe23.jpg" alt="Clean Cycle Down Pillow 2"></div>
       <div class="gallery-thumb" data-index="2"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/15a09327852e24d89b35750d2337f682.jpg" alt="Clean Cycle Down Pillow 3"></div>
       <div class="gallery-thumb" data-index="3"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/cbea9ea25d0fc41409c390010ec4a807.jpg" alt="Clean Cycle Down Pillow 4"></div>
@@ -1393,7 +1402,7 @@ html, body {
     <div class="gallery-main">
       <div class="swiper" id="mainSwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="../https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="Clean Cycle Down Pillow 1"></div>
+          <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="Clean Cycle Down Pillow 1"></div>
           <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/419d3d1422776119912880dd88fefe23.jpg" alt="Clean Cycle Down Pillow 2"></div>
           <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/15a09327852e24d89b35750d2337f682.jpg" alt="Clean Cycle Down Pillow 3"></div>
           <div class="swiper-slide"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/cbea9ea25d0fc41409c390010ec4a807.jpg" alt="Clean Cycle Down Pillow 4"></div>
@@ -1552,12 +1561,12 @@ html, body {
     </div>
     <div class="related-products-grid">
       <a href="../goose-pillow/" class="related-product-card fade-up">
-        <div class="related-product-img"><img src="../https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="ホワイトグースダウン枕" loading="lazy"></div>
+        <div class="related-product-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="ホワイトグースダウン枕" loading="lazy"></div>
         <h3 class="related-product-name">ホワイトグースダウン枕</h3>
         <p class="related-product-price">¥27,800〜</p>
       </a>
       <a href="../duck-pillow/" class="related-product-card fade-up">
-        <div class="related-product-img"><img src="../https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="ホワイトダックダウン枕" loading="lazy"></div>
+        <div class="related-product-img"><img src="https://omotesando-futonten.com/wp/wp-content/uploads/2015/06/0c601511d0bfa226e0d1d1e8d631a3ce.jpg" alt="ホワイトダックダウン枕" loading="lazy"></div>
         <h3 class="related-product-name">ホワイトダックダウン枕</h3>
         <p class="related-product-price">¥15,800〜</p>
       </a>
@@ -1649,6 +1658,8 @@ html, body {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="../../../js/api.js"></script>
+<script src="../../../js/auth.js"></script>
 <script src="../../../js/cart.js"></script>
 <script>
 (function(){

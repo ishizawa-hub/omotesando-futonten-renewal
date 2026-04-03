@@ -169,7 +169,7 @@ a.season-tab:hover{background:var(--gold-faint);color:var(--gold)}
 
 /* Cover Option */
 .purchase-cover{display:flex;gap:8px;margin-bottom:4px}
-.purchase-cover-btn{flex:1;padding:10px;border:1px solid var(--border);font-size:12px;font-weight:500;text-align:center;cursor:pointer;transition:all 0.3s;background:none}
+.purchase-cover-btn{flex:1;padding:13px 10px;border:1px solid var(--border);font-size:12px;font-weight:500;text-align:center;cursor:pointer;transition:all 0.3s;background:none}
 .purchase-cover-btn.active{border-color:var(--text);background:var(--text);color:var(--white)}
 .purchase-cover-btn:hover{border-color:var(--gold)}
 
@@ -1316,7 +1316,7 @@ html, body {
 
 /* GIFT OPTION */
 .gift-option{margin-top:16px;padding-top:16px;border-top:1px solid var(--border,#E5E5E5)}
-.gift-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em}
+.gift-check{min-height:44px;display:flex;align-items:center;display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;font-weight:500;color:#1A1A1A;letter-spacing:0.04em}
 .gift-check input[type="checkbox"]{display:none}
 .gift-check-box{width:20px;height:20px;border:2px solid #C9A96E;border-radius:3px;display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s;flex-shrink:0}
 .gift-check input:checked~.gift-check-box{background:#C9A96E;border-color:#C9A96E}
@@ -1350,6 +1350,15 @@ html, body {
 .gift-dest-group{border:1px solid var(--border,#E5E5E5);padding:14px;margin-bottom:12px;position:relative}
 .gift-dest-group-title{font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C9A96E;margin-bottom:10px;font-family:'DM Sans',sans-serif}
 @media(max-width:640px){.gift-dest-mode{flex-direction:column;gap:8px}}
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1971,6 +1980,8 @@ html, body {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="../../../js/api.js"></script>
+<script src="../../../js/auth.js"></script>
 <script src="../../../js/cart.js"></script>
 <script>
 (function(){

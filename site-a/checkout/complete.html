@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご注文完了 | 表参道布団店。</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.header{position:fixed;top:0;left:0;width:100%;height:72px;z-index:1000;background:rgba(45,45,45,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header-logo img{height:28px;width:auto}
+.header-actions{display:flex;align-items:center;gap:16px}
+.header-actions a{background:none;border:none;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-decoration:none;transition:color 0.3s}
+.header-actions a:hover{color:#C9A96E}
+@media(max-width:768px){.header-inner{padding:0 20px}.header{height:64px}}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A96E;--text:#1A1A1A;--font-body:'DM Sans','Noto Sans JP',sans-serif}
+body{font-family:var(--font-body);color:var(--text);background:#F7F6F3;line-height:1.8}
+a{color:inherit;text-decoration:none}
+
+.complete-wrap{max-width:680px;margin:0 auto;padding:140px 40px 80px;text-align:center}
+.complete-icon{width:80px;height:80px;margin:0 auto 28px;background:#E7F5E9;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.complete-icon svg{width:40px;height:40px;stroke:#46B450;stroke-width:2.5;fill:none}
+.complete-wrap h1{font-size:26px;font-weight:700;letter-spacing:.04em;margin-bottom:12px}
+.complete-wrap .sub{font-size:15px;color:#6B6B6B;margin-bottom:40px;line-height:1.8}
+.order-box{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.04);padding:32px;margin-bottom:32px;text-align:left}
+.order-box h2{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.order-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F0F0F0;font-size:14px}
+.order-row:last-child{border-bottom:none}
+.order-row .label{color:#6B6B6B}
+.order-row .val{font-weight:600}
+.next-steps{background:#fff;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.04);padding:32px;margin-bottom:40px;text-align:left}
+.next-steps h2{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.next-steps ol{padding-left:20px;font-size:14px;color:#444}
+.next-steps li{margin-bottom:8px}
+.btn-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:var(--gold);color:#fff;border-radius:8px;font-size:14px;font-weight:600;letter-spacing:.06em;transition:background .3s}
+.btn-primary:hover{background:#B8975A}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:transparent;color:var(--text);border:1px solid #E5E5E5;border-radius:8px;font-size:14px;font-weight:600;letter-spacing:.06em;transition:border-color .3s,color .3s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Progress */
+.checkout-progress{max-width:500px;margin:100px auto 0;padding:0 40px}
+.progress-inner{display:flex;align-items:center;justify-content:center;gap:0}
+.progress-step{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:80px}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid #E5E5E5;color:#999;background:#fff}
+.step-label{font-size:11px;font-weight:600;letter-spacing:.04em;color:#999;white-space:nowrap}
+.progress-line{flex:1;height:2px;background:#E5E5E5;min-width:40px}
+.progress-step.done .step-num{background:var(--gold);border-color:var(--gold);color:#fff}
+.progress-step.done .step-label{color:var(--gold)}
+.progress-line.done{background:var(--gold)}
+.progress-step.active .step-num{border-color:var(--gold);color:var(--gold);background:#FFF8EE}
+.progress-step.active .step-label{color:var(--gold);font-weight:700}
+
+/* Footer */
+.footer{background:#2D2D2D;color:rgba(255,255,255,0.5);padding:60px 40px 30px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+.footer-logo img{height:24px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px}
+.footer-desc{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.8}
+.footer-nav-title{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C9A96E;margin-bottom:12px}
+.footer-nav{display:flex;flex-direction:column;gap:8px}
+.footer-nav a{font-size:14px;color:rgba(255,255,255,0.5);transition:color .3s}
+.footer-nav a:hover{color:#C9A96E}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:12px;color:rgba(255,255,255,0.3);transition:color .3s}
+.footer-legal a:hover{color:#C9A96E}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr}.complete-wrap{padding:120px 20px 60px}.btn-group{flex-direction:column}.checkout-progress{margin-top:80px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo"><img src="../images/logo.svg" alt="表参道布団店。"></a>
+    <div class="header-actions">
+      <a href="../index.html">TOP</a>
+      <a href="../products/">PRODUCTS</a>
+    </div>
+  </div>
+</header>
+
+<!-- Progress Steps -->
+<div class="checkout-progress">
+  <div class="progress-inner">
+    <div class="progress-step done"><span class="step-num">1</span><span class="step-label">カート</span></div>
+    <div class="progress-line done"></div>
+    <div class="progress-step done"><span class="step-num">2</span><span class="step-label">お届け先・お支払い</span></div>
+    <div class="progress-line done"></div>
+    <div class="progress-step active"><span class="step-num">3</span><span class="step-label">注文完了</span></div>
+  </div>
+</div>
+
+<div class="complete-wrap">
+  <div class="complete-icon">
+    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <h1>ご注文ありがとうございます</h1>
+  <p class="sub">ご注文を承りました。確認メールをお送りしましたので、<br>ご確認ください。</p>
+
+  <div class="order-box" id="orderInfo">
+    <h2>注文情報</h2>
+    <div class="order-row"><span class="label">注文番号</span><span class="val" id="orderId">—</span></div>
+    <div class="order-row"><span class="label">注文日</span><span class="val" id="orderDate">—</span></div>
+    <div class="order-row"><span class="label">お支払い方法</span><span class="val">クレジットカード（Stripe）</span></div>
+    <div class="order-row"><span class="label">配送</span><span class="val">通常配送（無料）</span></div>
+  </div>
+
+  <div class="next-steps">
+    <h2>今後の流れ</h2>
+    <ol>
+      <li>ご注文確認メールをお送りします</li>
+      <li>受注確認後、商品の準備を開始いたします</li>
+      <li>発送完了後、追跡番号付きの発送通知メールをお送りします</li>
+      <li>商品到着まで通常3〜5営業日です（受注生産品は2〜3週間）</li>
+    </ol>
+  </div>
+
+  <div class="btn-group">
+    <a href="../index.html" class="btn-primary">TOPへ戻る</a>
+    <a href="../products/" class="btn-outline">買い物を続ける</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="../images/logo.svg" alt="表参道布団店。"></div>
+      <p class="footer-desc">眠りの質を、人生の質へ。<br>Clean Cycle Down</p>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">PRODUCTS</h4>
+      <nav class="footer-nav">
+        <a href="../products/">全商品一覧</a>
+        <a href="../products/comforter/">掛け布団</a>
+        <a href="../products/pillow/">枕</a>
+        <a href="../products/bedding/">カバー・シーツ・寝具</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">GUIDE</h4>
+      <nav class="footer-nav">
+        <a href="../faq/">よくあるご質問</a>
+        <a href="../contact/">お問い合わせ</a>
+        <a href="../about/">会社概要</a>
+      </nav>
+    </div>
+    <div>
+      <h4 class="footer-nav-title">ACCOUNT</h4>
+      <nav class="footer-nav">
+        <a href="../account/login/">ログイン</a>
+        <a href="../account/register/">新規会員登録</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <nav class="footer-legal">
+      <a href="../privacy-policy/">プライバシーポリシー</a>
+      <a href="../terms/">利用規約</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Omotesando Futon Ten. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// URLからorder_idを取得して表示
+(function() {
+  var params = new URLSearchParams(location.search);
+  var orderId = params.get('order_id');
+  if (orderId) {
+    document.getElementById('orderId').textContent = '#' + orderId;
+  }
+  var now = new Date();
+  document.getElementById('orderDate').textContent =
+    now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
+
+  // カートクリア
+  localStorage.removeItem('oft_cart');
+})();
+</script>
+</body>
+</html>

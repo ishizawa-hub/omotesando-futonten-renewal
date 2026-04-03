@@ -62,6 +62,7 @@
   td { padding:14px 16px; border-bottom:1px solid #F0F0F0; font-size:14px; vertical-align:middle; }
   tr:hover { background:#FAFBFD; }
 
+
 </style>
 
 <style id="mobile-responsive">/* ================================================================
@@ -997,11 +998,34 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
+
+</style>
+<style id="admin-mobile-fix">
+@media (max-width: 768px) {
+  .admin-sidebar-fix { display: none !important; }
+  .admin-main-fix { margin-left: 0 !important; }
+  .admin-main-fix > div[style*="padding"] { padding: 12px !important; }
+  .admin-main-fix div[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .admin-main-fix div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+  .admin-main-fix div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .admin-main-fix table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
+  .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
+  .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
+  .nav-mega { width: 100vw !important; grid-template-columns: 1fr !important; left: 0 !important; transform: none !important; }
+}
 </style>
 </head>
 <body>
 <!-- Sidebar -->
-<div style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
+<div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
   <!-- Logo -->
   <div style="padding:24px 24px 20px; border-bottom:1px solid #EAEDF3;">
     <div style="font-size:18px; font-weight:700; color:#1A1A1A;">表参道布団店。</div>
@@ -1035,10 +1059,10 @@ html, body {
   </nav>
   <!-- Sidebar footer -->
   <div style="padding:16px 20px; border-top:1px solid #EAEDF3; font-size:12px; color:#AAA;">
-    <a href="login/" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
+    <a href="login.html" style="color:#AAA;" onmouseover="this.style.color='#C9A96E';" onmouseout="this.style.color='#AAA';">ログアウト</a>
   </div>
 </div>
-<div style="margin-left:260px;min-height:100vh">
+<div class="admin-main-fix" style="margin-left:260px;min-height:100vh">
   <div style="height:64px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:50">
     <h1 style="font-size:18px;font-weight:700;color:#1A1A1A">設定</h1>
     <div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">田</div><div><div style="font-size:13px;font-weight:600">田中 管理者</div><div style="font-size:11px;color:#999">admin@omotesando-futon.jp</div></div></div>
@@ -1072,6 +1096,8 @@ html, body {
 <!-- Toast -->
 <div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;background:#2D2D2D;color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:500;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:opacity 0.3s;"></div>
 
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 <script>
 (function() {

@@ -847,7 +847,9 @@ html, body {
 /* ---- TOP PAGE: HERO ---- */
 @media (max-width: 768px) {
   .hero {
-    min-height: 85vh !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 320px !important;
   }
   .hero-catch {
     font-size: 22px !important;
@@ -1045,7 +1047,9 @@ html, body {
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 75vh !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 280px !important;
   }
   .hero-catch {
     font-size: 20px !important;
@@ -1200,6 +1204,15 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1616,6 +1629,8 @@ html, body {
   }
 })();
 </script>
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
 <script src="../../js/cart.js"></script>
 <script>
 // Mobile menu

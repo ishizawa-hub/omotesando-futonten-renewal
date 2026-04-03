@@ -123,7 +123,7 @@ img{max-width:100%;display:block}
 .hero-label{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);margin-bottom:20px}
 .hero-title{font-family:var(--font-display);font-size:56px;font-weight:700;letter-spacing:0.08em;margin-bottom:16px;line-height:1.1}
 .hero-subtitle{font-family:var(--font-jp);font-size:16px;font-weight:400;letter-spacing:0.15em;opacity:0.7}
-@media(max-width:768px){.hero{height:40vh;margin-top:64px}.hero-title{font-size:36px}.hero-subtitle{font-size:14px}}
+@media(max-width:768px){.hero{height:28vh;min-height:180px;max-height:260px;margin-top:64px}.hero-title{font-size:36px}.hero-subtitle{font-size:14px}}
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -896,7 +896,9 @@ html, body {
 /* ---- TOP PAGE: HERO ---- */
 @media (max-width: 768px) {
   .hero {
-    min-height: 85vh !important;
+    height: 28vh !important;
+    min-height: 180px !important;
+    max-height: 260px !important;
   }
   .hero-catch {
     font-size: 22px !important;
@@ -1094,7 +1096,9 @@ html, body {
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 75vh !important;
+    height: 28vh !important;
+    min-height: 160px !important;
+    max-height: 240px !important;
   }
   .hero-catch {
     font-size: 20px !important;
@@ -1249,6 +1253,15 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1676,6 +1689,8 @@ html, body {
   }
 })();
 </script>
+<script src="../../js/api.js"></script>
+<script src="../../js/auth.js"></script>
 <script src="../../js/cart.js"></script>
 <script>
 (function(){

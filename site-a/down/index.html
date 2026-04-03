@@ -112,12 +112,7 @@ button{border:none;background:none;cursor:pointer;font-family:inherit}
 /* HEADER */
 
 /* MOBILE MENU */
-.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--navy-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s}
-.mobile-menu.active{opacity:1;pointer-events:all}
-.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:28px}
-.mobile-menu nav a{font-family:var(--font-body);font-size:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
-.mobile-menu-close{position:absolute;top:24px;right:40px;color:var(--white);cursor:pointer;background:none;border:none}
-.mobile-menu-close svg{width:28px;height:28px}
+/* old centered mobile-menu removed — standard slide-in below */
 
 /* BREADCRUMB */
 .breadcrumb{margin-top:var(--header-h);padding:20px 40px;max-width:var(--max-w);margin-left:auto;margin-right:auto;font-size:16px;font-weight:400;letter-spacing:.06em;color:var(--text-light)}
@@ -1169,6 +1164,15 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1461,6 +1465,8 @@ document.getElementById('mobileMenuClose').addEventListener('click',()=>{documen
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.15});
 document.querySelectorAll('.ccd-full,.ccd-final').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(40px)';el.style.transition='opacity .8s ease,transform .8s ease';obs.observe(el)});
 </script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 <script>
 // Mobile menu

@@ -89,13 +89,7 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 .icon-btn svg{width:20px;height:20px}
 .cart-badge{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--color-accent);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:50%}
 
-.mobile-menu{position:fixed;inset:0;z-index:2000;background:var(--color-navy);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
-.mobile-menu.active{opacity:1;pointer-events:all}
-.mobile-menu-close{position:absolute;top:24px;right:40px;width:40px;height:40px;color:#fff;display:flex;align-items:center;justify-content:center}
-.mobile-menu-close svg{width:24px;height:24px}
-.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:32px}
-.mobile-menu nav a{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;transition:color .3s}
-.mobile-menu nav a:hover{color:var(--color-accent)}
+/* old centered mobile-menu removed — standard slide-in below */
 
 /* BREADCRUMB */
 .breadcrumb{background:#FAF7F2;border-bottom:1px solid #E5E5E5;padding:0}
@@ -184,7 +178,8 @@ a{color:inherit;text-decoration:none}img{max-width:100%;height:auto;display:bloc
 }
 @media(max-width:480px){
   .glossary-hero{height:45vh;min-height:300px}
-  .glossary-card-header{flex-direction:column;gap:10px}
+  .glossary-card-header{flex-direction:row;gap:10px;align-items:center}
+  .glossary-card-icon{width:36px;height:36px;min-width:36px;font-size:16px}
 }
 
 /* === FOOTER === */
@@ -1162,6 +1157,15 @@ html, body {
     padding-bottom: revert !important;
   }
 }
+
+/* Watermark overflow fix */
+*:has(> .section-watermark){overflow-x:clip}
+section:has(.section-watermark){overflow-x:clip}
+/* Footer SNS touch targets */
+.footer-sns a{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+/* Orphan/Widow prevention */
+h1,h2,h3,h4,h5,h6,.section-title,.section-subtitle,.card-title,.hero-title,.hero-sub,.nav-mega-card-name{text-wrap:balance}
+p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[class*='-desc'],span[class*='-name'],.brand-story-point-text,.experience-desc,.feature-text,.glossary-card-desc,.value-desc{text-wrap:pretty}
 </style>
 </head>
 <body>
@@ -1649,6 +1653,8 @@ html, body {
   // Mobile menu
   
 </script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
 <script src="../js/cart.js"></script>
 <script>
 // Mobile menu

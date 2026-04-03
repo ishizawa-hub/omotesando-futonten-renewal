@@ -3,14 +3,25 @@
   var CART_KEY='oft_cart';
   function getCart(){try{return JSON.parse(localStorage.getItem(CART_KEY))||[];}catch(e){return[];}}
   function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateBadge();}
+  // WooCommerce バックグラウンド同期（localStorage優先、APIは非同期で反映）
+  function wcSync(action, productId, qty) {
+    if (!window.OFTApi) return;
+    var BASE = 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
+    var body = { action: action, product_id: productId, quantity: qty || 1 };
+    fetch(BASE + '/cart', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body), credentials: 'include'
+    }).catch(function() {});
+  }
   function addToCart(item){
     var c=getCart();
     var ex=c.find(function(x){return x.id===item.id&&x.size===item.size&&x.color===item.color;});
     if(ex){ex.qty=Math.min(10,ex.qty+item.qty);}else{c.push(item);}
     saveCart(c);openDrawer();showToast();
+    wcSync('add', item.id, item.qty);
   }
-  function removeItem(i){var c=getCart();c.splice(i,1);saveCart(c);renderDrawer();}
-  function updateQty(i,d){var c=getCart();c[i].qty=Math.max(1,Math.min(10,c[i].qty+d));saveCart(c);renderDrawer();}
+  function removeItem(i){var c=getCart();var item=c[i];c.splice(i,1);saveCart(c);renderDrawer();if(item)wcSync('remove',item.id);}
+  function updateQty(i,d){var c=getCart();c[i].qty=Math.max(1,Math.min(10,c[i].qty+d));saveCart(c);renderDrawer();wcSync('update',c[i].id,c[i].qty);}
   function cartTotal(){return getCart().reduce(function(s,x){return s+x.price*x.qty;},0);}
   function cartCount(){return getCart().reduce(function(s,x){return s+x.qty;},0);}
   function updateBadge(){
@@ -68,10 +79,8 @@
         h+='<div style="width:88px;height:88px;background:#F7F7F7;border-radius:4px;overflow:hidden">';
         if(item.image)h+='<img src="'+item.image+'" style="width:100%;height:100%;object-fit:cover">';
         h+='</div><div>';
-        h+='<p style="font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px">'+item.name;
-        if(item.isRental)h+=' <span style="display:inline-block;background:#C9A96E;color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;padding:2px 6px;border-radius:2px;vertical-align:middle">レンタル</span>';
-        h+='</p>';
-        var m=[];if(item.size)m.push(item.size);if(item.color)m.push(item.color);if(item.isRental)m.push('月額制');
+        h+='<p style="font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px">'+item.name+'</p>';
+        var m=[];if(item.size)m.push(item.size);if(item.color)m.push(item.color);
         if(m.length)h+='<p style="font-size:11px;color:#888;margin-bottom:8px">'+m.join(' / ')+'</p>';
         h+='<div style="display:flex;align-items:center;justify-content:space-between">';
         h+='<div style="display:flex;align-items:center;gap:0">';

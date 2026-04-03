@@ -1,0 +1,854 @@
+[
+  {
+    "name": "TOP",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/",
+    "local_url": "http://localhost:8080/index.html",
+    "safe": "index"
+  },
+  {
+    "name": "About",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/about/",
+    "local_url": "http://localhost:8080/about/index.html",
+    "safe": "about_index"
+  },
+  {
+    "name": "Admin",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/admin.html",
+    "local_url": "http://localhost:8080/admin.html",
+    "safe": "admin"
+  },
+  {
+    "name": "Ccd",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/ccd.html",
+    "local_url": "http://localhost:8080/ccd.html",
+    "safe": "ccd"
+  },
+  {
+    "name": "Checkout Gift",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/checkout-gift/",
+    "local_url": "http://localhost:8080/checkout-gift/index.html",
+    "safe": "checkout-gift_index"
+  },
+  {
+    "name": "Concept",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/concept.html",
+    "local_url": "http://localhost:8080/concept.html",
+    "safe": "concept"
+  },
+  {
+    "name": "Concept",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/concept/",
+    "local_url": "http://localhost:8080/concept/index.html",
+    "safe": "concept_index"
+  },
+  {
+    "name": "Concept / Brand Story",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/concept/brand-story/",
+    "local_url": "http://localhost:8080/concept/brand-story/index.html",
+    "safe": "concept_brand-story_index"
+  },
+  {
+    "name": "Concept / Clean Cycle Down",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/concept/clean-cycle-down/",
+    "local_url": "http://localhost:8080/concept/clean-cycle-down/index.html",
+    "safe": "concept_clean-cycle-down_index"
+  },
+  {
+    "name": "Concept / Material",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/concept/material/",
+    "local_url": "http://localhost:8080/concept/material/index.html",
+    "safe": "concept_material_index"
+  },
+  {
+    "name": "Contact",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/contact/",
+    "local_url": "http://localhost:8080/contact/index.html",
+    "safe": "contact_index"
+  },
+  {
+    "name": "Down",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/down/",
+    "local_url": "http://localhost:8080/down/index.html",
+    "safe": "down_index"
+  },
+  {
+    "name": "Down / Material",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/down/material/",
+    "local_url": "http://localhost:8080/down/material/index.html",
+    "safe": "down_material_index"
+  },
+  {
+    "name": "Down / Technology",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/down/technology/",
+    "local_url": "http://localhost:8080/down/technology/index.html",
+    "safe": "down_technology_index"
+  },
+  {
+    "name": "Faq",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/faq/",
+    "local_url": "http://localhost:8080/faq/index.html",
+    "safe": "faq_index"
+  },
+  {
+    "name": "Glossary",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/glossary/",
+    "local_url": "http://localhost:8080/glossary/index.html",
+    "safe": "glossary_index"
+  },
+  {
+    "name": "Inventory View",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/inventory-view/",
+    "local_url": "http://localhost:8080/inventory-view/index.html",
+    "safe": "inventory-view_index"
+  },
+  {
+    "name": "Magazine",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/",
+    "local_url": "http://localhost:8080/magazine/index.html",
+    "safe": "magazine_index"
+  },
+  {
+    "name": "Magazine / Aigake",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/aigake/",
+    "local_url": "http://localhost:8080/magazine/aigake/index.html",
+    "safe": "magazine_aigake_index"
+  },
+  {
+    "name": "Magazine / Aigake Recommend",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/aigake-recommend/",
+    "local_url": "http://localhost:8080/magazine/aigake-recommend/index.html",
+    "safe": "magazine_aigake-recommend_index"
+  },
+  {
+    "name": "Magazine / Aikake",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/aikake/",
+    "local_url": "http://localhost:8080/magazine/aikake/index.html",
+    "safe": "magazine_aikake_index"
+  },
+  {
+    "name": "Magazine / Allergy",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/allergy/",
+    "local_url": "http://localhost:8080/magazine/allergy/index.html",
+    "safe": "magazine_allergy_index"
+  },
+  {
+    "name": "Magazine / Baby Futon",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/baby-futon/",
+    "local_url": "http://localhost:8080/magazine/baby-futon/index.html",
+    "safe": "magazine_baby-futon_index"
+  },
+  {
+    "name": "Magazine / Bijutsu Techo",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/bijutsu-techo/",
+    "local_url": "http://localhost:8080/magazine/bijutsu-techo/index.html",
+    "safe": "magazine_bijutsu-techo_index"
+  },
+  {
+    "name": "Magazine / Blanket Order",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/blanket-order/",
+    "local_url": "http://localhost:8080/magazine/blanket-order/index.html",
+    "safe": "magazine_blanket-order_index"
+  },
+  {
+    "name": "Magazine / Care Dry",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/care-dry/",
+    "local_url": "http://localhost:8080/magazine/care-dry/index.html",
+    "safe": "magazine_care-dry_index"
+  },
+  {
+    "name": "Magazine / Care Guide",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/care-guide/",
+    "local_url": "http://localhost:8080/magazine/care-guide/index.html",
+    "safe": "magazine_care-guide_index"
+  },
+  {
+    "name": "Magazine / Care Storage",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/care-storage/",
+    "local_url": "http://localhost:8080/magazine/care-storage/index.html",
+    "safe": "magazine_care-storage_index"
+  },
+  {
+    "name": "Magazine / Care Wash",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/care-wash/",
+    "local_url": "http://localhost:8080/magazine/care-wash/index.html",
+    "safe": "magazine_care-wash_index"
+  },
+  {
+    "name": "Magazine / Casa Brutus",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/casa-brutus/",
+    "local_url": "http://localhost:8080/magazine/casa-brutus/index.html",
+    "safe": "magazine_casa-brutus_index"
+  },
+  {
+    "name": "Magazine / Ccd Pillow",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/ccd-pillow/",
+    "local_url": "http://localhost:8080/magazine/ccd-pillow/index.html",
+    "safe": "magazine_ccd-pillow_index"
+  },
+  {
+    "name": "Magazine / Ccd Pillow New",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/ccd-pillow-new/",
+    "local_url": "http://localhost:8080/magazine/ccd-pillow-new/index.html",
+    "safe": "magazine_ccd-pillow-new_index"
+  },
+  {
+    "name": "Magazine / Ccd Reform 2025",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/ccd-reform-2025/",
+    "local_url": "http://localhost:8080/magazine/ccd-reform-2025/index.html",
+    "safe": "magazine_ccd-reform-2025_index"
+  },
+  {
+    "name": "Magazine / Ccd Story",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/ccd-story/",
+    "local_url": "http://localhost:8080/magazine/ccd-story/index.html",
+    "safe": "magazine_ccd-story_index"
+  },
+  {
+    "name": "Magazine / Classy Ad",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/classy-ad/",
+    "local_url": "http://localhost:8080/magazine/classy-ad/index.html",
+    "safe": "magazine_classy-ad_index"
+  },
+  {
+    "name": "Magazine / Clean Cycle Reform",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/clean-cycle-reform/",
+    "local_url": "http://localhost:8080/magazine/clean-cycle-reform/index.html",
+    "safe": "magazine_clean-cycle-reform_index"
+  },
+  {
+    "name": "Magazine / Cover Cover",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/cover-cover/",
+    "local_url": "http://localhost:8080/magazine/cover-cover/index.html",
+    "safe": "magazine_cover-cover_index"
+  },
+  {
+    "name": "Magazine / Cover Cover Artists",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/cover-cover-artists/",
+    "local_url": "http://localhost:8080/magazine/cover-cover-artists/index.html",
+    "safe": "magazine_cover-cover-artists_index"
+  },
+  {
+    "name": "Magazine / Cover Cover Cinra",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/cover-cover-cinra/",
+    "local_url": "http://localhost:8080/magazine/cover-cover-cinra/index.html",
+    "safe": "magazine_cover-cover-cinra_index"
+  },
+  {
+    "name": "Magazine / Coz Popup",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/coz-popup/",
+    "local_url": "http://localhost:8080/magazine/coz-popup/index.html",
+    "safe": "magazine_coz-popup_index"
+  },
+  {
+    "name": "Magazine / Crea Magazine",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/crea-magazine/",
+    "local_url": "http://localhost:8080/magazine/crea-magazine/index.html",
+    "safe": "magazine_crea-magazine_index"
+  },
+  {
+    "name": "Magazine / Disposal",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/disposal/",
+    "local_url": "http://localhost:8080/magazine/disposal/index.html",
+    "safe": "magazine_disposal_index"
+  },
+  {
+    "name": "Magazine / Down Origin",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/down-origin/",
+    "local_url": "http://localhost:8080/magazine/down-origin/index.html",
+    "safe": "magazine_down-origin_index"
+  },
+  {
+    "name": "Magazine / Down Performance",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/down-performance/",
+    "local_url": "http://localhost:8080/magazine/down-performance/index.html",
+    "safe": "magazine_down-performance_index"
+  },
+  {
+    "name": "Magazine / Down Test Reason",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/down-test-reason/",
+    "local_url": "http://localhost:8080/magazine/down-test-reason/index.html",
+    "safe": "magazine_down-test-reason_index"
+  },
+  {
+    "name": "Magazine / Down Testing",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/down-testing/",
+    "local_url": "http://localhost:8080/magazine/down-testing/index.html",
+    "safe": "magazine_down-testing_index"
+  },
+  {
+    "name": "Magazine / Down Types",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/down-types/",
+    "local_url": "http://localhost:8080/magazine/down-types/index.html",
+    "safe": "magazine_down-types_index"
+  },
+  {
+    "name": "Magazine / Fabric",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/fabric/",
+    "local_url": "http://localhost:8080/magazine/fabric/index.html",
+    "safe": "magazine_fabric_index"
+  },
+  {
+    "name": "Magazine / Flower Down",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/flower-down/",
+    "local_url": "http://localhost:8080/magazine/flower-down/index.html",
+    "safe": "magazine_flower-down_index"
+  },
+  {
+    "name": "Magazine / Futon Guide",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/futon-guide/",
+    "local_url": "http://localhost:8080/magazine/futon-guide/index.html",
+    "safe": "magazine_futon-guide_index"
+  },
+  {
+    "name": "Magazine / Futon Making Step4",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/futon-making-step4/",
+    "local_url": "http://localhost:8080/magazine/futon-making-step4/index.html",
+    "safe": "magazine_futon-making-step4_index"
+  },
+  {
+    "name": "Magazine / Futon Select Points",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/futon-select-points/",
+    "local_url": "http://localhost:8080/magazine/futon-select-points/index.html",
+    "safe": "magazine_futon-select-points_index"
+  },
+  {
+    "name": "Magazine / Futon Types",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/futon-types/",
+    "local_url": "http://localhost:8080/magazine/futon-types/index.html",
+    "safe": "magazine_futon-types_index"
+  },
+  {
+    "name": "Magazine / Goose Vs Duck",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/goose-vs-duck/",
+    "local_url": "http://localhost:8080/magazine/goose-vs-duck/index.html",
+    "safe": "magazine_goose-vs-duck_index"
+  },
+  {
+    "name": "Magazine / Gq Ad",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/gq-ad/",
+    "local_url": "http://localhost:8080/magazine/gq-ad/index.html",
+    "safe": "magazine_gq-ad_index"
+  },
+  {
+    "name": "Magazine / Hadagake",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/hadagake/",
+    "local_url": "http://localhost:8080/magazine/hadagake/index.html",
+    "safe": "magazine_hadagake_index"
+  },
+  {
+    "name": "Magazine / Hankyu Umeda",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/hankyu-umeda/",
+    "local_url": "http://localhost:8080/magazine/hankyu-umeda/index.html",
+    "safe": "magazine_hankyu-umeda_index"
+  },
+  {
+    "name": "Magazine / Im Home Magazine",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/im-home-magazine/",
+    "local_url": "http://localhost:8080/magazine/im-home-magazine/index.html",
+    "safe": "magazine_im-home-magazine_index"
+  },
+  {
+    "name": "Magazine / Label Guide",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/label-guide/",
+    "local_url": "http://localhost:8080/magazine/label-guide/index.html",
+    "safe": "magazine_label-guide_index"
+  },
+  {
+    "name": "Magazine / Lifespan",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/lifespan/",
+    "local_url": "http://localhost:8080/magazine/lifespan/index.html",
+    "safe": "magazine_lifespan_index"
+  },
+  {
+    "name": "Magazine / Made To Order",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/made-to-order/",
+    "local_url": "http://localhost:8080/magazine/made-to-order/index.html",
+    "safe": "magazine_made-to-order_index"
+  },
+  {
+    "name": "Magazine / Media",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/media/",
+    "local_url": "http://localhost:8080/magazine/media/index.html",
+    "safe": "magazine_media_index"
+  },
+  {
+    "name": "Magazine / Media Coverage",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/media-coverage/",
+    "local_url": "http://localhost:8080/magazine/media-coverage/index.html",
+    "safe": "magazine_media-coverage_index"
+  },
+  {
+    "name": "Magazine / Merit Demerit",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/merit-demerit/",
+    "local_url": "http://localhost:8080/magazine/merit-demerit/index.html",
+    "safe": "magazine_merit-demerit_index"
+  },
+  {
+    "name": "Magazine / Mobile Experience",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/mobile-experience/",
+    "local_url": "http://localhost:8080/magazine/mobile-experience/index.html",
+    "safe": "magazine_mobile-experience_index"
+  },
+  {
+    "name": "Magazine / Mother Goose",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/mother-goose/",
+    "local_url": "http://localhost:8080/magazine/mother-goose/index.html",
+    "safe": "magazine_mother-goose_index"
+  },
+  {
+    "name": "Magazine / Netflix",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/netflix/",
+    "local_url": "http://localhost:8080/magazine/netflix/index.html",
+    "safe": "magazine_netflix_index"
+  },
+  {
+    "name": "Magazine / New Brand 2022",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/new-brand-2022/",
+    "local_url": "http://localhost:8080/magazine/new-brand-2022/index.html",
+    "safe": "magazine_new-brand-2022_index"
+  },
+  {
+    "name": "Magazine / Nid Magazine",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/nid-magazine/",
+    "local_url": "http://localhost:8080/magazine/nid-magazine/index.html",
+    "safe": "magazine_nid-magazine_index"
+  },
+  {
+    "name": "Magazine / Nordisk Collab",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/nordisk-collab/",
+    "local_url": "http://localhost:8080/magazine/nordisk-collab/index.html",
+    "safe": "magazine_nordisk-collab_index"
+  },
+  {
+    "name": "Magazine / Odor",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/odor/",
+    "local_url": "http://localhost:8080/magazine/odor/index.html",
+    "safe": "magazine_odor_index"
+  },
+  {
+    "name": "Magazine / Official Shops",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/official-shops/",
+    "local_url": "http://localhost:8080/magazine/official-shops/index.html",
+    "safe": "magazine_official-shops_index"
+  },
+  {
+    "name": "Magazine / Pen Magazine",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/pen-magazine/",
+    "local_url": "http://localhost:8080/magazine/pen-magazine/index.html",
+    "safe": "magazine_pen-magazine_index"
+  },
+  {
+    "name": "Magazine / Plus Living",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/plus-living/",
+    "local_url": "http://localhost:8080/magazine/plus-living/index.html",
+    "safe": "magazine_plus-living_index"
+  },
+  {
+    "name": "Magazine / Rds Environment",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/rds-environment/",
+    "local_url": "http://localhost:8080/magazine/rds-environment/index.html",
+    "safe": "magazine_rds-environment_index"
+  },
+  {
+    "name": "Magazine / Rds Sourcing",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/rds-sourcing/",
+    "local_url": "http://localhost:8080/magazine/rds-sourcing/index.html",
+    "safe": "magazine_rds-sourcing_index"
+  },
+  {
+    "name": "Magazine / Redesign Service 1",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/redesign-service-1/",
+    "local_url": "http://localhost:8080/magazine/redesign-service-1/index.html",
+    "safe": "magazine_redesign-service-1_index"
+  },
+  {
+    "name": "Magazine / Redesign Service 2",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/redesign-service-2/",
+    "local_url": "http://localhost:8080/magazine/redesign-service-2/index.html",
+    "safe": "magazine_redesign-service-2_index"
+  },
+  {
+    "name": "Magazine / Reform Guide",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/reform-guide/",
+    "local_url": "http://localhost:8080/magazine/reform-guide/index.html",
+    "safe": "magazine_reform-guide_index"
+  },
+  {
+    "name": "Magazine / Revival",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/revival/",
+    "local_url": "http://localhost:8080/magazine/revival/index.html",
+    "safe": "magazine_revival_index"
+  },
+  {
+    "name": "Magazine / Seasonal Thickness",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/seasonal-thickness/",
+    "local_url": "http://localhost:8080/magazine/seasonal-thickness/index.html",
+    "safe": "magazine_seasonal-thickness_index"
+  },
+  {
+    "name": "Magazine / Seibu Sogo",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/seibu-sogo/",
+    "local_url": "http://localhost:8080/magazine/seibu-sogo/index.html",
+    "safe": "magazine_seibu-sogo_index"
+  },
+  {
+    "name": "Magazine / Sendenkaigi",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/sendenkaigi/",
+    "local_url": "http://localhost:8080/magazine/sendenkaigi/index.html",
+    "safe": "magazine_sendenkaigi_index"
+  },
+  {
+    "name": "Magazine / Spring Summer Hadagake",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/spring-summer-hadagake/",
+    "local_url": "http://localhost:8080/magazine/spring-summer-hadagake/index.html",
+    "safe": "magazine_spring-summer-hadagake_index"
+  },
+  {
+    "name": "Magazine / Storage",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/storage/",
+    "local_url": "http://localhost:8080/magazine/storage/index.html",
+    "safe": "magazine_storage_index"
+  },
+  {
+    "name": "Magazine / Summer Hadagake",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/summer-hadagake/",
+    "local_url": "http://localhost:8080/magazine/summer-hadagake/index.html",
+    "safe": "magazine_summer-hadagake_index"
+  },
+  {
+    "name": "Magazine / Summer Skincare Futon",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/summer-skincare-futon/",
+    "local_url": "http://localhost:8080/magazine/summer-skincare-futon/index.html",
+    "safe": "magazine_summer-skincare-futon_index"
+  },
+  {
+    "name": "Magazine / Sustainable Down",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/sustainable-down/",
+    "local_url": "http://localhost:8080/magazine/sustainable-down/index.html",
+    "safe": "magazine_sustainable-down_index"
+  },
+  {
+    "name": "Magazine / Sustainable Initiative",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/sustainable-initiative/",
+    "local_url": "http://localhost:8080/magazine/sustainable-initiative/index.html",
+    "safe": "magazine_sustainable-initiative_index"
+  },
+  {
+    "name": "Magazine / Tokyo Calendar",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/tokyo-calendar/",
+    "local_url": "http://localhost:8080/magazine/tokyo-calendar/index.html",
+    "safe": "magazine_tokyo-calendar_index"
+  },
+  {
+    "name": "Magazine / Trial Rental",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/trial-rental/",
+    "local_url": "http://localhost:8080/magazine/trial-rental/index.html",
+    "safe": "magazine_trial-rental_index"
+  },
+  {
+    "name": "Magazine / Warmth Science",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/warmth-science/",
+    "local_url": "http://localhost:8080/magazine/warmth-science/index.html",
+    "safe": "magazine_warmth-science_index"
+  },
+  {
+    "name": "Magazine / Winter Futon Timing",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/winter-futon-timing/",
+    "local_url": "http://localhost:8080/magazine/winter-futon-timing/index.html",
+    "safe": "magazine_winter-futon-timing_index"
+  },
+  {
+    "name": "Magazine / Winter Futon Types",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/winter-futon-types/",
+    "local_url": "http://localhost:8080/magazine/winter-futon-types/index.html",
+    "safe": "magazine_winter-futon-types_index"
+  },
+  {
+    "name": "Magazine / Year End 2025",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/magazine/year-end-2025/",
+    "local_url": "http://localhost:8080/magazine/year-end-2025/index.html",
+    "safe": "magazine_year-end-2025_index"
+  },
+  {
+    "name": "Order",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/order/",
+    "local_url": "http://localhost:8080/order/index.html",
+    "safe": "order_index"
+  },
+  {
+    "name": "Privacy Policy",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/privacy-policy/",
+    "local_url": "http://localhost:8080/privacy-policy/index.html",
+    "safe": "privacy-policy_index"
+  },
+  {
+    "name": "Product Detail",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/product-detail.html",
+    "local_url": "http://localhost:8080/product-detail.html",
+    "safe": "product-detail"
+  },
+  {
+    "name": "Products",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products.html",
+    "local_url": "http://localhost:8080/products.html",
+    "safe": "products"
+  },
+  {
+    "name": "Products",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/",
+    "local_url": "http://localhost:8080/products/index.html",
+    "safe": "products_index"
+  },
+  {
+    "name": "Products / Apparel",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/apparel/",
+    "local_url": "http://localhost:8080/products/apparel/index.html",
+    "safe": "products_apparel_index"
+  },
+  {
+    "name": "Products / Apparel / Down Jacket",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/apparel/down-jacket/",
+    "local_url": "http://localhost:8080/products/apparel/down-jacket/index.html",
+    "safe": "products_apparel_down-jacket_index"
+  },
+  {
+    "name": "Products / Apparel / Down Vest",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/apparel/down-vest/",
+    "local_url": "http://localhost:8080/products/apparel/down-vest/index.html",
+    "safe": "products_apparel_down-vest_index"
+  },
+  {
+    "name": "Products / Baby",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/baby/",
+    "local_url": "http://localhost:8080/products/baby/index.html",
+    "safe": "products_baby_index"
+  },
+  {
+    "name": "Products / Baby / Baby Comforter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/baby/baby-comforter/",
+    "local_url": "http://localhost:8080/products/baby/baby-comforter/index.html",
+    "safe": "products_baby_baby-comforter_index"
+  },
+  {
+    "name": "Products / Baby / Baby Set",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/baby/baby-set/",
+    "local_url": "http://localhost:8080/products/baby/baby-set/index.html",
+    "safe": "products_baby_baby-set_index"
+  },
+  {
+    "name": "Products / Bedding",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/",
+    "local_url": "http://localhost:8080/products/bedding/index.html",
+    "safe": "products_bedding_index"
+  },
+  {
+    "name": "Products / Bedding / Bed Pad",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/bed-pad/",
+    "local_url": "http://localhost:8080/products/bedding/bed-pad/index.html",
+    "safe": "products_bedding_bed-pad_index"
+  },
+  {
+    "name": "Products / Bedding / Cover",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/cover/",
+    "local_url": "http://localhost:8080/products/bedding/cover/index.html",
+    "safe": "products_bedding_cover_index"
+  },
+  {
+    "name": "Products / Bedding / Mattress",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/mattress/",
+    "local_url": "http://localhost:8080/products/bedding/mattress/index.html",
+    "safe": "products_bedding_mattress_index"
+  },
+  {
+    "name": "Products / Bedding / Pillow Case",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/pillow-case/",
+    "local_url": "http://localhost:8080/products/bedding/pillow-case/index.html",
+    "safe": "products_bedding_pillow-case_index"
+  },
+  {
+    "name": "Products / Bedding / Sheets",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/bedding/sheets/",
+    "local_url": "http://localhost:8080/products/bedding/sheets/index.html",
+    "safe": "products_bedding_sheets_index"
+  },
+  {
+    "name": "Products / Collaboration",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/collaboration/",
+    "local_url": "http://localhost:8080/products/collaboration/index.html",
+    "safe": "products_collaboration_index"
+  },
+  {
+    "name": "Products / Collaboration / Inoue Blanket",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/collaboration/inoue-blanket/",
+    "local_url": "http://localhost:8080/products/collaboration/inoue-blanket/index.html",
+    "safe": "products_collaboration_inoue-blanket_index"
+  },
+  {
+    "name": "Products / Collaboration / Inoue Pajamas",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/collaboration/inoue-pajamas/",
+    "local_url": "http://localhost:8080/products/collaboration/inoue-pajamas/index.html",
+    "safe": "products_collaboration_inoue-pajamas_index"
+  },
+  {
+    "name": "Products / Comforter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/",
+    "local_url": "http://localhost:8080/products/comforter/index.html",
+    "safe": "products_comforter_index"
+  },
+  {
+    "name": "Products / Comforter / Ccd Spring",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/ccd-spring/",
+    "local_url": "http://localhost:8080/products/comforter/ccd-spring/index.html",
+    "safe": "products_comforter_ccd-spring_index"
+  },
+  {
+    "name": "Products / Comforter / Ccd Summer",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/ccd-summer/",
+    "local_url": "http://localhost:8080/products/comforter/ccd-summer/index.html",
+    "safe": "products_comforter_ccd-summer_index"
+  },
+  {
+    "name": "Products / Comforter / Ccd Winter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/ccd-winter/",
+    "local_url": "http://localhost:8080/products/comforter/ccd-winter/index.html",
+    "safe": "products_comforter_ccd-winter_index"
+  },
+  {
+    "name": "Products / Comforter / Flower Spring",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/flower-spring/",
+    "local_url": "http://localhost:8080/products/comforter/flower-spring/index.html",
+    "safe": "products_comforter_flower-spring_index"
+  },
+  {
+    "name": "Products / Comforter / Flower Summer",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/flower-summer/",
+    "local_url": "http://localhost:8080/products/comforter/flower-summer/index.html",
+    "safe": "products_comforter_flower-summer_index"
+  },
+  {
+    "name": "Products / Comforter / Flower Winter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/flower-winter/",
+    "local_url": "http://localhost:8080/products/comforter/flower-winter/index.html",
+    "safe": "products_comforter_flower-winter_index"
+  },
+  {
+    "name": "Products / Comforter / Premium Rds Spring",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/premium-rds-spring/",
+    "local_url": "http://localhost:8080/products/comforter/premium-rds-spring/index.html",
+    "safe": "products_comforter_premium-rds-spring_index"
+  },
+  {
+    "name": "Products / Comforter / Premium Rds Summer",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/premium-rds-summer/",
+    "local_url": "http://localhost:8080/products/comforter/premium-rds-summer/index.html",
+    "safe": "products_comforter_premium-rds-summer_index"
+  },
+  {
+    "name": "Products / Comforter / Premium Rds Winter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/premium-rds-winter/",
+    "local_url": "http://localhost:8080/products/comforter/premium-rds-winter/index.html",
+    "safe": "products_comforter_premium-rds-winter_index"
+  },
+  {
+    "name": "Products / Comforter / Rds Goose Spring",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/rds-goose-spring/",
+    "local_url": "http://localhost:8080/products/comforter/rds-goose-spring/index.html",
+    "safe": "products_comforter_rds-goose-spring_index"
+  },
+  {
+    "name": "Products / Comforter / Rds Goose Summer",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/rds-goose-summer/",
+    "local_url": "http://localhost:8080/products/comforter/rds-goose-summer/index.html",
+    "safe": "products_comforter_rds-goose-summer_index"
+  },
+  {
+    "name": "Products / Comforter / Rds Goose Winter",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/comforter/rds-goose-winter/",
+    "local_url": "http://localhost:8080/products/comforter/rds-goose-winter/index.html",
+    "safe": "products_comforter_rds-goose-winter_index"
+  },
+  {
+    "name": "Products / Pillow",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/pillow/",
+    "local_url": "http://localhost:8080/products/pillow/index.html",
+    "safe": "products_pillow_index"
+  },
+  {
+    "name": "Products / Pillow / Ccd Pillow",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/pillow/ccd-pillow/",
+    "local_url": "http://localhost:8080/products/pillow/ccd-pillow/index.html",
+    "safe": "products_pillow_ccd-pillow_index"
+  },
+  {
+    "name": "Products / Pillow / Duck Pillow",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/pillow/duck-pillow/",
+    "local_url": "http://localhost:8080/products/pillow/duck-pillow/index.html",
+    "safe": "products_pillow_duck-pillow_index"
+  },
+  {
+    "name": "Products / Pillow / Goose Pillow",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/pillow/goose-pillow/",
+    "local_url": "http://localhost:8080/products/pillow/goose-pillow/index.html",
+    "safe": "products_pillow_goose-pillow_index"
+  },
+  {
+    "name": "Products / Pillow / Pillow Case",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/pillow/pillow-case/",
+    "local_url": "http://localhost:8080/products/pillow/pillow-case/index.html",
+    "safe": "products_pillow_pillow-case_index"
+  },
+  {
+    "name": "Products / Service",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/service/",
+    "local_url": "http://localhost:8080/products/service/index.html",
+    "safe": "products_service_index"
+  },
+  {
+    "name": "Products / Service / Reform",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/service/reform/",
+    "local_url": "http://localhost:8080/products/service/reform/index.html",
+    "safe": "products_service_reform_index"
+  },
+  {
+    "name": "Products / Service / Rental Ccd",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/service/rental-ccd/",
+    "local_url": "http://localhost:8080/products/service/rental-ccd/index.html",
+    "safe": "products_service_rental-ccd_index"
+  },
+  {
+    "name": "Products / Service / Rental Premium",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/service/rental-premium/",
+    "local_url": "http://localhost:8080/products/service/rental-premium/index.html",
+    "safe": "products_service_rental-premium_index"
+  },
+  {
+    "name": "Products / Service / Trial",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/products/service/trial/",
+    "local_url": "http://localhost:8080/products/service/trial/index.html",
+    "safe": "products_service_trial_index"
+  },
+  {
+    "name": "Service",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/service/",
+    "local_url": "http://localhost:8080/service/index.html",
+    "safe": "service_index"
+  },
+  {
+    "name": "Shopping Guide",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/shopping-guide/",
+    "local_url": "http://localhost:8080/shopping-guide/index.html",
+    "safe": "shopping-guide_index"
+  },
+  {
+    "name": "Showroom",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/showroom.html",
+    "local_url": "http://localhost:8080/showroom.html",
+    "safe": "showroom"
+  },
+  {
+    "name": "Terms",
+    "prod_url": "https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/terms/",
+    "local_url": "http://localhost:8080/terms/index.html",
+    "safe": "terms_index"
+  }
+]
