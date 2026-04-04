@@ -6,7 +6,11 @@
   // WooCommerce バックグラウンド同期（localStorage優先、APIは非同期で反映）
   function wcSync(action, productId, qty) {
     if (!window.OFTApi) return;
-    var BASE = 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
+    var isStg = (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+      || location.hostname.indexOf('ngrok') !== -1
+      || location.hostname.indexOf('onrender.com') !== -1
+      || location.hostname.indexOf('railway.app') !== -1);
+    var BASE = isStg ? location.origin + '/oft/v1' : 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
     var body = { action: action, product_id: productId, quantity: qty || 1 };
     fetch(BASE + '/cart', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },

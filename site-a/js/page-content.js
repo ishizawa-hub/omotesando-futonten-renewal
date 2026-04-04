@@ -7,7 +7,13 @@
   'use strict';
 
   var STORAGE_KEY = 'oft_page_content';
-  var API_URL = 'https://omotesando-futonten.com/wp/wp-json/oft/v1/page-content';
+  var isStaging = (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    || location.hostname.indexOf('ngrok') !== -1
+    || location.hostname.indexOf('onrender.com') !== -1
+    || location.hostname.indexOf('railway.app') !== -1);
+  var API_URL = isStaging
+    ? location.origin + '/oft/v1/page-content'
+    : 'https://omotesando-futonten.com/wp/wp-json/oft/v1/page-content';
 
   function getDataLocal() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }

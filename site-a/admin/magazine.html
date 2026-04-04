@@ -260,7 +260,8 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       <table>
         <thead>
           <tr>
-            <th style="padding-left:24px">タイトル</th>
+            <th style="width:56px;"></th>
+            <th style="padding-left:8px">タイトル</th>
             <th>カテゴリ</th>
             <th>タグ</th>
             <th>公開日</th>
@@ -636,7 +637,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     });
 
     if (filtered.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:#999;">記事が見つかりません</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#999;">記事が見つかりません</td></tr>';
       return;
     }
 
@@ -647,8 +648,14 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       var tagsHtml = (a.tags || []).map(function(t) { return '<span class="cat-badge" style="font-size:11px;padding:2px 6px;margin-right:4px;">' + escHtml(t) + '</span>'; }).join('');
       var dateDisplay = a.date ? a.date.replace(/-/g, '/') : '';
 
+      var thumbUrl = (a.listThumbnail && a.listThumbnail.source === 'custom' && a.listThumbnail.url) ? a.listThumbnail.url : (a.heroImage || '');
+      var thumbCell = thumbUrl
+        ? '<img src="' + escHtml(thumbUrl) + '" style="width:44px;height:44px;border-radius:6px;object-fit:cover;" onerror="this.style.display=\'none\'">'
+        : '<div style="width:44px;height:44px;border-radius:6px;background:#F0EFEC;display:flex;align-items:center;justify-content:center;font-size:18px;">&#128221;</div>';
+
       html += '<tr>' +
-        '<td style="padding-left:24px;font-weight:600;">' + escHtml(a.title) + '</td>' +
+        '<td style="padding:8px 6px;">' + thumbCell + '</td>' +
+        '<td style="padding-left:8px;font-weight:600;">' + escHtml(a.title) + '</td>' +
         '<td><span class="cat-badge">' + escHtml(a.category) + '</span></td>' +
         '<td>' + tagsHtml + '</td>' +
         '<td style="color:#888;font-size:13px;">' + dateDisplay + '</td>' +
@@ -872,7 +879,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       'ul': '<ul>\n  <li>項目1</li>\n  <li>項目2</li>\n</ul>\n',
       'blockquote': '<blockquote>\n  <p>引用テキスト</p>\n</blockquote>\n',
       'figure': '<figure>\n  <img src="" alt="" loading="lazy">\n  <figcaption>キャプション</figcaption>\n</figure>\n',
-      'dialogue': '<div class="dialogue-block">\n  <div class="dialogue-item">\n    <div class="dialogue-avatar">\n      <img src="/images/magazine/icon-staff.webp" alt="スタッフ" loading="lazy">\n      <span class="dialogue-name">スタッフ</span>\n    </div>\n    <div class="dialogue-bubble">お布団選びでお悩みですか？</div>\n  </div>\n  <div class="dialogue-item dialogue-right">\n    <div class="dialogue-avatar">\n      <img src="/images/magazine/icon-customer.webp" alt="お客様" loading="lazy">\n      <span class="dialogue-name">お客様</span>\n    </div>\n    <div class="dialogue-bubble">はい、羽毛布団の選び方を教えてください。</div>\n  </div>\n</div>\n',
+      'dialogue': '<div class="dialogue-block">\n  <div class="dialogue-item">\n    <div class="dialogue-avatar">\n      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' rx='24' fill='%232D2D2D'/%3E%3Ctext x='24' y='30' text-anchor='middle' fill='%23C9A96E' font-size='20'%3ES%3C/text%3E%3C/svg%3E" alt="スタッフ" loading="lazy">\n      <span class="dialogue-name">スタッフ</span>\n    </div>\n    <div class="dialogue-bubble">お布団選びでお悩みですか？</div>\n  </div>\n  <div class="dialogue-item dialogue-right">\n    <div class="dialogue-avatar">\n      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' rx='24' fill='%23F0EFEC'/%3E%3Ctext x='24' y='30' text-anchor='middle' fill='%232D2D2D' font-size='20'%3EC%3C/text%3E%3C/svg%3E" alt="お客様" loading="lazy">\n      <span class="dialogue-name">お客様</span>\n    </div>\n    <div class="dialogue-bubble">はい、羽毛布団の選び方を教えてください。</div>\n  </div>\n</div>\n',
       'toc': '<nav class="toc-block">\n  <p class="toc-title">目次</p>\n  <ol class="toc-list">\n    <li><a href="#section1">セクション1のタイトル</a></li>\n    <li><a href="#section2">セクション2のタイトル</a></li>\n    <li><a href="#section3">セクション3のタイトル</a></li>\n  </ol>\n</nav>\n',
       'ol': '<ol>\n  <li>手順1</li>\n  <li>手順2</li>\n  <li>手順3</li>\n</ol>\n',
       'ogp-card': '<div class="ogp-card">\n  <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="ogp-card-link">\n    <div class="ogp-card-image">\n      <img src="" alt="OGP画像" loading="lazy">\n    </div>\n    <div class="ogp-card-content">\n      <p class="ogp-card-title">ページタイトル</p>\n      <p class="ogp-card-description">ページの説明文がここに入ります。</p>\n      <span class="ogp-card-url">example.com</span>\n    </div>\n  </a>\n</div>\n',
@@ -880,7 +887,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       'box-point': '<div class="info-box point">\n  <span class="info-box-icon">&#128161;</span>\n  <div class="info-box-content">\n    <p class="info-box-title">ポイント</p>\n    <p>重要なポイントの内容をここに記述します。</p>\n  </div>\n</div>\n',
       'box-supplement': '<div class="info-box supplement">\n  <span class="info-box-icon">&#128221;</span>\n  <div class="info-box-content">\n    <p class="info-box-title">補足情報</p>\n    <p>補足の内容をここに記述します。</p>\n  </div>\n</div>\n',
       'table': '<div class="table-responsive">\n  <table class="article-table">\n    <thead>\n      <tr>\n        <th>項目</th>\n        <th>プランA</th>\n        <th>プランB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>素材</td>\n        <td>マザーグースダウン</td>\n        <td>ホワイトグースダウン</td>\n      </tr>\n      <tr>\n        <td>価格</td>\n        <td>198,000円</td>\n        <td>128,000円</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n',
-      'staff-comment': '<div class="staff-comment">\n  <div class="staff-comment-avatar">\n    <img src="/images/magazine/staff-photo.webp" alt="スタッフ名" loading="lazy">\n  </div>\n  <div class="staff-comment-body">\n    <p class="staff-comment-name">スタッフ名 / 肩書き</p>\n    <div class="staff-comment-bubble">\n      <p>スタッフからのコメントをここに記述します。</p>\n    </div>\n  </div>\n</div>\n',
+      'staff-comment': '<div class="staff-comment">\n  <div class="staff-comment-avatar">\n    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' rx='24' fill='%232D2D2D'/%3E%3Ctext x='24' y='30' text-anchor='middle' fill='%23C9A96E' font-size='20'%3EP%3C/text%3E%3C/svg%3E" alt="スタッフ名" loading="lazy">\n  </div>\n  <div class="staff-comment-body">\n    <p class="staff-comment-name">スタッフ名 / 肩書き</p>\n    <div class="staff-comment-bubble">\n      <p>スタッフからのコメントをここに記述します。</p>\n    </div>\n  </div>\n</div>\n',
       'accordion': '<div class="accordion-block">\n  <details class="accordion-item">\n    <summary class="accordion-question">よくある質問1：質問内容をここに記述</summary>\n    <div class="accordion-answer">\n      <p>回答の内容をここに記述します。</p>\n    </div>\n  </details>\n  <details class="accordion-item">\n    <summary class="accordion-question">よくある質問2：質問内容をここに記述</summary>\n    <div class="accordion-answer">\n      <p>回答の内容をここに記述します。</p>\n    </div>\n  </details>\n</div>\n',
       'two-column': '<div class="two-column-block">\n  <div class="two-column-text">\n    <h3>見出しテキスト</h3>\n    <p>説明文をここに記述します。テキストと画像が横並びで表示されます。</p>\n  </div>\n  <div class="two-column-image">\n    <img src="" alt="画像の説明" loading="lazy">\n  </div>\n</div>\n',
       'divider': '<div class="section-divider-design">\n  <span></span><span></span><span></span>\n</div>\n',

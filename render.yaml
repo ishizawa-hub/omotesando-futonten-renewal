@@ -1,0 +1,13 @@
+# Render.com Blueprint - 表参道布団店ステージング環境
+services:
+  - type: web
+    name: omotesando-futonten-staging
+    runtime: python
+    buildCommand: pip install -r staging/requirements.txt
+    startCommand: cd staging && gunicorn server:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    plan: free
+    branch: develop
+    rootDir: .

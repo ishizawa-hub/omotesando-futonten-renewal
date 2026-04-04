@@ -1110,12 +1110,12 @@ def _init_sample_data():
 # ============================================================
 # メイン
 # ============================================================
+# Gunicorn / Render.com 用: モジュールインポート時にも初期データ生成
+if not db_path('products').exists():
+    _init_sample_data()
+
 if __name__ == '__main__':
     import sys
-    # 初期データがなければサンプル生成
-    if not db_path('products').exists():
-        _init_sample_data()
-
     # ポート: 環境変数 PORT > コマンドライン引数 > デフォルト5000
     port = int(os.environ.get('PORT', 5000))
     for arg in sys.argv[1:]:
