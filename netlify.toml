@@ -1,0 +1,34 @@
+# Netlify設定: ステージング環境用
+# developブランチからsite-aディレクトリをデプロイ
+
+[build]
+  publish = "site-a"
+  # ビルドコマンドなし（静的サイト）
+
+# リダイレクト: /admin → /admin/login.html
+[[redirects]]
+  from = "/admin"
+  to = "/admin/login.html"
+  status = 302
+
+# 404ページ
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ヘッダー: キャッシュ制御
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
