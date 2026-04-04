@@ -137,6 +137,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 </style>
 </head>
 <body>
+<script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
 <div class="admin-sidebar-fix">
@@ -171,6 +172,10 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
     </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -211,12 +216,42 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
           <option value="">全ステータス</option>
           <option value="公開">公開</option>
           <option value="下書き">下書き</option>
+          <option value="非公開">非公開</option>
           <option value="予約">予約</option>
         </select>
         <input type="text" id="filterSearch" placeholder="タイトル・タグで検索..." class="field-input" style="width:240px;">
       </div>
       <button class="btn btn-primary" onclick="createNewArticle()">+ 新規記事を作成</button>
     </div>
+    <!-- Featured Article Selection -->
+    <div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden;margin-bottom:20px">
+      <div style="padding:16px 24px;border-bottom:1px solid #EAEDF3;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:18px;">&#11088;</span>
+          <span style="font-size:14px;font-weight:700;color:#1A1A1A;">フィーチャー記事（トップ表示）</span>
+          <span style="font-size:11px;color:#999;">— マガジンページの最上部に大きく表示される記事</span>
+        </div>
+        <button class="btn btn-sm btn-outline" onclick="toggleFeaturedPanel()">変更</button>
+      </div>
+      <div id="featuredDisplay" style="padding:16px 24px;">
+        <div id="featuredCurrentInfo" style="display:flex;align-items:center;gap:16px;">
+          <div id="featuredThumb" style="width:80px;height:56px;border-radius:6px;background:#F5F6FA;overflow:hidden;flex-shrink:0;">
+            <img id="featuredThumbImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none;">
+          </div>
+          <div>
+            <div id="featuredTitle" style="font-size:14px;font-weight:600;color:#1A1A1A;">未設定</div>
+            <div id="featuredMeta" style="font-size:12px;color:#999;margin-top:2px;">記事を選択してください</div>
+          </div>
+        </div>
+      </div>
+      <div id="featuredSelectPanel" style="display:none;padding:16px 24px;border-top:1px solid #EAEDF3;background:#FAFBFD;">
+        <div style="margin-bottom:12px;">
+          <input type="text" id="featuredSearch" placeholder="記事を検索..." class="field-input" style="width:100%;padding:8px 12px;font-size:13px;" oninput="filterFeaturedList()">
+        </div>
+        <div id="featuredList" style="max-height:240px;overflow-y:auto;"></div>
+      </div>
+    </div>
+
     <div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
       <table>
         <thead>
@@ -239,9 +274,22 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     <!-- Editor header -->
     <div style="padding:16px 32px;background:#fff;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
       <button class="btn btn-secondary" onclick="backToList()">&#8592; 記事一覧に戻る</button>
-      <div style="display:flex;gap:8px;">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-outline btn-sm" onclick="generatePreviewUrl()" id="previewUrlBtn" style="display:none;" title="外部確認用URLを発行">&#128279; プレビューURL発行</button>
         <button class="btn btn-secondary" onclick="saveArticle(true)">下書き保存</button>
         <button class="btn btn-primary" onclick="saveArticle(false)">保存する</button>
+      </div>
+    </div>
+
+    <!-- Preview URL Banner -->
+    <div id="previewUrlBanner" style="display:none;padding:12px 32px;background:#FDF8F0;border-bottom:1px solid #E8D9B8;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:13px;font-weight:600;color:#856404;">&#128279; 外部確認用URL（無期限・URLを知っている人が閲覧可）:</span>
+        <div style="flex:1;min-width:200px;display:flex;gap:8px;align-items:center;">
+          <input type="text" id="previewUrlInput" readonly style="flex:1;padding:6px 10px;border:1px solid #E8D9B8;border-radius:6px;font-size:12px;background:#fff;color:#555;font-family:monospace;" onclick="this.select()">
+          <button class="btn btn-sm btn-primary" onclick="copyPreviewUrl()" style="white-space:nowrap;">コピー</button>
+          <button class="btn btn-sm btn-danger" onclick="revokePreviewUrl()" title="URLを無効化" style="padding:5px 8px;font-size:11px;">無効化</button>
+        </div>
       </div>
     </div>
 
@@ -295,6 +343,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
             <select id="ed-status" class="field-select">
               <option value="公開">公開</option>
               <option value="下書き">下書き</option>
+              <option value="非公開">非公開</option>
               <option value="予約">予約</option>
             </select>
           </div>
@@ -329,8 +378,9 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       <div id="tab-body" class="tab-content">
         <div class="field-group">
           <label class="field-label">記事本文 (HTML)</label>
-          <div class="field-note" style="margin-bottom:8px;">HTMLで記述。使用可能なタグ: h2, h3, p, ul/li, blockquote, figure/img/figcaption</div>
-          <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <div class="field-note" style="margin-bottom:8px;">HTMLで記述。使用可能なタグ: h2, h3, p, ul/ol/li, blockquote, figure/img/figcaption ほかリッチモジュール対応</div>
+          <!-- 1行目: 基本HTMLタグ -->
+          <div style="display:flex;gap:6px;margin-bottom:4px;flex-wrap:wrap;">
             <button class="btn btn-sm btn-secondary" onclick="insertSnippet('h2')" title="見出し2">&lt;h2&gt;</button>
             <button class="btn btn-sm btn-secondary" onclick="insertSnippet('h3')" title="見出し3">&lt;h3&gt;</button>
             <button class="btn btn-sm btn-secondary" onclick="insertSnippet('p')" title="段落">&lt;p&gt;</button>
@@ -340,6 +390,39 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
             <span style="flex:1;"></span>
             <button class="btn btn-sm btn-outline" id="previewToggle" onclick="togglePreview()">プレビュー表示</button>
           </div>
+          <!-- 2行目: リッチモジュール -->
+          <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;">
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('dialogue')" title="対話形式（会話）">&#128172; 対話</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('toc')" title="目次">&#128203; 目次</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('ol')" title="番号付きリスト">&#9997; 番号リスト</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('ogp-card')" title="OGPリンクカード">&#128279; リンクカード</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('box-note')" title="注意ボックス">&#9888; 注意</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('box-point')" title="ポイントボックス">&#128161; ポイント</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('box-supplement')" title="補足ボックス">&#128221; 補足</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('table')" title="テーブル">&#128202; テーブル</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('staff-comment')" title="スタッフコメント">&#128100; スタッフ</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('accordion')" title="アコーディオン（FAQ）">&#128260; FAQ</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('two-column')" title="2カラムレイアウト">&#9635; 2カラム</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('divider')" title="装飾区切り線">&#10072; 区切り線</button>
+            <button class="btn btn-sm btn-secondary" onclick="insertSnippet('video')" title="動画埋め込み">&#9654; 動画</button>
+          </div>
+          <!-- モジュールガイド（折りたたみ） -->
+          <details style="margin-bottom:10px;background:#FAFBFD;border:1px solid #E5E7EB;border-radius:8px;padding:0;">
+            <summary style="padding:8px 12px;cursor:pointer;font-size:12px;font-weight:600;color:#666;">&#128214; モジュールガイド（クリックで展開）</summary>
+            <div style="padding:8px 12px 12px;font-size:12px;line-height:1.7;color:#555;">
+              <strong>&#128172; 対話形式</strong> — 人物アイコン+名前付きの吹き出し会話。Q&amp;Aやインタビュー形式に。<code>.dialogue-block</code><br>
+              <strong>&#128203; 目次</strong> — ページ内リンク付き目次ナビ。<code>id</code>属性と<code>href="#..."</code>を対応させる。<br>
+              <strong>&#9997; 番号リスト</strong> — 手順説明に便利な<code>&lt;ol&gt;</code>。<br>
+              <strong>&#128279; リンクカード</strong> — URLを入力しOGP風プレビューカード表示。画像・タイトル・説明を手動で記入。<br>
+              <strong>&#9888; 注意 / &#128161; ポイント / &#128221; 補足</strong> — 背景色付きインフォボックス3種。<code>.info-box.note</code> / <code>.point</code> / <code>.supplement</code><br>
+              <strong>&#128202; テーブル</strong> — 比較表など。行・列は自由に増減可。<br>
+              <strong>&#128100; スタッフコメント</strong> — スタッフ写真+名前+吹き出しコメント。<code>.staff-comment</code><br>
+              <strong>&#128260; FAQ</strong> — 開閉式アコーディオン。<code>&lt;details&gt;/&lt;summary&gt;</code>を使用。<br>
+              <strong>&#9635; 2カラム</strong> — テキスト+画像の横並びレイアウト。モバイルでは縦積みに。<br>
+              <strong>&#10072; 区切り線</strong> — セクション間のデザイン装飾区切り。<br>
+              <strong>&#9654; 動画</strong> — YouTube/Vimeoレスポンシブ埋め込み。URLのIDを差し替えて使用。
+            </div>
+          </details>
           <textarea id="ed-body" class="field-textarea" style="min-height:400px;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.6;" placeholder="<h2>羽毛布団のお手入れ方法</h2>
 <p>最高品質のマザーグースダウンを長くお使いいただくために、正しいお手入れ方法をご紹介します。</p>
 
@@ -483,17 +566,22 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     { id:5, title:'失敗しない布団の選び方ガイド', category:'ガイド', status:'公開', date:'2026-01-05', slug:'futon-guide', tags:['選び方','ガイド','初心者'], body:'', heroImage:'', heroAlt:'', ctaLabel:'', ctaTitle:'', ctaUrl:'', ctaButton:'View More', relatedProducts:[], relatedArticles:[], prevTitle:'', prevUrl:'', nextTitle:'', nextUrl:'', metaTitle:'', metaDesc:'', ogImage:'', canonical:'' }
   ];
 
-  // ===== Load / Save =====
-  function loadArticles() {
+  // ===== Load / Save (API優先 + localStorageフォールバック) =====
+  function loadArticlesLocal() {
     try {
       var stored = localStorage.getItem(STORAGE_KEY);
-      articles = stored ? JSON.parse(stored) : defaultArticles.slice();
-    } catch(e) {
-      articles = defaultArticles.slice();
-    }
+      return stored ? JSON.parse(stored) : null;
+    } catch(e) { return null; }
+  }
+  function saveArticlesLocal() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
+  }
+  function loadArticles() {
+    var local = loadArticlesLocal();
+    articles = local || defaultArticles.slice();
   }
   function saveArticles() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
+    saveArticlesLocal();
   }
 
   // ===== Toast =====
@@ -529,7 +617,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 
     var html = '';
     filtered.forEach(function(a) {
-      var statusClass = a.status === '公開' ? 'status-published' : (a.status === '下書き' ? 'status-draft' : 'status-scheduled');
+      var statusClass = a.status === '公開' ? 'status-published' : (a.status === '下書き' ? 'status-draft' : (a.status === '非公開' ? 'status-draft' : 'status-scheduled'));
       var statusLabel = a.status === '公開' ? '公開中' : a.status;
       var tagsHtml = (a.tags || []).map(function(t) { return '<span class="cat-badge" style="font-size:11px;padding:2px 6px;margin-right:4px;">' + escHtml(t) + '</span>'; }).join('');
       var dateDisplay = a.date ? a.date.replace(/-/g, '/') : '';
@@ -543,6 +631,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
         '<td><div class="actions-cell">' +
           '<button class="act-edit" onclick="editArticle(' + a.id + ')">編集</button>' +
           '<button class="act-dup" onclick="duplicateArticle(' + a.id + ')">複製</button>' +
+          '<button class="act-edit" onclick="generatePreviewUrlForList(' + a.id + ')" title="外部確認URL発行" style="color:#C9A96E;">&#128279; URL</button>' +
           '<button class="act-del" onclick="deleteArticle(' + a.id + ')">削除</button>' +
         '</div></td>' +
       '</tr>';
@@ -618,6 +707,23 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     document.getElementById('previewToggle').textContent = 'プレビュー表示';
 
     editingId = article.id || null;
+
+    // Preview URL button & banner
+    var previewBtn = document.getElementById('previewUrlBtn');
+    var previewBanner = document.getElementById('previewUrlBanner');
+    if (editingId) {
+      previewBtn.style.display = 'inline-flex';
+      // Check if preview token exists
+      var tokens = getPreviewTokens();
+      if (tokens[editingId]) {
+        showPreviewBanner(tokens[editingId]);
+      } else {
+        previewBanner.style.display = 'none';
+      }
+    } else {
+      previewBtn.style.display = 'none';
+      previewBanner.style.display = 'none';
+    }
   }
 
   // ===== Tab Switching =====
@@ -697,7 +803,20 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       'p': '<p>本文テキスト</p>\n',
       'ul': '<ul>\n  <li>項目1</li>\n  <li>項目2</li>\n</ul>\n',
       'blockquote': '<blockquote>\n  <p>引用テキスト</p>\n</blockquote>\n',
-      'figure': '<figure>\n  <img src="" alt="" loading="lazy">\n  <figcaption>キャプション</figcaption>\n</figure>\n'
+      'figure': '<figure>\n  <img src="" alt="" loading="lazy">\n  <figcaption>キャプション</figcaption>\n</figure>\n',
+      'dialogue': '<div class="dialogue-block">\n  <div class="dialogue-item">\n    <div class="dialogue-avatar">\n      <img src="/images/magazine/icon-staff.webp" alt="スタッフ" loading="lazy">\n      <span class="dialogue-name">スタッフ</span>\n    </div>\n    <div class="dialogue-bubble">お布団選びでお悩みですか？</div>\n  </div>\n  <div class="dialogue-item dialogue-right">\n    <div class="dialogue-avatar">\n      <img src="/images/magazine/icon-customer.webp" alt="お客様" loading="lazy">\n      <span class="dialogue-name">お客様</span>\n    </div>\n    <div class="dialogue-bubble">はい、羽毛布団の選び方を教えてください。</div>\n  </div>\n</div>\n',
+      'toc': '<nav class="toc-block">\n  <p class="toc-title">目次</p>\n  <ol class="toc-list">\n    <li><a href="#section1">セクション1のタイトル</a></li>\n    <li><a href="#section2">セクション2のタイトル</a></li>\n    <li><a href="#section3">セクション3のタイトル</a></li>\n  </ol>\n</nav>\n',
+      'ol': '<ol>\n  <li>手順1</li>\n  <li>手順2</li>\n  <li>手順3</li>\n</ol>\n',
+      'ogp-card': '<div class="ogp-card">\n  <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="ogp-card-link">\n    <div class="ogp-card-image">\n      <img src="" alt="OGP画像" loading="lazy">\n    </div>\n    <div class="ogp-card-content">\n      <p class="ogp-card-title">ページタイトル</p>\n      <p class="ogp-card-description">ページの説明文がここに入ります。</p>\n      <span class="ogp-card-url">example.com</span>\n    </div>\n  </a>\n</div>\n',
+      'box-note': '<div class="info-box note">\n  <span class="info-box-icon">&#9888;&#65039;</span>\n  <div class="info-box-content">\n    <p class="info-box-title">ご注意ください</p>\n    <p>注意事項の内容をここに記述します。</p>\n  </div>\n</div>\n',
+      'box-point': '<div class="info-box point">\n  <span class="info-box-icon">&#128161;</span>\n  <div class="info-box-content">\n    <p class="info-box-title">ポイント</p>\n    <p>重要なポイントの内容をここに記述します。</p>\n  </div>\n</div>\n',
+      'box-supplement': '<div class="info-box supplement">\n  <span class="info-box-icon">&#128221;</span>\n  <div class="info-box-content">\n    <p class="info-box-title">補足情報</p>\n    <p>補足の内容をここに記述します。</p>\n  </div>\n</div>\n',
+      'table': '<div class="table-responsive">\n  <table class="article-table">\n    <thead>\n      <tr>\n        <th>項目</th>\n        <th>プランA</th>\n        <th>プランB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>素材</td>\n        <td>マザーグースダウン</td>\n        <td>ホワイトグースダウン</td>\n      </tr>\n      <tr>\n        <td>価格</td>\n        <td>198,000円</td>\n        <td>128,000円</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n',
+      'staff-comment': '<div class="staff-comment">\n  <div class="staff-comment-avatar">\n    <img src="/images/magazine/staff-photo.webp" alt="スタッフ名" loading="lazy">\n  </div>\n  <div class="staff-comment-body">\n    <p class="staff-comment-name">スタッフ名 / 肩書き</p>\n    <div class="staff-comment-bubble">\n      <p>スタッフからのコメントをここに記述します。</p>\n    </div>\n  </div>\n</div>\n',
+      'accordion': '<div class="accordion-block">\n  <details class="accordion-item">\n    <summary class="accordion-question">よくある質問1：質問内容をここに記述</summary>\n    <div class="accordion-answer">\n      <p>回答の内容をここに記述します。</p>\n    </div>\n  </details>\n  <details class="accordion-item">\n    <summary class="accordion-question">よくある質問2：質問内容をここに記述</summary>\n    <div class="accordion-answer">\n      <p>回答の内容をここに記述します。</p>\n    </div>\n  </details>\n</div>\n',
+      'two-column': '<div class="two-column-block">\n  <div class="two-column-text">\n    <h3>見出しテキスト</h3>\n    <p>説明文をここに記述します。テキストと画像が横並びで表示されます。</p>\n  </div>\n  <div class="two-column-image">\n    <img src="" alt="画像の説明" loading="lazy">\n  </div>\n</div>\n',
+      'divider': '<div class="section-divider-design">\n  <span></span><span></span><span></span>\n</div>\n',
+      'video': '<div class="video-embed">\n  <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="動画タイトル" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>\n</div>\n'
     };
     var snippet = snippets[tag] || '';
     ta.value = text.substring(0, start) + snippet + text.substring(end);
@@ -850,6 +969,20 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     }
 
     saveArticles();
+    // API経由でも保存
+    if (typeof AdminAPI !== 'undefined') {
+      var wpStatus = data.status === '公開' ? 'publish' : (data.status === '非公開' ? 'private' : 'draft');
+      var apiData = { title: data.title, content: data.body || '', status: wpStatus, category: data.category || '' };
+      if (editingId && articles.find(function(a) { return a.id === editingId; })) {
+        AdminAPI.updateMagazine(editingId, apiData)
+          .then(function() { console.log('[Magazine] API更新成功: ' + editingId); })
+          .catch(function(e) { console.warn('[Magazine] API更新失敗:', e.message); });
+      } else {
+        AdminAPI.createMagazine(apiData)
+          .then(function(res) { console.log('[Magazine] API作成成功: ' + (res.id || '')); })
+          .catch(function(e) { console.warn('[Magazine] API作成失敗:', e.message); });
+      }
+    }
     renderList();
   };
 
@@ -880,10 +1013,123 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     showToast('記事を複製しました');
   };
 
+  // ===== Preview URL System =====
+  var PREVIEW_TOKENS_KEY = 'oft_magazine_preview_tokens';
+
+  function getPreviewTokens() {
+    try { return JSON.parse(localStorage.getItem(PREVIEW_TOKENS_KEY)) || {}; }
+    catch(e) { return {}; }
+  }
+
+  function savePreviewTokens(tokens) {
+    localStorage.setItem(PREVIEW_TOKENS_KEY, JSON.stringify(tokens));
+  }
+
+  function generateToken() {
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var token = '';
+    for (var i = 0; i < 32; i++) {
+      token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return token;
+  }
+
+  function getPreviewPageUrl(token) {
+    var base = location.href.replace(/\/admin\/magazine\.html.*$/, '');
+    return base + '/admin/preview-article.html?token=' + token;
+  }
+
+  function showPreviewBanner(token) {
+    var banner = document.getElementById('previewUrlBanner');
+    var input = document.getElementById('previewUrlInput');
+    banner.style.display = 'block';
+    input.value = getPreviewPageUrl(token);
+  }
+
+  window.generatePreviewUrl = function() {
+    if (!editingId) {
+      showToast('先に記事を保存してください');
+      return;
+    }
+    var tokens = getPreviewTokens();
+    if (tokens[editingId]) {
+      // Already has a token, just show it
+      showPreviewBanner(tokens[editingId]);
+      showToast('既存のプレビューURLを表示しています');
+      return;
+    }
+    var token = generateToken();
+    tokens[editingId] = token;
+    // Also store reverse mapping: token -> articleId
+    tokens['_token_' + token] = editingId;
+    savePreviewTokens(tokens);
+    showPreviewBanner(token);
+    showToast('プレビューURLを発行しました');
+  };
+
+  window.generatePreviewUrlForList = function(id) {
+    var tokens = getPreviewTokens();
+    if (!tokens[id]) {
+      var token = generateToken();
+      tokens[id] = token;
+      tokens['_token_' + token] = id;
+      savePreviewTokens(tokens);
+    }
+    var url = getPreviewPageUrl(tokens[id]);
+    // Copy to clipboard
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('プレビューURLをコピーしました');
+      });
+    } else {
+      prompt('プレビューURL:', url);
+    }
+  };
+
+  window.copyPreviewUrl = function() {
+    var input = document.getElementById('previewUrlInput');
+    input.select();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(input.value).then(function() {
+        showToast('URLをクリップボードにコピーしました');
+      });
+    } else {
+      document.execCommand('copy');
+      showToast('URLをコピーしました');
+    }
+  };
+
+  window.revokePreviewUrl = function() {
+    if (!editingId) return;
+    if (!confirm('このプレビューURLを無効化しますか？\nURLを知っている人はアクセスできなくなります。')) return;
+    var tokens = getPreviewTokens();
+    var oldToken = tokens[editingId];
+    if (oldToken) {
+      delete tokens['_token_' + oldToken];
+    }
+    delete tokens[editingId];
+    savePreviewTokens(tokens);
+    document.getElementById('previewUrlBanner').style.display = 'none';
+    showToast('プレビューURLを無効化しました');
+  };
+
   window.deleteArticle = function(id) {
     if (!confirm('この記事を削除しますか？')) return;
+    // Also clean up preview token
+    var tokens = getPreviewTokens();
+    if (tokens[id]) {
+      delete tokens['_token_' + tokens[id]];
+      delete tokens[id];
+      savePreviewTokens(tokens);
+    }
     articles = articles.filter(function(a) { return a.id !== id; });
     saveArticles();
+    // API経由でも削除
+    if (typeof AdminAPI !== 'undefined') {
+      AdminAPI.deleteMagazine(id)
+        .then(function() { console.log('[Magazine] API削除成功: ' + id); })
+        .catch(function(e) { console.warn('[Magazine] API削除失敗:', e.message); });
+    }
     renderList();
     showToast('記事を削除しました');
   };
@@ -907,9 +1153,139 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
+  // ===== Featured Article Management =====
+  var FEATURED_KEY = 'oft_magazine_featured';
+
+  function getFeaturedId() {
+    try { return JSON.parse(localStorage.getItem(FEATURED_KEY)); } catch(e) { return null; }
+  }
+
+  function saveFeaturedId(id) {
+    localStorage.setItem(FEATURED_KEY, JSON.stringify(id));
+  }
+
+  function updateFeaturedDisplay() {
+    var featuredId = getFeaturedId();
+    var titleEl = document.getElementById('featuredTitle');
+    var metaEl = document.getElementById('featuredMeta');
+    var thumbImg = document.getElementById('featuredThumbImg');
+
+    if (!featuredId) {
+      titleEl.textContent = '未設定';
+      metaEl.textContent = '記事を選択してください';
+      thumbImg.style.display = 'none';
+      return;
+    }
+
+    var article = articles.find(function(a) { return a.id === featuredId; });
+    if (!article) {
+      titleEl.textContent = '（削除された記事）';
+      metaEl.textContent = 'ID: ' + featuredId;
+      thumbImg.style.display = 'none';
+      return;
+    }
+
+    titleEl.textContent = article.title;
+    metaEl.textContent = (article.category || '') + ' | ' + (article.date || '').replace(/-/g, '/') + ' | ' + (article.status || '');
+    if (article.heroImage) {
+      thumbImg.src = article.heroImage;
+      thumbImg.style.display = 'block';
+    } else {
+      thumbImg.style.display = 'none';
+    }
+  }
+
+  window.toggleFeaturedPanel = function() {
+    var panel = document.getElementById('featuredSelectPanel');
+    if (panel.style.display === 'none') {
+      panel.style.display = 'block';
+      renderFeaturedList();
+    } else {
+      panel.style.display = 'none';
+    }
+  };
+
+  function renderFeaturedList() {
+    var search = (document.getElementById('featuredSearch').value || '').toLowerCase();
+    var featuredId = getFeaturedId();
+    var list = document.getElementById('featuredList');
+    var filtered = articles.filter(function(a) {
+      if (search && a.title.toLowerCase().indexOf(search) === -1) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      list.innerHTML = '<div style="padding:16px;text-align:center;color:#999;font-size:13px;">記事が見つかりません</div>';
+      return;
+    }
+
+    list.innerHTML = filtered.map(function(a) {
+      var isFeatured = a.id === featuredId;
+      var bgColor = isFeatured ? '#FDF8F0' : '#fff';
+      var borderColor = isFeatured ? '#C9A96E' : '#EAEDF3';
+      return '<div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid ' + borderColor + ';border-radius:6px;margin-bottom:6px;cursor:pointer;background:' + bgColor + ';transition:all 0.15s;" ' +
+        'onclick="setFeaturedArticle(' + a.id + ')" ' +
+        'onmouseover="this.style.borderColor=\'#C9A96E\'" onmouseout="this.style.borderColor=\'' + borderColor + '\'">' +
+        (a.heroImage ? '<img src="' + escAttr(a.heroImage) + '" style="width:48px;height:34px;object-fit:cover;border-radius:4px;flex-shrink:0;">' : '<div style="width:48px;height:34px;background:#F5F6FA;border-radius:4px;flex-shrink:0;"></div>') +
+        '<div style="flex:1;min-width:0;">' +
+          '<div style="font-size:13px;font-weight:600;color:#1A1A1A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escHtml(a.title) + '</div>' +
+          '<div style="font-size:11px;color:#999;">' + escHtml(a.category) + ' | ' + (a.date || '').replace(/-/g, '/') + '</div>' +
+        '</div>' +
+        (isFeatured ? '<span style="font-size:11px;font-weight:600;color:#C9A96E;white-space:nowrap;">&#11088; 選択中</span>' : '') +
+      '</div>';
+    }).join('');
+  }
+
+  window.filterFeaturedList = function() {
+    renderFeaturedList();
+  };
+
+  window.setFeaturedArticle = function(id) {
+    saveFeaturedId(id);
+    updateFeaturedDisplay();
+    document.getElementById('featuredSelectPanel').style.display = 'none';
+    showToast('フィーチャー記事を更新しました');
+  };
+
   // ===== Init =====
   loadArticles();
   renderList();
+  updateFeaturedDisplay();
+
+  // API非同期ロード: 成功時にデータ差し替え＆再描画
+  (async function loadFromAPI() {
+    try {
+      if (typeof AdminAPI === 'undefined') throw new Error('AdminAPI未定義');
+      var apiArticles = await AdminAPI.getMagazines();
+      if (Array.isArray(apiArticles) && apiArticles.length > 0) {
+        var statusMap = { 'publish': '公開', 'draft': '下書き', 'private': '非公開', 'pending': '下書き' };
+        articles = apiArticles.map(function(a) {
+          return {
+            id: a.id,
+            title: a.title || '',
+            category: (a.categories && a.categories.length > 1) ? a.categories.filter(function(c) { return c !== 'magazine'; })[0] || '' : '',
+            status: statusMap[a.status] || a.status,
+            date: (a.date || '').slice(0, 10),
+            slug: '',
+            tags: [],
+            body: a.content || '',
+            heroImage: a.thumbnail || '',
+            heroAlt: '',
+            ctaLabel: '', ctaTitle: '', ctaUrl: '', ctaButton: 'View More',
+            relatedProducts: [], relatedArticles: [],
+            prevTitle: '', prevUrl: '', nextTitle: '', nextUrl: '',
+            metaTitle: '', metaDesc: '', ogImage: '', canonical: ''
+          };
+        });
+        saveArticlesLocal();
+        renderList();
+        updateFeaturedDisplay();
+        console.log('[Magazine] APIからデータ取得成功 (' + articles.length + '件)');
+      }
+    } catch(e) {
+      console.warn('[Magazine] APIフォールバック → localStorage:', e.message);
+    }
+  })();
 
 })();
 </script>

@@ -38,7 +38,7 @@
   var AdminAPI = {
     // === 認証 ===
     login: function (email, password) {
-      return request('POST', '/admin/auth/login', { email: email, password: password })
+      return request('POST', '/admin/auth/login', { username: email, password: password })
         .then(function (data) {
           localStorage.setItem(TOKEN_KEY, data.token);
           localStorage.setItem(USER_KEY, JSON.stringify(data.user));
@@ -105,14 +105,59 @@
       return request('PUT', '/admin/inventory/' + id, { stock_quantity: quantity });
     },
 
+    // === ページコンテンツ ===
+    getPageContent: function (pageId) {
+      return request('GET', '/pages/' + pageId);
+    },
+    getAllPageContent: function () {
+      return request('GET', '/page-content');
+    },
+    updatePageContent: function (pageId, data) {
+      return request('PUT', '/admin/pages/' + pageId, data);
+    },
+
+    // === 顧客 ===
+    getCustomers: function () {
+      return request('GET', '/admin/customers');
+    },
+    createCustomer: function (data) {
+      return request('POST', '/admin/customers', data);
+    },
+    updateCustomer: function (id, data) {
+      return request('PUT', '/admin/customers/' + id, data);
+    },
+    deleteCustomer: function (id) {
+      return request('DELETE', '/admin/customers/' + id);
+    },
+
+    // === お問い合わせ ===
+    getInquiries: function () {
+      return request('GET', '/admin/inquiries');
+    },
+    updateInquiry: function (id, data) {
+      return request('PUT', '/admin/inquiries/' + id, data);
+    },
+    deleteInquiry: function (id) {
+      return request('DELETE', '/admin/inquiries/' + id);
+    },
+
+    // === 設定 ===
+    getSettings: function () {
+      return request('GET', '/admin/settings');
+    },
+    updateSettings: function (data) {
+      return request('PUT', '/admin/settings', data);
+    },
+
     // === ダッシュボード ===
     getDashboard: function () {
       return Promise.all([
         AdminAPI.getProducts().catch(function () { return []; }),
         AdminAPI.getOrders().catch(function () { return []; }),
-        AdminAPI.getInventory().catch(function () { return []; })
+        AdminAPI.getInventory().catch(function () { return []; }),
+        AdminAPI.getMagazines().catch(function () { return []; })
       ]).then(function (results) {
-        return { products: results[0], orders: results[1], inventory: results[2] };
+        return { products: results[0], orders: results[1], inventory: results[2], magazines: results[3] };
       });
     }
   };

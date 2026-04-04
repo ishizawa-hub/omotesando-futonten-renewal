@@ -178,6 +178,77 @@ class OFT_REST_API {
             'callback' => [__CLASS__, 'admin_update_inventory'],
             'permission_callback' => [__CLASS__, 'admin_permission_check'],
         ]);
+
+        // ページコンテンツ（公開読み取り）
+        register_rest_route(self::NAMESPACE, '/page-content', [
+            'methods'  => 'GET',
+            'callback' => [__CLASS__, 'get_all_page_content'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        // ページコンテンツ（管理者書き込み）
+        register_rest_route(self::NAMESPACE, '/admin/pages/(?P<page_id>[a-z_]+)', [
+            'methods'  => 'PUT',
+            'callback' => [__CLASS__, 'admin_update_page_content'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        // 顧客管理
+        register_rest_route(self::NAMESPACE, '/admin/customers', [
+            'methods'  => 'GET',
+            'callback' => [__CLASS__, 'admin_get_customers'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/customers', [
+            'methods'  => 'POST',
+            'callback' => [__CLASS__, 'admin_create_customer'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/customers/(?P<id>[a-zA-Z0-9_-]+)', [
+            'methods'  => 'PUT',
+            'callback' => [__CLASS__, 'admin_update_customer'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/customers/(?P<id>[a-zA-Z0-9_-]+)', [
+            'methods'  => 'DELETE',
+            'callback' => [__CLASS__, 'admin_delete_customer'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        // お問い合わせ管理
+        register_rest_route(self::NAMESPACE, '/admin/inquiries', [
+            'methods'  => 'GET',
+            'callback' => [__CLASS__, 'admin_get_inquiries'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/inquiries/(?P<id>[a-zA-Z0-9_-]+)', [
+            'methods'  => 'PUT',
+            'callback' => [__CLASS__, 'admin_update_inquiry'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/inquiries/(?P<id>[a-zA-Z0-9_-]+)', [
+            'methods'  => 'DELETE',
+            'callback' => [__CLASS__, 'admin_delete_inquiry'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        // 設定管理
+        register_rest_route(self::NAMESPACE, '/admin/settings', [
+            'methods'  => 'GET',
+            'callback' => [__CLASS__, 'admin_get_settings'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/admin/settings', [
+            'methods'  => 'PUT',
+            'callback' => [__CLASS__, 'admin_update_settings'],
+            'permission_callback' => [__CLASS__, 'admin_permission_check'],
+        ]);
     }
 
     /**
@@ -1003,6 +1074,201 @@ class OFT_REST_API {
             'stock_quantity' => $product->get_stock_quantity(),
             'stock_status'   => $product->get_stock_status(),
             'message'        => '在庫を更新しました',
+        ]);
+    }
+
+    // ====================================
+    // ページコンテンツ管理
+    // ====================================
+
+    /**
+     * 全ページコンテンツ取得（公開・フロントエンド用）
+     */
+    public static function get_all_page_content($request) {
+        $data = get_option('oft_page_content', []);
+        return rest_ensure_response($data);
+    }
+
+    /**
+     * ページコンテンツ更新（管理者用）
+     */
+    public static function admin_update_page_content($request) {
+        $page_id = sanitize_text_field($request->get_param('page_id'));
+        $params = $request->get_json_params();
+
+        $all_data = get_option('oft_page_content', []);
+        $all_data[$page_id] = $params;
+        update_option('oft_page_content', $all_data);
+
+        return rest_ensure_response([
+            'page_id' => $page_id,
+            'message' => 'ページコンテンツを更新しました',
+        ]);
+    }
+
+    // ====================================
+    // 顧客管理
+    // ====================================
+
+    /**
+     * 顧客一覧取得
+     */
+    public static function admin_get_customers($request) {
+        $data = get_option('oft_customers_data', []);
+        return rest_ensure_response($data);
+    }
+
+    /**
+     * 顧客作成
+     */
+    public static function admin_create_customer($request) {
+        $params = $request->get_json_params();
+        $data = get_option('oft_customers_data', []);
+
+        $id = isset($params['id']) ? sanitize_text_field($params['id']) : 'cust_' . wp_generate_password(8, false);
+        $params['id'] = $id;
+        $params['createdAt'] = current_time('Y-m-d');
+        $data[] = $params;
+
+        update_option('oft_customers_data', $data);
+
+        return rest_ensure_response([
+            'id'      => $id,
+            'message' => '顧客を作成しました',
+        ]);
+    }
+
+    /**
+     * 顧客更新
+     */
+    public static function admin_update_customer($request) {
+        $id = sanitize_text_field($request->get_param('id'));
+        $params = $request->get_json_params();
+        $data = get_option('oft_customers_data', []);
+
+        $found = false;
+        foreach ($data as &$customer) {
+            if (isset($customer['id']) && $customer['id'] === $id) {
+                $customer = array_merge($customer, $params);
+                $found = true;
+                break;
+            }
+        }
+        unset($customer);
+
+        if (!$found) {
+            return new WP_Error('not_found', '顧客が見つかりません', ['status' => 404]);
+        }
+
+        update_option('oft_customers_data', $data);
+
+        return rest_ensure_response([
+            'id'      => $id,
+            'message' => '顧客情報を更新しました',
+        ]);
+    }
+
+    /**
+     * 顧客削除
+     */
+    public static function admin_delete_customer($request) {
+        $id = sanitize_text_field($request->get_param('id'));
+        $data = get_option('oft_customers_data', []);
+
+        $data = array_values(array_filter($data, function ($c) use ($id) {
+            return !isset($c['id']) || $c['id'] !== $id;
+        }));
+
+        update_option('oft_customers_data', $data);
+
+        return rest_ensure_response([
+            'id'      => $id,
+            'message' => '顧客を削除しました',
+        ]);
+    }
+
+    // ====================================
+    // お問い合わせ管理
+    // ====================================
+
+    /**
+     * お問い合わせ一覧取得
+     */
+    public static function admin_get_inquiries($request) {
+        $data = get_option('oft_inquiries_data', []);
+        return rest_ensure_response($data);
+    }
+
+    /**
+     * お問い合わせ更新（ステータス・メモ等）
+     */
+    public static function admin_update_inquiry($request) {
+        $id = sanitize_text_field($request->get_param('id'));
+        $params = $request->get_json_params();
+        $data = get_option('oft_inquiries_data', []);
+
+        $found = false;
+        foreach ($data as &$inquiry) {
+            if (isset($inquiry['id']) && $inquiry['id'] === $id) {
+                $inquiry = array_merge($inquiry, $params);
+                $found = true;
+                break;
+            }
+        }
+        unset($inquiry);
+
+        if (!$found) {
+            return new WP_Error('not_found', 'お問い合わせが見つかりません', ['status' => 404]);
+        }
+
+        update_option('oft_inquiries_data', $data);
+
+        return rest_ensure_response([
+            'id'      => $id,
+            'message' => 'お問い合わせを更新しました',
+        ]);
+    }
+
+    /**
+     * お問い合わせ削除
+     */
+    public static function admin_delete_inquiry($request) {
+        $id = sanitize_text_field($request->get_param('id'));
+        $data = get_option('oft_inquiries_data', []);
+
+        $data = array_values(array_filter($data, function ($i) use ($id) {
+            return !isset($i['id']) || $i['id'] !== $id;
+        }));
+
+        update_option('oft_inquiries_data', $data);
+
+        return rest_ensure_response([
+            'id'      => $id,
+            'message' => 'お問い合わせを削除しました',
+        ]);
+    }
+
+    // ====================================
+    // 設定管理
+    // ====================================
+
+    /**
+     * 設定取得
+     */
+    public static function admin_get_settings($request) {
+        $data = get_option('oft_site_settings', []);
+        return rest_ensure_response($data);
+    }
+
+    /**
+     * 設定更新
+     */
+    public static function admin_update_settings($request) {
+        $params = $request->get_json_params();
+        update_option('oft_site_settings', $params);
+
+        return rest_ensure_response([
+            'message' => '設定を更新しました',
         ]);
     }
 

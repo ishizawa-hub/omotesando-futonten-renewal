@@ -100,6 +100,10 @@ a { text-decoration:none; color:inherit; }
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
     </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
+    </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
@@ -160,7 +164,9 @@ a { text-decoration:none; color:inherit; }
           { key: 'hero_badge', label: 'バッジテキスト', type: 'input', default: 'Omotesando Futon Ten.', maxLen: 30, hint: '英語表記推奨。ブランド名として表示' },
           { key: 'hero_catch', label: 'キャッチコピー（h1）', type: 'input', default: '眠りの質を、人生の質へ。', maxLen: 25, hint: 'SEO上最重要。簡潔で印象的なフレーズに' },
           { key: 'hero_sub', label: 'サブコピー', type: 'textarea', default: '白州の天然水で洗浄された最高品質のダウンを、富士吉田の職人が一枚ずつ仕立てる。', maxLen: 80, hint: 'キャッチコピーを補足する説明文' },
-          { key: 'hero_cta', label: 'CTAボタンテキスト', type: 'input', default: 'Explore Products', maxLen: 20, hint: '英語推奨。クリックを促すアクション語句' }
+          { key: 'hero_cta', label: 'CTAボタンテキスト', type: 'input', default: 'Explore Products', maxLen: 20, hint: '英語推奨。クリックを促すアクション語句' },
+          { key: 'hero_video_url', label: 'ヒーロー動画URL', type: 'url', hint: '.mp4 / .webm 対応。推奨: 1920×1080px、10〜30秒のループ動画' },
+          { key: 'hero_bg_url', label: 'ヒーロー背景画像URL', type: 'url', hint: '推奨: 1920×1080px、WebP/JPG。動画の代替背景として表示' }
         ]},
         { id: 'brand_story', title: 'ブランドストーリー', hint: 'ブランドの世界観を伝えるセクション', fields: [
           { key: 'story_heading', label: '見出し（英語）', type: 'input', default: 'Our Origin', maxLen: 20, hint: '英語セクション見出し' },
@@ -170,11 +176,20 @@ a { text-decoration:none; color:inherit; }
           { key: 'story_desc', label: '説明文', type: 'textarea', default: '南アルプスの麓、白州の天然水で洗浄された最高品質のダウンを、富士吉田の熟練職人が一枚ずつ丁寧に仕立てる。自然の恵みと伝統の技が生み出す、かつてない眠りの体験を。', maxLen: 150, hint: 'ブランドの背景・こだわりを伝える本文。2〜3文が適切' },
           { key: 'story_point1', label: '特長1', type: 'input', default: '白州の天然水で徹底洗浄', maxLen: 20, hint: '簡潔なキーワード' },
           { key: 'story_point2', label: '特長2', type: 'input', default: '富士吉田の職人による手仕立て', maxLen: 20, hint: '簡潔なキーワード' },
-          { key: 'story_point3', label: '特長3', type: 'input', default: 'サステナブルなダウン循環', maxLen: 20, hint: '簡潔なキーワード' }
+          { key: 'story_point3', label: '特長3', type: 'input', default: 'サステナブルなダウン循環', maxLen: 20, hint: '簡潔なキーワード' },
+          { key: 'story_img_url', label: 'ブランドストーリー画像URL', type: 'url', hint: '推奨: 800×600px以上、WebP/JPG。店舗内観・ブランドイメージ写真' }
         ]},
         { id: 'products_section', title: '商品コレクション', hint: '商品一覧セクションの見出し', fields: [
           { key: 'products_heading', label: '見出し（英語）', type: 'input', default: 'PRODUCTS', maxLen: 20, hint: '英語大文字推奨' },
-          { key: 'products_sub', label: 'サブテキスト', type: 'input', default: 'あなたの眠りにふさわしい一枚を', maxLen: 30, hint: '日本語のサブ見出し' }
+          { key: 'products_sub', label: 'サブテキスト', type: 'input', default: 'あなたの眠りにふさわしい一枚を', maxLen: 30, hint: '日本語のサブ見出し' },
+          { key: 'products_img_comforter', label: '掛け布団 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_pillow', label: '枕 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_bedding', label: '寝具 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_apparel', label: 'アパレル 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_collab', label: 'コラボ 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_baby', label: 'ベビー 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' },
+          { key: 'products_img_service', label: 'サービス 画像URL', type: 'url', hint: '推奨: 800×600px、PNG/JPG/WebP' },
+          { key: 'products_img_all', label: '全商品一覧 画像URL', type: 'url', hint: '推奨: 800×600px、JPG/WebP' }
         ]},
         { id: 'experience', title: '羽毛布団の価値', hint: '4つの価値カードセクション。アイコン画像: 各120×120px推奨', fields: [
           { key: 'exp_heading', label: '見出し（英語）', type: 'input', default: 'Experience', maxLen: 20 },
@@ -191,7 +206,9 @@ a { text-decoration:none; color:inherit; }
         { id: 'craft', title: '匠の技セクション', hint: '背景画像: 1920×800px推奨（工房・職人の写真）', fields: [
           { key: 'craft_heading', label: '見出し（英語）', type: 'input', default: 'Made by Hand', maxLen: 20 },
           { key: 'craft_heading_jp', label: '見出し（日本語）', type: 'input', default: '白州水と職人の技', maxLen: 20 },
-          { key: 'craft_desc', label: '説明文', type: 'textarea', default: '南アルプスの伏流水「白州の天然水」で羽毛を徹底洗浄。富士吉田の工房で、一枚ずつ職人が手仕事で仕立てます。素材の選定から仕上げまで、一切の妥協なく。', maxLen: 150, hint: '製造工程のこだわりを伝える。2〜3文推奨' }
+          { key: 'craft_desc', label: '説明文', type: 'textarea', default: '南アルプスの伏流水「白州の天然水」で羽毛を徹底洗浄。富士吉田の工房で、一枚ずつ職人が手仕事で仕立てます。素材の選定から仕上げまで、一切の妥協なく。', maxLen: 150, hint: '製造工程のこだわりを伝える。2〜3文推奨' },
+          { key: 'craft_img_main', label: '匠の技 メイン画像URL', type: 'url', hint: '推奨: 800×600px以上、JPG/WebP。職人の手仕事の写真' },
+          { key: 'craft_img_sub', label: '匠の技 サブ画像URL', type: 'url', hint: '推奨: 600×400px以上、JPG/WebP。素材・工程の写真' }
         ]}
       ]
     },
@@ -326,15 +343,35 @@ a { text-decoration:none; color:inherit; }
   var data = {};
   var dirty = false;
 
-  function loadData() {
+  function loadDataLocal() {
     try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { data = {}; }
   }
 
-  function saveData() {
+  function saveDataLocal() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadData() {
+    loadDataLocal();
+  }
+
+  function saveData() {
+    saveDataLocal();
     dirty = false;
     document.getElementById('unsavedMsg').style.display = 'none';
     showToast('保存しました');
+    // API にも送信
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        AdminAPI.updatePageContent(currentPage, data[currentPage] || {}).then(function() {
+          console.log('[Pages] API保存成功: ' + currentPage);
+        }).catch(function(err) {
+          console.warn('[Pages] API保存失敗:', err.message);
+        });
+      }
+    } catch(e) {
+      console.warn('[Pages] API呼び出しエラー:', e.message);
+    }
   }
 
   function markDirty() {
@@ -401,6 +438,8 @@ a { text-decoration:none; color:inherit; }
         html += '</label>';
         if (f.type === 'textarea') {
           html += '<textarea data-page="' + currentPage + '" data-key="' + f.key + '"' + (f.maxLen ? ' data-maxlen="' + f.maxLen + '"' : '') + ' placeholder="' + (f.default || '') + '">' + escHtml(val) + '</textarea>';
+        } else if (f.type === 'url') {
+          html += '<input type="url" data-page="' + currentPage + '" data-key="' + f.key + '" value="' + escAttr(val) + '" placeholder="https://example.com/image.jpg" style="font-size:13px;">';
         } else {
           html += '<input type="text" data-page="' + currentPage + '" data-key="' + f.key + '"' + (f.maxLen ? ' data-maxlen="' + f.maxLen + '"' : '') + ' value="' + escAttr(val) + '" placeholder="' + escAttr(f.default || '') + '">';
         }
@@ -468,6 +507,28 @@ a { text-decoration:none; color:inherit; }
   window.addEventListener('beforeunload', function(e) {
     if (dirty) { e.preventDefault(); e.returnValue = ''; }
   });
+
+  // === データ読み込み: API優先、失敗時はlocalStorageフォールバック ===
+  (async function loadFromAPI() {
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        var apiData = await AdminAPI.getAllPageContent();
+        if (apiData && typeof apiData === 'object') {
+          data = apiData;
+          saveDataLocal();
+          renderTabs();
+          renderEditor();
+          console.log('[Pages] APIからデータ取得成功');
+        } else {
+          throw new Error('APIデータが空');
+        }
+      } else {
+        throw new Error('AdminAPI未定義');
+      }
+    } catch(e) {
+      console.warn('[Pages] APIフォールバック → localStorage:', e.message);
+    }
+  })();
 
 })();
 </script>

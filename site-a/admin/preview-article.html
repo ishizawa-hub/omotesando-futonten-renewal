@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記事プレビュー | 表参道布団店。</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter','Noto Sans JP',sans-serif; background:#F8F8F6; color:#333; }
+
+/* Preview Banner */
+.preview-banner {
+  background:#FFF3CD; color:#856404; padding:12px 24px; text-align:center;
+  font-size:13px; font-weight:600; border-bottom:2px solid #E8D9B8;
+  position:sticky; top:0; z-index:100;
+}
+.preview-banner span { font-weight:400; margin-left:8px; }
+
+/* Article Layout */
+.article-container { max-width:800px; margin:0 auto; padding:40px 24px 80px; }
+
+/* Hero */
+.article-hero { position:relative; margin-bottom:32px; border-radius:12px; overflow:hidden; }
+.article-hero img { width:100%; height:auto; display:block; max-height:460px; object-fit:cover; }
+.article-hero-overlay {
+  position:absolute; bottom:0; left:0; right:0; padding:32px;
+  background:linear-gradient(transparent, rgba(0,0,0,0.7));
+  color:#fff;
+}
+
+/* Meta */
+.article-meta { display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.article-category { padding:4px 12px; background:#C9A96E; color:#fff; border-radius:4px; font-size:12px; font-weight:600; }
+.article-date { font-size:13px; color:#999; }
+.article-status { padding:4px 12px; border-radius:4px; font-size:12px; font-weight:600; }
+.status-draft { background:#FFF3CD; color:#856404; }
+.status-private { background:#F3E5F5; color:#7B1FA2; }
+.status-scheduled { background:#D1ECF1; color:#0C5460; }
+.status-published { background:#D4EDDA; color:#155724; }
+
+/* Title */
+.article-title { font-size:32px; font-weight:700; line-height:1.4; margin-bottom:16px; color:#1A1A1A; }
+
+/* Tags */
+.article-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+.article-tag { padding:4px 12px; background:#FDF8F0; border-radius:4px; font-size:12px; color:#8B6914; }
+
+/* Body Content */
+.article-body { font-size:16px; line-height:2; color:#444; }
+.article-body h2 { font-size:24px; font-weight:700; color:#1A1A1A; margin:40px 0 16px; padding-bottom:8px; border-bottom:2px solid #C9A96E; }
+.article-body h3 { font-size:20px; font-weight:700; color:#1A1A1A; margin:32px 0 12px; }
+.article-body p { margin-bottom:20px; }
+.article-body img { max-width:100%; height:auto; border-radius:8px; margin:16px 0; }
+.article-body ul, .article-body ol { margin:16px 0; padding-left:24px; }
+.article-body li { margin-bottom:8px; }
+.article-body blockquote { border-left:4px solid #C9A96E; padding:16px 20px; margin:20px 0; background:#FDF8F0; border-radius:0 8px 8px 0; }
+.article-body figure { margin:24px 0; text-align:center; }
+.article-body figcaption { font-size:13px; color:#999; margin-top:8px; }
+.article-body table { width:100%; border-collapse:collapse; margin:20px 0; }
+.article-body th, .article-body td { padding:12px; border:1px solid #EAEDF3; font-size:14px; }
+.article-body th { background:#F5F6FA; font-weight:600; }
+
+/* CTA Section */
+.article-cta { margin-top:48px; padding:32px; background:#fff; border-radius:12px; border:1px solid #EAEDF3; text-align:center; }
+.article-cta-label { font-size:12px; font-weight:600; color:#C9A96E; letter-spacing:0.08em; margin-bottom:8px; }
+.article-cta-title { font-size:20px; font-weight:700; margin-bottom:16px; }
+.article-cta-btn { display:inline-block; padding:12px 32px; background:#C9A96E; color:#fff; border-radius:8px; font-weight:600; text-decoration:none; }
+
+/* Error state */
+.error-container { text-align:center; padding:80px 24px; }
+.error-icon { font-size:64px; margin-bottom:16px; }
+.error-title { font-size:24px; font-weight:700; margin-bottom:8px; }
+.error-desc { font-size:14px; color:#888; }
+
+@media (max-width: 768px) {
+  .article-title { font-size:24px; }
+  .article-body { font-size:15px; }
+  .article-container { padding:20px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  &#128064; プレビューモード<span>— この記事はまだ公開されていません。URLを知っている方のみ閲覧できます。</span>
+</div>
+
+<div class="article-container" id="articleContainer" style="display:none;">
+  <div class="article-hero" id="heroSection" style="display:none;">
+    <img id="heroImage" src="" alt="">
+  </div>
+
+  <div class="article-meta" id="metaSection">
+    <span class="article-category" id="articleCategory"></span>
+    <span class="article-date" id="articleDate"></span>
+    <span class="article-status" id="articleStatus"></span>
+  </div>
+
+  <h1 class="article-title" id="articleTitle"></h1>
+
+  <div class="article-tags" id="articleTags"></div>
+
+  <div class="article-body" id="articleBody"></div>
+
+  <div class="article-cta" id="ctaSection" style="display:none;">
+    <div class="article-cta-label" id="ctaLabel"></div>
+    <div class="article-cta-title" id="ctaTitle"></div>
+    <a class="article-cta-btn" id="ctaBtn" href="#"></a>
+  </div>
+</div>
+
+<div class="error-container" id="errorContainer" style="display:none;">
+  <div class="error-icon">&#128274;</div>
+  <div class="error-title">記事が見つかりません</div>
+  <div class="error-desc">このプレビューURLは無効、または記事が削除された可能性があります。</div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var ARTICLES_KEY = 'oft_magazine';
+  var TOKENS_KEY = 'oft_magazine_preview_tokens';
+
+  // Get token from URL
+  var params = new URLSearchParams(location.search);
+  var token = params.get('token');
+
+  if (!token) {
+    showError();
+    return;
+  }
+
+  // Look up article by token
+  var tokens = {};
+  try { tokens = JSON.parse(localStorage.getItem(TOKENS_KEY)) || {}; } catch(e) {}
+
+  var articleId = tokens['_token_' + token];
+  if (!articleId) {
+    showError();
+    return;
+  }
+
+  // Load articles
+  var articles = [];
+  try { articles = JSON.parse(localStorage.getItem(ARTICLES_KEY)) || []; } catch(e) {}
+
+  var article = articles.find(function(a) { return a.id === articleId || a.id === Number(articleId); });
+  if (!article) {
+    showError();
+    return;
+  }
+
+  // Render the article
+  renderArticle(article);
+
+  function showError() {
+    document.getElementById('errorContainer').style.display = 'block';
+    document.getElementById('articleContainer').style.display = 'none';
+  }
+
+  function escHtml(s) {
+    var div = document.createElement('div');
+    div.textContent = s || '';
+    return div.innerHTML;
+  }
+
+  function renderArticle(a) {
+    document.getElementById('articleContainer').style.display = 'block';
+    document.getElementById('errorContainer').style.display = 'none';
+
+    // Title
+    document.title = (a.title || 'プレビュー') + ' | 表参道布団店。';
+    document.getElementById('articleTitle').textContent = a.title || '';
+
+    // Hero image
+    if (a.heroImage) {
+      document.getElementById('heroSection').style.display = 'block';
+      document.getElementById('heroImage').src = a.heroImage;
+      document.getElementById('heroImage').alt = a.heroAlt || a.title || '';
+    }
+
+    // Meta
+    document.getElementById('articleCategory').textContent = a.category || '';
+    document.getElementById('articleDate').textContent = (a.date || '').replace(/-/g, '/');
+
+    var statusEl = document.getElementById('articleStatus');
+    var statusMap = {
+      '公開': { cls: 'status-published', label: '公開中' },
+      '下書き': { cls: 'status-draft', label: '下書き' },
+      '非公開': { cls: 'status-private', label: '非公開' },
+      '予約': { cls: 'status-scheduled', label: '予約投稿' }
+    };
+    var st = statusMap[a.status] || statusMap['下書き'];
+    statusEl.className = 'article-status ' + st.cls;
+    statusEl.textContent = st.label;
+
+    // Tags
+    var tagsEl = document.getElementById('articleTags');
+    if (a.tags && a.tags.length > 0) {
+      tagsEl.innerHTML = a.tags.map(function(t) {
+        return '<span class="article-tag">' + escHtml(t) + '</span>';
+      }).join('');
+    }
+
+    // Body (render HTML directly)
+    document.getElementById('articleBody').innerHTML = a.body || '<p style="color:#999;">本文がまだありません。</p>';
+
+    // CTA
+    if (a.ctaTitle || a.ctaUrl) {
+      document.getElementById('ctaSection').style.display = 'block';
+      document.getElementById('ctaLabel').textContent = a.ctaLabel || '';
+      document.getElementById('ctaTitle').textContent = a.ctaTitle || '';
+      var ctaBtn = document.getElementById('ctaBtn');
+      ctaBtn.textContent = a.ctaButton || 'View More';
+      ctaBtn.href = a.ctaUrl || '#';
+    }
+  }
+})();
+</script>
+</body>
+</html>

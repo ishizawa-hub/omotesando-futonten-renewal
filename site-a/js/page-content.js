@@ -1,17 +1,43 @@
 /**
  * ページコンテンツ動的反映スクリプト
  * 管理画面（admin/pages.html）で編集したテキストをフロントエンドに反映する
- * データソース: localStorage（将来的にはWP REST API）
+ * データソース: WP REST API（フォールバック: localStorage）
  */
 (function() {
   'use strict';
 
   var STORAGE_KEY = 'oft_page_content';
+  var API_URL = 'https://omotesando-futonten.com/wp/wp-json/oft/v1/page-content';
 
-  function getData() {
+  function getDataLocal() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
     catch(e) { return {}; }
   }
+
+  function saveDataLocal(d) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch(e) {}
+  }
+
+  function getData() {
+    return getDataLocal();
+  }
+
+  // API非同期取得: 成功時にlocalStorageにキャッシュし、ページ内容を再適用
+  fetch(API_URL, { credentials: 'include' })
+    .then(function(res) {
+      if (!res.ok) throw new Error('API ' + res.status);
+      return res.json();
+    })
+    .then(function(apiData) {
+      if (apiData && typeof apiData === 'object' && Object.keys(apiData).length > 0) {
+        saveDataLocal(apiData);
+        applyPageContent(apiData);
+        console.log('[PageContent] APIからデータ取得成功');
+      }
+    })
+    .catch(function(e) {
+      console.warn('[PageContent] APIフォールバック → localStorage:', e.message);
+    });
 
   function setText(selector, text) {
     if (!text) return;
@@ -28,13 +54,50 @@
     els.forEach(function(el) { el.textContent = text; });
   }
 
+  // 画像URLを動的に変更（URLが空の場合は元のまま）
+  function setImageSrc(selector, url) {
+    if (!url) return;
+    var els = document.querySelectorAll(selector);
+    els.forEach(function(el) { el.src = url; });
+  }
+
+  // 背景画像を動的に変更（URLが空の場合は元のまま）
+  function setBgImage(selector, url) {
+    if (!url) return;
+    var els = document.querySelectorAll(selector);
+    els.forEach(function(el) {
+      el.style.backgroundImage = "url('" + url + "')";
+    });
+  }
+
+  // 動画ソースを動的に変更（URLが空の場合は元のまま）
+  function setVideoSrc(selector, url) {
+    if (!url) return;
+    var videos = document.querySelectorAll(selector);
+    videos.forEach(function(video) {
+      var source = video.querySelector('source');
+      if (source) {
+        source.src = url;
+      } else {
+        video.src = url;
+      }
+      // 動画を再読み込み
+      video.load();
+    });
+  }
+
   // ページパスからページIDを判定
   var path = location.pathname;
 
   // パスの正規化（末尾スラッシュ統一、index.html除去）
   path = path.replace(/index\.html$/, '').replace(/\/$/, '/');
 
+  // 初回: localStorageデータで即時適用
   var data = getData();
+  applyPageContent(data);
+
+  function applyPageContent(data) {
+    if (!data || typeof data !== 'object') return;
 
   // ============================================================
   // TOPページ
@@ -48,12 +111,19 @@
       setText('.hero-sub', top.hero_sub);
       setTextContent('.hero-cta', top.hero_cta);
 
+      // Hero 画像・動画
+      setVideoSrc('.hero-video', top.hero_video_url);
+      setBgImage('.hero-bg', top.hero_bg_url);
+
       // Brand Story
       setTextContent('.brand-section .section-heading', top.story_heading);
       setText('.brand-section .section-heading-jp-accent', top.story_heading_jp);
       setTextContent('.brand-story-founder', top.story_founder);
       setText('.brand-story-quote', top.story_quote);
       setText('.brand-story-desc', top.story_desc);
+
+      // Brand Story 画像
+      setImageSrc('.brand-story-image img', top.story_img_url);
 
       // Brand story points
       var points = document.querySelectorAll('.brand-story-point-text');
@@ -66,6 +136,21 @@
       // Products section
       setTextContent('.collection-section .section-heading', top.products_heading);
       setTextContent('.collection-section .section-heading-jp-accent', top.products_sub);
+
+      // Products 商品画像
+      var collectionImgs = [
+        { selector: '.collection-card:nth-child(1) .collection-card-img img', key: 'products_img_comforter' },
+        { selector: '.collection-card:nth-child(2) .collection-card-img img', key: 'products_img_pillow' },
+        { selector: '.collection-card:nth-child(3) .collection-card-img img', key: 'products_img_bedding' },
+        { selector: '.collection-card:nth-child(4) .collection-card-img img', key: 'products_img_apparel' },
+        { selector: '.collection-card:nth-child(5) .collection-card-img img', key: 'products_img_collab' },
+        { selector: '.collection-card:nth-child(6) .collection-card-img img', key: 'products_img_baby' },
+        { selector: '.collection-card:nth-child(7) .collection-card-img img', key: 'products_img_service' },
+        { selector: '.collection-card:nth-child(8) .collection-card-img img', key: 'products_img_all' }
+      ];
+      collectionImgs.forEach(function(item) {
+        setImageSrc(item.selector, top[item.key]);
+      });
 
       // Experience
       setTextContent('.experience-header .section-heading', top.exp_heading);
@@ -97,6 +182,10 @@
       setTextContent('.craft-section .section-heading', top.craft_heading);
       setText('.craft-section .section-heading-jp-accent', top.craft_heading_jp);
       setText('.craft-section .brand-story-desc, .craft-section p', top.craft_desc);
+
+      // Craftsmanship 画像
+      setImageSrc('.craft-img-main', top.craft_img_main);
+      setImageSrc('.craft-img-sub', top.craft_img_sub);
     }
   }
 
@@ -253,5 +342,6 @@
       setText('.payment-text', sg.payment_text);
     }
   }
+  } // end applyPageContent
 
 })();

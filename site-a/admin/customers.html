@@ -103,6 +103,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 </style>
 </head>
 <body>
+<script src="js/admin-api.js"></script>
 <!-- Sidebar -->
 <div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
   <!-- Logo -->
@@ -134,6 +135,10 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     </a>
     <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
       <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
     </a>
     <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -183,26 +188,81 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     <div style="background:#fff;border-radius:10px;border:1px solid #EAEDF3;overflow:hidden">
       <!-- Filter Bar -->
       <div class="filter-bar" style="padding:20px 24px;border-bottom:1px solid #EAEDF3;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <input id="searchInput" type="text" placeholder="お名前・メール・電話番号で検索..." style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;width:320px;font-family:inherit">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;flex:1">
+          <input id="searchInput" type="text" placeholder="お名前・メール・電話番号で検索..." style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;width:280px;font-family:inherit">
           <select id="statusFilter" style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff;font-family:inherit">
-            <option value="">すべて</option>
+            <option value="">すべてのステータス</option>
             <option value="アクティブ">アクティブ</option>
             <option value="休眠">休眠</option>
             <option value="退会">退会</option>
+          </select>
+          <select id="newsletterFilter" style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff;font-family:inherit">
+            <option value="">メルマガ: すべて</option>
+            <option value="subscribed">購読中</option>
+            <option value="unsubscribed">解除済み</option>
           </select>
           <select id="sortSelect" style="padding:8px 14px;border:1px solid #EAEDF3;border-radius:6px;font-size:13px;background:#fff;font-family:inherit">
             <option value="registered_desc">登録日順（新しい順）</option>
             <option value="registered_asc">登録日順（古い順）</option>
             <option value="total_spent_desc">購入金額順</option>
             <option value="order_count_desc">注文回数順</option>
+            <option value="name_asc">名前順（あいうえお）</option>
           </select>
+          <button class="btn btn-sm btn-outline" onclick="toggleAdvancedSearch()" id="advSearchToggle">&#128269; 詳細検索</button>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn btn-outline" onclick="openImportModal()">&#128229; CSVインポート</button>
-          <button class="btn btn-outline" onclick="exportCSV()">&#128228; CSVエクスポート</button>
+          <button class="btn btn-outline" onclick="openImportModal()">&#128229; インポート</button>
+          <button class="btn btn-outline" onclick="openExportModal()">&#128228; 一括CSV出力</button>
           <button class="btn btn-primary" onclick="openCustomerModal()">&#10010; 新規会員追加</button>
         </div>
+      </div>
+
+      <!-- Advanced Search Panel -->
+      <div id="advancedSearch" style="display:none;padding:20px 24px;border-bottom:1px solid #EAEDF3;background:#FAFBFD">
+        <div style="font-size:13px;font-weight:600;color:#555;margin-bottom:12px">&#128269; 詳細検索条件</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">都道府県</label>
+            <select id="prefectureFilter" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;background:#fff;font-family:inherit">
+              <option value="">すべて</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">登録日（開始）</label>
+            <input type="date" id="dateFrom" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;font-family:inherit">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">登録日（終了）</label>
+            <input type="date" id="dateTo" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;font-family:inherit">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">誕生月</label>
+            <select id="birthdayMonthFilter" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;background:#fff;font-family:inherit">
+              <option value="">すべて</option>
+              <option value="01">1月</option><option value="02">2月</option><option value="03">3月</option>
+              <option value="04">4月</option><option value="05">5月</option><option value="06">6月</option>
+              <option value="07">7月</option><option value="08">8月</option><option value="09">9月</option>
+              <option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">累計購入金額（下限）</label>
+            <input type="number" id="spentMin" placeholder="0" min="0" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;font-family:inherit">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">累計購入金額（上限）</label>
+            <input type="number" id="spentMax" placeholder="" min="0" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;font-family:inherit">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#888;display:block;margin-bottom:4px">注文回数（下限）</label>
+            <input type="number" id="orderCountMin" placeholder="0" min="0" style="width:100%;padding:7px 10px;border:1px solid #EAEDF3;border-radius:6px;font-size:12px;font-family:inherit">
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:8px">
+            <button class="btn btn-sm btn-primary" onclick="renderTable()" style="flex:1">検索</button>
+            <button class="btn btn-sm btn-outline" onclick="clearAdvancedSearch()">リセット</button>
+          </div>
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:#AAA" id="searchResultCount"></div>
       </div>
 
       <!-- Table -->
@@ -219,6 +279,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
               <th style="text-align:right">累計購入金額</th>
               <th>登録日</th>
               <th style="text-align:center">ステータス</th>
+              <th style="text-align:center">メルマガ</th>
               <th style="text-align:center">操作</th>
             </tr>
           </thead>
@@ -289,6 +350,19 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
               <option value="休眠">休眠</option>
               <option value="退会">退会</option>
             </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>メルマガ購読</label>
+            <select id="formNewsletter">
+              <option value="subscribed">購読中</option>
+              <option value="unsubscribed">解除済み</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>メルマガ登録日</label>
+            <input type="date" id="formNewsletterDate">
           </div>
         </div>
       </div>
@@ -463,6 +537,72 @@ total_spent, order_count, registered_date</code>
   </div>
 </div>
 
+<!-- Unified CSV Export Modal -->
+<div class="modal-overlay" id="exportModal">
+  <div class="modal-box" style="width:640px">
+    <div class="modal-header">
+      <h3>一括CSVエクスポート</h3>
+      <button class="modal-close" onclick="closeExportModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:20px">
+        <div style="font-size:13px;font-weight:600;color:#555;margin-bottom:12px">エクスポート対象</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid #EAEDF3;border-radius:8px;cursor:pointer;transition:all 0.2s" class="export-option" onclick="selectExportType('customers')">
+            <input type="radio" name="exportType" value="customers" checked style="accent-color:#C9A96E">
+            <div>
+              <div style="font-size:14px;font-weight:600">&#128101; 顧客情報</div>
+              <div style="font-size:12px;color:#888">会員基本情報（名前・住所・連絡先・ステータス）</div>
+            </div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid #EAEDF3;border-radius:8px;cursor:pointer;transition:all 0.2s" class="export-option" onclick="selectExportType('purchases')">
+            <input type="radio" name="exportType" value="purchases" style="accent-color:#C9A96E">
+            <div>
+              <div style="font-size:14px;font-weight:600">&#128176; 購入情報</div>
+              <div style="font-size:12px;color:#888">顧客別の注文履歴・購入金額・注文回数</div>
+            </div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid #EAEDF3;border-radius:8px;cursor:pointer;transition:all 0.2s" class="export-option" onclick="selectExportType('newsletter')">
+            <input type="radio" name="exportType" value="newsletter" style="accent-color:#C9A96E">
+            <div>
+              <div style="font-size:14px;font-weight:600">&#9993; メルマガ会員情報</div>
+              <div style="font-size:12px;color:#888">メルマガ購読中の会員リスト（メール配信用）</div>
+            </div>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid #EAEDF3;border-radius:8px;cursor:pointer;transition:all 0.2s" class="export-option" onclick="selectExportType('unified')">
+            <input type="radio" name="exportType" value="unified" style="accent-color:#C9A96E">
+            <div>
+              <div style="font-size:14px;font-weight:600">&#128203; 統合データ（全項目）</div>
+              <div style="font-size:12px;color:#888">顧客情報＋購入履歴＋メルマガ情報を1つのCSVに</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <div style="font-size:13px;font-weight:600;color:#555;margin-bottom:12px">エクスポート範囲</div>
+        <div style="display:flex;gap:12px">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+            <input type="radio" name="exportScope" value="all" checked style="accent-color:#C9A96E"> 全件
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+            <input type="radio" name="exportScope" value="filtered" style="accent-color:#C9A96E"> 現在の検索結果のみ
+          </label>
+        </div>
+      </div>
+
+      <div style="padding:14px 16px;background:#FDF8F0;border-radius:8px;border-left:4px solid #C9A96E;margin-bottom:20px">
+        <div style="font-size:12px;color:#856404" id="exportPreviewInfo">顧客情報: 全10件をエクスポートします</div>
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button class="btn btn-outline" onclick="closeExportModal()">キャンセル</button>
+        <button class="btn btn-primary" onclick="executeUnifiedExport()">&#128228; CSVダウンロード</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Toast -->
 <div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;z-index:10000;background:#2D2D2D;color:#fff;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-left:4px solid #C9A96E;transition:opacity 0.3s,transform 0.3s;opacity:0;transform:translateY(12px);"></div>
 
@@ -491,31 +631,39 @@ total_spent, order_count, registered_date</code>
 
   // === SAMPLE DATA ===
   const SAMPLE_CUSTOMERS = [
-    { id:'M-0001', lastName:'田中', firstName:'優子', lastNameKana:'たなか', firstNameKana:'ゆうこ', email:'tanaka.yuko@example.com', phone:'03-1234-5678', birthday:'1985-06-15', status:'アクティブ', postcode:'1500001', prefecture:'東京都', city:'渋谷区神宮前', address1:'4-5-6', address2:'表参道ヒルズ 201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:458600, orderCount:5, registeredDate:'2024/08/12', notes:'VIP顧客。高級羽毛布団のリピーター。', orders:[{num:'#OFT-0412',date:'2026/03/31',product:'Premium RDS Down 冬用本掛け S',amount:198000,status:'処理待ち'},{num:'#OFT-0380',date:'2026/01/15',product:'RDS グースダウンピロー M',amount:27800,status:'配達完了'}] },
-    { id:'M-0002', lastName:'佐藤', firstName:'健太', lastNameKana:'さとう', firstNameKana:'けんた', email:'sato.kenta@example.com', phone:'090-9876-5432', birthday:'1990-03-22', status:'アクティブ', postcode:'1060032', prefecture:'東京都', city:'港区六本木', address1:'7-8-9', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:289400, orderCount:3, registeredDate:'2024/10/05', notes:'', orders:[{num:'#OFT-0411',date:'2026/03/31',product:'RDS グースダウンピロー M',amount:27800,status:'発送済み'}] },
-    { id:'M-0003', lastName:'鈴木', firstName:'美咲', lastNameKana:'すずき', firstNameKana:'みさき', email:'suzuki.misaki@gmail.com', phone:'080-1111-2222', birthday:'1978-11-08', status:'アクティブ', postcode:'2310023', prefecture:'神奈川県', city:'横浜市中区山下町', address1:'12-3', address2:'マリンタワー横 405', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:362800, orderCount:4, registeredDate:'2024/09/18', notes:'季節ごとに買い替え。', orders:[{num:'#OFT-0410',date:'2026/03/31',product:'CCD Sleep Down-春秋用- D',amount:62800,status:'処理待ち'}] },
-    { id:'M-0004', lastName:'山田', firstName:'大輔', lastNameKana:'やまだ', firstNameKana:'だいすけ', email:'yamada.d@company.co.jp', phone:'03-3333-4444', birthday:'1982-01-30', status:'アクティブ', postcode:'1040061', prefecture:'東京都', city:'中央区銀座', address1:'1-2-3', address2:'銀座ビル 8F', shipSame:false, shipPostcode:'2500011', shipPrefecture:'神奈川県', shipCity:'小田原市栄町', shipAddress1:'2-14-5', shipAddress2:'', totalSpent:194600, orderCount:2, registeredDate:'2025/01/22', notes:'配送先は実家。', orders:[{num:'#OFT-0409',date:'2026/03/30',product:'Flower Down 冬用本掛け Q',amount:94600,status:'発送準備中'}] },
-    { id:'M-0005', lastName:'伊藤', firstName:'麻衣', lastNameKana:'いとう', firstNameKana:'まい', email:'ito.mai@outlook.jp', phone:'06-5555-6666', birthday:'1995-09-03', status:'アクティブ', postcode:'5300001', prefecture:'大阪府', city:'大阪市北区梅田', address1:'3-1-1', address2:'グランフロント 2201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:127800, orderCount:2, registeredDate:'2025/06/10', notes:'', orders:[] },
-    { id:'M-0006', lastName:'高橋', firstName:'翔太', lastNameKana:'たかはし', firstNameKana:'しょうた', email:'takahashi.s@example.net', phone:'052-7777-8888', birthday:'1988-12-25', status:'休眠', postcode:'4600008', prefecture:'愛知県', city:'名古屋市中区栄', address1:'5-4-3', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:54800, orderCount:1, registeredDate:'2024/05/03', notes:'6ヶ月以上注文なし。フォロー要。', orders:[] },
-    { id:'M-0007', lastName:'渡辺', firstName:'花子', lastNameKana:'わたなべ', firstNameKana:'はなこ', email:'watanabe.h@yahoo.co.jp', phone:'011-9999-0000', birthday:'1972-04-17', status:'休眠', postcode:'0600061', prefecture:'北海道', city:'札幌市中央区南一条西', address1:'10-1', address2:'グランドホテル前 302', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:89600, orderCount:1, registeredDate:'2024/03/28', notes:'', orders:[] },
-    { id:'M-0008', lastName:'中村', firstName:'陽介', lastNameKana:'なかむら', firstNameKana:'ようすけ', email:'nakamura.y@icloud.com', phone:'092-1234-5678', birthday:'1999-07-11', status:'アクティブ', postcode:'8100001', prefecture:'福岡県', city:'福岡市中央区天神', address1:'2-6-8', address2:'天神ビル 505', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:165400, orderCount:3, registeredDate:'2025/11/20', notes:'学生。ギフト購入が多い。', orders:[] },
-    { id:'M-0009', lastName:'小林', firstName:'さくら', lastNameKana:'こばやし', firstNameKana:'さくら', email:'kobayashi.sakura@gmail.com', phone:'075-2222-3333', birthday:'1991-02-14', status:'退会', postcode:'6040846', prefecture:'京都府', city:'京都市中京区両替町通', address1:'245', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:32800, orderCount:1, registeredDate:'2024/07/15', notes:'退会理由: 引っ越しのため。', orders:[] },
-    { id:'M-0010', lastName:'加藤', firstName:'真理子', lastNameKana:'かとう', firstNameKana:'まりこ', email:'kato.mariko@example.com', phone:'03-4444-5555', birthday:'1980-10-20', status:'アクティブ', postcode:'1530064', prefecture:'東京都', city:'目黒区下目黒', address1:'3-7-2', address2:'パークサイド目黒 101', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:523200, orderCount:7, registeredDate:'2024/02/01', notes:'最優良顧客。年間購入額トップ。特別対応要。', orders:[{num:'#OFT-0405',date:'2026/03/20',product:'Premium RDS Down 冬用本掛け D',amount:258000,status:'配達完了'},{num:'#OFT-0390',date:'2026/02/10',product:'CCD Sleep Down-春秋用- S',amount:48800,status:'配達完了'}] }
+    { id:'M-0001', lastName:'田中', firstName:'優子', lastNameKana:'たなか', firstNameKana:'ゆうこ', email:'tanaka.yuko@example.com', phone:'03-1234-5678', birthday:'1985-06-15', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2024/08/12', postcode:'1500001', prefecture:'東京都', city:'渋谷区神宮前', address1:'4-5-6', address2:'表参道ヒルズ 201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:458600, orderCount:5, registeredDate:'2024/08/12', notes:'VIP顧客。高級羽毛布団のリピーター。', orders:[{num:'#OFT-0412',date:'2026/03/31',product:'Premium RDS Down 冬用本掛け S',amount:198000,status:'処理待ち'},{num:'#OFT-0380',date:'2026/01/15',product:'RDS グースダウンピロー M',amount:27800,status:'配達完了'}] },
+    { id:'M-0002', lastName:'佐藤', firstName:'健太', lastNameKana:'さとう', firstNameKana:'けんた', email:'sato.kenta@example.com', phone:'090-9876-5432', birthday:'1990-03-22', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2024/10/05', postcode:'1060032', prefecture:'東京都', city:'港区六本木', address1:'7-8-9', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:289400, orderCount:3, registeredDate:'2024/10/05', notes:'', orders:[{num:'#OFT-0411',date:'2026/03/31',product:'RDS グースダウンピロー M',amount:27800,status:'発送済み'}] },
+    { id:'M-0003', lastName:'鈴木', firstName:'美咲', lastNameKana:'すずき', firstNameKana:'みさき', email:'suzuki.misaki@gmail.com', phone:'080-1111-2222', birthday:'1978-11-08', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2024/09/18', postcode:'2310023', prefecture:'神奈川県', city:'横浜市中区山下町', address1:'12-3', address2:'マリンタワー横 405', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:362800, orderCount:4, registeredDate:'2024/09/18', notes:'季節ごとに買い替え。', orders:[{num:'#OFT-0410',date:'2026/03/31',product:'CCD Sleep Down-春秋用- D',amount:62800,status:'処理待ち'}] },
+    { id:'M-0004', lastName:'山田', firstName:'大輔', lastNameKana:'やまだ', firstNameKana:'だいすけ', email:'yamada.d@company.co.jp', phone:'03-3333-4444', birthday:'1982-01-30', status:'アクティブ', newsletter:'unsubscribed', newsletterDate:'', postcode:'1040061', prefecture:'東京都', city:'中央区銀座', address1:'1-2-3', address2:'銀座ビル 8F', shipSame:false, shipPostcode:'2500011', shipPrefecture:'神奈川県', shipCity:'小田原市栄町', shipAddress1:'2-14-5', shipAddress2:'', totalSpent:194600, orderCount:2, registeredDate:'2025/01/22', notes:'配送先は実家。', orders:[{num:'#OFT-0409',date:'2026/03/30',product:'Flower Down 冬用本掛け Q',amount:94600,status:'発送準備中'}] },
+    { id:'M-0005', lastName:'伊藤', firstName:'麻衣', lastNameKana:'いとう', firstNameKana:'まい', email:'ito.mai@outlook.jp', phone:'06-5555-6666', birthday:'1995-09-03', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2025/06/10', postcode:'5300001', prefecture:'大阪府', city:'大阪市北区梅田', address1:'3-1-1', address2:'グランフロント 2201', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:127800, orderCount:2, registeredDate:'2025/06/10', notes:'', orders:[] },
+    { id:'M-0006', lastName:'高橋', firstName:'翔太', lastNameKana:'たかはし', firstNameKana:'しょうた', email:'takahashi.s@example.net', phone:'052-7777-8888', birthday:'1988-12-25', status:'休眠', newsletter:'subscribed', newsletterDate:'2024/05/03', postcode:'4600008', prefecture:'愛知県', city:'名古屋市中区栄', address1:'5-4-3', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:54800, orderCount:1, registeredDate:'2024/05/03', notes:'6ヶ月以上注文なし。フォロー要。', orders:[] },
+    { id:'M-0007', lastName:'渡辺', firstName:'花子', lastNameKana:'わたなべ', firstNameKana:'はなこ', email:'watanabe.h@yahoo.co.jp', phone:'011-9999-0000', birthday:'1972-04-17', status:'休眠', newsletter:'unsubscribed', newsletterDate:'', postcode:'0600061', prefecture:'北海道', city:'札幌市中央区南一条西', address1:'10-1', address2:'グランドホテル前 302', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:89600, orderCount:1, registeredDate:'2024/03/28', notes:'', orders:[] },
+    { id:'M-0008', lastName:'中村', firstName:'陽介', lastNameKana:'なかむら', firstNameKana:'ようすけ', email:'nakamura.y@icloud.com', phone:'092-1234-5678', birthday:'1999-07-11', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2025/11/20', postcode:'8100001', prefecture:'福岡県', city:'福岡市中央区天神', address1:'2-6-8', address2:'天神ビル 505', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:165400, orderCount:3, registeredDate:'2025/11/20', notes:'学生。ギフト購入が多い。', orders:[] },
+    { id:'M-0009', lastName:'小林', firstName:'さくら', lastNameKana:'こばやし', firstNameKana:'さくら', email:'kobayashi.sakura@gmail.com', phone:'075-2222-3333', birthday:'1991-02-14', status:'退会', newsletter:'unsubscribed', newsletterDate:'', postcode:'6040846', prefecture:'京都府', city:'京都市中京区両替町通', address1:'245', address2:'', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:32800, orderCount:1, registeredDate:'2024/07/15', notes:'退会理由: 引っ越しのため。', orders:[] },
+    { id:'M-0010', lastName:'加藤', firstName:'真理子', lastNameKana:'かとう', firstNameKana:'まりこ', email:'kato.mariko@example.com', phone:'03-4444-5555', birthday:'1980-10-20', status:'アクティブ', newsletter:'subscribed', newsletterDate:'2024/02/01', postcode:'1530064', prefecture:'東京都', city:'目黒区下目黒', address1:'3-7-2', address2:'パークサイド目黒 101', shipSame:true, shipPostcode:'', shipPrefecture:'', shipCity:'', shipAddress1:'', shipAddress2:'', totalSpent:523200, orderCount:7, registeredDate:'2024/02/01', notes:'最優良顧客。年間購入額トップ。特別対応要。', orders:[{num:'#OFT-0405',date:'2026/03/20',product:'Premium RDS Down 冬用本掛け D',amount:258000,status:'配達完了'},{num:'#OFT-0390',date:'2026/02/10',product:'CCD Sleep Down-春秋用- S',amount:48800,status:'配達完了'}] }
   ];
 
-  // === PERSISTENCE ===
-  function loadCustomers() {
+  // === PERSISTENCE (localStorage フォールバック用) ===
+  function loadCustomersLocal() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) return JSON.parse(stored);
     } catch(e) {}
     // Initialize with sample data
-    saveCustomers(SAMPLE_CUSTOMERS);
+    saveCustomersLocal(SAMPLE_CUSTOMERS);
     return SAMPLE_CUSTOMERS;
   }
 
-  function saveCustomers(data) {
+  function saveCustomersLocal(data) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadCustomers() {
+    return loadCustomersLocal();
+  }
+
+  function saveCustomers(data) {
+    saveCustomersLocal(data);
   }
 
   function getNextId(customers) {
@@ -576,18 +724,56 @@ total_spent, order_count, registered_date</code>
     let customers = loadCustomers();
     const search = document.getElementById('searchInput').value.trim().toLowerCase();
     const statusFilter = document.getElementById('statusFilter').value;
+    const newsletterFilter = document.getElementById('newsletterFilter').value;
     const sort = document.getElementById('sortSelect').value;
 
+    // Basic search
     if (search) {
       customers = customers.filter(c =>
         (c.lastName + c.firstName).toLowerCase().includes(search) ||
         (c.lastNameKana + c.firstNameKana).toLowerCase().includes(search) ||
         c.email.toLowerCase().includes(search) ||
-        (c.phone || '').includes(search)
+        (c.phone || '').includes(search) ||
+        (c.id || '').toLowerCase().includes(search)
       );
     }
     if (statusFilter) {
       customers = customers.filter(c => c.status === statusFilter);
+    }
+    if (newsletterFilter) {
+      customers = customers.filter(c => (c.newsletter || 'subscribed') === newsletterFilter);
+    }
+
+    // Advanced filters
+    const prefFilter = document.getElementById('prefectureFilter');
+    if (prefFilter && prefFilter.value) {
+      customers = customers.filter(c => c.prefecture === prefFilter.value);
+    }
+    const dateFrom = document.getElementById('dateFrom');
+    if (dateFrom && dateFrom.value) {
+      const from = dateFrom.value.replace(/-/g, '/');
+      customers = customers.filter(c => (c.registeredDate || '') >= from);
+    }
+    const dateTo = document.getElementById('dateTo');
+    if (dateTo && dateTo.value) {
+      const to = dateTo.value.replace(/-/g, '/');
+      customers = customers.filter(c => (c.registeredDate || '') <= to);
+    }
+    const bdMonth = document.getElementById('birthdayMonthFilter');
+    if (bdMonth && bdMonth.value) {
+      customers = customers.filter(c => c.birthday && c.birthday.substring(5, 7) === bdMonth.value);
+    }
+    const spentMin = document.getElementById('spentMin');
+    if (spentMin && spentMin.value !== '') {
+      customers = customers.filter(c => (c.totalSpent || 0) >= Number(spentMin.value));
+    }
+    const spentMax = document.getElementById('spentMax');
+    if (spentMax && spentMax.value !== '') {
+      customers = customers.filter(c => (c.totalSpent || 0) <= Number(spentMax.value));
+    }
+    const orderMin = document.getElementById('orderCountMin');
+    if (orderMin && orderMin.value !== '') {
+      customers = customers.filter(c => (c.orderCount || 0) >= Number(orderMin.value));
     }
 
     // Sort
@@ -604,7 +790,15 @@ total_spent, order_count, registered_date</code>
       case 'order_count_desc':
         customers.sort((a, b) => (b.orderCount || 0) - (a.orderCount || 0));
         break;
+      case 'name_asc':
+        customers.sort((a, b) => ((a.lastNameKana || '') + (a.firstNameKana || '')).localeCompare((b.lastNameKana || '') + (b.firstNameKana || '')));
+        break;
     }
+
+    // Update search result count
+    const countEl = document.getElementById('searchResultCount');
+    if (countEl) countEl.textContent = `検索結果: ${customers.length}件`;
+
     return customers;
   }
 
@@ -619,10 +813,12 @@ total_spent, order_count, registered_date</code>
 
     const tbody = document.getElementById('customerTableBody');
     if (pageItems.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:40px;color:#AAA">該当する会員が見つかりません</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px;color:#AAA">該当する会員が見つかりません</td></tr>';
     } else {
       tbody.innerHTML = pageItems.map(c => {
         const statusClass = c.status === 'アクティブ' ? 'badge-green' : c.status === '休眠' ? 'badge-yellow' : 'badge-gray';
+        const nlClass = (c.newsletter || 'subscribed') === 'subscribed' ? 'badge-green' : 'badge-gray';
+        const nlLabel = (c.newsletter || 'subscribed') === 'subscribed' ? '購読中' : '解除';
         const fullAddr = (c.prefecture || '') + (c.city || '') + (c.address1 || '') + (c.address2 ? ' ' + c.address2 : '');
         return `<tr>
           <td style="padding-left:24px;font-weight:600">#${c.id}</td>
@@ -634,6 +830,7 @@ total_spent, order_count, registered_date</code>
           <td style="text-align:right;font-weight:700">&yen;${(c.totalSpent || 0).toLocaleString()}</td>
           <td style="color:#888;font-size:13px">${c.registeredDate || '-'}</td>
           <td style="text-align:center"><span class="badge ${statusClass}">${c.status}</span></td>
+          <td style="text-align:center"><span class="badge ${nlClass}" style="font-size:11px;padding:2px 8px">${nlLabel}</span></td>
           <td style="text-align:center;white-space:nowrap">
             <button class="btn btn-sm btn-outline" onclick="viewCustomer('${c.id}')">詳細</button>
             <button class="btn btn-sm btn-outline" onclick="editCustomer('${c.id}')" style="margin-left:4px">編集</button>
@@ -694,6 +891,8 @@ total_spent, order_count, registered_date</code>
       document.getElementById(id).value = '';
     });
     document.getElementById('formStatus').value = 'アクティブ';
+    document.getElementById('formNewsletter').value = 'subscribed';
+    document.getElementById('formNewsletterDate').value = '';
     document.getElementById('formPrefecture').value = '';
     document.getElementById('formShipPrefecture').value = '';
     document.getElementById('formSameAddress').checked = true;
@@ -714,6 +913,8 @@ total_spent, order_count, registered_date</code>
     document.getElementById('formPhone').value = c.phone || '';
     document.getElementById('formBirthday').value = c.birthday || '';
     document.getElementById('formStatus').value = c.status || 'アクティブ';
+    document.getElementById('formNewsletter').value = c.newsletter || 'subscribed';
+    document.getElementById('formNewsletterDate').value = c.newsletterDate ? c.newsletterDate.replace(/\//g, '-') : '';
     document.getElementById('formPostcode').value = c.postcode || '';
     document.getElementById('formPrefecture').value = c.prefecture || '';
     document.getElementById('formCity').value = c.city || '';
@@ -790,6 +991,8 @@ total_spent, order_count, registered_date</code>
       phone: document.getElementById('formPhone').value.trim(),
       birthday: document.getElementById('formBirthday').value,
       status: document.getElementById('formStatus').value,
+      newsletter: document.getElementById('formNewsletter').value,
+      newsletterDate: document.getElementById('formNewsletterDate').value.replace(/-/g, '/'),
       postcode: document.getElementById('formPostcode').value.trim(),
       prefecture: document.getElementById('formPrefecture').value,
       city: document.getElementById('formCity').value.trim(),
@@ -811,6 +1014,16 @@ total_spent, order_count, registered_date</code>
         Object.assign(customers[idx], customerData);
         saveCustomers(customers);
         showToast('会員情報を更新しました');
+        // API にも送信
+        try {
+          if (typeof AdminAPI !== 'undefined') {
+            AdminAPI.updateCustomer(editId, customerData).then(function() {
+              console.log('[Customers] API更新成功: ' + editId);
+            }).catch(function(err) {
+              console.warn('[Customers] API更新失敗:', err.message);
+            });
+          }
+        } catch(e) { console.warn('[Customers] API呼び出しエラー:', e.message); }
       }
     } else {
       // New customer
@@ -824,6 +1037,16 @@ total_spent, order_count, registered_date</code>
       customers.push(customerData);
       saveCustomers(customers);
       showToast('新規会員を追加しました');
+      // API にも送信
+      try {
+        if (typeof AdminAPI !== 'undefined') {
+          AdminAPI.createCustomer(customerData).then(function() {
+            console.log('[Customers] API新規作成成功: ' + customerData.id);
+          }).catch(function(err) {
+            console.warn('[Customers] API新規作成失敗:', err.message);
+          });
+        }
+      } catch(e) { console.warn('[Customers] API呼び出しエラー:', e.message); }
     }
 
     closeCustomerModal();
@@ -847,12 +1070,23 @@ total_spent, order_count, registered_date</code>
 
   window.confirmDelete = function() {
     if (!deleteTargetId) return;
+    const deletedId = deleteTargetId;
     let customers = loadCustomers();
     customers = customers.filter(c => c.id !== deleteTargetId);
     saveCustomers(customers);
     closeDeleteModal();
     renderTable();
     showToast('会員を削除しました');
+    // API にも送信
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        AdminAPI.deleteCustomer(deletedId).then(function() {
+          console.log('[Customers] API削除成功: ' + deletedId);
+        }).catch(function(err) {
+          console.warn('[Customers] API削除失敗:', err.message);
+        });
+      }
+    } catch(e) { console.warn('[Customers] API呼び出しエラー:', e.message); }
   };
 
   // === CSV IMPORT ===
@@ -995,28 +1229,192 @@ total_spent, order_count, registered_date</code>
     importNext();
   };
 
-  // === CSV EXPORT ===
-  window.exportCSV = function() {
-    const customers = loadCustomers();
-    const headers = 'email,first_name,last_name,first_name_kana,last_name_kana,phone,postcode,state,city,address1,address2,total_spent,order_count,registered_date';
-    const rows = customers.map(c =>
-      [c.email, c.firstName, c.lastName, c.firstNameKana, c.lastNameKana,
-       c.phone, c.postcode, c.prefecture, c.city, c.address1, c.address2,
-       c.totalSpent, c.orderCount, c.registeredDate
-      ].map(v => '"' + String(v || '').replace(/"/g, '""') + '"').join(',')
-    );
+  // === ADVANCED SEARCH ===
+  window.toggleAdvancedSearch = function() {
+    const panel = document.getElementById('advancedSearch');
+    const btn = document.getElementById('advSearchToggle');
+    if (panel.style.display === 'none') {
+      panel.style.display = 'block';
+      btn.style.background = '#C9A96E';
+      btn.style.color = '#fff';
+      btn.style.borderColor = '#C9A96E';
+    } else {
+      panel.style.display = 'none';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }
+  };
 
-    const csv = '\uFEFF' + headers + '\n' + rows.join('\n');
+  window.clearAdvancedSearch = function() {
+    document.getElementById('prefectureFilter').value = '';
+    document.getElementById('dateFrom').value = '';
+    document.getElementById('dateTo').value = '';
+    document.getElementById('birthdayMonthFilter').value = '';
+    document.getElementById('spentMin').value = '';
+    document.getElementById('spentMax').value = '';
+    document.getElementById('orderCountMin').value = '';
+    currentPage = 1;
+    renderTable();
+  };
+
+  // Init prefecture filter in advanced search
+  function initAdvancedPrefectureFilter() {
+    const sel = document.getElementById('prefectureFilter');
+    PREFECTURES.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      sel.appendChild(opt);
+    });
+  }
+
+  // === UNIFIED CSV EXPORT ===
+  let selectedExportType = 'customers';
+
+  window.openExportModal = function() {
+    selectedExportType = 'customers';
+    document.querySelector('input[name="exportType"][value="customers"]').checked = true;
+    document.querySelector('input[name="exportScope"][value="all"]').checked = true;
+    updateExportPreview();
+    document.getElementById('exportModal').classList.add('active');
+  };
+
+  window.closeExportModal = function() {
+    document.getElementById('exportModal').classList.remove('active');
+  };
+
+  window.selectExportType = function(type) {
+    selectedExportType = type;
+    updateExportPreview();
+  };
+
+  function updateExportPreview() {
+    const scope = document.querySelector('input[name="exportScope"]:checked').value;
+    const customers = scope === 'filtered' ? getFilteredCustomers() : loadCustomers();
+    const labels = {
+      customers: '顧客情報',
+      purchases: '購入情報',
+      newsletter: 'メルマガ会員情報',
+      unified: '統合データ（全項目）'
+    };
+
+    let count = customers.length;
+    if (selectedExportType === 'newsletter') {
+      count = customers.filter(c => (c.newsletter || 'subscribed') === 'subscribed').length;
+    }
+    if (selectedExportType === 'purchases') {
+      let orderCount = 0;
+      customers.forEach(c => { orderCount += (c.orders || []).length; });
+      document.getElementById('exportPreviewInfo').textContent =
+        `${labels[selectedExportType]}: ${count}名 / 注文${orderCount}件をエクスポートします`;
+    } else {
+      document.getElementById('exportPreviewInfo').textContent =
+        `${labels[selectedExportType]}: ${count}件をエクスポートします`;
+    }
+  }
+
+  // Listen for scope radio change
+  document.addEventListener('change', function(e) {
+    if (e.target.name === 'exportScope' || e.target.name === 'exportType') {
+      if (e.target.name === 'exportType') selectedExportType = e.target.value;
+      updateExportPreview();
+    }
+  });
+
+  function csvEscape(v) {
+    return '"' + String(v || '').replace(/"/g, '""') + '"';
+  }
+
+  window.executeUnifiedExport = function() {
+    const scope = document.querySelector('input[name="exportScope"]:checked').value;
+    let customers = scope === 'filtered' ? getFilteredCustomers() : loadCustomers();
+    const orders = (function() { try { return JSON.parse(localStorage.getItem('oft_orders')) || []; } catch(e) { return []; } })();
+    let csv = '\uFEFF';
+    let filename = '';
+    const date = new Date().toISOString().slice(0,10);
+
+    switch(selectedExportType) {
+      case 'customers':
+        csv += '会員ID,姓,名,姓（かな）,名（かな）,メール,電話番号,生年月日,ステータス,郵便番号,都道府県,市区町村,番地,建物名,累計購入金額,注文回数,登録日,備考\n';
+        customers.forEach(c => {
+          csv += [c.id, c.lastName, c.firstName, c.lastNameKana, c.firstNameKana,
+            c.email, c.phone, c.birthday, c.status, c.postcode, c.prefecture,
+            c.city, c.address1, c.address2, c.totalSpent, c.orderCount,
+            c.registeredDate, c.notes].map(csvEscape).join(',') + '\n';
+        });
+        filename = `customers_${date}.csv`;
+        break;
+
+      case 'purchases':
+        csv += '会員ID,姓,名,メール,注文番号,注文日,商品名,金額,注文ステータス,累計購入金額,注文回数\n';
+        customers.forEach(c => {
+          // Customer's own order records
+          if (c.orders && c.orders.length > 0) {
+            c.orders.forEach(o => {
+              csv += [c.id, c.lastName, c.firstName, c.email,
+                o.num, o.date, o.product, o.amount, o.status,
+                c.totalSpent, c.orderCount].map(csvEscape).join(',') + '\n';
+            });
+          }
+          // Also check global orders matching this customer
+          const matchedOrders = orders.filter(o => o.email === c.email || o.customerName === (c.lastName + ' ' + c.firstName));
+          matchedOrders.forEach(o => {
+            const items = o.items || [];
+            items.forEach(item => {
+              csv += [c.id, c.lastName, c.firstName, c.email,
+                o.id, o.date, item.name, item.price, o.status,
+                c.totalSpent, c.orderCount].map(csvEscape).join(',') + '\n';
+            });
+          });
+          // If no orders at all, still output one row
+          if ((!c.orders || c.orders.length === 0) && orders.filter(o => o.email === c.email).length === 0) {
+            csv += [c.id, c.lastName, c.firstName, c.email,
+              '', '', '', '', '', c.totalSpent, c.orderCount].map(csvEscape).join(',') + '\n';
+          }
+        });
+        filename = `purchases_${date}.csv`;
+        break;
+
+      case 'newsletter':
+        customers = customers.filter(c => (c.newsletter || 'subscribed') === 'subscribed');
+        csv += 'メール,姓,名,姓（かな）,名（かな）,電話番号,メルマガ登録日,会員ステータス,都道府県,登録日\n';
+        customers.forEach(c => {
+          csv += [c.email, c.lastName, c.firstName, c.lastNameKana, c.firstNameKana,
+            c.phone, c.newsletterDate || c.registeredDate, c.status, c.prefecture,
+            c.registeredDate].map(csvEscape).join(',') + '\n';
+        });
+        filename = `newsletter_subscribers_${date}.csv`;
+        break;
+
+      case 'unified':
+        csv += '会員ID,姓,名,姓（かな）,名（かな）,メール,電話番号,生年月日,会員ステータス,メルマガ,メルマガ登録日,郵便番号,都道府県,市区町村,番地,建物名,配送先郵便番号,配送先都道府県,配送先市区町村,配送先番地,配送先建物名,累計購入金額,注文回数,登録日,備考\n';
+        customers.forEach(c => {
+          csv += [c.id, c.lastName, c.firstName, c.lastNameKana, c.firstNameKana,
+            c.email, c.phone, c.birthday, c.status,
+            (c.newsletter || 'subscribed') === 'subscribed' ? '購読中' : '解除済み',
+            c.newsletterDate || '', c.postcode, c.prefecture, c.city, c.address1, c.address2,
+            c.shipSame ? '' : c.shipPostcode, c.shipSame ? '' : c.shipPrefecture,
+            c.shipSame ? '' : c.shipCity, c.shipSame ? '' : c.shipAddress1,
+            c.shipSame ? '' : c.shipAddress2,
+            c.totalSpent, c.orderCount, c.registeredDate, c.notes
+          ].map(csvEscape).join(',') + '\n';
+        });
+        filename = `unified_export_${date}.csv`;
+        break;
+    }
+
     const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'customers_export_' + new Date().toISOString().slice(0,10) + '.csv';
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showToast('CSVエクスポートが完了しました');
+    closeExportModal();
+    showToast(`${filename} をダウンロードしました`);
   };
 
   // === PAGINATION ===
@@ -1029,7 +1427,14 @@ total_spent, order_count, registered_date</code>
   // === EVENT LISTENERS ===
   document.getElementById('searchInput').addEventListener('input', () => { currentPage = 1; renderTable(); });
   document.getElementById('statusFilter').addEventListener('change', () => { currentPage = 1; renderTable(); });
+  document.getElementById('newsletterFilter').addEventListener('change', () => { currentPage = 1; renderTable(); });
   document.getElementById('sortSelect').addEventListener('change', () => { currentPage = 1; renderTable(); });
+
+  // Advanced search filter listeners
+  ['prefectureFilter','dateFrom','dateTo','birthdayMonthFilter','spentMin','spentMax','orderCountMin'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', () => { currentPage = 1; renderTable(); });
+  });
 
   // Close modals on overlay click
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
@@ -1042,7 +1447,28 @@ total_spent, order_count, registered_date</code>
 
   // === INIT ===
   initPrefectureSelects();
+  initAdvancedPrefectureFilter();
   renderTable();
+
+  // === データ読み込み: API優先、失敗時はlocalStorageフォールバック ===
+  (async function loadFromAPI() {
+    try {
+      if (typeof AdminAPI !== 'undefined') {
+        const apiData = await AdminAPI.getCustomers();
+        if (apiData && Array.isArray(apiData) && apiData.length > 0) {
+          saveCustomersLocal(apiData);
+          renderTable();
+          console.log('[Customers] APIからデータ取得成功 (' + apiData.length + '件)');
+        } else {
+          throw new Error('APIデータが空');
+        }
+      } else {
+        throw new Error('AdminAPI未定義');
+      }
+    } catch(e) {
+      console.warn('[Customers] APIフォールバック → localStorage:', e.message);
+    }
+  })();
 
 })();
 </script>

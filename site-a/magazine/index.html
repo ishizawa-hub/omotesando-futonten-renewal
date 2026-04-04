@@ -1284,7 +1284,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" id="menuClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg></button>
   <nav class="mm-nav">
-    <a href="../index.html" class="mm-link">TOP</a>
+    <a href="../index.html" class="mm-link mm-logo-link"><img src="../images/logo.svg" alt="表参道布団店。" style="height:22px;width:auto;"></a>
     <div class="mm-accordion">
       <button class="mm-link mm-toggle">CONCEPT<svg class="mm-arrow" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
       <div class="mm-sub">
@@ -3342,6 +3342,55 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   });
 
   render();
+
+  // Dynamic featured article from admin
+  (function(){
+    var FEATURED_KEY = 'oft_magazine_featured';
+    var ARTICLES_KEY = 'oft_magazine';
+    try {
+      var featuredId = JSON.parse(localStorage.getItem(FEATURED_KEY));
+      if (!featuredId) return;
+      var allArticles = JSON.parse(localStorage.getItem(ARTICLES_KEY)) || [];
+      var article = allArticles.find(function(a) { return a.id === featuredId; });
+      if (!article || !article.title) return;
+
+      var section = document.getElementById('featuredSection');
+      if (!section) return;
+
+      var slug = article.slug || 'article-' + article.id;
+      var heroImg = article.heroImage || '../images/magazine/default-hero.png';
+      var category = article.category || '';
+      var excerpt = '';
+      // Extract text from body HTML for excerpt
+      if (article.body) {
+        var tmp = document.createElement('div');
+        tmp.innerHTML = article.body;
+        excerpt = (tmp.textContent || tmp.innerText || '').substring(0, 150);
+        if (excerpt.length >= 150) excerpt += '...';
+      }
+      var dateDisplay = (article.date || '').replace(/-/g, '.');
+
+      var container = section.querySelector('.container');
+      if (container) {
+        container.innerHTML =
+          '<a href="../magazine/' + slug + '/" class="mag-featured-card fade-up visible" data-category="' + category + '">' +
+            '<div class="mf-img"><img src="' + heroImg + '" alt="' + (article.title || '').replace(/"/g, '&quot;') + '" loading="lazy"></div>' +
+            '<div class="mf-body">' +
+              '<div class="mf-badge">' +
+                '<span class="mf-badge-label">Featured</span>' +
+                '<span class="mf-badge-cat">' + category + '</span>' +
+              '</div>' +
+              '<h2 class="mf-title">' + (article.title || '') + '</h2>' +
+              '<p class="mf-excerpt">' + excerpt + '</p>' +
+              '<div class="mf-bottom">' +
+                '<span class="mf-date">' + dateDisplay + '</span>' +
+                '<span class="mf-link">Read Article</span>' +
+              '</div>' +
+            '</div>' +
+          '</a>';
+      }
+    } catch(e) { /* silently fail if no data */ }
+  })();
 })();
 
 // Fade-up observer

@@ -129,6 +129,7 @@
 </style>
 </head>
 <body>
+<script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
 <div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
@@ -171,6 +172,10 @@
     <a href="pages.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128196;</span> ページ編集
+    </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
     </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -520,24 +525,88 @@
     ];
   }
 
-  // ========== PERSISTENCE ==========
+  // ========== PERSISTENCE (API優先 + localStorageフォールバック) ==========
   var STORAGE_KEY = 'oft_orders';
 
-  function loadOrders() {
+  function loadOrdersLocal() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
       if (raw) return JSON.parse(raw);
     } catch(e) {}
-    var sample = generateSampleOrders();
-    saveOrders(sample);
-    return sample;
+    return null;
   }
 
-  function saveOrders(o) {
+  function saveOrdersLocal(o) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(o));
   }
 
+  function loadOrders() {
+    var local = loadOrdersLocal();
+    if (local) return local;
+    var sample = generateSampleOrders();
+    saveOrdersLocal(sample);
+    return sample;
+  }
+
+  function saveOrders(o, updatedOrderId, newStatus) {
+    saveOrdersLocal(o);
+    // API経由でステータス更新（非同期、失敗しても継続）
+    if (updatedOrderId && newStatus && typeof AdminAPI !== 'undefined') {
+      var wcStatus = reverseStatus(newStatus);
+      AdminAPI.updateOrderStatus(updatedOrderId, wcStatus)
+        .then(function() { console.log('[Orders] API更新成功: #' + updatedOrderId + ' → ' + wcStatus); })
+        .catch(function(e) { console.warn('[Orders] API更新失敗:', e.message); });
+    }
+  }
+
+  function reverseStatus(jpStatus) {
+    var map = { '未処理': 'pending', '処理待ち': 'processing', '発送準備中': 'processing', '発送済み': 'completed', '配達完了': 'completed', 'キャンセル完了': 'cancelled', 'キャンセル済み': 'cancelled', '返品申請中': 'on-hold', '返品完了': 'refunded' };
+    return map[jpStatus] || 'processing';
+  }
+
   var orders = loadOrders();
+
+  // API非同期ロード: 成功時にデータ差し替え＆再描画
+  (async function loadFromAPI() {
+    try {
+      if (typeof AdminAPI === 'undefined') throw new Error('AdminAPI未定義');
+      var result = await AdminAPI.getOrders();
+      var apiOrders = result.orders || result;
+      if (Array.isArray(apiOrders) && apiOrders.length > 0) {
+        // WooCommerce形式 → 管理画面形式に変換
+        orders = apiOrders.map(function(o) {
+          return {
+            id: String(o.id),
+            date: o.date_created || '',
+            customer: (o.billing ? (o.billing.last_name || '') + ' ' + (o.billing.first_name || '') : '').trim(),
+            email: o.billing ? o.billing.email || '' : '',
+            phone: o.billing ? o.billing.phone || '' : '',
+            address: o.shipping ? [o.shipping.state, o.shipping.city, o.shipping.address_1, o.shipping.address_2].filter(Boolean).join(' ') : '',
+            items: (o.items || []).map(function(item) {
+              return { name: item.name, qty: item.quantity, price: parseFloat(item.total) / (item.quantity || 1), size: '', color: '' };
+            }),
+            status: transformStatus(o.status),
+            payment: o.payment_method || '',
+            carrier: '', tracking: '', deliveryDate: '', deliveryTime: '',
+            shipping: parseFloat(o.shipping_total || 0),
+            discount: 0,
+            notes: o.customer_note || '',
+            statusHistory: []
+          };
+        });
+        saveOrdersLocal(orders);
+        updateStats(); renderTable();
+        console.log('[Orders] APIからデータ取得成功 (' + orders.length + '件)');
+      }
+    } catch(e) {
+      console.warn('[Orders] APIフォールバック → localStorage:', e.message);
+    }
+  })();
+
+  function transformStatus(wcStatus) {
+    var map = { 'pending': '未処理', 'processing': '処理待ち', 'on-hold': '処理待ち', 'completed': '配達完了', 'cancelled': 'キャンセル済み', 'refunded': '返品完了', 'failed': 'キャンセル済み' };
+    return map[wcStatus] || wcStatus;
+  }
   var currentOrderId = null;
 
   // ========== TOAST ==========
@@ -951,7 +1020,7 @@
     order.statusHistory.push({ date: getNow(), from: 'キャンセル申請', to: 'キャンセル完了' });
     order.notes = (order.notes ? order.notes + '\n' : '') + '[キャンセル] 理由: ' + reason + (detail ? ' / ' + detail : '') + ' / ' + refundNote;
 
-    saveOrders(orders);
+    saveOrders(orders, order.id, 'キャンセル完了');
     closeCancelModal();
     closeModal();
     renderTable();
@@ -996,7 +1065,7 @@
     var itemNames = checkedItems.map(function(i) { return order.items[i] ? order.items[i].name : ''; }).join(', ');
     order.notes = (order.notes ? order.notes + '\n' : '') + '[返品] 理由: ' + reason + ' / 商品: ' + itemNames + ' / 状態: ' + condition + ' / 返金: ' + refundMethod;
 
-    saveOrders(orders);
+    saveOrders(orders, order.id, '返品申請中');
     closeReturnModal();
     closeModal();
     renderTable();

@@ -96,6 +96,7 @@ tr:hover { background:#FAFBFD; }
 </style>
 </head>
 <body>
+<script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
 <div class="admin-sidebar-fix">
@@ -130,6 +131,10 @@ tr:hover { background:#FAFBFD; }
     <a href="customers.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
+    </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
     </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -608,12 +613,18 @@ tr:hover { background:#FAFBFD; }
 
   var defaultSpecs = ['羽毛種','ダウンパワー','充填量','側生地','洗浄','製造','カラー','用途','産地'];
 
-  // ===================== STORAGE =====================
-  function loadProducts() {
+  // ===================== STORAGE (API優先 + localStorageフォールバック) =====================
+  function loadProductsLocal() {
     try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch(e) { return []; }
   }
-  function saveProducts(arr) {
+  function saveProductsLocal(arr) {
     localStorage.setItem(LS_KEY, JSON.stringify(arr));
+  }
+  function loadProducts() {
+    return loadProductsLocal();
+  }
+  function saveProducts(arr) {
+    saveProductsLocal(arr);
   }
   function genId() {
     return 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
@@ -663,6 +674,12 @@ tr:hover { background:#FAFBFD; }
     var products = loadProducts();
     products = products.filter(function(p) { return p.id !== pendingDeleteId; });
     saveProducts(products);
+    // API経由でも削除
+    if (typeof AdminAPI !== 'undefined') {
+      AdminAPI.deleteProduct(pendingDeleteId)
+        .then(function() { console.log('[Products] API削除成功: ' + pendingDeleteId); })
+        .catch(function(e) { console.warn('[Products] API削除失敗:', e.message); });
+    }
     closeConfirm();
     renderList();
     showToast('商品を削除しました');
@@ -1224,6 +1241,19 @@ tr:hover { background:#FAFBFD; }
       products.unshift(product);
     }
     saveProducts(products);
+    // API経由でも保存
+    if (typeof AdminAPI !== 'undefined') {
+      var apiData = { name: product.name, description: product.subtitle, status: product.status === '公開' ? 'publish' : 'draft', category: product.category, price: product.sizes && product.sizes[0] ? product.sizes[0].price : 0, stock: product.stock || 0 };
+      if (editingId) {
+        AdminAPI.updateProduct(editingId, apiData)
+          .then(function() { console.log('[Products] API更新成功: ' + editingId); })
+          .catch(function(e) { console.warn('[Products] API更新失敗:', e.message); });
+      } else {
+        AdminAPI.createProduct(apiData)
+          .then(function(res) { console.log('[Products] API作成成功: ' + (res.id || '')); })
+          .catch(function(e) { console.warn('[Products] API作成失敗:', e.message); });
+      }
+    }
     showToast(editingId ? '商品を更新しました' : '商品を追加しました');
     closeEditor();
   };
@@ -1248,6 +1278,51 @@ tr:hover { background:#FAFBFD; }
   // ===================== INIT =====================
   seedIfEmpty();
   renderList();
+
+  // API非同期ロード: 成功時にデータ差し替え＆再描画
+  (async function loadFromAPI() {
+    try {
+      if (typeof AdminAPI === 'undefined') throw new Error('AdminAPI未定義');
+      var apiProducts = await AdminAPI.getProducts();
+      if (Array.isArray(apiProducts) && apiProducts.length > 0) {
+        var converted = apiProducts.map(function(p) {
+          return {
+            id: String(p.id),
+            name: p.name || '',
+            series: '',
+            subtitle: p.description || '',
+            category: (p.categories && p.categories[0]) || '',
+            season: '通年',
+            status: p.stock_status === 'instock' ? '公開' : '下書き',
+            sizes: (p.variations || []).map(function(v) {
+              var attrs = v.attributes || {};
+              return { name: Object.values(attrs).join('/'), dimensions: '', fill: '', price: parseFloat(v.price || p.price || 0), coverPrice: 0 };
+            }),
+            stock: p.stock_qty || 0,
+            images: p.image ? [p.image] : [],
+            colors: [],
+            specs: [],
+            features: {},
+            badges: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          };
+        });
+        // サイズが空の場合、本体価格で1サイズ追加
+        converted.forEach(function(p) {
+          if (p.sizes.length === 0) {
+            var ap = apiProducts.find(function(a) { return String(a.id) === p.id; });
+            if (ap && ap.price) p.sizes = [{ name: '-', dimensions: '', fill: '', price: parseFloat(ap.price), coverPrice: 0 }];
+          }
+        });
+        saveProductsLocal(converted);
+        renderList();
+        console.log('[Products] APIからデータ取得成功 (' + converted.length + '件)');
+      }
+    } catch(e) {
+      console.warn('[Products] APIフォールバック → localStorage:', e.message);
+    }
+  })();
 
 })();
 </script>

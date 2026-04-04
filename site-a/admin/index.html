@@ -1072,6 +1072,10 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128101;</span> 顧客管理
     </a>
+    <a href="inquiries.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#9993;</span> お問い合わせ
+    </a>
     <a href="settings.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#9881;</span> 設定
@@ -1484,16 +1488,70 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   // まずlocalStorageからデータをロード
   loadLocalDashboard();
 
-  // WP APIからも試みる（上書き）
+  // WP APIからも試みる（統計カード + 注文テーブル上書き）
   if (typeof AdminAPI !== 'undefined' && AdminAPI.getDashboard) {
     AdminAPI.getDashboard()
       .then(function(data) {
-        if (data && data.orders && data.orders.length > 0) {
-          updateOrdersFromLocal(data.orders);
+        console.log('[Dashboard] APIデータ取得成功');
+
+        // 注文データで統計更新
+        var apiOrders = (data.orders && data.orders.orders) || data.orders || [];
+        if (Array.isArray(apiOrders) && apiOrders.length > 0) {
+          // WooCommerce形式のデータから統計計算
+          var totalSales = 0, pendingCount = 0, shippedCount = 0;
+          var statusMap = { 'pending': '未処理', 'processing': '処理待ち', 'on-hold': '処理待ち', 'completed': '配達完了', 'cancelled': 'キャンセル済み', 'refunded': '返品完了' };
+          var displayOrders = apiOrders.map(function(o) {
+            var total = parseFloat(o.total || 0);
+            totalSales += total;
+            var jpStatus = statusMap[o.status] || o.status;
+            if (o.status === 'pending' || o.status === 'processing') pendingCount++;
+            if (o.status === 'completed') shippedCount++;
+            return {
+              id: o.id,
+              customer: o.billing ? (o.billing.last_name || '') + ' ' + (o.billing.first_name || '') : '',
+              items: (o.items || []).map(function(it) { return { name: it.name, price: parseFloat(it.total || 0), qty: it.quantity || 1 }; }),
+              status: jpStatus,
+              date: (o.date_created || '').slice(0, 10),
+              shipping: parseFloat(o.shipping_total || 0),
+              discount: 0
+            };
+          });
+
+          var el1 = document.getElementById('stat-daily-sales');
+          if (el1) el1.innerHTML = '&yen;' + totalSales.toLocaleString();
+          var diff1 = document.getElementById('stat-daily-sales-diff');
+          if (diff1) diff1.textContent = '全' + apiOrders.length + '件の注文合計';
+          var el2 = document.getElementById('stat-daily-orders');
+          if (el2) el2.textContent = apiOrders.length + '件';
+          var diff2 = document.getElementById('stat-daily-orders-diff');
+          if (diff2) diff2.textContent = '未処理: ' + pendingCount + '件 / 発送済: ' + shippedCount + '件';
+
+          var labels = document.querySelectorAll('#stats-cards > div > div:first-child');
+          if (labels.length >= 1) labels[0].textContent = '売上合計';
+
+          updateOrdersFromLocal(displayOrders);
+        }
+
+        // 商品数
+        var apiProducts = data.products || [];
+        if (Array.isArray(apiProducts) && apiProducts.length > 0) {
+          var el3 = document.getElementById('stat-monthly-sales');
+          if (el3) el3.textContent = apiProducts.length + '商品';
+          var diff3 = document.getElementById('stat-monthly-sales-diff');
+          if (diff3) diff3.textContent = '登録商品数';
+        }
+
+        // マガジン数
+        var apiMagazines = data.magazines || [];
+        if (Array.isArray(apiMagazines) && apiMagazines.length > 0) {
+          var el4 = document.getElementById('stat-members');
+          if (el4) el4.textContent = apiMagazines.length + '記事';
+          var diff4 = document.getElementById('stat-members-diff');
+          if (diff4) diff4.textContent = 'マガジン記事数';
         }
       })
       .catch(function(err) {
-        console.warn('ダッシュボードAPI取得失敗、localStorageデータを維持:', err.message);
+        console.warn('[Dashboard] APIフォールバック → localStorage:', err.message);
       });
   }
 
