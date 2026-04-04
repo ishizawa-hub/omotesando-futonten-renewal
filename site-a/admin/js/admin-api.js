@@ -5,8 +5,13 @@
 (function () {
   'use strict';
 
-  // ローカル(Flask staging)時は自動でローカルAPI、本番時はWP REST API
-  var BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+  // ステージング(Flask)時は自動でローカルAPI、本番時はWP REST API
+  // localhost / 127.0.0.1 / ngrok / render 等 → 同一オリジンのFlask API
+  var isStaging = (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    || location.hostname.indexOf('ngrok') !== -1
+    || location.hostname.indexOf('onrender.com') !== -1
+    || location.hostname.indexOf('railway.app') !== -1);
+  var BASE = isStaging
     ? location.origin + '/oft/v1'
     : 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
   var TOKEN_KEY = 'oft_admin_token';
