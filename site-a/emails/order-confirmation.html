@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- Subject: 【表参道布団店。】ご注文確認 #{{order_number}} -->
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>ご注文確認 | 表参道布団店。</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+</head>
+<body style="margin:0;padding:0;background-color:#F7F6F3;font-family:'Noto Sans JP','Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+  <!-- Preheader -->
+  <div style="display:none;font-size:1px;color:#F7F6F3;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+    ご注文ありがとうございます。注文番号: {{order_number}}
+  </div>
+
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#F7F6F3;">
+    <tr>
+      <td align="center" style="padding:24px 16px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="background-color:#2D2D2D;padding:20px 24px;border-radius:8px 8px 0 0;">
+              <img src="https://ishizawa-hub.github.io/omotesando-futonten-renewal/site-a/images/logo.svg" alt="表参道布団店。" height="24" style="display:block;height:24px;width:auto;">
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#FFFFFF;padding:48px 40px 40px;">
+
+              <!-- Icon -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding-bottom:24px;">
+                    <div style="width:64px;height:64px;line-height:64px;text-align:center;background-color:#FBF8F2;border-radius:50%;font-size:28px;">&#10003;</div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Heading -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding-bottom:16px;">
+                    <h1 style="margin:0;font-size:22px;font-weight:700;color:#1A1A1A;letter-spacing:0.02em;">ご注文を承りました</h1>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr><td align="center" style="padding-bottom:24px;"><div style="width:40px;height:2px;background-color:#C9A96E;"></div></td></tr>
+              </table>
+
+              <!-- Message -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="padding-bottom:24px;font-size:15px;line-height:1.8;color:#444;">
+                    <p style="margin:0 0 12px;">{{customer_name}} 様</p>
+                    <p style="margin:0 0 12px;">この度はご注文いただき、誠にありがとうございます。<br>以下の内容でご注文を承りました。</p>
+                    <p style="margin:0;font-size:13px;color:#888;">注文番号: <strong style="color:#1A1A1A;">{{order_number}}</strong></p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Order Items Table -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom:24px;">
+                <tr>
+                  <td style="padding:16px;background-color:#FAFAF8;border-radius:8px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                      <tr>
+                        <td style="padding-bottom:12px;font-size:13px;font-weight:700;color:#1A1A1A;border-bottom:1px solid #EAEAE6;">ご注文内容</td>
+                      </tr>
+                      {{order_items_html}}
+                      <tr>
+                        <td style="padding-top:12px;border-top:2px solid #C9A96E;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td style="font-size:15px;font-weight:700;color:#1A1A1A;">合計</td>
+                              <td align="right" style="font-size:18px;font-weight:700;color:#C9A96E;">{{order_total}}</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Shipping Address -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom:32px;">
+                <tr>
+                  <td style="padding:16px;background-color:#FAFAF8;border-radius:8px;">
+                    <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#1A1A1A;">お届け先</p>
+                    <p style="margin:0;font-size:14px;line-height:1.6;color:#555;">{{shipping_address}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA Button -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding-bottom:16px;">
+                    <a href="https://omotesando-futonten.com/account/orders/" style="display:inline-block;background-color:#C9A96E;color:#FFFFFF;font-size:14px;font-weight:600;text-decoration:none;padding:14px 48px;border-radius:4px;letter-spacing:0.04em;">注文状況を確認</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#F0EFEC;padding:32px 40px;border-radius:0 0 8px 8px;text-align:center;">
+              <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#555;letter-spacing:0.04em;">表参道布団店。</p>
+              <p style="margin:0 0 4px;font-size:11px;color:#999;line-height:1.6;">〒150-0001 東京都渋谷区神宮前4丁目</p>
+              <p style="margin:0;font-size:11px;color:#999;">このメールはご注文確認のために自動送信されています。</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "smtp_user": "",
+  "smtp_password": "",
+  "admin_email": "admin@omotesando-futon.jp",
+  "from_name": "\u8868\u53c2\u9053\u5e03\u56e3\u5e97\u3002",
+  "from_email": "noreply@omotesando-futon.jp",
+  "stripe_secret_key": "sk_test_REPLACE_ME",
+  "stripe_publishable_key": "pk_test_REPLACE_ME",
+  "jwt_secret": "staging-secret-key-change-me"
+}

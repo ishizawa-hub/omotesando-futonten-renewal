@@ -162,6 +162,10 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
     </a>
+    <a href="sales.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128176;</span> 売上分析
+    </a>
     <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
       <span style="width:20px; text-align:center;">&#9998;</span> マガジン管理
     </a>
@@ -370,6 +374,27 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
           <label class="field-label">プレビュー</label>
           <div class="hero-preview" id="heroPreview">
             <span class="placeholder-text">画像URLを入力するとプレビューが表示されます</span>
+          </div>
+        </div>
+
+        <!-- 一覧サムネイル設定 -->
+        <div style="margin-top:28px; padding-top:24px; border-top:2px solid #EAEDF3;">
+          <h4 style="font-size:14px; font-weight:700; color:#333; margin-bottom:16px;">一覧サムネイル設定</h4>
+          <div class="field-note" style="margin-bottom:12px;">一覧ページで表示されるサムネイル画像。未設定の場合はヒーロー画像が使用されます。</div>
+          <div style="margin-bottom:12px;">
+            <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer; margin-right:16px; font-size:13px;">
+              <input type="radio" name="mag-thumb-mode" value="hero" id="mag-thumb-hero" checked onchange="switchMagThumbMode()"> ヒーロー画像をそのまま使用
+            </label>
+            <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-size:13px;">
+              <input type="radio" name="mag-thumb-mode" value="custom" id="mag-thumb-custom" onchange="switchMagThumbMode()"> 個別画像を指定
+            </label>
+          </div>
+          <div id="mag-thumb-custom-panel" style="display:none;">
+            <div class="field-group">
+              <label class="field-label">サムネイル画像URL</label>
+              <input type="text" id="ed-listThumbnail" class="field-input" placeholder="https://... または /images/..." oninput="updateMagThumbPreview()">
+            </div>
+            <img id="mag-thumb-preview" src="" style="max-width:160px; max-height:100px; border-radius:6px; border:1px solid #EAEDF3; object-fit:cover; display:none; margin-top:4px;">
           </div>
         </div>
       </div>
@@ -645,6 +670,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     document.getElementById('editorView').style.display = 'none';
     document.getElementById('pageTitle').textContent = 'マガジン管理';
     editingId = null;
+    location.hash = '';
     renderList();
   }
 
@@ -652,6 +678,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
     document.getElementById('listView').style.display = 'none';
     document.getElementById('editorView').style.display = 'block';
     document.getElementById('pageTitle').textContent = article.id ? '記事を編集' : '新規記事を作成';
+    if (article.id) location.hash = '#detail-' + article.id;
 
     // Reset to first tab
     switchTab('tab-basic');
@@ -694,6 +721,9 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 
     // Hero preview
     updateHeroPreview();
+
+    // List thumbnail
+    loadMagThumbData(article.listThumbnail || '');
 
     // SEO counters
     updateCharCount('ed-metaTitle', 'metaTitleCount', 60);
@@ -776,6 +806,44 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       preview.innerHTML = '<span class="placeholder-text">画像URLを入力するとプレビューが表示されます</span>';
     }
   };
+
+  // ===== Magazine Thumbnail =====
+  window.switchMagThumbMode = function() {
+    var isCustom = document.getElementById('mag-thumb-custom').checked;
+    document.getElementById('mag-thumb-custom-panel').style.display = isCustom ? 'block' : 'none';
+  };
+
+  window.updateMagThumbPreview = function() {
+    var url = document.getElementById('ed-listThumbnail').value.trim();
+    var preview = document.getElementById('mag-thumb-preview');
+    if (url) {
+      preview.src = url;
+      preview.style.display = 'block';
+      preview.onerror = function(){ preview.style.display = 'none'; };
+    } else {
+      preview.style.display = 'none';
+    }
+  };
+
+  function getMagThumbData() {
+    if (document.getElementById('mag-thumb-custom').checked) {
+      return document.getElementById('ed-listThumbnail').value.trim() || '';
+    }
+    return ''; // ヒーロー画像をそのまま使用
+  }
+
+  function loadMagThumbData(thumb) {
+    if (thumb) {
+      document.getElementById('mag-thumb-custom').checked = true;
+      switchMagThumbMode();
+      document.getElementById('ed-listThumbnail').value = thumb;
+      updateMagThumbPreview();
+    } else {
+      document.getElementById('mag-thumb-hero').checked = true;
+      switchMagThumbMode();
+      document.getElementById('ed-listThumbnail').value = '';
+    }
+  }
 
   // ===== Body Preview =====
   window.togglePreview = function() {
@@ -912,6 +980,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       tags: currentTags.slice(),
       heroImage: document.getElementById('ed-heroImage').value.trim(),
       heroAlt: document.getElementById('ed-heroAlt').value.trim(),
+      listThumbnail: getMagThumbData(),
       body: document.getElementById('ed-body').value,
       ctaLabel: document.getElementById('ed-ctaLabel').value.trim(),
       ctaTitle: document.getElementById('ed-ctaTitle').value.trim(),
@@ -1226,7 +1295,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       return '<div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid ' + borderColor + ';border-radius:6px;margin-bottom:6px;cursor:pointer;background:' + bgColor + ';transition:all 0.15s;" ' +
         'onclick="setFeaturedArticle(' + a.id + ')" ' +
         'onmouseover="this.style.borderColor=\'#C9A96E\'" onmouseout="this.style.borderColor=\'' + borderColor + '\'">' +
-        (a.heroImage ? '<img src="' + escAttr(a.heroImage) + '" style="width:48px;height:34px;object-fit:cover;border-radius:4px;flex-shrink:0;">' : '<div style="width:48px;height:34px;background:#F5F6FA;border-radius:4px;flex-shrink:0;"></div>') +
+        ((a.listThumbnail || a.heroImage) ? '<img src="' + escAttr(a.listThumbnail || a.heroImage) + '" style="width:48px;height:34px;object-fit:cover;border-radius:4px;flex-shrink:0;">' : '<div style="width:48px;height:34px;background:#F5F6FA;border-radius:4px;flex-shrink:0;"></div>') +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-size:13px;font-weight:600;color:#1A1A1A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escHtml(a.title) + '</div>' +
           '<div style="font-size:11px;color:#999;">' + escHtml(a.category) + ' | ' + (a.date || '').replace(/-/g, '/') + '</div>' +
@@ -1284,6 +1353,33 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
       }
     } catch(e) {
       console.warn('[Magazine] APIフォールバック → localStorage:', e.message);
+    }
+  })();
+
+  // ===== URLハッシュ対応 =====
+  window.addEventListener('hashchange', function() {
+    var hash = location.hash;
+    if (hash && hash.indexOf('#detail-') === 0) {
+      var id = hash.replace('#detail-', '');
+      var article = articles.find(function(a){ return a.id === id || String(a.id) === id; });
+      if (article) {
+        editingId = article.id;
+        showEditor(article);
+      }
+    } else {
+      showList();
+    }
+  });
+  // 初期ハッシュチェック
+  (function checkInitHash() {
+    var hash = location.hash;
+    if (hash && hash.indexOf('#detail-') === 0) {
+      var id = hash.replace('#detail-', '');
+      var article = articles.find(function(a){ return a.id === id || String(a.id) === id; });
+      if (article) {
+        editingId = article.id;
+        showEditor(article);
+      }
     }
   })();
 

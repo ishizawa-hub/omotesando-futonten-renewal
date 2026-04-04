@@ -7,7 +7,10 @@
 
   var TOKEN_KEY = 'oft_auth_token';
   var USER_KEY = 'oft_auth_user';
-  var BASE = 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
+  // ローカル(Flask staging)時は自動でローカルAPI、本番時はWP REST API
+  var BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? location.origin + '/oft/v1'
+    : 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
 
   function post(path, body) {
     return fetch(BASE + path, {

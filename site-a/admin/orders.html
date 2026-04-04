@@ -52,32 +52,10 @@
   }
   #toast.show { opacity:1; transform:translateY(0); pointer-events:auto; display:block; }
 
-  /* Modal overlay */
-  .modal-overlay {
-    display:none; position:fixed; inset:0; z-index:9999;
-    background:rgba(0,0,0,0.5); backdrop-filter:blur(4px);
-    align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto;
-  }
-  .modal-overlay.active { display:flex; }
-
-  /* Modal box */
-  .modal-box {
-    background:#fff; border-radius:12px; width:820px; max-width:100%;
-    box-shadow:0 20px 60px rgba(0,0,0,0.3); margin:auto;
-  }
-  .modal-header {
-    padding:20px 28px; border-bottom:1px solid #EAEDF3;
-    display:flex; justify-content:space-between; align-items:center;
-  }
-  .modal-header h3 { font-size:18px; font-weight:700; color:#1A1A1A; }
-  .modal-close { background:none; border:none; font-size:24px; cursor:pointer; color:#999; padding:4px 8px; line-height:1; }
-  .modal-close:hover { color:#333; }
-  .modal-body { padding:28px; }
-
-  /* Modal sections */
-  .modal-section { margin-bottom:28px; }
-  .modal-section:last-child { margin-bottom:0; }
-  .modal-section-title {
+  /* Detail sections (replaces modal sections) */
+  .detail-section { margin-bottom:28px; }
+  .detail-section:last-child { margin-bottom:0; }
+  .detail-section-title {
     font-size:13px; font-weight:700; color:#C9A96E; text-transform:uppercase;
     letter-spacing:0.08em; margin-bottom:16px; padding-bottom:8px;
     border-bottom:1px solid #F0F0F0;
@@ -93,7 +71,7 @@
   }
   .timeline-item .timeline-date { font-weight:600; color:#555; }
 
-  /* Items table inside modal */
+  /* Items table inside detail */
   .items-table { width:100%; border-collapse:collapse; font-size:13px; }
   .items-table th { font-size:11px; padding:8px 10px; background:#F8F9FC; border-bottom:1px solid #EAEDF3; }
   .items-table td { padding:10px; border-bottom:1px solid #F0F0F0; }
@@ -123,8 +101,6 @@
   .admin-main-fix div[style*="display:flex"][style*="justify-content:space-between"] { flex-wrap: wrap !important; gap: 8px !important; }
   .admin-main-fix div[style*="display:flex"][style*="gap:12px"] { flex-wrap: wrap !important; }
   .admin-main-fix input[style*="width:240px"], .admin-main-fix input[style*="width:200px"] { width: 100% !important; }
-  .modal-box { width:100% !important; }
-  .modal-overlay { padding:16px !important; }
 }
 </style>
 </head>
@@ -148,6 +124,10 @@
     </a>
     <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; color:#C9A96E; background:#FDF8F0; margin-bottom:4px;">
       <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
+    <a href="sales.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128176;</span> 売上分析
     </a>
     <a href="inventory.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -204,117 +184,129 @@
   <!-- Content area -->
   <div style="padding:28px 32px;">
 
-    <!-- Stats Cards -->
-    <div id="statsCards" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:28px;">
-      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
-        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">総注文数</div>
-        <div id="statTotal" style="font-size:26px; font-weight:700;">0</div>
-      </div>
-      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
-        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">未処理/処理待ち</div>
-        <div id="statPending" style="font-size:26px; font-weight:700; color:#E67E22;">0</div>
-      </div>
-      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
-        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">発送済み</div>
-        <div id="statShipped" style="font-size:26px; font-weight:700; color:#28A745;">0</div>
-      </div>
-      <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
-        <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">売上合計</div>
-        <div id="statRevenue" style="font-size:26px; font-weight:700;">&yen;0</div>
-      </div>
-    </div>
+    <!-- ===== VIEW: LIST ===== -->
+    <div id="view-list">
 
-    <!-- Order List Card -->
-    <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden;">
-      <!-- Filters bar -->
-      <div style="padding:20px 24px; border-bottom:1px solid #EAEDF3;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-          <h2 style="font-size:16px; font-weight:700;">注文一覧</h2>
-          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-            <!-- Status filter -->
-            <select id="filterStatus" class="form-select" style="width:auto; padding:8px 14px;">
-              <option value="all">すべてのステータス</option>
-              <option value="未処理">未処理</option>
-              <option value="処理待ち">処理待ち</option>
-              <option value="決済確認中">決済確認中</option>
-              <option value="発送準備中">発送準備中</option>
-              <option value="発送済み">発送済み</option>
-              <option value="配達完了">配達完了</option>
-              <option value="返品申請中">返品申請中</option>
-              <option value="返品完了">返品完了</option>
-              <option value="キャンセル申請">キャンセル申請</option>
-              <option value="キャンセル完了">キャンセル完了</option>
-            </select>
-            <!-- Payment filter -->
-            <select id="filterPayment" class="form-select" style="width:auto; padding:8px 14px;">
-              <option value="all">すべての決済</option>
-              <option value="Stripe">Stripe</option>
-              <option value="銀行振込">銀行振込</option>
-              <option value="代引き">代引き</option>
-            </select>
-            <!-- Date filter -->
-            <select id="filterDateRange" class="form-select" style="width:auto; padding:8px 14px;">
-              <option value="all">全期間</option>
-              <option value="today">今日</option>
-              <option value="week">今週</option>
-              <option value="month">今月</option>
-              <option value="custom">カスタム</option>
-            </select>
-            <!-- Custom date range (hidden by default) -->
-            <div id="customDateRange" style="display:none; align-items:center; gap:4px;">
-              <input type="date" id="dateFrom" class="form-input" style="width:140px; padding:8px 10px;">
-              <span style="color:#999;">~</span>
-              <input type="date" id="dateTo" class="form-input" style="width:140px; padding:8px 10px;">
-            </div>
-            <!-- Search -->
-            <input id="searchInput" type="text" placeholder="注文番号/顧客名で検索..." class="form-input" style="width:200px; padding:8px 14px;">
-            <!-- CSV Export -->
-            <button id="csvExportBtn" class="btn btn-outline" style="white-space:nowrap;">CSVエクスポート</button>
-          </div>
+      <!-- Stats Cards -->
+      <div id="statsCards" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:28px;">
+        <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+          <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">総注文数</div>
+          <div id="statTotal" style="font-size:26px; font-weight:700;">0</div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+          <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">未処理/処理待ち</div>
+          <div id="statPending" style="font-size:26px; font-weight:700; color:#E67E22;">0</div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+          <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">発送済み</div>
+          <div id="statShipped" style="font-size:26px; font-weight:700; color:#28A745;">0</div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:22px 24px; border:1px solid #EAEDF3;">
+          <div style="font-size:12px; font-weight:600; color:#999; margin-bottom:8px;">売上合計</div>
+          <div id="statRevenue" style="font-size:26px; font-weight:700;">&yen;0</div>
         </div>
       </div>
-      <!-- Table -->
-      <table>
-        <thead>
-          <tr>
-            <th style="padding-left:24px;">注文番号</th>
-            <th>お客様名</th>
-            <th>商品</th>
-            <th style="text-align:right;">金額</th>
-            <th style="text-align:center;">ステータス</th>
-            <th>決済方法</th>
-            <th>配送業者</th>
-            <th>追跡番号</th>
-            <th>日時</th>
-          </tr>
-        </thead>
-        <tbody id="orderTableBody"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
 
-<!-- ===== ORDER DETAIL MODAL ===== -->
-<div id="orderModal" class="modal-overlay">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h3 id="modalTitle">注文詳細</h3>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-    </div>
-    <div class="modal-body" id="modalBody">
-      <!-- Dynamically populated -->
-    </div>
+      <!-- Order List Card -->
+      <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; overflow:hidden;">
+        <!-- Filters bar -->
+        <div style="padding:20px 24px; border-bottom:1px solid #EAEDF3;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <h2 style="font-size:16px; font-weight:700;">注文一覧</h2>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <!-- Status filter -->
+              <select id="filterStatus" class="form-select" style="width:auto; padding:8px 14px;">
+                <option value="all">すべてのステータス</option>
+                <option value="未処理">未処理</option>
+                <option value="処理待ち">処理待ち</option>
+                <option value="決済確認中">決済確認中</option>
+                <option value="発送準備中">発送準備中</option>
+                <option value="発送済み">発送済み</option>
+                <option value="配達完了">配達完了</option>
+                <option value="返品申請中">返品申請中</option>
+                <option value="返品完了">返品完了</option>
+                <option value="キャンセル申請">キャンセル申請</option>
+                <option value="キャンセル完了">キャンセル完了</option>
+              </select>
+              <!-- Payment filter -->
+              <select id="filterPayment" class="form-select" style="width:auto; padding:8px 14px;">
+                <option value="all">すべての決済</option>
+                <option value="Stripe">Stripe</option>
+                <option value="銀行振込">銀行振込</option>
+                <option value="代引き">代引き</option>
+              </select>
+              <!-- Date filter -->
+              <select id="filterDateRange" class="form-select" style="width:auto; padding:8px 14px;">
+                <option value="all">全期間</option>
+                <option value="today">今日</option>
+                <option value="week">今週</option>
+                <option value="month">今月</option>
+                <option value="custom">カスタム</option>
+              </select>
+              <!-- Custom date range (hidden by default) -->
+              <div id="customDateRange" style="display:none; align-items:center; gap:4px;">
+                <input type="date" id="dateFrom" class="form-input" style="width:140px; padding:8px 10px;">
+                <span style="color:#999;">~</span>
+                <input type="date" id="dateTo" class="form-input" style="width:140px; padding:8px 10px;">
+              </div>
+              <!-- Search -->
+              <input id="searchInput" type="text" placeholder="注文番号/顧客名で検索..." class="form-input" style="width:200px; padding:8px 14px;">
+              <!-- CSV Export -->
+              <button id="csvExportBtn" class="btn btn-outline" style="white-space:nowrap;">CSVエクスポート</button>
+            </div>
+          </div>
+        </div>
+        <!-- Table -->
+        <table>
+          <thead>
+            <tr>
+              <th style="padding-left:24px;">注文番号</th>
+              <th>お客様名</th>
+              <th>商品</th>
+              <th style="text-align:right;">金額</th>
+              <th style="text-align:center;">ステータス</th>
+              <th>決済方法</th>
+              <th>配送業者</th>
+              <th>追跡番号</th>
+              <th>日時</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody"></tbody>
+        </table>
+      </div>
+
+    </div><!-- /view-list -->
+
+    <!-- ===== VIEW: DETAIL ===== -->
+    <div id="view-detail" style="display:none;">
+
+      <!-- Back button -->
+      <div style="margin-bottom:20px;">
+        <button onclick="showListView()" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#F5F6FA;border:1px solid #EAEDF3;border-radius:8px;font-size:14px;font-weight:600;color:#555;cursor:pointer;font-family:inherit;">
+          &#8592; 注文一覧に戻る
+        </button>
+      </div>
+
+      <!-- Detail content card -->
+      <div style="background:#fff; border-radius:10px; border:1px solid #EAEDF3; padding:28px;">
+        <div id="detailBody">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+    </div><!-- /view-detail -->
+
   </div>
 </div>
 
 <!-- ===== CANCEL MODAL ===== -->
-<div id="cancelModal" class="modal-overlay">
-  <div class="modal-box" style="width:560px;">
-    <div class="modal-header">
-      <h3>注文をキャンセル</h3>
-      <button class="modal-close" onclick="closeCancelModal()">&times;</button>
+<div id="cancelModal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto;">
+  <div style="background:#fff; border-radius:12px; width:560px; max-width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); margin:auto;">
+    <div style="padding:20px 28px; border-bottom:1px solid #EAEDF3; display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-size:18px; font-weight:700; color:#1A1A1A;">注文をキャンセル</h3>
+      <button style="background:none; border:none; font-size:24px; cursor:pointer; color:#999; padding:4px 8px; line-height:1;" onclick="closeCancelModal()">&times;</button>
     </div>
-    <div class="modal-body">
+    <div style="padding:28px;">
       <div style="margin-bottom:16px;">
         <label class="form-label">キャンセル理由</label>
         <select id="cancelReason" class="form-select">
@@ -356,13 +348,13 @@
 </div>
 
 <!-- ===== RETURN MODAL ===== -->
-<div id="returnModal" class="modal-overlay">
-  <div class="modal-box" style="width:560px;">
-    <div class="modal-header">
-      <h3>返品処理</h3>
-      <button class="modal-close" onclick="closeReturnModal()">&times;</button>
+<div id="returnModal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); align-items:flex-start; justify-content:center; padding:40px 20px; overflow-y:auto;">
+  <div style="background:#fff; border-radius:12px; width:560px; max-width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); margin:auto;">
+    <div style="padding:20px 28px; border-bottom:1px solid #EAEDF3; display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-size:18px; font-weight:700; color:#1A1A1A;">返品処理</h3>
+      <button style="background:none; border:none; font-size:24px; cursor:pointer; color:#999; padding:4px 8px; line-height:1;" onclick="closeReturnModal()">&times;</button>
     </div>
-    <div class="modal-body">
+    <div style="padding:28px;">
       <div style="margin-bottom:16px;">
         <label class="form-label">返品理由</label>
         <select id="returnReason" class="form-select">
@@ -697,7 +689,7 @@
       var rowClass = STATUS_ROW_CLASS[o.status] || '';
       var itemNames = o.items.map(function(i) { return i.name; }).join(', ');
       var dateShort = o.date.replace(/^\d{4}-/, '').replace(' ', ' ');
-      html += '<tr class="'+rowClass+'" data-id="'+o.id+'" style="cursor:pointer;" onclick="openOrderDetail(\''+o.id+'\')">';
+      html += '<tr class="'+rowClass+'" data-id="'+o.id+'" style="cursor:pointer;">';
       html += '<td style="padding-left:24px;font-weight:600;">#'+escapeHtml(o.id)+'</td>';
       html += '<td>'+escapeHtml(o.customer)+'</td>';
       html += '<td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+escapeHtml(itemNames)+'</td>';
@@ -715,6 +707,49 @@
     tbody.innerHTML = html;
     updateStats();
   }
+
+  // ========== TABLE ROW CLICK (イベントデリゲーション) ==========
+  document.getElementById('orderTableBody').addEventListener('click', function(e) {
+    var tr = e.target.closest('tr[data-id]');
+    if (tr) {
+      showDetailView(tr.getAttribute('data-id'));
+    }
+  });
+
+  // ========== VIEW SWITCHING ==========
+  window.showListView = function() {
+    document.getElementById('view-list').style.display = '';
+    document.getElementById('view-detail').style.display = 'none';
+    currentOrderId = null;
+    history.pushState(null, '', location.pathname + location.search);
+  };
+
+  window.showDetailView = function(id) {
+    populateOrderDetail(id);
+    document.getElementById('view-list').style.display = 'none';
+    document.getElementById('view-detail').style.display = '';
+    location.hash = '#detail-' + id;
+    window.scrollTo(0, 0);
+  };
+
+  // ========== HASH CHANGE HANDLING ==========
+  window.onhashchange = function() {
+    var hash = location.hash;
+    if (hash && hash.indexOf('#detail-') === 0) {
+      var id = hash.replace('#detail-', '');
+      if (getOrder(id)) {
+        populateOrderDetail(id);
+        document.getElementById('view-list').style.display = 'none';
+        document.getElementById('view-detail').style.display = '';
+      } else {
+        showListView();
+      }
+    } else {
+      document.getElementById('view-list').style.display = '';
+      document.getElementById('view-detail').style.display = 'none';
+      currentOrderId = null;
+    }
+  };
 
   // ========== FILTER EVENTS ==========
   var filterIds = ['filterStatus','filterPayment','filterDateRange','searchInput','dateFrom','dateTo'];
@@ -770,8 +805,8 @@
       + '</tr>';
   }
 
-  // ========== OPEN ORDER DETAIL MODAL ==========
-  window.openOrderDetail = function(id) {
+  // ========== POPULATE ORDER DETAIL (replaces openOrderDetail) ==========
+  function populateOrderDetail(id) {
     currentOrderId = id;
     var order = getOrder(id);
     if (!order) return;
@@ -781,9 +816,15 @@
 
     var html = '';
 
+    // Header with order number and status
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;">';
+    html += '<h2 style="font-size:22px;font-weight:700;color:#1A1A1A;">注文詳細 #'+escapeHtml(order.id)+'</h2>';
+    html += statusBadgeHTML(order.status);
+    html += '</div>';
+
     // Section A: 注文概要
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">A. 注文概要</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">A. 注文概要</div>';
     html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">';
     html += '<div><div class="form-label">注文番号</div><div style="font-size:20px;font-weight:700;color:#1A1A1A;">#'+escapeHtml(order.id)+'</div></div>';
     html += '<div><div class="form-label">注文日時</div><div style="font-size:15px;">'+escapeHtml(order.date)+'</div></div>';
@@ -809,8 +850,8 @@
     html += '</div>';
 
     // Section B: 顧客情報
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">B. 顧客情報</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">B. 顧客情報</div>';
     html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">';
     html += '<div><div class="form-label">お名前</div><div style="font-size:14px;font-weight:600;"><a href="customers.html" style="color:#C9A96E;text-decoration:underline;">'+escapeHtml(order.customer)+'</a></div></div>';
     html += '<div><div class="form-label">メール</div><div style="font-size:13px;">'+escapeHtml(order.email)+'</div></div>';
@@ -818,8 +859,8 @@
     html += '</div></div>';
 
     // Section C: 配送先情報
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">C. 配送先情報</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">C. 配送先情報</div>';
     html += '<div style="margin-bottom:12px;"><div class="form-label">住所</div><div style="font-size:14px;line-height:1.6;">'+escapeHtml(order.address)+'</div></div>';
     html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">';
     html += '<div><div class="form-label">配送業者</div><select id="detailCarrier" class="form-select"><option value="">未選択</option>';
@@ -833,8 +874,8 @@
     html += '</div></div>';
 
     // Section D: 注文商品
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">D. 注文商品</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">D. 注文商品</div>';
     html += '<div style="overflow-x:auto;"><table class="items-table"><thead><tr><th>商品名</th><th>サイズ</th><th>カラー</th><th style="text-align:center;width:60px;">数量</th><th style="text-align:right;">単価</th><th style="text-align:right;">小計</th><th style="width:32px;"></th></tr></thead>';
     html += '<tbody id="detailItemsBody">';
     order.items.forEach(function(item, idx) {
@@ -845,8 +886,8 @@
     html += '</div>';
 
     // Section E: 金額
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">E. 金額</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">E. 金額</div>';
     html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:12px;">';
     html += '<div><div class="form-label">小計</div><div id="detailSubtotal" style="font-size:15px;font-weight:600;">'+formatYen(subtotal)+'</div></div>';
     html += '<div><div class="form-label">送料</div><input type="number" id="detailShipping" class="form-input" value="'+(order.shipping||0)+'" min="0" onchange="recalcTotal()"></div>';
@@ -859,8 +900,8 @@
     html += '</div></div>';
 
     // Section F: アクション
-    html += '<div class="modal-section">';
-    html += '<div class="modal-section-title">F. アクション</div>';
+    html += '<div class="detail-section">';
+    html += '<div class="detail-section-title">F. アクション</div>';
     html += '<div style="margin-bottom:16px;"><div class="form-label">注文メモ（内部用）</div>';
     html += '<textarea id="detailNotes" class="form-textarea" placeholder="メモを入力...">'+escapeHtml(order.notes||'')+'</textarea></div>';
     html += '<div style="display:flex;gap:10px;flex-wrap:wrap;">';
@@ -873,9 +914,8 @@
     html += '</div>';
     html += '</div>';
 
-    document.getElementById('modalBody').innerHTML = html;
-    document.getElementById('orderModal').classList.add('active');
-  };
+    document.getElementById('detailBody').innerHTML = html;
+  }
 
   window.addItemRow = function() {
     var tbody = document.getElementById('detailItemsBody');
@@ -953,7 +993,7 @@
 
     saveOrders(orders);
     renderTable();
-    closeModal();
+    showListView();
     showToast('注文 #'+order.id+' を更新しました');
   };
 
@@ -962,32 +1002,27 @@
     showToast('領収書を発行しました（#'+currentOrderId+'）');
   };
 
-  // ========== CLOSE MODALS ==========
-  window.closeModal = function() {
-    document.getElementById('orderModal').classList.remove('active');
-    currentOrderId = null;
-  };
+  // ========== CLOSE MODALS (Cancel / Return only) ==========
   window.closeCancelModal = function() {
-    document.getElementById('cancelModal').classList.remove('active');
+    document.getElementById('cancelModal').style.display = 'none';
   };
   window.closeReturnModal = function() {
-    document.getElementById('returnModal').classList.remove('active');
+    document.getElementById('returnModal').style.display = 'none';
   };
 
-  // Backdrop click close
-  ['orderModal','cancelModal','returnModal'].forEach(function(id) {
+  // Backdrop click close for Cancel/Return modals
+  ['cancelModal','returnModal'].forEach(function(id) {
     document.getElementById(id).addEventListener('click', function(e) {
       if (e.target === this) {
-        this.classList.remove('active');
-        if (id === 'orderModal') currentOrderId = null;
+        this.style.display = 'none';
       }
     });
   });
-  // Escape key close
+  // Escape key close for Cancel/Return modals
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      var modals = document.querySelectorAll('.modal-overlay.active');
-      for (var i = 0; i < modals.length; i++) { modals[i].classList.remove('active'); }
+      document.getElementById('cancelModal').style.display = 'none';
+      document.getElementById('returnModal').style.display = 'none';
     }
   });
 
@@ -999,7 +1034,7 @@
     document.querySelector('input[name="refundType"][value="full"]').checked = true;
     document.getElementById('partialRefundRow').style.display = 'none';
     document.getElementById('partialRefundAmount').value = '';
-    document.getElementById('cancelModal').classList.add('active');
+    document.getElementById('cancelModal').style.display = 'flex';
   };
 
   window.confirmCancel = function() {
@@ -1022,7 +1057,7 @@
 
     saveOrders(orders, order.id, 'キャンセル完了');
     closeCancelModal();
-    closeModal();
+    showListView();
     renderTable();
     showToast('注文 #'+order.id+' をキャンセルしました');
   };
@@ -1044,7 +1079,7 @@
       cbHtml += '</label>';
     });
     document.getElementById('returnItemsCheckboxes').innerHTML = cbHtml;
-    document.getElementById('returnModal').classList.add('active');
+    document.getElementById('returnModal').style.display = 'flex';
   };
 
   window.confirmReturn = function() {
@@ -1067,13 +1102,22 @@
 
     saveOrders(orders, order.id, '返品申請中');
     closeReturnModal();
-    closeModal();
+    showListView();
     renderTable();
     showToast('返品処理を開始しました（#'+order.id+'）');
   };
 
   // ========== INIT ==========
   renderTable();
+
+  // ハッシュによる初期表示判定
+  var initHash = location.hash;
+  if (initHash && initHash.indexOf('#detail-') === 0) {
+    var initId = initHash.replace('#detail-', '');
+    if (getOrder(initId)) {
+      showDetailView(initId);
+    }
+  }
 
 })();
 </script>

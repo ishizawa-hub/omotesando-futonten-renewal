@@ -70,6 +70,15 @@ tr:hover { background:#FAFBFD; }
 .badge-published { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#E8F5E9; color:#4CAF50; }
 .badge-draft { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:#FFF3E0; color:#E65100; }
 
+/* Image preview */
+.img-thumb { width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #EAEDF3; cursor:pointer; transition:opacity 0.2s; }
+.img-thumb:hover { opacity:0.7; }
+.img-inline-preview { width:60px; height:40px; object-fit:cover; border-radius:4px; border:1px solid #EAEDF3; margin-top:4px; display:none; }
+.img-inline-preview.loaded { display:block; }
+.field-img-preview { max-width:200px; max-height:120px; border-radius:6px; border:1px solid #EAEDF3; object-fit:cover; margin-top:6px; display:none; cursor:pointer; }
+.field-img-preview.loaded { display:block; }
+.field-img-preview:hover { opacity:0.8; }
+
 /* Toast */
 #toast { position:fixed; bottom:32px; right:32px; padding:14px 24px; border-radius:10px; font-size:14px; font-weight:600; font-family:inherit; color:#fff; background:#2D2D2D; box-shadow:0 8px 24px rgba(0,0,0,0.2); z-index:10000; opacity:0; transform:translateY(20px); transition:opacity 0.3s, transform 0.3s; pointer-events:none; border-left:4px solid #C9A96E; }
 
@@ -119,6 +128,10 @@ tr:hover { background:#FAFBFD; }
     <a href="orders.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
       <span style="width:20px; text-align:center;">&#128230;</span> 注文管理
+    </a>
+    <a href="sales.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
+      onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
+      <span style="width:20px; text-align:center;">&#128176;</span> 売上分析
     </a>
     <a href="magazine.html" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:500; color:#555; margin-bottom:4px;"
       onmouseover="this.style.background='#F5F6FA';" onmouseout="this.style.background='transparent';">
@@ -344,6 +357,64 @@ tr:hover { background:#FAFBFD; }
 
         <!-- ===== Tab 3: 画像ギャラリー ===== -->
         <div class="tab-panel" id="tab-gallery">
+
+          <!-- 一覧サムネイル設定 -->
+          <div class="section-card" style="margin-bottom:24px;">
+            <div class="section-card-header" style="display:flex; justify-content:space-between; align-items:center;">
+              一覧サムネイル設定
+              <span style="font-size:11px; color:#AAA; font-weight:400;">一覧ページで表示されるサムネイル画像</span>
+            </div>
+            <div style="padding:20px;">
+              <div style="margin-bottom:16px;">
+                <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer; margin-right:20px;">
+                  <input type="radio" name="thumb-mode" value="crop" id="thumb-mode-crop" checked onchange="switchThumbMode()"> キービジュアルからクロップ
+                </label>
+                <label style="display:inline-flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="radio" name="thumb-mode" value="custom" id="thumb-mode-custom" onchange="switchThumbMode()"> 個別画像を指定
+                </label>
+              </div>
+
+              <!-- クロップモード -->
+              <div id="thumb-crop-panel" style="display:flex; gap:24px; flex-wrap:wrap;">
+                <div style="flex:1; min-width:280px;">
+                  <div style="position:relative; width:100%; max-width:400px; aspect-ratio:4/3; overflow:hidden; border:2px dashed #DDD; border-radius:8px; background:#F9F9F7; cursor:grab;" id="crop-area">
+                    <img id="crop-source" src="" alt="" style="position:absolute; top:0; left:0; width:100%; height:auto; transform-origin:0 0; pointer-events:none; display:none;">
+                    <div id="crop-placeholder" style="display:flex; align-items:center; justify-content:center; height:100%; color:#CCC; font-size:13px;">
+                      画像ギャラリーの1枚目がソースになります
+                    </div>
+                  </div>
+                  <div style="margin-top:12px; display:flex; align-items:center; gap:12px;">
+                    <label style="font-size:12px; color:#888; white-space:nowrap;">ズーム:</label>
+                    <input type="range" id="crop-zoom" min="100" max="300" value="100" step="5" style="flex:1;" oninput="updateCropPreview()">
+                    <span id="crop-zoom-val" style="font-size:12px; color:#666; min-width:40px;">1.0x</span>
+                  </div>
+                  <button type="button" class="btn btn-outline btn-sm" style="margin-top:8px;" onclick="resetCrop()">リセット</button>
+                </div>
+                <div style="width:140px;">
+                  <p style="font-size:11px; color:#888; margin-bottom:8px; font-weight:600;">プレビュー (1:1)</p>
+                  <div style="width:120px; height:120px; overflow:hidden; border-radius:8px; border:1px solid #EAEDF3; background:#F9F9F7;">
+                    <img id="crop-preview" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:none;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- 個別指定モード -->
+              <div id="thumb-custom-panel" style="display:none;">
+                <div class="field">
+                  <label>サムネイル画像URL</label>
+                  <input type="url" id="ed-thumb-url" placeholder="https://... または /images/..." oninput="updateThumbCustomPreview()">
+                </div>
+                <div class="field">
+                  <label>altテキスト</label>
+                  <input type="text" id="ed-thumb-alt" placeholder="サムネイルの説明">
+                </div>
+                <div style="margin-top:8px;">
+                  <img id="thumb-custom-preview" src="" alt="" style="max-width:160px; max-height:120px; border-radius:8px; border:1px solid #EAEDF3; object-fit:cover; display:none;">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div style="background:#FDF8F0; border:1px solid #E8DCC8; border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:13px; color:#8B7355;">
             &#9888; 1商品あたり5〜13枚推奨。メイン画像は1枚目に設定してください。
           </div>
@@ -731,15 +802,165 @@ tr:hover { background:#FAFBFD; }
     tbody.appendChild(tr);
   };
 
+  // --- Thumbnail Crop UI ---
+  var cropState = { x: 50, y: 50, zoom: 100, dragging: false, startX: 0, startY: 0, startCropX: 50, startCropY: 50 };
+
+  window.switchThumbMode = function() {
+    var isCrop = document.getElementById('thumb-mode-crop').checked;
+    document.getElementById('thumb-crop-panel').style.display = isCrop ? 'flex' : 'none';
+    document.getElementById('thumb-custom-panel').style.display = isCrop ? 'none' : 'block';
+  };
+
+  window.updateThumbCustomPreview = function() {
+    var url = document.getElementById('ed-thumb-url').value;
+    var preview = document.getElementById('thumb-custom-preview');
+    if (url) {
+      preview.src = resolveImageUrl(url);
+      preview.style.display = 'block';
+      preview.onerror = function(){ preview.style.display = 'none'; };
+    } else {
+      preview.style.display = 'none';
+    }
+  };
+
+  function initCropFromGallery() {
+    var rows = document.getElementById('images-tbody').querySelectorAll('tr');
+    if (rows.length === 0) return;
+    var firstInput = rows[0].querySelector('input[type="text"]');
+    if (!firstInput || !firstInput.value) return;
+    var url = resolveImageUrl(firstInput.value);
+    var cropSource = document.getElementById('crop-source');
+    var cropPreview = document.getElementById('crop-preview');
+    var placeholder = document.getElementById('crop-placeholder');
+    cropSource.src = url;
+    cropPreview.src = url;
+    cropSource.onload = function() {
+      cropSource.style.display = 'block';
+      cropPreview.style.display = 'block';
+      placeholder.style.display = 'none';
+      updateCropPreview();
+    };
+    cropSource.onerror = function() {
+      cropSource.style.display = 'none';
+      cropPreview.style.display = 'none';
+      placeholder.style.display = 'flex';
+    };
+  }
+
+  window.updateCropPreview = function() {
+    var zoom = parseInt(document.getElementById('crop-zoom').value) / 100;
+    document.getElementById('crop-zoom-val').textContent = zoom.toFixed(1) + 'x';
+    cropState.zoom = parseInt(document.getElementById('crop-zoom').value);
+
+    var source = document.getElementById('crop-source');
+    var preview = document.getElementById('crop-preview');
+    if (!source.naturalWidth) return;
+
+    // Apply transform to source
+    source.style.transform = 'scale(' + zoom + ')';
+    source.style.transformOrigin = cropState.x + '% ' + cropState.y + '%';
+
+    // Apply to preview
+    preview.style.objectPosition = cropState.x + '% ' + cropState.y + '%';
+    preview.style.transform = 'scale(' + zoom + ')';
+    preview.style.transformOrigin = cropState.x + '% ' + cropState.y + '%';
+  };
+
+  window.resetCrop = function() {
+    cropState.x = 50; cropState.y = 50; cropState.zoom = 100;
+    document.getElementById('crop-zoom').value = 100;
+    updateCropPreview();
+  };
+
+  // Drag handling for crop area
+  (function() {
+    var area = null;
+    function getCropArea() {
+      if (!area) area = document.getElementById('crop-area');
+      return area;
+    }
+    document.addEventListener('mousedown', function(e) {
+      var a = getCropArea();
+      if (!a || !a.contains(e.target)) return;
+      cropState.dragging = true;
+      cropState.startX = e.clientX;
+      cropState.startY = e.clientY;
+      cropState.startCropX = cropState.x;
+      cropState.startCropY = cropState.y;
+      a.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (!cropState.dragging) return;
+      var dx = e.clientX - cropState.startX;
+      var dy = e.clientY - cropState.startY;
+      var sensitivity = 0.2;
+      cropState.x = Math.max(0, Math.min(100, cropState.startCropX - dx * sensitivity));
+      cropState.y = Math.max(0, Math.min(100, cropState.startCropY - dy * sensitivity));
+      updateCropPreview();
+    });
+    document.addEventListener('mouseup', function() {
+      if (cropState.dragging) {
+        cropState.dragging = false;
+        var a = getCropArea();
+        if (a) a.style.cursor = 'grab';
+      }
+    });
+  })();
+
+  function getThumbData() {
+    var isCrop = document.getElementById('thumb-mode-crop').checked;
+    if (isCrop) {
+      return {
+        source: 'crop',
+        x: Math.round(cropState.x),
+        y: Math.round(cropState.y),
+        zoom: cropState.zoom / 100
+      };
+    } else {
+      return {
+        source: 'custom',
+        url: document.getElementById('ed-thumb-url').value,
+        alt: document.getElementById('ed-thumb-alt').value
+      };
+    }
+  }
+
+  function loadThumbData(thumb) {
+    if (!thumb || !thumb.source) {
+      document.getElementById('thumb-mode-crop').checked = true;
+      switchThumbMode();
+      resetCrop();
+      return;
+    }
+    if (thumb.source === 'custom') {
+      document.getElementById('thumb-mode-custom').checked = true;
+      switchThumbMode();
+      document.getElementById('ed-thumb-url').value = thumb.url || '';
+      document.getElementById('ed-thumb-alt').value = thumb.alt || '';
+      updateThumbCustomPreview();
+    } else {
+      document.getElementById('thumb-mode-crop').checked = true;
+      switchThumbMode();
+      cropState.x = thumb.x || 50;
+      cropState.y = thumb.y || 50;
+      cropState.zoom = Math.round((thumb.zoom || 1) * 100);
+      document.getElementById('crop-zoom').value = cropState.zoom;
+      updateCropPreview();
+    }
+  }
+
   // --- Images ---
   window.addImageRow = function(data) {
     data = data || {};
     var tbody = document.getElementById('images-tbody');
     var idx = tbody.children.length + 1;
     var tr = document.createElement('tr');
+    var previewSrc = data.url ? resolveImageUrl(data.url) : '';
     tr.innerHTML =
       '<td style="text-align:center;color:#999;font-weight:600;">' + idx + '</td>' +
-      '<td><input type="text" placeholder="例: /images/products/xxx.jpg" value="' + (data.url||'') + '"></td>' +
+      '<td><input type="text" placeholder="例: /images/products/xxx.jpg" value="' + (data.url||'') + '" oninput="updateRowPreview(this)">' +
+      '<img class="img-inline-preview' + (previewSrc ? ' loaded' : '') + '"' + (previewSrc ? ' src="' + previewSrc + '"' : '') + ' alt="プレビュー" onerror="this.classList.remove(\'loaded\')" onload="this.classList.add(\'loaded\')" onclick="if(this.src)window.open(this.src,\'_blank\')"></td>' +
       '<td><input type="text" placeholder="画像の説明" value="' + (data.alt||'') + '"></td>' +
       '<td><select>' +
         '<option value="共通"' + (data.color==='共通'||!data.color?' selected':'') + '>共通</option>' +
@@ -759,6 +980,45 @@ tr:hover { background:#FAFBFD; }
     for (var i = 0; i < rows.length; i++) {
       rows[i].children[0].textContent = i + 1;
     }
+  }
+
+  // --- Image preview helpers ---
+  function resolveImageUrl(url) {
+    if (!url) return '';
+    if (url.match(/^https?:\/\//)) return url;
+    // 相対パスをサイトルートから解決
+    if (url.charAt(0) === '/') return '..' + url;
+    return '../' + url;
+  }
+  window.updateRowPreview = function(input) {
+    var img = input.parentElement.querySelector('.img-inline-preview');
+    if (!img) return;
+    var url = input.value.trim();
+    if (!url) { img.classList.remove('loaded'); img.removeAttribute('src'); return; }
+    img.src = resolveImageUrl(url);
+  };
+  // ストーリー画像・OG画像のプレビュー初期化
+  function initFieldPreview(inputId) {
+    var input = document.getElementById(inputId);
+    if (!input) return;
+    // 既存プレビューを削除（再呼び出し対応）
+    var existing = input.parentElement.querySelector('.field-img-preview');
+    if (existing) existing.remove();
+    var preview = document.createElement('img');
+    preview.className = 'field-img-preview';
+    preview.alt = 'プレビュー';
+    preview.addEventListener('load', function() { this.classList.add('loaded'); });
+    preview.addEventListener('error', function() { this.classList.remove('loaded'); });
+    preview.addEventListener('click', function() { if(this.src) window.open(this.src, '_blank'); });
+    input.parentElement.appendChild(preview);
+    if (input.value) { preview.src = resolveImageUrl(input.value); }
+    input.addEventListener('input', function() {
+      var prev = this.parentElement.querySelector('.field-img-preview');
+      if (!prev) return;
+      var url = this.value.trim();
+      if (!url) { prev.classList.remove('loaded'); prev.removeAttribute('src'); return; }
+      prev.src = resolveImageUrl(url);
+    });
   }
 
   // --- Colors ---
@@ -880,8 +1140,22 @@ tr:hover { background:#FAFBFD; }
         var statusBadge = p.status === '下書き'
           ? '<span class="badge-draft">下書き</span>'
           : '<span class="badge-published">公開中</span>';
-        var imgCell = (p.images && p.images.length > 0 && p.images[0].url)
-          ? '<img src="' + p.images[0].url + '" style="width:44px;height:44px;border-radius:6px;object-fit:cover;">'
+        // サムネイル表示: thumbnail設定 → images[0] フォールバック
+        var thumbUrl = '';
+        var thumbStyle = 'width:44px;height:44px;border-radius:6px;object-fit:cover;';
+        if (p.thumbnail && p.thumbnail.source === 'custom' && p.thumbnail.url) {
+          thumbUrl = resolveImageUrl(p.thumbnail.url);
+        } else if (p.thumbnail && p.thumbnail.source === 'crop' && p.images && p.images[0] && p.images[0].url) {
+          thumbUrl = resolveImageUrl(p.images[0].url);
+          thumbStyle += 'object-position:' + (p.thumbnail.x||50) + '% ' + (p.thumbnail.y||50) + '%;';
+          if (p.thumbnail.zoom && p.thumbnail.zoom !== 1) {
+            thumbStyle += 'transform:scale(' + p.thumbnail.zoom + ');transform-origin:' + (p.thumbnail.x||50) + '% ' + (p.thumbnail.y||50) + '%;';
+          }
+        } else if (p.images && p.images.length > 0 && p.images[0].url) {
+          thumbUrl = resolveImageUrl(p.images[0].url);
+        }
+        var imgCell = thumbUrl
+          ? '<img src="' + thumbUrl + '" style="' + thumbStyle + '" onerror="this.style.display=\'none\'">'
           : '<div style="width:44px;height:44px;border-radius:6px;background:' + cs.iconBg + ';display:flex;align-items:center;justify-content:center;font-size:18px;">' + cs.icon + '</div>';
 
         var tr = document.createElement('tr');
@@ -979,9 +1253,11 @@ tr:hover { background:#FAFBFD; }
       for (var i = 0; i < products.length; i++) { if (products[i].id === id) { p = products[i]; break; } }
       if (!p) { closeEditor(); return; }
       populateEditor(p);
+      location.hash = '#detail-' + id;
     } else {
       document.getElementById('editor-title').textContent = '新規商品を追加';
       populateEditor(null);
+      location.hash = '#new';
     }
     window.scrollTo(0, 0);
   };
@@ -991,7 +1267,34 @@ tr:hover { background:#FAFBFD; }
     document.getElementById('view-editor').style.display = 'none';
     document.getElementById('view-list').style.display = 'block';
     renderList();
+    location.hash = '';
   };
+
+  // URLハッシュ対応（ブラウザ戻る/進む）
+  window.addEventListener('hashchange', function() {
+    var hash = location.hash;
+    if (hash.indexOf('#detail-') === 0) {
+      var id = hash.replace('#detail-', '');
+      if (editingId !== id) openEditor(id);
+    } else if (hash === '#new') {
+      if (editingId !== null) openEditor(null);
+    } else {
+      if (editingId !== null || document.getElementById('view-editor').style.display !== 'none') {
+        editingId = null;
+        document.getElementById('view-editor').style.display = 'none';
+        document.getElementById('view-list').style.display = 'block';
+        renderList();
+      }
+    }
+  });
+
+  // 初回ロード時のハッシュ対応
+  (function() {
+    var hash = location.hash;
+    if (hash.indexOf('#detail-') === 0) {
+      setTimeout(function() { openEditor(hash.replace('#detail-', '')); }, 100);
+    }
+  })();
 
   function populateEditor(p) {
     p = p || {};
@@ -1013,10 +1316,13 @@ tr:hover { background:#FAFBFD; }
     document.getElementById('ed-cover-option').checked = !!p.coverOption;
     document.getElementById('ed-cover-surcharge').value = p.coverSurcharge || '';
 
-    // Tab 3: Images
+    // Tab 3: Images + Thumbnail
     document.getElementById('images-tbody').innerHTML = '';
     var imgs = p.images || [];
     if (imgs.length === 0) { addImageRow(); } else { for (var i=0;i<imgs.length;i++) addImageRow(imgs[i]); }
+    // サムネイル設定読み込み
+    loadThumbData(p.thumbnail || null);
+    setTimeout(function(){ initCropFromGallery(); }, 100);
 
     // Tab 4: Colors
     document.getElementById('colors-tbody').innerHTML = '';
@@ -1059,6 +1365,28 @@ tr:hover { background:#FAFBFD; }
     document.getElementById('ed-canonical').value = p.canonical || '';
     updateCharCount('ed-meta-title','cc-meta-title',60);
     updateCharCount('ed-meta-desc','cc-meta-desc',160);
+
+    // 画像プレビュー初期化
+    initFieldPreview('ed-story-image');
+    initFieldPreview('ed-og-image');
+    // 関連商品・マガジンの画像プレビュー
+    document.querySelectorAll('.rp-image, .rm-image').forEach(function(input) {
+      var preview = document.createElement('img');
+      preview.className = 'field-img-preview';
+      preview.alt = 'プレビュー';
+      preview.addEventListener('load', function() { this.classList.add('loaded'); });
+      preview.addEventListener('error', function() { this.classList.remove('loaded'); });
+      preview.addEventListener('click', function() { if(this.src) window.open(this.src, '_blank'); });
+      input.parentElement.appendChild(preview);
+      if (input.value) { preview.src = resolveImageUrl(input.value); }
+      input.addEventListener('input', function() {
+        var url = this.value.trim();
+        var prev = this.parentElement.querySelector('.field-img-preview');
+        if (!prev) return;
+        if (!url) { prev.classList.remove('loaded'); prev.removeAttribute('src'); return; }
+        prev.src = resolveImageUrl(url);
+      });
+    });
   }
 
   // ===================== COLLECT & SAVE =====================
@@ -1113,6 +1441,9 @@ tr:hover { background:#FAFBFD; }
         coverPrice: inputs[4].value ? parseInt(inputs[4].value) : 0
       });
     }
+
+    // Collect thumbnail
+    var thumbnail = getThumbData();
 
     // Collect images
     var images = [];
@@ -1187,6 +1518,7 @@ tr:hover { background:#FAFBFD; }
       sizes: sizes,
       coverOption: document.getElementById('ed-cover-option').checked,
       coverSurcharge: parseInt(document.getElementById('ed-cover-surcharge').value) || 0,
+      thumbnail: thumbnail,
       images: images,
       colors: colors,
       seasonLinks: {

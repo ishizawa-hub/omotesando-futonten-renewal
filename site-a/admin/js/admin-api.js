@@ -5,7 +5,10 @@
 (function () {
   'use strict';
 
-  var BASE = 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
+  // ローカル(Flask staging)時は自動でローカルAPI、本番時はWP REST API
+  var BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? location.origin + '/oft/v1'
+    : 'https://omotesando-futonten.com/wp/wp-json/oft/v1';
   var TOKEN_KEY = 'oft_admin_token';
   var USER_KEY = 'oft_admin_user';
 
