@@ -1,0 +1,50 @@
+[
+  {
+    "id": "r_001",
+    "product_id": "p_001",
+    "product_name": "Premium RDS Down 冬用本掛け",
+    "author": "田中 美咲",
+    "rating": 5,
+    "title": "最高の寝心地です",
+    "body": "軽くて暖かく、朝まで快適に眠れます。以前使っていた布団とは全く違う品質で驚きました。",
+    "status": "承認済み",
+    "date": "2026-02-15",
+    "createdAt": "2026-02-15T10:30:00"
+  },
+  {
+    "id": "r_002",
+    "product_id": "p_002",
+    "product_name": "Clean Cycle Down 冬用本掛け",
+    "author": "佐藤 健太",
+    "rating": 4,
+    "title": "コスパが良い",
+    "body": "リサイクルダウンとは思えないほど暖かいです。価格を考えると非常に満足しています。",
+    "status": "承認済み",
+    "date": "2026-01-20",
+    "createdAt": "2026-01-20T14:00:00"
+  },
+  {
+    "id": "r_003",
+    "product_id": "p_001",
+    "product_name": "Premium RDS Down 冬用本掛け",
+    "author": "鈴木 花子",
+    "rating": 5,
+    "title": "贈り物にしました",
+    "body": "母の誕生日に贈りました。とても喜んでもらえて、毎晩ぐっすり眠れているそうです。",
+    "status": "承認済み",
+    "date": "2025-12-25",
+    "createdAt": "2025-12-25T09:15:00"
+  },
+  {
+    "id": "r_004",
+    "product_id": "p_003",
+    "product_name": "ホワイトグースダウン枕",
+    "author": "山田 太郎",
+    "rating": 4,
+    "title": "首の痛みが軽減",
+    "body": "高さがちょうど良く、朝起きた時の首の痛みがなくなりました。",
+    "status": "保留",
+    "date": "2026-03-01",
+    "createdAt": "2026-03-01T08:00:00"
+  }
+]

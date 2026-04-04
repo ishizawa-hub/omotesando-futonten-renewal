@@ -384,6 +384,41 @@ def api_update_settings():
     return jsonify(settings)
 
 # ============================================================
+# レビュー API
+# ============================================================
+@app.route('/oft/v1/reviews', methods=['GET'])
+def api_get_reviews_public():
+    reviews = db_read('reviews')
+    product_id = request.args.get('product_id')
+    if product_id:
+        reviews = [r for r in reviews if r.get('product_id') == product_id]
+    return jsonify(reviews)
+
+@app.route('/oft/v1/admin/reviews', methods=['GET'])
+def api_get_reviews():
+    return jsonify(db_read('reviews'))
+
+@app.route('/oft/v1/admin/reviews/<review_id>', methods=['PUT'])
+@require_admin
+def api_update_review(review_id):
+    data = request.get_json(force=True) or {}
+    reviews = db_read('reviews')
+    for i, r in enumerate(reviews):
+        if str(r.get('id')) == str(review_id):
+            reviews[i] = {**r, **data, 'updatedAt': datetime.now().isoformat()}
+            db_write('reviews', reviews)
+            return jsonify(reviews[i])
+    return jsonify({'error': 'レビューが見つかりません'}), 404
+
+@app.route('/oft/v1/admin/reviews/<review_id>', methods=['DELETE'])
+@require_admin
+def api_delete_review(review_id):
+    reviews = db_read('reviews')
+    reviews = [r for r in reviews if str(r.get('id')) != str(review_id)]
+    db_write('reviews', reviews)
+    return jsonify({'success': True})
+
+# ============================================================
 # 在庫 API
 # ============================================================
 @app.route('/oft/v1/admin/inventory', methods=['GET'])
