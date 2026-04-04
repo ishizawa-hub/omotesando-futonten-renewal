@@ -1616,6 +1616,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 
   // Toast
   function showToast(msg) {
+    if (window.AdminToast) { AdminToast.show(msg, "success"); return; }
     const toast = document.getElementById('toast');
     toast.textContent = msg;
     toast.classList.add('show');

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "c_001",
+    "name": "山田 太郎",
+    "email": "yamada@example.com",
+    "phone": "03-1234-5678",
+    "registeredAt": "2024-06-10T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 4,
+    "totalSpent": 257300
+  },
+  {
+    "id": "c_002",
+    "name": "佐藤 花子",
+    "email": "sato@example.com",
+    "phone": "090-9876-5432",
+    "registeredAt": "2024-01-05T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 4,
+    "totalSpent": 173360
+  },
+  {
+    "id": "c_003",
+    "name": "田中 美咲",
+    "email": "tanaka@example.com",
+    "phone": "080-1111-2222",
+    "registeredAt": "2024-02-15T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 4,
+    "totalSpent": 160160
+  },
+  {
+    "id": "c_004",
+    "name": "鈴木 健一",
+    "email": "suzuki.k@example.com",
+    "phone": "03-5555-6666",
+    "registeredAt": "2024-03-01T00:00:00",
+    "status": "アクティブ",
+    "newsletter": false,
+    "orders": 2,
+    "totalSpent": 147300
+  },
+  {
+    "id": "c_005",
+    "name": "高橋 直子",
+    "email": "takahashi@example.com",
+    "phone": "090-3333-4444",
+    "registeredAt": "2024-05-10T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 4,
+    "totalSpent": 308000
+  },
+  {
+    "id": "c_006",
+    "name": "伊藤 裕子",
+    "email": "ito@example.com",
+    "phone": "080-7777-8888",
+    "registeredAt": "2024-09-01T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 4,
+    "totalSpent": 270600
+  },
+  {
+    "id": "c_007",
+    "name": "渡辺 翔太",
+    "email": "watanabe@example.com",
+    "phone": "090-5555-9999",
+    "registeredAt": "2024-10-20T00:00:00",
+    "status": "アクティブ",
+    "newsletter": false,
+    "orders": 3,
+    "totalSpent": 172280
+  },
+  {
+    "id": "c_008",
+    "name": "中村 恵",
+    "email": "nakamura@example.com",
+    "phone": "03-2222-3333",
+    "registeredAt": "2025-02-20T00:00:00",
+    "status": "アクティブ",
+    "newsletter": true,
+    "orders": 3,
+    "totalSpent": 161600
+  }
+]

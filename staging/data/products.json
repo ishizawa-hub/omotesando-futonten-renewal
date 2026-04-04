@@ -1,0 +1,121 @@
+[
+  {
+    "id": "p_001",
+    "name": "Premium RDS Down 冬用本掛け",
+    "series": "Premium RDS Down Series",
+    "category": "掛け布団",
+    "season": "冬用",
+    "status": "公開",
+    "stock": 12,
+    "subtitle": "最高級リサイクルダウンの暖かさ",
+    "catchcopy": "新品羽毛を超える美しさ",
+    "description": "RDS認証リサイクルダウンを使用した最高級掛け布団。白州の天然水で徹底洗浄。",
+    "sizes": [
+      {
+        "name": "S",
+        "dimensions": "150×210cm",
+        "fill": "1.3kg",
+        "price": 198000
+      },
+      {
+        "name": "D",
+        "dimensions": "190×210cm",
+        "fill": "1.7kg",
+        "price": 268000
+      }
+    ],
+    "images": [
+      {
+        "url": "/images/generated/premium-rds-winter-hero.jpg",
+        "alt": "Premium RDS Down",
+        "color": "共通"
+      }
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "code": "#FFFFFF",
+        "border": true
+      }
+    ],
+    "specs": [
+      {
+        "key": "羽毛種",
+        "value": "ホワイトグースダウン95%"
+      },
+      {
+        "key": "ダウンパワー",
+        "value": "440dp"
+      },
+      {
+        "key": "洗浄",
+        "value": "白州天然水洗浄"
+      }
+    ],
+    "createdAt": "2024-01-15T00:00:00"
+  },
+  {
+    "id": "p_002",
+    "name": "Clean Cycle Down 冬用本掛け",
+    "series": "Clean Cycle Down Series",
+    "category": "掛け布団",
+    "season": "冬用",
+    "status": "公開",
+    "stock": 25,
+    "description": "リサイクルダウンで環境に優しい掛け布団。",
+    "sizes": [
+      {
+        "name": "S",
+        "dimensions": "150×210cm",
+        "fill": "1.2kg",
+        "price": 53800
+      },
+      {
+        "name": "SD",
+        "dimensions": "170×210cm",
+        "fill": "1.4kg",
+        "price": 63800
+      },
+      {
+        "name": "D",
+        "dimensions": "190×210cm",
+        "fill": "1.6kg",
+        "price": 73800
+      }
+    ],
+    "images": [
+      {
+        "url": "/images/generated/clean-cycle-winter-hero.jpg",
+        "alt": "Clean Cycle Down",
+        "color": "共通"
+      }
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "code": "#FFFFFF",
+        "border": true
+      }
+    ],
+    "createdAt": "2024-02-01T00:00:00"
+  },
+  {
+    "id": "p_003",
+    "name": "ホワイトグースダウン枕",
+    "series": "Pillow Series",
+    "category": "枕",
+    "status": "公開",
+    "stock": 20,
+    "description": "最高品質のグースダウンを贅沢に使用した枕。",
+    "sizes": [
+      {
+        "name": "M",
+        "dimensions": "43×63cm",
+        "fill": "0.5kg",
+        "price": 27800
+      }
+    ],
+    "images": [],
+    "createdAt": "2024-03-01T00:00:00"
+  }
+]

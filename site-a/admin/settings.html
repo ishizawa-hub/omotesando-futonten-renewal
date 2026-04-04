@@ -1112,6 +1112,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
 <!-- Toast -->
 <div id="toast" style="display:none;position:fixed;bottom:32px;right:32px;background:#2D2D2D;color:#fff;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:500;z-index:10000;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:opacity 0.3s;"></div>
 
+<script src="js/admin-toast.js"></script>
 <script src="js/admin-api.js"></script>
 <script src="../js/api.js"></script>
 <script src="../js/auth.js"></script>
@@ -1170,6 +1171,7 @@ p,li,dd,td,th,blockquote,.desc,.lead,.text,figcaption,span[class*='-text'],span[
   // --- Toast ---
   var toastTimer = null;
   function showToast(msg, isError) {
+    if (window.AdminToast) { AdminToast.show(msg, isError ? "error" : "success"); return; }
     toastEl.textContent = msg;
     toastEl.style.background = isError ? '#E74C3C' : '#2D2D2D';
     toastEl.style.display = 'block';

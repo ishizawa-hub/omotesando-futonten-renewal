@@ -105,6 +105,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 </style>
 </head>
 <body>
+<script src="js/admin-toast.js"></script>
 <script src="js/admin-api.js"></script>
 <!-- Sidebar -->
 <div class="admin-sidebar-fix" style="position:fixed; top:0; left:0; width:260px; height:100vh; background:#fff; border-right:1px solid #EAEDF3; display:flex; flex-direction:column; z-index:100;">
@@ -693,6 +694,7 @@ total_spent, order_count, registered_date</code>
 
   // === TOAST ===
   function showToast(msg) {
+    if (window.AdminToast) { AdminToast.show(msg, "success"); return; }
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.style.display = 'block';

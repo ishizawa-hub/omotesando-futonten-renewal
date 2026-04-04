@@ -62,6 +62,20 @@
     },
 
     /**
+     * 商品単品取得
+     */
+    getProduct: function (productId) {
+      return request('/products/' + productId);
+    },
+
+    /**
+     * マガジン記事一覧取得（公開のみ）
+     */
+    getMagazines: function () {
+      return request('/magazine');
+    },
+
+    /**
      * Stripe Checkout セッション作成
      * items: [{product_id, quantity}]
      * shipping: {last_name, first_name, postcode, state, city, address1, address2, phone}

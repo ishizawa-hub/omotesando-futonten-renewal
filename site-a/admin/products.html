@@ -105,6 +105,7 @@ tr:hover { background:#FAFBFD; }
 </style>
 </head>
 <body>
+<script src="js/admin-toast.js"></script>
 <script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
@@ -704,6 +705,10 @@ tr:hover { background:#FAFBFD; }
   // ===================== TOAST =====================
   var toastTimer = null;
   window.showToast = function(msg, isError) {
+    if (window.AdminToast) {
+      AdminToast.show(msg, isError ? 'error' : 'success');
+      return;
+    }
     var t = document.getElementById('toast');
     var m = document.getElementById('toast-msg');
     m.textContent = msg;
@@ -1414,17 +1419,35 @@ tr:hover { background:#FAFBFD; }
   }
 
   window.saveProduct = function() {
+    // 必須項目バリデーション
+    var requiredFields = [
+      { id: 'ed-name', label: '商品名' },
+      { id: 'ed-series', label: 'シリーズ名' },
+      { id: 'ed-category', label: 'カテゴリ' }
+    ];
+    if (window.AdminToast) {
+      var vResult = AdminToast.validateRequired(requiredFields);
+      if (!vResult.valid) {
+        AdminToast.showValidationAlert(vResult);
+        // ステータスを強制的に下書きに
+        var statusEl = document.getElementById('ed-status');
+        if (statusEl && statusEl.value === '公開') {
+          statusEl.value = '下書き';
+          AdminToast.warning('未入力項目があるため「下書き」に変更されました');
+        }
+        // 基本情報タブに切替
+        var allBtns = document.querySelectorAll('#editor-tabs .tab-btn');
+        var allPanels = document.querySelectorAll('.tab-panel');
+        for (var i=0;i<allBtns.length;i++) allBtns[i].classList.remove('active');
+        for (var i=0;i<allPanels.length;i++) allPanels[i].classList.remove('active');
+        allBtns[0].classList.add('active');
+        allPanels[0].classList.add('active');
+        return;
+      }
+    }
     var name = document.getElementById('ed-name').value.trim();
     if (!name) {
       showToast('商品名は必須です', true);
-      // Switch to basic tab
-      var allBtns = document.querySelectorAll('#editor-tabs .tab-btn');
-      var allPanels = document.querySelectorAll('.tab-panel');
-      for (var i=0;i<allBtns.length;i++) allBtns[i].classList.remove('active');
-      for (var i=0;i<allPanels.length;i++) allPanels[i].classList.remove('active');
-      allBtns[0].classList.add('active');
-      allPanels[0].classList.add('active');
-      document.getElementById('ed-name').focus();
       return;
     }
 

@@ -1,0 +1,933 @@
+[
+  {
+    "id": "ord_001",
+    "orderNumber": "OFT-00001",
+    "customer": {
+      "name": "山田 太郎",
+      "email": "yamada@example.com",
+      "phone": "03-1234-5678"
+    },
+    "shipping": {
+      "last_name": "山田",
+      "first_name": "太郎",
+      "zip": "150-0001",
+      "prefecture": "東京都",
+      "city": "渋谷区神宮前"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 冬用本掛け S",
+        "price": 53800,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 53800,
+    "shipping_fee": 0,
+    "total": 53800,
+    "status": "処理待ち",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-12-01T10:30:00"
+  },
+  {
+    "id": "ord_002",
+    "orderNumber": "OFT-00002",
+    "customer": {
+      "name": "佐藤 花子",
+      "email": "sato@example.com",
+      "phone": "090-9876-5432"
+    },
+    "shipping": {
+      "last_name": "佐藤",
+      "first_name": "花子",
+      "zip": "107-0062",
+      "prefecture": "東京都",
+      "city": "港区南青山"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け S",
+        "price": 82500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 82500,
+    "shipping_fee": 0,
+    "total": 82500,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-01-15T11:20:00"
+  },
+  {
+    "id": "ord_003",
+    "orderNumber": "OFT-00003",
+    "customer": {
+      "name": "田中 美咲",
+      "email": "tanaka@example.com",
+      "phone": "080-1111-2222"
+    },
+    "shipping": {
+      "last_name": "田中",
+      "first_name": "美咲",
+      "zip": "150-0033",
+      "prefecture": "東京都",
+      "city": "渋谷区猿楽町"
+    },
+    "items": [
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 2,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 2,
+        "color": "Navy",
+        "image": ""
+      }
+    ],
+    "subtotal": 50600,
+    "shipping_fee": 0,
+    "total": 50600,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-02-20T14:45:00"
+  },
+  {
+    "id": "ord_004",
+    "orderNumber": "OFT-00004",
+    "customer": {
+      "name": "鈴木 健一",
+      "email": "suzuki.k@example.com",
+      "phone": "03-5555-6666"
+    },
+    "shipping": {
+      "last_name": "鈴木",
+      "first_name": "健一",
+      "zip": "160-0022",
+      "prefecture": "東京都",
+      "city": "新宿区新宿"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 冬用本掛け D",
+        "price": 64800,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 64800,
+    "shipping_fee": 0,
+    "total": 64800,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-03-10T09:30:00"
+  },
+  {
+    "id": "ord_005",
+    "orderNumber": "OFT-00005",
+    "customer": {
+      "name": "佐藤 花子",
+      "email": "sato@example.com",
+      "phone": "090-9876-5432"
+    },
+    "shipping": {
+      "last_name": "佐藤",
+      "first_name": "花子",
+      "zip": "107-0062",
+      "prefecture": "東京都",
+      "city": "港区南青山"
+    },
+    "items": [
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 1,
+        "color": "Ivory",
+        "image": ""
+      }
+    ],
+    "subtotal": 8800,
+    "shipping_fee": 880,
+    "total": 9680,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-04-22T16:10:00"
+  },
+  {
+    "id": "ord_006",
+    "orderNumber": "OFT-00006",
+    "customer": {
+      "name": "高橋 直子",
+      "email": "takahashi@example.com",
+      "phone": "090-3333-4444"
+    },
+    "shipping": {
+      "last_name": "高橋",
+      "first_name": "直子",
+      "zip": "158-0083",
+      "prefecture": "東京都",
+      "city": "世田谷区奥沢"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 合掛け S",
+        "price": 38500,
+        "qty": 1,
+        "color": "Beige",
+        "image": ""
+      },
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 55000,
+    "shipping_fee": 0,
+    "total": 55000,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-05-18T10:00:00"
+  },
+  {
+    "id": "ord_007",
+    "orderNumber": "OFT-00007",
+    "customer": {
+      "name": "山田 太郎",
+      "email": "yamada@example.com",
+      "phone": "03-1234-5678"
+    },
+    "shipping": {
+      "last_name": "山田",
+      "first_name": "太郎",
+      "zip": "150-0001",
+      "prefecture": "東京都",
+      "city": "渋谷区神宮前"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 合掛け S",
+        "price": 60500,
+        "qty": 1,
+        "color": "Gray",
+        "image": ""
+      }
+    ],
+    "subtotal": 60500,
+    "shipping_fee": 0,
+    "total": 60500,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-07-05T13:15:00"
+  },
+  {
+    "id": "ord_008",
+    "orderNumber": "OFT-00008",
+    "customer": {
+      "name": "伊藤 裕子",
+      "email": "ito@example.com",
+      "phone": "080-7777-8888"
+    },
+    "shipping": {
+      "last_name": "伊藤",
+      "first_name": "裕子",
+      "zip": "106-0032",
+      "prefecture": "東京都",
+      "city": "港区六本木"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け D",
+        "price": 99000,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 99000,
+    "shipping_fee": 0,
+    "total": 99000,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-09-12T11:00:00"
+  },
+  {
+    "id": "ord_009",
+    "orderNumber": "OFT-00009",
+    "customer": {
+      "name": "田中 美咲",
+      "email": "tanaka@example.com",
+      "phone": "080-1111-2222"
+    },
+    "shipping": {
+      "last_name": "田中",
+      "first_name": "美咲",
+      "zip": "150-0033",
+      "prefecture": "東京都",
+      "city": "渋谷区猿楽町"
+    },
+    "items": [
+      {
+        "name": "オーガニックコットン カバーセット S",
+        "price": 22000,
+        "qty": 1,
+        "color": "Natural",
+        "image": ""
+      }
+    ],
+    "subtotal": 22000,
+    "shipping_fee": 880,
+    "total": 22880,
+    "status": "キャンセル",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-10-03T18:30:00"
+  },
+  {
+    "id": "ord_010",
+    "orderNumber": "OFT-00010",
+    "customer": {
+      "name": "渡辺 翔太",
+      "email": "watanabe@example.com",
+      "phone": "090-5555-9999"
+    },
+    "shipping": {
+      "last_name": "渡辺",
+      "first_name": "翔太",
+      "zip": "153-0064",
+      "prefecture": "東京都",
+      "city": "目黒区下目黒"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 冬用本掛け S",
+        "price": 53800,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 70300,
+    "shipping_fee": 0,
+    "total": 70300,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-11-08T15:45:00"
+  },
+  {
+    "id": "ord_011",
+    "orderNumber": "OFT-00011",
+    "customer": {
+      "name": "高橋 直子",
+      "email": "takahashi@example.com",
+      "phone": "090-3333-4444"
+    },
+    "shipping": {
+      "last_name": "高橋",
+      "first_name": "直子",
+      "zip": "158-0083",
+      "prefecture": "東京都",
+      "city": "世田谷区奥沢"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 肌掛け S",
+        "price": 44000,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 44000,
+    "shipping_fee": 0,
+    "total": 44000,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2024-11-25T12:00:00"
+  },
+  {
+    "id": "ord_012",
+    "orderNumber": "OFT-00012",
+    "customer": {
+      "name": "佐藤 花子",
+      "email": "sato@example.com",
+      "phone": "090-9876-5432"
+    },
+    "shipping": {
+      "last_name": "佐藤",
+      "first_name": "花子",
+      "zip": "107-0062",
+      "prefecture": "東京都",
+      "city": "港区南青山"
+    },
+    "items": [
+      {
+        "name": "オーガニックコットン カバーセット D",
+        "price": 27500,
+        "qty": 1,
+        "color": "Natural",
+        "image": ""
+      }
+    ],
+    "subtotal": 27500,
+    "shipping_fee": 880,
+    "total": 28380,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-01-10T10:20:00"
+  },
+  {
+    "id": "ord_013",
+    "orderNumber": "OFT-00013",
+    "customer": {
+      "name": "伊藤 裕子",
+      "email": "ito@example.com",
+      "phone": "080-7777-8888"
+    },
+    "shipping": {
+      "last_name": "伊藤",
+      "first_name": "裕子",
+      "zip": "106-0032",
+      "prefecture": "東京都",
+      "city": "港区六本木"
+    },
+    "items": [
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 2,
+        "color": "Ivory",
+        "image": ""
+      },
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 34100,
+    "shipping_fee": 0,
+    "total": 34100,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-01-28T14:00:00"
+  },
+  {
+    "id": "ord_014",
+    "orderNumber": "OFT-00014",
+    "customer": {
+      "name": "鈴木 健一",
+      "email": "suzuki.k@example.com",
+      "phone": "03-5555-6666"
+    },
+    "shipping": {
+      "last_name": "鈴木",
+      "first_name": "健一",
+      "zip": "160-0022",
+      "prefecture": "東京都",
+      "city": "新宿区新宿"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け S",
+        "price": 82500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 82500,
+    "shipping_fee": 0,
+    "total": 82500,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-02-14T09:45:00"
+  },
+  {
+    "id": "ord_015",
+    "orderNumber": "OFT-00015",
+    "customer": {
+      "name": "中村 恵",
+      "email": "nakamura@example.com",
+      "phone": "03-2222-3333"
+    },
+    "shipping": {
+      "last_name": "中村",
+      "first_name": "恵",
+      "zip": "152-0035",
+      "prefecture": "東京都",
+      "city": "目黒区自由が丘"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 合掛け S",
+        "price": 38500,
+        "qty": 1,
+        "color": "Beige",
+        "image": ""
+      },
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 1,
+        "color": "Navy",
+        "image": ""
+      }
+    ],
+    "subtotal": 47300,
+    "shipping_fee": 0,
+    "total": 47300,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-03-05T17:30:00"
+  },
+  {
+    "id": "ord_016",
+    "orderNumber": "OFT-00016",
+    "customer": {
+      "name": "山田 太郎",
+      "email": "yamada@example.com",
+      "phone": "03-1234-5678"
+    },
+    "shipping": {
+      "last_name": "山田",
+      "first_name": "太郎",
+      "zip": "150-0001",
+      "prefecture": "東京都",
+      "city": "渋谷区神宮前"
+    },
+    "items": [
+      {
+        "name": "オーガニックコットン カバーセット S",
+        "price": 22000,
+        "qty": 2,
+        "color": "Natural",
+        "image": ""
+      }
+    ],
+    "subtotal": 44000,
+    "shipping_fee": 0,
+    "total": 44000,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-04-12T11:10:00"
+  },
+  {
+    "id": "ord_017",
+    "orderNumber": "OFT-00017",
+    "customer": {
+      "name": "田中 美咲",
+      "email": "tanaka@example.com",
+      "phone": "080-1111-2222"
+    },
+    "shipping": {
+      "last_name": "田中",
+      "first_name": "美咲",
+      "zip": "150-0033",
+      "prefecture": "東京都",
+      "city": "渋谷区猿楽町"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 合掛け S",
+        "price": 60500,
+        "qty": 1,
+        "color": "Gray",
+        "image": ""
+      }
+    ],
+    "subtotal": 60500,
+    "shipping_fee": 0,
+    "total": 60500,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-05-20T13:00:00"
+  },
+  {
+    "id": "ord_018",
+    "orderNumber": "OFT-00018",
+    "customer": {
+      "name": "高橋 直子",
+      "email": "takahashi@example.com",
+      "phone": "090-3333-4444"
+    },
+    "shipping": {
+      "last_name": "高橋",
+      "first_name": "直子",
+      "zip": "158-0083",
+      "prefecture": "東京都",
+      "city": "世田谷区奥沢"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け D",
+        "price": 99000,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 2,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 132000,
+    "shipping_fee": 0,
+    "total": 132000,
+    "status": "発送済み",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-06-15T10:30:00"
+  },
+  {
+    "id": "ord_019",
+    "orderNumber": "OFT-00019",
+    "customer": {
+      "name": "渡辺 翔太",
+      "email": "watanabe@example.com",
+      "phone": "090-5555-9999"
+    },
+    "shipping": {
+      "last_name": "渡辺",
+      "first_name": "翔太",
+      "zip": "153-0064",
+      "prefecture": "東京都",
+      "city": "目黒区下目黒"
+    },
+    "items": [
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 1,
+        "color": "Navy",
+        "image": ""
+      }
+    ],
+    "subtotal": 8800,
+    "shipping_fee": 880,
+    "total": 9680,
+    "status": "キャンセル",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-07-22T19:00:00"
+  },
+  {
+    "id": "ord_020",
+    "orderNumber": "OFT-00020",
+    "customer": {
+      "name": "中村 恵",
+      "email": "nakamura@example.com",
+      "phone": "03-2222-3333"
+    },
+    "shipping": {
+      "last_name": "中村",
+      "first_name": "恵",
+      "zip": "152-0035",
+      "prefecture": "東京都",
+      "city": "目黒区自由が丘"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 冬用本掛け S",
+        "price": 53800,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 53800,
+    "shipping_fee": 0,
+    "total": 53800,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-08-30T15:20:00"
+  },
+  {
+    "id": "ord_021",
+    "orderNumber": "OFT-00021",
+    "customer": {
+      "name": "佐藤 花子",
+      "email": "sato@example.com",
+      "phone": "090-9876-5432"
+    },
+    "shipping": {
+      "last_name": "佐藤",
+      "first_name": "花子",
+      "zip": "107-0062",
+      "prefecture": "東京都",
+      "city": "港区南青山"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 肌掛け S",
+        "price": 44000,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 1,
+        "color": "Ivory",
+        "image": ""
+      }
+    ],
+    "subtotal": 52800,
+    "shipping_fee": 0,
+    "total": 52800,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-09-18T12:45:00"
+  },
+  {
+    "id": "ord_022",
+    "orderNumber": "OFT-00022",
+    "customer": {
+      "name": "伊藤 裕子",
+      "email": "ito@example.com",
+      "phone": "080-7777-8888"
+    },
+    "shipping": {
+      "last_name": "伊藤",
+      "first_name": "裕子",
+      "zip": "106-0032",
+      "prefecture": "東京都",
+      "city": "港区六本木"
+    },
+    "items": [
+      {
+        "name": "オーガニックコットン カバーセット D",
+        "price": 27500,
+        "qty": 2,
+        "color": "Natural",
+        "image": ""
+      }
+    ],
+    "subtotal": 55000,
+    "shipping_fee": 0,
+    "total": 55000,
+    "status": "発送済み",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-11-03T10:15:00"
+  },
+  {
+    "id": "ord_023",
+    "orderNumber": "OFT-00023",
+    "customer": {
+      "name": "山田 太郎",
+      "email": "yamada@example.com",
+      "phone": "03-1234-5678"
+    },
+    "shipping": {
+      "last_name": "山田",
+      "first_name": "太郎",
+      "zip": "150-0001",
+      "prefecture": "東京都",
+      "city": "渋谷区神宮前"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け D",
+        "price": 99000,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 99000,
+    "shipping_fee": 0,
+    "total": 99000,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2025-12-20T09:00:00"
+  },
+  {
+    "id": "ord_024",
+    "orderNumber": "OFT-00024",
+    "customer": {
+      "name": "渡辺 翔太",
+      "email": "watanabe@example.com",
+      "phone": "090-5555-9999"
+    },
+    "shipping": {
+      "last_name": "渡辺",
+      "first_name": "翔太",
+      "zip": "153-0064",
+      "prefecture": "東京都",
+      "city": "目黒区下目黒"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 冬用本掛け D",
+        "price": 64800,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "オーガニックコットン カバーセット D",
+        "price": 27500,
+        "qty": 1,
+        "color": "Natural",
+        "image": ""
+      }
+    ],
+    "subtotal": 92300,
+    "shipping_fee": 0,
+    "total": 92300,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2026-01-08T11:30:00"
+  },
+  {
+    "id": "ord_025",
+    "orderNumber": "OFT-00025",
+    "customer": {
+      "name": "中村 恵",
+      "email": "nakamura@example.com",
+      "phone": "03-2222-3333"
+    },
+    "shipping": {
+      "last_name": "中村",
+      "first_name": "恵",
+      "zip": "152-0035",
+      "prefecture": "東京都",
+      "city": "目黒区自由が丘"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 合掛け S",
+        "price": 60500,
+        "qty": 1,
+        "color": "Gray",
+        "image": ""
+      }
+    ],
+    "subtotal": 60500,
+    "shipping_fee": 0,
+    "total": 60500,
+    "status": "完了",
+    "payment": "クレジットカード",
+    "orderedAt": "2026-01-25T16:00:00"
+  },
+  {
+    "id": "ord_026",
+    "orderNumber": "OFT-00026",
+    "customer": {
+      "name": "田中 美咲",
+      "email": "tanaka@example.com",
+      "phone": "080-1111-2222"
+    },
+    "shipping": {
+      "last_name": "田中",
+      "first_name": "美咲",
+      "zip": "150-0033",
+      "prefecture": "東京都",
+      "city": "渋谷区猿楽町"
+    },
+    "items": [
+      {
+        "name": "オリジナル枕",
+        "price": 16500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      },
+      {
+        "name": "シルクピローケース",
+        "price": 8800,
+        "qty": 1,
+        "color": "Navy",
+        "image": ""
+      }
+    ],
+    "subtotal": 25300,
+    "shipping_fee": 880,
+    "total": 26180,
+    "status": "発送済み",
+    "payment": "クレジットカード",
+    "orderedAt": "2026-02-14T13:20:00"
+  },
+  {
+    "id": "ord_027",
+    "orderNumber": "OFT-00027",
+    "customer": {
+      "name": "高橋 直子",
+      "email": "takahashi@example.com",
+      "phone": "090-3333-4444"
+    },
+    "shipping": {
+      "last_name": "高橋",
+      "first_name": "直子",
+      "zip": "158-0083",
+      "prefecture": "東京都",
+      "city": "世田谷区奥沢"
+    },
+    "items": [
+      {
+        "name": "Clean Cycle Down 合掛け S",
+        "price": 38500,
+        "qty": 2,
+        "color": "Beige",
+        "image": ""
+      }
+    ],
+    "subtotal": 77000,
+    "shipping_fee": 0,
+    "total": 77000,
+    "status": "処理待ち",
+    "payment": "クレジットカード",
+    "orderedAt": "2026-03-22T10:45:00"
+  },
+  {
+    "id": "ord_028",
+    "orderNumber": "OFT-00028",
+    "customer": {
+      "name": "伊藤 裕子",
+      "email": "ito@example.com",
+      "phone": "080-7777-8888"
+    },
+    "shipping": {
+      "last_name": "伊藤",
+      "first_name": "裕子",
+      "zip": "106-0032",
+      "prefecture": "東京都",
+      "city": "港区六本木"
+    },
+    "items": [
+      {
+        "name": "Premium RDS Down 冬用本掛け S",
+        "price": 82500,
+        "qty": 1,
+        "color": "White",
+        "image": ""
+      }
+    ],
+    "subtotal": 82500,
+    "shipping_fee": 0,
+    "total": 82500,
+    "status": "処理待ち",
+    "payment": "クレジットカード",
+    "orderedAt": "2026-04-02T09:15:00"
+  }
+]

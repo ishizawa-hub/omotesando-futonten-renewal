@@ -174,6 +174,14 @@ def api_get_products():
         products = [p for p in products if p.get('category') == category]
     return jsonify(products)
 
+@app.route('/oft/v1/products/<product_id>', methods=['GET'])
+def api_get_product(product_id):
+    products = db_read('products')
+    for p in products:
+        if str(p.get('id')) == str(product_id) or p.get('slug') == product_id:
+            return jsonify(p)
+    return jsonify({'error': '商品が見つかりません'}), 404
+
 @app.route('/oft/v1/admin/products', methods=['POST'])
 @require_admin
 def api_create_product():
@@ -212,6 +220,13 @@ def api_delete_product(product_id):
 # ============================================================
 # マガジン API
 # ============================================================
+@app.route('/oft/v1/magazine', methods=['GET'])
+def api_get_magazines_public():
+    articles = db_read('magazine')
+    published = [a for a in articles if a.get('status') == '公開']
+    published.sort(key=lambda a: a.get('date', ''), reverse=True)
+    return jsonify(published)
+
 @app.route('/oft/v1/admin/magazine', methods=['GET'])
 def api_get_magazines():
     return jsonify(db_read('magazine'))

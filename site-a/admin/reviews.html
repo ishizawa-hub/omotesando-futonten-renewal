@@ -423,6 +423,7 @@ function sendReply() {
 
 // Toast
 function showToast(message) {
+  if (window.AdminToast) { AdminToast.show(message, "success"); return; }
   var toast = document.getElementById('toast');
   toast.textContent = message;
   toast.classList.add('show');

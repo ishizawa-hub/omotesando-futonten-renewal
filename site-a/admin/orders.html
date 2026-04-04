@@ -105,6 +105,7 @@
 </style>
 </head>
 <body>
+<script src="js/admin-toast.js"></script>
 <script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
@@ -602,11 +603,14 @@
   var currentOrderId = null;
 
   // ========== TOAST ==========
-  function showToast(msg) {
+  function showToast(msg, type) {
+    if (window.AdminToast) {
+      AdminToast.show(msg, type || 'success');
+      return;
+    }
     var t = document.getElementById('toast');
     t.textContent = msg;
     t.style.display = 'block';
-    // Force reflow
     t.offsetHeight;
     t.classList.add('show');
     setTimeout(function() {

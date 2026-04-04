@@ -137,6 +137,7 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
 </style>
 </head>
 <body>
+<script src="js/admin-toast.js"></script>
 <script src="js/admin-api.js"></script>
 
 <!-- Sidebar -->
@@ -611,7 +612,11 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
   }
 
   // ===== Toast =====
-  function showToast(msg) {
+  function showToast(msg, type) {
+    if (window.AdminToast) {
+      AdminToast.show(msg, type || 'success');
+      return;
+    }
     var t = document.getElementById('toast');
     t.textContent = msg;
     t.style.display = 'block';
@@ -1010,16 +1015,37 @@ html, body { overflow-x:hidden !important; max-width:100vw; }
   window.saveArticle = function(asDraft) {
     var data = collectEditorData();
 
-    if (!data.title) {
-      showToast('タイトルは必須です');
-      switchTab('tab-basic');
-      document.getElementById('ed-title').focus();
-      return;
-    }
-    if (!data.category) {
-      showToast('カテゴリを選択してください');
-      switchTab('tab-basic');
-      return;
+    // 必須項目バリデーション
+    var requiredFields = [
+      { id: 'ed-title', label: 'タイトル' },
+      { id: 'ed-category', label: 'カテゴリ' },
+      { id: 'ed-slug', label: 'スラッグ' }
+    ];
+    if (window.AdminToast) {
+      var vResult = AdminToast.validateRequired(requiredFields);
+      if (!vResult.valid) {
+        AdminToast.showValidationAlert(vResult);
+        if (!asDraft && data.status === '公開') {
+          data.status = '下書き';
+          var statusEl = document.getElementById('ed-status');
+          if (statusEl) statusEl.value = '下書き';
+          AdminToast.warning('未入力項目があるため「下書き」に変更されました');
+        }
+        switchTab('tab-basic');
+        if (!asDraft) return;
+      }
+    } else {
+      if (!data.title) {
+        showToast('タイトルは必須です', 'error');
+        switchTab('tab-basic');
+        document.getElementById('ed-title').focus();
+        return;
+      }
+      if (!data.category) {
+        showToast('カテゴリを選択してください', 'error');
+        switchTab('tab-basic');
+        return;
+      }
     }
 
     if (asDraft) data.status = '下書き';

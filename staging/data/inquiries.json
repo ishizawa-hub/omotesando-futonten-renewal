@@ -1,0 +1,16 @@
+[
+  {
+    "id": "inq_001",
+    "name": "鈴木 一郎",
+    "email": "suzuki@example.com",
+    "phone": "",
+    "category": "商品について",
+    "subject": "Clean Cycle Downのサイズについて",
+    "body": "ダブルサイズの在庫はありますか？",
+    "status": "新規",
+    "priority": "通常",
+    "receivedAt": "2024-12-10T14:00:00",
+    "memo": "",
+    "timeline": []
+  }
+]
